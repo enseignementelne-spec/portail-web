@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Référentiel Pédagogique — Cycle 5</title>
+<style>
+  :root {
+    --bg: #F3EFE3;
+    --bg-raised: #FBF9F2;
+    --ink: #23211D;
+    --ink-soft: #5B584E;
+    --ink-faint: #8B8778;
+    --accent: #1F5F52;
+    --accent-soft: #DCE7DE;
+    --gold: #A9853C;
+    --rule: #DAD3C0;
+    --status-good: #5E7A4E;
+    --status-good-bg: #E4EBDD;
+    --status-warn: #A9853C;
+    --status-warn-bg: #F1E7CE;
+    --status-bad: #A44A3B;
+    --status-bad-bg: #F1E0DA;
+    --shadow: 0 1px 2px rgba(35,33,29,0.06), 0 8px 24px rgba(35,33,29,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131F1B;
+      --bg-raised: #1B2B25;
+      --ink: #EDE8DC;
+      --ink-soft: #B7B1A0;
+      --ink-faint: #7C8078;
+      --accent: #74C2AA;
+      --accent-soft: #22392F;
+      --gold: #DAB96C;
+      --rule: #2B3A32;
+      --status-good: #93BD7D;
+      --status-good-bg: #24371F;
+      --status-warn: #DAB96C;
+      --status-warn-bg: #3A2F1A;
+      --status-bad: #DE8973;
+      --status-bad-bg: #3B241E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 96px; }
+
+  /* ---------- Header ---------- */
+  .cover { position: relative; padding: 64px 28px 48px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 28px);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+  .cover-inner { max-width: 980px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+  h1.title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: clamp(34px, 5vw, 52px); letter-spacing: -0.01em;
+    text-wrap: balance; margin: 0 0 10px; color: var(--ink);
+  }
+  .title em { color: var(--accent); font-style: normal; }
+  .subtitle { font-size: 18px; color: var(--ink-soft); max-width: 62ch; margin: 0 0 32px; }
+  .meta-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;
+  }
+  .meta-cell { background: var(--bg-raised); padding: 16px 18px; }
+  .meta-cell .k {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;
+  }
+  .meta-cell .v { font-size: 15px; color: var(--ink); font-weight: 600; }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 56px 0 0; }
+  .section-head { margin-bottom: 28px; }
+  .section-num { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.1em; }
+  h2.section-title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: 27px; margin: 4px 0 8px; text-wrap: balance;
+  }
+  .section-lede { color: var(--ink-soft); max-width: 68ch; font-size: 15.5px; }
+
+  /* ---------- Philosophy ---------- */
+  .philosophy { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 14px; padding: 28px 32px; box-shadow: var(--shadow); }
+  .philosophy p { margin: 0 0 14px; font-size: 16px; }
+  .philosophy p:last-child { margin-bottom: 0; }
+  .philosophy .lead-word { font-family: Georgia, serif; font-size: 22px; color: var(--accent); }
+
+  /* ---------- Domain legend ---------- */
+  .legend { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
+  .legend-chip { border: 1px solid var(--rule); border-radius: 10px; padding: 14px 14px 16px; background: var(--bg-raised); }
+  .legend-chip .mark {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 15px; margin-bottom: 10px;
+  }
+  .legend-chip .name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .legend-chip .def { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; }
+
+  /* ---------- Domain spread rows (2 years: Année A / Année B) ---------- */
+  .spread { margin-top: 8px; }
+  .spread-row {
+    display: grid; grid-template-columns: 168px 1fr 1fr;
+    border: 1px solid var(--rule); border-top: none; background: var(--bg-raised);
+  }
+  .spread-row:first-child { border-top: 1px solid var(--rule); border-radius: 12px 12px 0 0; overflow: hidden; }
+  .spread-row:last-of-type { border-radius: 0 0 12px 12px; overflow: hidden; }
+  .spread-rail {
+    padding: 20px 16px; background: var(--accent-soft); border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .spread-rail .domain-name { font-weight: 700; font-size: 14px; color: var(--accent); }
+  .spread-cell { padding: 20px 22px; border-right: 1px solid var(--rule); }
+  .spread-cell:last-child { border-right: none; }
+  .spread-cell .year-tag {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px;
+  }
+  .spread-cell p { margin: 0 0 12px; font-size: 14.5px; }
+  .resource-tag {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-soft);
+    background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 9px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  .resource-tag::before { content: "\2318"; color: var(--gold); font-family: -apple-system, sans-serif; }
+
+  .header-row { display: grid; grid-template-columns: 168px 1fr 1fr; margin-top: 24px; }
+  .header-row .hcell {
+    padding: 0 22px 10px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold);
+  }
+  .header-row .hcell:first-child { padding-left: 16px; }
+
+  /* ---------- Hadith band ---------- */
+  .hadith-band {
+    margin-top: 32px; border-radius: 12px; background: linear-gradient(135deg, var(--accent-soft), var(--bg-raised));
+    border: 1px solid var(--rule); padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  }
+  .hadith-band .glyph { font-family: Georgia, serif; font-size: 34px; color: var(--gold); }
+  .hadith-band h3 { margin: 0 0 6px; font-size: 16px; font-family: Georgia, serif; font-weight: 400; }
+  .hadith-band p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---------- Ancrage quotidien (contexte de vie) ---------- */
+  .context-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+  .context-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .context-card .idx { font-family: ui-monospace, monospace; font-size: 11px; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .context-card h4 { font-family: Georgia, serif; font-weight: 400; font-size: 16px; margin: 0 0 10px; }
+  .context-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-soft); }
+  .context-card li { margin-bottom: 6px; }
+
+  /* ---------- Evaluation cards ---------- */
+  .eval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .eval-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 22px; box-shadow: var(--shadow); }
+  .eval-card .idx { font-family: ui-monospace, monospace; font-size: 11px; color: var(--gold); margin-bottom: 12px; letter-spacing: 0.08em; }
+  .eval-card h4 { font-family: Georgia, serif; font-weight: 400; font-size: 17px; margin: 0 0 8px; }
+  .eval-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- Bibliography ---------- */
+  .biblio-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin-top: 20px; }
+  .biblio-row { background: var(--bg-raised); padding: 16px 20px; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: start; }
+  .biblio-title { font-weight: 700; font-size: 14.5px; }
+  .biblio-source { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .biblio-usage { font-size: 12.5px; color: var(--ink-faint); margin-top: 6px; grid-column: 1 / -1; }
+  .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 999px; white-space: nowrap; height: fit-content; }
+  .pill.good { color: var(--status-good); background: var(--status-good-bg); }
+  .pill.warn { color: var(--status-warn); background: var(--status-warn-bg); }
+  .pill.bad { color: var(--status-bad); background: var(--status-bad-bg); }
+
+  /* ---------- Footer ---------- */
+  .foot-note {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-faint);
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .meta-strip { grid-template-columns: repeat(2, 1fr); }
+    .legend { grid-template-columns: repeat(2, 1fr); }
+    .spread-row, .header-row { grid-template-columns: 1fr; }
+    .spread-rail { border-right: none; border-bottom: 1px solid var(--rule); }
+    .spread-cell { border-right: none; border-bottom: 1px solid var(--rule); }
+    .eval-grid, .context-grid { grid-template-columns: 1fr; }
+    .header-row { display: none; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cover-inner, section { animation: rise 0.5s ease both; }
+    section:nth-of-type(2) { animation-delay: 0.05s; }
+    section:nth-of-type(3) { animation-delay: 0.1s; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="eyebrow">Référentiel pédagogique · Éducation islamique</div>
+      <h1 class="title">Cycle 5 — <em>Maturité et engagement</em></h1>
+      <p class="subtitle">Programme sur deux ans destiné aux adolescents de 12 à 14 ans : la pratique et la croyance déjà installées se structurent en une compréhension d'ensemble cohérente, avec les premiers outils pour répondre aux doutes et tenir sa foi dans un contexte souvent minoritaire.</p>
+      <div class="meta-strip">
+        <div class="meta-cell"><div class="k">Public</div><div class="v">12–14 ans</div></div>
+        <div class="meta-cell"><div class="k">Durée</div><div class="v">2 ans · Année A / B</div></div>
+        <div class="meta-cell"><div class="k">Approche</div><div class="v">Structurée &amp; argumentée</div></div>
+        <div class="meta-cell"><div class="k">Volume</div><div class="v">25 semaines/an · 1h/semaine</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Philosophie du cycle</h2>
+      </div>
+      <div class="philosophy">
+        <p><span class="lead-word">L'adolescent</span> de ce cycle a déjà la pratique (Cycle 1-2) et l'autonomie (Cycle 3-4). Ce qui manque encore, c'est la cohérence d'ensemble : comprendre comment aqîda, fiqh et akhlâq forment un seul et même engagement, et disposer de premiers repères pour faire face aux doutes et à la pression d'un environnement pas toujours favorable à sa foi.</p>
+        <p><strong>Principe directeur du cycle (reconduit des Cycles 3-4) :</strong> chaque notion continue d'être ramenée à un comportement concret — à la maison, dans la rue et les transports, dans la cour ou les couloirs du collège avec les camarades, et avec les enseignants — voir section 04, avec des enjeux propres à l'adolescence (mixité, réseaux sociaux, pression du groupe plus forte).</p>
+        <p><strong>Objectif terminal du cycle :</strong> savoir exposer sa foi avec ses propres mots de façon structurée, répondre avec assurance à un doute simple, situer les débuts du califat après le Prophète ﷺ, et avoir formalisé une charte de vie personnelle reliant croyance et comportement quotidien.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Les 5 domaines de l'apprentissage</h2>
+        <p class="section-lede">Continuité de la nomenclature de tous les cycles précédents, déclinée sur les deux années de façon spiralaire.</p>
+      </div>
+      <div class="legend">
+        <div class="legend-chip"><div class="mark">ق</div><div class="name">Coran</div><div class="def">Tafsîr thématique soutenu, sourates plus longues hors Juz 'Amma.</div></div>
+        <div class="legend-chip"><div class="mark">ه</div><div class="name">Aqîda / Îmân</div><div class="def">Aqîda structurée, premières réponses aux doutes simples.</div></div>
+        <div class="legend-chip"><div class="mark">ف</div><div class="name">Fiqh</div><div class="def">Sources du fiqh, fiqh du quotidien adolescent.</div></div>
+        <div class="legend-chip"><div class="mark">س</div><div class="name">Sîra / Qisas</div><div class="def">Débuts du califat, grandes leçons transversales.</div></div>
+        <div class="legend-chip"><div class="mark">أ</div><div class="name">Adab / Akhlâq</div><div class="def">Mixité cadrée, réseaux, engagement, charte de vie finale.</div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Progression par année</h2>
+        <p class="section-lede">Année A pose la structure d'ensemble et les premiers outils argumentatifs ; Année B consolide en synthèse réflexive et clôture le parcours des 5 cycles par un projet personnel.</p>
+      </div>
+
+      <div class="header-row">
+        <div class="hcell">Domaine</div>
+        <div class="hcell">Année A · 12–13 ans</div>
+        <div class="hcell">Année B · 13–14 ans</div>
+      </div>
+
+      <div class="spread">
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Coran</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Structuration</div>
+            <p>Tafsîr thématique soutenu, extraits de sourates plus longues hors Juz 'Amma (Al-Kahf, Yâsîn), tajwîd consolidé.</p>
+          </div>
+          <div class="spread-cell">
+            <div class="year-tag">Synthèse</div>
+            <p>Poursuite du tafsîr thématique, révision spiralaire complète de tout le Juz 'Amma et des sourates ajoutées depuis le Cycle 1.</p>
+          </div>
+        </div>
+
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Aqîda</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Structuration</div>
+            <p>Aqîda structurée : tawhîd, noms et attributs, prophétie, révélation, au-delà — présentée simplement. Premiers éléments de réponse à des doutes/objections simples adaptés à l'adolescence.</p>
+          </div>
+          <div class="spread-cell">
+            <div class="year-tag">Synthèse</div>
+            <p>Synthèse réflexive : l'adolescent articule aqîda/fiqh/akhlâq comme un tout cohérent et sait expliquer sa foi avec ses propres mots.</p>
+          </div>
+        </div>
+
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Fiqh</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Structuration</div>
+            <p>Sources du fiqh introduites simplement (Coran, Sunna, ijmâ', qiyâs en termes accessibles). Fiqh du quotidien adolescent : mixité, tenue, comportement social.</p>
+          </div>
+          <div class="spread-cell">
+            <div class="year-tag">Synthèse</div>
+            <p>Cas pratiques de la vie d'un adolescent musulman en contexte minoritaire/occidental — appliquer les principes plutôt que les réciter.</p>
+          </div>
+        </div>
+
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Sîra / Qisas</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Structuration</div>
+            <p>Vision de synthèse de la Sîra, débuts du califat (Abû Bakr, 'Umar).</p>
+          </div>
+          <div class="spread-cell">
+            <div class="year-tag">Synthèse</div>
+            <p>Suite du califat, grandes leçons transversales de la Sîra (leadership, justice, miséricorde) reliées aux situations de vie actuelles.</p>
+          </div>
+        </div>
+
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Adab / Akhlâq</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Structuration</div>
+            <p>Relations mixtes cadrées, gestion des réseaux sociaux et de l'image publique, engagement communautaire structuré.</p>
+          </div>
+          <div class="spread-cell">
+            <div class="year-tag">Synthèse</div>
+            <p>Clôture des 5 cycles : projet de synthèse personnelle — une charte de vie écrite par l'adolescent reliant croyance et engagement quotidien.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hadith-band">
+        <div class="glyph">﴾</div>
+        <div>
+          <h3>Hadith — fil rouge transversal (clôture)</h3>
+          <p>Même principe que tous les cycles précédents : hadiths exploités en activité, choisis ici pour nourrir la charte de vie finale plutôt que pour être seulement mémorisés.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">04</div>
+        <h2 class="section-title">L'ancrage quotidien — relier foi et geste concret</h2>
+        <p class="section-lede">Même exigence transversale que les Cycles 3-4, avec des enjeux propres à l'adolescence : mixité, réseaux sociaux, pression du groupe plus affirmée, premiers vrais désaccords avec l'autorité.</p>
+      </div>
+      <div class="context-grid">
+        <div class="context-card">
+          <div class="idx">À la maison</div>
+          <h4>Avec les parents et la fratrie</h4>
+          <ul>
+            <li>Concilier autonomie croissante et respect de l'autorité parentale</li>
+            <li>Gérer un conflit de valeurs (règles familiales vs pression extérieure) avec maturité</li>
+            <li>Être un exemple d'akhlâq pour un frère/une sœur plus jeune</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Rue &amp; transports</div>
+          <h4>Autonomie complète, seul ou en groupe mixte</h4>
+          <ul>
+            <li>Garder un comportement digne dans un cadre mixte non encadré</li>
+            <li>Refuser une pression de groupe contraire à ses principes</li>
+            <li>Réagir avec sang-froid face à une provocation ou une injustice observée</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Cour / collège</div>
+          <h4>Avec les camarades</h4>
+          <ul>
+            <li>Assumer sa pratique religieuse sans céder à la moquerie</li>
+            <li>Gérer les relations mixtes avec des limites claires et respectueuses</li>
+            <li>Répondre calmement à une question ou un doute posé par un camarade</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Avec les enseignants</div>
+          <h4>En classe, hors de la classe</h4>
+          <ul>
+            <li>Exprimer un désaccord argumenté sans perdre le respect dû</li>
+            <li>Défendre poliment sa pratique (jeûne, tenue) si elle est questionnée</li>
+            <li>Rester intègre dans le travail scolaire même sans contrôle direct</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Outils d'évaluation</h2>
+        <p class="section-lede">L'évaluation devient réflexive : l'adolescent argumente et produit, au lieu de seulement restituer.</p>
+      </div>
+      <div class="eval-grid">
+        <div class="eval-card">
+          <div class="idx">Aqîda</div>
+          <h4>Le doute traité en atelier</h4>
+          <p>Une objection simple est posée en groupe ; les adolescents construisent ensemble une réponse argumentée, avec l'aide de l'enseignant.</p>
+        </div>
+        <div class="eval-card">
+          <div class="idx">Adab</div>
+          <h4>La charte de vie personnelle</h4>
+          <p>Projet de clôture du cycle (et des 5 cycles) : un document personnel écrit par l'adolescent reliant sa foi à ses engagements quotidiens concrets.</p>
+        </div>
+        <div class="eval-card">
+          <div class="idx">Fiqh</div>
+          <h4>Étude de cas</h4>
+          <p>Une situation réelle d'adolescent musulman en contexte minoritaire est analysée collectivement à la lumière des sources du fiqh vues en Année A.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Bibliographie</h2>
+        <p class="section-lede">C'est le cycle où le Yaqeen Institute Curriculum, écarté depuis le référentiel Cycle 1, devient enfin pertinent.</p>
+      </div>
+      <div class="biblio-list">
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">Yaqeen Curriculum</div>
+            <div class="biblio-source">Yaqeen Institute for Islamic Research</div>
+            <div class="biblio-usage">Conçu pour le collège/lycée — utilisable ici pour les premiers éléments de réponse aux doutes (section Aqîda, Année A).</div>
+          </div>
+          <span class="pill good">Vérifié — activé pour ce cycle</span>
+        </div>
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">J'aime ma religion</div>
+            <div class="biblio-source">Éditions Jeunesse Sans Frontières (JSF) — Dr Habib Affes, 7 niveaux</div>
+            <div class="biblio-usage">Derniers niveaux de la collection, pour la structuration de l'aqîda et du fiqh.</div>
+          </div>
+          <span class="pill good">Vérifié</span>
+        </div>
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">Précis de Fiqh Malikite</div>
+            <div class="biblio-source">C. Pabiot</div>
+            <div class="biblio-usage">Référence pour les sources du fiqh et le fiqh du quotidien adolescent.</div>
+          </div>
+          <span class="pill good">Vérifié</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot-note">
+      <span>Référentiel Cycle 5 — brouillon initial, à valider avant la fabrication du manuel élève et du guide enseignant. Dernier cycle du parcours 6-15 ans.</span>
+      <span>Institut d'Éducation Islamique · Référentiel Cycle 5 · v1</span>
+    </div>
+  </div>
+
+</body>
+</html>

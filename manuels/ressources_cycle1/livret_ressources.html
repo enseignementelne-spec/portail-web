@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livret clé en main de l'enseignant — Cycle 1</title>
+<style>
+  :root {
+    --bg: #F3EFE3;
+    --bg-raised: #FBF9F2;
+    --ink: #23211D;
+    --ink-soft: #5B584E;
+    --ink-faint: #8B8778;
+    --accent: #1F5F52;
+    --accent-soft: #DCE7DE;
+    --gold: #A9853C;
+    --gold-soft: #F1E7CE;
+    --rule: #DAD3C0;
+    --status-good: #5E7A4E; --status-good-bg: #E4EBDD;
+    --status-warn: #A9853C; --status-warn-bg: #F1E7CE;
+    --status-info: #3C6E8F; --status-info-bg: #DEE9EF;
+    --shadow: 0 1px 2px rgba(35,33,29,0.06), 0 8px 24px rgba(35,33,29,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131F1B; --bg-raised: #1B2B25; --ink: #EDE8DC; --ink-soft: #B7B1A0; --ink-faint: #7C8078;
+      --accent: #74C2AA; --accent-soft: #22392F; --gold: #DAB96C; --gold-soft: #3A2F1A; --rule: #2B3A32;
+      --status-good: #93BD7D; --status-good-bg: #24371F; --status-warn: #DAB96C; --status-warn-bg: #3A2F1A;
+      --status-info: #7FB3D5; --status-info-bg: #1E323D;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; line-height: 1.6; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px 96px; }
+
+  .cover { position: relative; padding: 60px 28px 40px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.5;
+    background-image: repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 28px),
+                       repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 28px);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+  .cover-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+  h1.title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: clamp(30px, 4.4vw, 46px); letter-spacing: -0.01em; text-wrap: balance; margin: 0 0 10px;
+  }
+  .title em { color: var(--accent); font-style: normal; }
+  .subtitle { font-size: 16.5px; color: var(--ink-soft); max-width: 68ch; margin: 0; }
+
+  .caution, .howto {
+    max-width: 900px; margin: 28px auto 0; background: var(--gold-soft); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 18px 22px; font-size: 13.5px; color: var(--ink-soft); position: relative;
+  }
+  .caution strong, .howto strong { color: var(--ink); }
+  .howto { background: var(--accent-soft); margin-top: 14px; }
+  .howto ol { margin: 8px 0 0; padding-left: 20px; }
+  .howto li { margin-bottom: 4px; }
+
+  section { padding: 48px 0 0; }
+  .domain-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+  .domain-mark {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 17px; flex-shrink: 0;
+  }
+  h2.domain-title { font-family: Georgia, "Iowan Old Style", serif; font-weight: 400; font-size: 24px; margin: 0; }
+  .domain-sub { color: var(--ink-faint); font-size: 13px; margin-left: auto; text-align: right; }
+
+  h3.sub-title { font-family: Georgia, serif; font-weight: 400; font-size: 18px; margin: 30px 0 14px; color: var(--ink); }
+  h3.sub-title .n { color: var(--gold); font-family: ui-monospace, monospace; font-size: 13px; margin-right: 8px; }
+
+  .year-divider { display: flex; align-items: center; gap: 12px; margin: 34px 0 18px; }
+  .year-divider:first-of-type { margin-top: 8px; }
+  .year-divider .badge {
+    font-family: ui-monospace, monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .year-divider.year-a .badge { color: var(--accent); background: var(--accent-soft); }
+  .year-divider.year-b .badge { color: var(--gold); background: var(--gold-soft); }
+  .year-divider .label { font-size: 12.5px; color: var(--ink-faint); }
+  .year-divider .rule { flex: 1; height: 1px; background: var(--rule); }
+  .year-pill {
+    font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 8px; border-radius: 999px; white-space: nowrap; font-weight: 700;
+  }
+  .year-pill.a { color: var(--accent); background: var(--accent-soft); }
+  .year-pill.b { color: var(--gold); background: var(--gold-soft); }
+
+  .card {
+    background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 22px 24px; box-shadow: var(--shadow); margin-bottom: 16px;
+  }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .ref-tag {
+    font-family: ui-monospace, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px;
+  }
+  .pill { font-size: 10.5px; font-weight: 700; letter-spacing: 0.02em; padding: 3px 9px; border-radius: 999px; }
+  .pill.good { color: var(--status-good); background: var(--status-good-bg); }
+  .pill.warn { color: var(--status-warn); background: var(--status-warn-bg); }
+  .pill.info { color: var(--status-info); background: var(--status-info-bg); }
+  blockquote {
+    margin: 0 0 12px; padding-left: 16px; border-left: 3px solid var(--gold);
+    font-family: Georgia, serif; font-size: 16px; font-style: italic; color: var(--ink);
+  }
+  .source-line { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 10px; }
+  .source-line a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .source-line a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .arabic-text {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: isolate;
+    font-family: "Traditional Arabic", "Arabic Typesetting", "Amiri", "Scheherazade New", "Geeza Pro", "Al Bayan", "Microsoft Uighur", serif;
+    font-size: 23px;
+    line-height: 2.15;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-right: 3px solid var(--accent);
+    border-radius: 4px 10px 10px 4px;
+    padding: 14px 20px;
+    margin: 0 0 12px;
+  }
+  .arabic-text.quran {
+    border-right-color: var(--gold);
+    font-size: 25px;
+    background: var(--accent-soft);
+  }
+  .usage-line { font-size: 13px; color: var(--ink-soft); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 12px; }
+  .usage-line b { color: var(--accent); }
+  .usage-line + .usage-line { margin-top: 8px; }
+
+  .pillars-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .pillars-list li {
+    background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 10px; text-align: center; font-size: 13px;
+  }
+  .pillars-list .num { font-family: ui-monospace, monospace; color: var(--gold); font-size: 11px; display: block; margin-bottom: 4px; }
+
+  .sourate-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 6px; }
+  .sourate-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; }
+  .sourate-card .name { font-family: Georgia, serif; font-size: 16px; margin-bottom: 4px; }
+  .sourate-card .theme { font-size: 12.5px; color: var(--ink-soft); }
+
+  /* Q&A catechism block */
+  .qa-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; }
+  .qa-q { font-weight: 700; font-size: 14.5px; color: var(--accent); margin-bottom: 4px; }
+  .qa-a { font-size: 14px; color: var(--ink); }
+
+  /* Narrative / récit block */
+  .recit p { margin: 0 0 12px; font-size: 14.5px; }
+  .recit-meta { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+  /* Quiz bank */
+  .quiz-item { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; font-size: 13.5px; }
+  .quiz-item .q { font-weight: 700; margin-bottom: 4px; }
+  .quiz-item .opts { color: var(--ink-soft); font-size: 13px; }
+  .quiz-item .opts .correct { color: var(--status-good); font-weight: 700; }
+
+  .foot-note {
+    margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--ink-faint); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+
+  /* Sidebar (shared pattern) */
+  .app { display: flex; align-items: flex-start; }
+  .sidebar {
+    position: sticky; top: 0; align-self: flex-start; height: 100vh; width: 224px; flex: 0 0 auto; overflow-y: auto;
+    background: var(--bg-raised); border-right: 1px solid var(--rule); padding: 22px 14px;
+    display: flex; flex-direction: column; gap: 2px; z-index: 30;
+  }
+  .sidebar-label { font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); padding: 0 10px; margin-bottom: 10px; }
+  .home-btn {
+    display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--bg-raised); background: var(--accent);
+    border-radius: 9px; padding: 10px 12px; font-size: 13.5px; font-weight: 700; margin-bottom: 14px; transition: opacity 0.15s ease;
+  }
+  .home-btn:hover { opacity: 0.88; }
+  .home-btn .glyph { font-family: Georgia, serif; font-size: 15px; line-height: 1; }
+  .nav-link {
+    display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-soft);
+    padding: 9px 10px; border-radius: 8px; font-size: 13.5px; border-left: 2px solid transparent;
+  }
+  .nav-link .mark {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 12px; flex-shrink: 0;
+  }
+  .nav-link:hover { background: var(--accent-soft); color: var(--ink); }
+  .nav-link.active { color: var(--ink); font-weight: 700; border-left-color: var(--gold); background: var(--accent-soft); }
+  .home-btn:focus-visible, .nav-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .main { flex: 1; min-width: 0; }
+
+  @media (max-width: 900px) {
+    .app { flex-direction: column; }
+    .sidebar {
+      position: sticky; top: 0; height: auto; width: auto; flex-direction: row; overflow-x: auto; overflow-y: hidden;
+      border-right: none; border-bottom: 1px solid var(--rule); padding: 10px 12px; gap: 6px; align-items: center;
+    }
+    .sidebar-label { display: none; }
+    .home-btn { margin-bottom: 0; flex-shrink: 0; }
+    .nav-link { flex-shrink: 0; white-space: nowrap; border-left: none; border-bottom: 2px solid transparent; }
+    .nav-link.active { border-left-color: transparent; border-bottom-color: var(--gold); }
+    .pillars-list { grid-template-columns: repeat(2, 1fr); }
+    .sourate-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .sidebar { display: none; }
+    .app { display: block; }
+    section { padding-top: 24px; break-inside: avoid-page; }
+    .card, .qa-card, .quiz-item { break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" aria-label="Navigation du livret">
+    <a class="home-btn" href="#top"><span class="glyph">⌂</span>Accueil</a>
+    <div class="sidebar-label">Thèmes</div>
+    <a class="nav-link" href="#coran" data-target="coran"><span class="mark">ق</span>Coran</a>
+    <a class="nav-link" href="#aqida" data-target="aqida"><span class="mark">ه</span>Aqîda / Îmân</a>
+    <a class="nav-link" href="#fiqh" data-target="fiqh"><span class="mark">ف</span>Fiqh</a>
+    <a class="nav-link" href="#sira" data-target="sira"><span class="mark">س</span>Sîra / Qisas</a>
+    <a class="nav-link" href="#adab" data-target="adab"><span class="mark">أ</span>Adab / Akhlâq</a>
+    <a class="nav-link" href="#adhkar" data-target="adhkar"><span class="mark">﴾</span>Adhkar</a>
+    <a class="nav-link" href="#hadith" data-target="hadith"><span class="mark">ح</span>Hadith — fil rouge</a>
+    <a class="nav-link" href="#evaluation" data-target="evaluation"><span class="mark">✓</span>Banque d'évaluation</a>
+    <a class="nav-link" href="#quiz-global" data-target="quiz-global"><span class="mark">★</span>Quiz global</a>
+  </nav>
+
+  <div class="main">
+
+  <div class="cover" id="top">
+    <div class="cover-inner">
+      <div class="eyebrow">Livret clé en main · Cycle 1 (6–8 ans)</div>
+      <h1 class="title">Tout ce qu'il faut pour <em>animer la séance</em></h1>
+      <p class="subtitle">Le contenu à dire, les questions-réponses à poser, les hadiths et versets vérifiés, et une banque de quiz prête à l'emploi — pour chaque thème du référentiel, sans préparation supplémentaire.</p>
+    </div>
+  </div>
+
+  <div class="caution">
+    <strong>Note de méthode.</strong> Chaque hadith cité porte son numéro exact dans le recueil et un lien de vérification cliquable, recoupé via un corpus de référence (hadith-json / Sunnah.com). Les traductions françaises sont des traductions libres à partir du texte anglais vérifié — <strong>le texte arabe des recueils de hadith est fourni tel qu'issu du corpus</strong> ; pour le Coran, utilisez toujours un Coran (mushaf) imprimé validé ou un support audio d'un récitateur reconnu pour la récitation en classe. Le champ « provenance » est une indication heuristique du pipeline de sourcing, pas une validation scientifique de la chaîne de transmission (isnad) — à confirmer auprès d'un enseignant qualifié avant impression officielle. Les récits et Q&A catéchistiques marqués <span class="pill info" style="vertical-align:1px;">Ressource interne</span> proviennent des supports pédagogiques internes (Institut / atelier Elne) et ne sont pas des hadiths — ils sont fournis pour la pédagogie, pas pour la citation religieuse formelle.
+  </div>
+
+  <div class="howto">
+    <strong>Mode d'emploi de ce livret.</strong>
+    <ol>
+      <li>Choisissez le thème du jour dans le menu de gauche (aligné sur le <em>référentiel</em> et le <em>guide enseignant</em>).</li>
+      <li>Lisez le bloc « Contenu à dire » à voix haute ou racontez le récit avec vos mots — le texte arabe et la source sont là pour vérification, pas à réciter mot à mot.</li>
+      <li>Enchaînez avec l'activité correspondante du <em>guide de l'enseignant</em> (le lien est indiqué dans chaque carte « Lien activité »).</li>
+      <li>Terminez chaque thème par son <em>Quiz éclair</em> (en bas de chaque section) pour vérifier ce que les enfants doivent retenir ; en fin de séquence Sîra, utilisez la <em>banque d'évaluation</em> pour un contrôle plus complet.</li>
+    </ol>
+  </div>
+
+  <div class="wrap">
+
+    <!-- CORAN -->
+    <section id="coran">
+      <div class="domain-head">
+        <div class="domain-mark">ق</div>
+        <h2 class="domain-title">Coran</h2>
+        <div class="domain-sub">Sourates du cycle et leur thème</div>
+      </div>
+      <p class="usage-line" style="margin-bottom:18px; display:block;">Les sourates ci-dessous doivent être récitées à partir d'un support audio/mushaf validé — seul le thème pédagogique est indiqué ici pour préparer la séance.</p>
+
+      <div class="year-divider year-a"><span class="badge">Année A</span><span class="label">Émerveillement — 5 sourates courtes mémorisées en entier (passeport des sourates)</span><span class="rule"></span></div>
+      <div class="sourate-grid">
+        <div class="sourate-card"><div class="name">Al-Fâtiha (1)</div><div class="theme">L'ouverture — louange à Allah et demande d'aide. Base de chaque prière.</div></div>
+        <div class="sourate-card"><div class="name">Al-Ikhlâs (112)</div><div class="theme">L'Unicité d'Allah (Tawhîd) — apprise dès la Leçon 1, en écho au petit catéchisme du Tawhîd.</div></div>
+        <div class="sourate-card"><div class="name">Al-Fîl (105)</div><div class="theme">L'année de l'Éléphant — à relier directement à l'activité Sîra sur Abraha.</div></div>
+        <div class="sourate-card"><div class="name">Al-Falaq (113)</div><div class="theme">Se réfugier auprès d'Allah — 1<sup>re</sup> des deux sourates de protection (Al-Mu'awwidhatân).</div></div>
+        <div class="sourate-card"><div class="name">An-Nâs (114)</div><div class="theme">Se réfugier auprès d'Allah — 2<sup>e</sup> des deux sourates de protection (Al-Mu'awwidhatân).</div></div>
+      </div>
+
+      <div class="year-divider year-b"><span class="badge">Année B</span><span class="label">Ancrage — 5 nouvelles sourates (10 au total au passeport en fin de cycle)</span><span class="rule"></span></div>
+      <div class="sourate-grid">
+        <div class="sourate-card"><div class="name">Al-Kawthar (108)</div><div class="theme">L'Abondance donnée au Prophète ﷺ — réponse par la prière et la générosité.</div></div>
+        <div class="sourate-card"><div class="name">Al-'Asr (103)</div><div class="theme">Le Temps — les causes du salut : foi, bonnes œuvres, vérité, patience.</div></div>
+        <div class="sourate-card"><div class="name">An-Nasr (110)</div><div class="theme">Le Secours d'Allah — humilité et pardon après la victoire.</div></div>
+        <div class="sourate-card"><div class="name">Al-Kâfirûn (109)</div><div class="theme">Adoration exclusive d'Allah — liberté de croire, sans contrainte.</div></div>
+        <div class="sourate-card"><div class="name">Quraysh (106)</div><div class="theme">La gratitude envers Allah pour la sécurité et la nourriture.</div></div>
+      </div>
+      <div class="source-line" style="margin-top:8px;">Répartition Année A / Année B conforme au référentiel pédagogique Cycle 1 (v2) et aux livrets <em>ebook_cycle1_annee_complete_2026-2027_v2.html</em> / <em>...2027-2028_v1.html</em>, section « Progression par année » (domaine Coran).</div>
+
+      <h3 class="sub-title"><span class="n">Q&amp;A</span>Récitation rapide en classe <span class="year-pill a">Année A</span></h3>
+      <div class="qa-card">
+        <div class="qa-q">Qu'est-ce que le Coran ?</div>
+        <div class="qa-a">Le Coran est la Parole d'Allah, révélée au Prophète ﷺ par l'ange Jibrîl.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">Quels sont nos devoirs envers le Coran ?</div>
+        <div class="qa-a">Il nous faut le réciter, le mémoriser et le mettre en pratique.</div>
+      </div>
+      <div class="source-line" style="margin-top:-4px;">Q&amp;A — <span class="pill info" style="vertical-align:1px;">Ressource interne</span> adaptée du support « Al-Qâ'ida an-Nourâniya » (maktaba-tawhid.fr), format catéchisme simplifié pour 6–8 ans.</div>
+
+      <h3 class="sub-title"><span class="n">✓</span>Quiz éclair — ce qu'il faut retenir</h3>
+      <div class="quiz-item"><div class="q">1. Qu'est-ce que le Coran ?</div><div class="opts">Un livre d'histoires · <span class="correct">La Parole d'Allah</span> · Un livre écrit par le Prophète ﷺ</div></div>
+      <div class="quiz-item"><div class="q">2. Qui a transmis le Coran au Prophète ﷺ ?</div><div class="opts">L'ange Mikâ'îl · <span class="correct">L'ange Jibrîl</span> · L'ange Isrâfîl</div></div>
+      <div class="quiz-item"><div class="q">3. Quelle sourate parle de l'année de l'Éléphant ?</div><div class="opts">Al-Ikhlâs · <span class="correct">Al-Fîl</span> · Al-Fâtiha</div></div>
+      <div class="quiz-item"><div class="q">4. Quelle sourate parle de l'Unicité d'Allah (Tawhîd) ?</div><div class="opts"><span class="correct">Al-Ikhlâs</span> · Al-Quraysh · An-Nâs</div></div>
+      <div class="quiz-item"><div class="q">5. Que doit-on être avant de toucher le Coran ?</div><div class="opts">Habillé en blanc · <span class="correct">En état de pureté rituelle (Tâhir) — avoir fait ses ablutions</span> · Silencieux</div></div>
+      <div class="quiz-item"><div class="q">6. Cite un de nos devoirs envers le Coran.</div><div class="opts"><span class="correct">Le réciter / le mémoriser / le mettre en pratique</span> · Le laisser fermé toute l'année · L'apprendre uniquement en français</div></div>
+    </section>
+
+    <!-- AQIDA -->
+    <section id="aqida">
+      <div class="domain-head">
+        <div class="domain-mark">ه</div>
+        <h2 class="domain-title">Aqîda / Îmân</h2>
+        <div class="domain-sub">Allah, Ses Noms, les piliers de la foi</div>
+      </div>
+
+      <div class="year-divider year-a"><span class="badge">Année A</span><span class="label">Allah Unique et Créateur (Tawhîd) · les 6 piliers de la foi · les anges</span><span class="rule"></span></div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Coran · At-Tawba 9:128-129</span><span class="pill good">Vérifié (Sahih International)</span></div>
+        <blockquote>« Il vous est certainement venu un Messager pris parmi vous-mêmes ; il lui est pénible que vous souffriez ; il est plein de sollicitude pour vous, et envers les croyants, plein de compassion et de miséricorde. Mais s'ils se détournent, dis : "Allah me suffit, il n'y a de divinité que Lui ; c'est en Lui que je place ma confiance, et Il est le Seigneur du Trône immense." »</blockquote>
+        <div class="arabic-text quran" lang="ar">لَقَدْ جَاءَكُمْ رَسُولٌ مِّنْ أَنفُسِكُمْ عَزِيزٌ عَلَيْهِ مَا عَنِتُّمْ حَرِيصٌ عَلَيْكُم بِالْمُؤْمِنِينَ رَءُوفٌ رَّحِيمٌ ﴿١٢٨﴾ فَإِن تَوَلَّوْا فَقُلْ حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ ﴿١٢٩﴾</div>
+        <div class="source-line">Sourate At-Tawba (9), versets 128-129 — traduction libre à partir de la version Sahih International vérifiée par l'outil de consultation coranique. Prévoir la lecture de la traduction française officielle retenue par l'établissement (Hamidullah, Boubakeur...) pour l'usage en classe.</div>
+        <div class="usage-line"><b>Lien activité</b> — à lire en introduction du récit de la Sîra (théâtre de l'année de l'Éléphant, Année A).</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">Q&amp;A</span>Le petit catéchisme du Tawhîd</h3>
+      <p class="usage-line" style="margin-bottom:14px; display:block;">Questions courtes, à poser en rituel de début de séance (rythme « appel-réponse » collectif).</p>
+      <div class="qa-card"><div class="qa-q">Qui est ton Seigneur ?</div><div class="qa-a">Mon Seigneur est Allah.</div></div>
+      <div class="qa-card"><div class="qa-q">Quelle est ta religion ?</div><div class="qa-a">Ma religion est l'Islam.</div></div>
+      <div class="qa-card"><div class="qa-q">Qui est ton Prophète ?</div><div class="qa-a">Mon Prophète est Mouhammad ﷺ.</div></div>
+      <div class="qa-card"><div class="qa-q">Qui nous a créés et nous donne notre subsistance ?</div><div class="qa-a">C'est Allah qui nous a créés, et c'est Lui qui nous donne notre subsistance.</div></div>
+      <div class="qa-card"><div class="qa-q">Où est Allah ?</div><div class="qa-a">Allah est au-dessus des cieux.</div></div>
+      <div class="qa-card"><div class="qa-q">Pourquoi Allah nous a-t-Il créés ?</div><div class="qa-a">Allah nous a créés pour que nous L'adorions.</div></div>
+      <div class="source-line" style="margin-top:-4px;">Q&amp;A — <span class="pill info" style="vertical-align:1px;">Ressource interne</span> adaptée du support « Al-Qâ'ida an-Nourâniya » (maktaba-tawhid.fr) — formulation de catéchisme simplifié, pas un hadith ; à utiliser comme trame pédagogique.</div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Noms d'Allah</span><span class="pill good">Authentique</span></div>
+        <blockquote>« Allah a quatre-vingt-dix-neuf Noms, cent moins un ; quiconque les connaît (les dénombre) entrera au Paradis. »</blockquote>
+        <div class="arabic-text" lang="ar">إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا مِائَةً إِلَّا وَاحِدًا، مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°2624 — <a href="https://search.hadith-mcp.org/?id=2624" target="_blank" rel="noopener">vérifier la source</a>. Variante avec « les mémorise par cœur » : Sahîh Mouslim, n°6644 — <a href="https://search.hadith-mcp.org/?id=13921" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — sert d'introduction au jeu « Prophète et Livre » et à la présentation d'Ar-Rahmân, Al-Khâliq (Leçon 2, Année A).</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith de Jibrîl · Les 6 piliers de l'Îmân</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Qu'est-ce que la foi (Îmân) ? Il répondit : "Croire en Allah, en Ses anges, en Ses Livres, en Ses Messagers, au Jour Dernier, et au décret divin, bon et mauvais." Jibrîl lui dit alors : "Tu as dit vrai." »</blockquote>
+        <div class="arabic-text" lang="ar">مَا الْإِيمَانُ؟ قَالَ: أَنْ تُؤْمِنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَبِالْقَدَرِ خَيْرِهِ وَشَرِّهِ، فَقَالَ لَهُ جِبْرِيلُ: صَدَقْتَ</div>
+        <div class="source-line">Musnad Ahmad, n°185 — <a href="https://search.hadith-mcp.org/?id=36348" target="_blank" rel="noopener">vérifier la source</a> (le même contenu, dit « Hadith de Jibrîl », est également rapporté par Mouslim).</div>
+        <div class="usage-line"><b>Note</b> — enseigné dès la Leçon 3 de l'Année A (« Les 6 piliers de la foi »), et non en Année B : les 6 piliers posent le socle de l'Îmân avant les approfondissements ultérieurs des Noms d'Allah.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Récit · Les anges, créatures de lumière</span><span class="pill info">Ressource interne</span></div>
+        <p style="margin:0 0 10px;">Allah a créé les anges à partir de lumière. Ils obéissent toujours à Allah et n'aiment que le bien ; nous ne pouvons pas les voir, mais eux nous voient. Chaque personne est accompagnée de deux anges qui notent ses actions, un à droite et un à gauche. Parmi les anges : Jibrîl, qui transmettait le message d'Allah aux prophètes ; Mikâ'îl, chargé de la pluie et des plantes ; Isrâfîl, qui soufflera dans la Trompe au Jour de la Résurrection.</p>
+        <div class="source-line">Source : <em>islam_livre_complet.pdf</em> (nospetitsmusulmans.com, Drive) — reformulation pédagogique pour 6-8 ans, en écho au Hadith de Jibrîl ci-dessus. Nature des anges (lumière, obéissance totale) également vérifiée via Sahîh Mouslim et Coran 66:6 dans le livret Année A, Leçon 8.</div>
+        <div class="usage-line"><b>Lien activité</b> — bon complément à « Prophète et Livre » : ajouter une carte « ange » à associer à sa mission (pluie, message, Trompe). Enseigné en Leçon 8, Année A.</div>
+      </div>
+
+      <div class="year-divider year-b"><span class="badge">Année B</span><span class="label">Approfondissement des Noms d'Allah : As-Samî', Al-Basîr, Al-'Alîm, Al-Hakîm — et le Jour Dernier approfondi</span><span class="rule"></span></div>
+
+      <h3 class="sub-title"><span class="n">10</span>Dix parmi les plus beaux Noms d'Allah <span class="year-pill b">Répartis A/B</span></h3>
+      <p class="usage-line" style="margin-bottom:16px; display:block;">Une sélection pour le cycle 1, avec un verset support et une définition simplifiée pour enfant. Corpus complet vérifié (99 Noms, sources et versets coraniques) : <em>attributs_allah_livre.pdf</em>, Drive « التربية الإسلامية » — utile pour préparer une séance sans reformuler soi-même une définition théologique.</p>
+      <div class="sourate-grid">
+        <div class="sourate-card"><div class="name">Ar-Rahmân — الرَّحْمَن</div><div class="theme">Le Tout-Miséricordieux : Il donne Sa bonté immense à toutes Ses créatures. (Sourate Al-Fâtiha, 1:3)</div></div>
+        <div class="sourate-card"><div class="name">Al-Khâliq — الْخَالِق</div><div class="theme">Le Créateur : Il a tout créé à partir de rien. (Sourate Al-Hashr, 59:24)</div></div>
+        <div class="sourate-card"><div class="name">Ar-Razzâq — الرَّزَّاق</div><div class="theme">Le Pourvoyeur : Il donne à chaque créature ce dont elle a besoin. (Sourate Adh-Dhâriyât, 51:58)</div></div>
+        <div class="sourate-card"><div class="name">Al-Ghafûr — الْغَفُور</div><div class="theme">Le Tout-Pardonnant : Il pardonne sans cesse à Ses serviteurs qui se repentent. (Sourate Sâd, 38:66)</div></div>
+        <div class="sourate-card"><div class="name">As-Samî' — السَّمِيع</div><div class="theme">L'Audient : Il entend tout, même ce que nous ne disons pas à voix haute. (Sourate Al-An'âm, 6:13)</div></div>
+        <div class="sourate-card"><div class="name">Al-Basîr — الْبَصِير</div><div class="theme">Le Voyant : Il voit tout, rien ne Lui échappe. (Sourate Ach-Chourâ, 42:11)</div></div>
+        <div class="sourate-card"><div class="name">Al-'Alîm — الْعَلِيم</div><div class="theme">L'Omniscient : Il sait tout, en tout lieu et en tout temps. (Sourate Saba', 34:26)</div></div>
+        <div class="sourate-card"><div class="name">Al-Wadûd — الْوَدُود</div><div class="theme">Le Bien-Aimant : Il aime Ses créatures et les comble de bienfaits. (Sourate Al-Bourûj, 85:14)</div></div>
+        <div class="sourate-card"><div class="name">Al-Latîf — اللَّطِيف</div><div class="theme">Le Subtil-Bienveillant : Il prend soin de Ses serviteurs sans qu'ils s'en rendent compte. (Sourate Al-Mulk, 67:14)</div></div>
+        <div class="sourate-card"><div class="name">As-Salâm — السَّلَام</div><div class="theme">La Paix : Il est exempt de tout défaut et la paix vient de Lui. (Sourate Al-Hashr, 59:23)</div></div>
+      </div>
+      <div class="source-line" style="margin-top:4px;">Versets vérifiés via l'outil de consultation coranique. Définitions en français adaptées du corpus <em>attributs_allah_livre.pdf</em> (workbook des 99 Noms, nospetitsmusulmans.com, Drive).</div>
+
+      <h3 class="sub-title"><span class="n">✓</span>Quiz éclair — ce qu'il faut retenir</h3>
+      <div class="quiz-item"><div class="q">1. Combien Allah a-t-Il de Noms ?</div><div class="opts">100 · <span class="correct">99 (cent moins un)</span> · 7</div></div>
+      <div class="quiz-item"><div class="q">2. Que signifie « Ar-Rahmân » ?</div><div class="opts">Le Créateur · <span class="correct">Le Tout-Miséricordieux</span> · Le Voyant</div></div>
+      <div class="quiz-item"><div class="q">3. Combien de piliers compte l'Îmân (la foi) ?</div><div class="opts">5 · <span class="correct">6</span> · 3</div></div>
+      <div class="quiz-item"><div class="q">4. Cite un pilier de l'Îmân.</div><div class="opts"><span class="correct">Croire en Allah / Ses anges / Ses Livres / Ses Messagers / le Jour Dernier / le Décret</span> · Faire le pèlerinage · Payer la zakât</div></div>
+      <div class="quiz-item"><div class="q">5. De quoi Allah a-t-Il créé les anges ?</div><div class="opts">De terre · <span class="correct">De lumière</span> · De feu</div></div>
+      <div class="quiz-item"><div class="q">6. Quel ange transmettait le message d'Allah aux prophètes ?</div><div class="opts">Mikâ'îl · <span class="correct">Jibrîl</span> · Isrâfîl</div></div>
+      <div class="quiz-item"><div class="q">7. Qui nous a créés et nous donne notre subsistance ?</div><div class="opts">Personne · <span class="correct">Allah</span> · Nos parents seuls</div></div>
+    </section>
+
+    <!-- FIQH -->
+    <section id="fiqh">
+      <div class="domain-head">
+        <div class="domain-mark">ف</div>
+        <h2 class="domain-title">Fiqh</h2>
+        <div class="domain-sub">Les 5 piliers de l'Islam et la prière</div>
+      </div>
+
+      <div class="year-divider year-a"><span class="badge">Année A</span><span class="label">Les 5 piliers par leur nom — propreté du corps (Tahâra) — sensibilisation aux ablutions</span><span class="rule"></span></div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Les 5 piliers</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« L'Islam est bâti sur cinq (piliers) : témoigner qu'il n'y a de divinité qu'Allah et que Mouhammad est le Messager d'Allah, accomplir la prière, s'acquitter de l'aumône légale (Zakât), jeûner le mois de Ramadan, et accomplir le Pèlerinage à la Maison sacrée. »</blockquote>
+        <div class="arabic-text" lang="ar">( بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ، وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَحَجِّ الْبَيْتِ، وَصَوْمِ رَمَضَانَ ) رَوَاهُ الْبُخَارِيُّ وَمُسْلِمٌ</div>
+        <div class="source-line">Formulation composite couramment citée « رواه البخاري ومسلم » (rapporté par Al-Boukhârî et Mouslim), selon Ibn 'Omar. Elle reprend « Raçoûl Allah » de la version d'Al-Boukhârî (n°8 — <a href="https://search.hadith-mcp.org/?id=8" target="_blank" rel="noopener">vérifier la source</a>) et « Hajji-l-Bayt » de la version de Mouslim (n°21 — <a href="https://search.hadith-mcp.org/?id=7298" target="_blank" rel="noopener">vérifier la source</a>) ; les deux recueils rapportent chacun un texte légèrement différent (voir note ci-dessus), et cette formulation composite est celle largement diffusée dans l'enseignement, à confirmer auprès d'un enseignant qualifié avant impression officielle.</div>
+        <ul class="pillars-list">
+          <li><span class="num">1</span>Chahâda<br>attestation de foi</li>
+          <li><span class="num">2</span>Salât<br>la prière</li>
+          <li><span class="num">3</span>Zakât<br>aumône légale</li>
+          <li><span class="num">4</span>Sawm<br>jeûne du Ramadan</li>
+          <li><span class="num">5</span>Hajj<br>pèlerinage</li>
+        </ul>
+        <div class="usage-line"><b>Lien activité</b> — texte central de l'atelier « La mosquée à 5 piliers » : chaque enfant cite le pilier en reposant le pilier retiré.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Repère · Nombre de rak'a par prière</span><span class="pill info">Ressource interne</span></div>
+        <ul class="pillars-list" style="grid-template-columns:repeat(5,1fr);">
+          <li><span class="num">1</span>Fajr<br>2 rak'a</li>
+          <li><span class="num">2</span>Dhohr<br>4 rak'a</li>
+          <li><span class="num">3</span>Asr<br>4 rak'a</li>
+          <li><span class="num">4</span>Maghrib<br>3 rak'a</li>
+          <li><span class="num">5</span>Icha<br>4 rak'a</li>
+        </ul>
+        <div class="source-line">Repère factuel classique (fiqh de la prière) — adapté du support « Al-Qâ'ida an-Nourâniya » (maktaba-tawhid.fr) ; à faire vérifier par un enseignant qualifié avant impression officielle si le rite (madhhab) de l'établissement diffère.</div>
+        <div class="usage-line"><b>Lien activité</b> — tour de table où chaque enfant nomme une prière et son nombre de rak'a.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Repère · Où l'on prie</span><span class="pill info">Ressource interne</span></div>
+        <p style="margin:0 0 10px;">On prie dans un endroit propre (à la mosquée, sur un tapis, dans une pièce propre de la maison) — jamais dans un lieu sale comme les toilettes ou près des poubelles.</p>
+        <div class="arabic-text" lang="ar">نُصَلِّي فِي مَكَانٍ نَظِيفٍ</div>
+        <div class="source-line">Source : <em>islam_livre_complet.pdf</em> (nospetitsmusulmans.com, Drive).</div>
+        <div class="usage-line"><b>Lien activité</b> — jeu de tri « où puis-je prier ? » : classer des images de lieux propres/sales — bonne entrée en matière avant le TP ablutions d'Année B.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Rupture du jeûne</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Quand l'un de vous rompt son jeûne, qu'il le fasse en mangeant des dattes. S'il n'en trouve pas, qu'il boive de l'eau, car elle purifie. »</blockquote>
+        <div class="arabic-text" lang="ar">إِذَا أَفْطَرَ أَحَدُكُمْ فَلْيُفْطِرْ عَلَى تَمْرٍ، فَإِنْ لَمْ يَجِدْ فَلْيُفْطِرْ عَلَى مَاءٍ، فَإِنَّهُ طَهُورٌ</div>
+        <div class="source-line">Recueilli dans Boulough al-Marâm, n°769, jugé authentique (sahîh) par Ibn Khouzayma, Ibn Hibbân et Al-Hâkim, rapporté par les cinq Imams — <a href="https://search.hadith-mcp.org/?id=49886" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — à utiliser pendant le mois de Ramadan pour ancrer le geste concret de la rupture du jeûne.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Sahûr</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Prenez le dernier repas de la nuit (sahûr), car il y a dans ce repas une bénédiction. »</blockquote>
+        <div class="arabic-text" lang="ar">تَسَحَّرُوا فَإِنَّ فِي السَّحُورِ بَرَكَةً</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°1854 — <a href="https://search.hadith-mcp.org/?id=1854" target="_blank" rel="noopener">vérifier la source</a>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Les deux joies du jeûneur</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le jeûneur connaît deux joies : la joie de rompre son jeûne, et la joie de rencontrer son Seigneur. »</blockquote>
+        <div class="arabic-text" lang="ar">لِلصَّائِمِ فَرْحَتَانِ: فَرْحَةٌ حِينَ يُفْطِرُ، وَفَرْحَةٌ حِينَ يَلْقَى رَبَّهُ</div>
+        <div class="source-line">Sunan At-Tirmidhy, n°766 — <a href="https://search.hadith-mcp.org/?id=26546" target="_blank" rel="noopener">vérifier la source</a>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Six jours de Chawwâl</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Celui qui jeûne le Ramadan puis le fait suivre de six jours de Chawwâl, c'est comme s'il avait jeûné toute l'année. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ صَامَ رَمَضَانَ ثُمَّ أَتْبَعَهُ سِتًّا مِنْ شَوَّالٍ كَانَ كَصِيَامِ الدَّهْرِ</div>
+        <div class="source-line">Sahîh Mouslim, n°2642 — <a href="https://search.hadith-mcp.org/?id=9919" target="_blank" rel="noopener">vérifier la source</a>.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Jeûner un jour pour Allah</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le serviteur d'Allah qui jeûne un jour pour la cause d'Allah verra, grâce à ce jour, son visage éloigné du Feu d'une distance de soixante-dix ans. »</blockquote>
+        <div class="arabic-text" lang="ar">مَا مِنْ عَبْدٍ يَصُومُ يَوْمًا فِي سَبِيلِ اللَّهِ إِلاَّ بَاعَدَ اللَّهُ بِذَلِكَ الْيَوْمِ وَجْهَهُ عَنِ النَّارِ سَبْعِينَ خَرِيفًا</div>
+        <div class="source-line">Sahîh Mouslim, n°1153 (selon Abou Sa'îd Al-Khoudrî) — <a href="https://search.hadith-mcp.org/?id=9872" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — à citer pour valoriser un jeûne volontaire ponctuel (lundi/jeudi) au-delà du seul mois de Ramadan.</div>
+      </div>
+
+      <div class="year-divider year-b"><span class="badge">Année B</span><span class="label">Wudû' complet étape par étape — mouvements de la Salât (Rukû' / Sujûd), sans obligation</span><span class="rule"></span></div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">TP · Les ablutions (Wudû') étape par étape</span><span class="pill good">Vérifié — muttafaq 'alayh</span></div>
+        <blockquote>« 'Othmân demanda de l'eau pour les ablutions : il se lava les mains trois fois, puis se rinça la bouche et le nez, puis se lava le visage trois fois, puis le bras droit jusqu'au coude trois fois, puis le bras gauche de la même façon, puis passa ses mains mouillées sur sa tête, puis lava le pied droit jusqu'à la cheville trois fois, puis le pied gauche de la même façon. Il dit ensuite : "J'ai vu le Messager d'Allah ﷺ accomplir ses ablutions ainsi." »</blockquote>
+        <div class="arabic-text" lang="ar">فَغَسَلَ كَفَّيْهِ ثَلَاثَ مَرَّاتٍ، ثُمَّ مَضْمَضَ وَاسْتَنْشَقَ وَاسْتَنْثَرَ، ثُمَّ غَسَلَ وَجْهَهُ ثَلَاثَ مَرَّاتٍ، ثُمَّ غَسَلَ يَدَهُ الْيُمْنَى إِلَى الْمِرْفَقِ ثَلَاثَ مَرَّاتٍ ثُمَّ الْيُسْرَى مِثْلَ ذَلِكَ، ثُمَّ مَسَحَ بِرَأْسِهِ، ثُمَّ غَسَلَ رِجْلَهُ الْيُمْنَى إِلَى الْكَعْبَيْنِ ثَلَاثَ مَرَّاتٍ ثُمَّ الْيُسْرَى مِثْلَ ذَلِكَ</div>
+        <div class="source-line">Rapporté par Houmrân au sujet de 'Othmân ibn 'Affân, muttafaq 'alayh (Sahîh Al-Boukhârî n°159, Sahîh Mouslim n°226) — <a href="https://search.hadith-mcp.org/?id=49155" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <ol class="pillars-list" style="list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
+          <li><span class="num">1</span>Se laver les mains<br><span style="font-size:11px;">3 fois</span></li>
+          <li><span class="num">2</span>Rincer bouche et nez<br><span style="font-size:11px;">3 fois</span></li>
+          <li><span class="num">3</span>Laver le visage<br><span style="font-size:11px;">3 fois</span></li>
+          <li><span class="num">4</span>Laver le bras droit<br><span style="font-size:11px;">jusqu'au coude, 3 fois</span></li>
+          <li><span class="num">5</span>Laver le bras gauche<br><span style="font-size:11px;">jusqu'au coude, 3 fois</span></li>
+          <li><span class="num">6</span>Essuyer la tête<br><span style="font-size:11px;">une fois</span></li>
+          <li><span class="num">7</span>Laver le pied droit<br><span style="font-size:11px;">jusqu'à la cheville, 3 fois</span></li>
+          <li><span class="num">8</span>Laver le pied gauche<br><span style="font-size:11px;">jusqu'à la cheville, 3 fois</span></li>
+        </ol>
+        <div class="usage-line"><b>Avant de commencer</b> — intention silencieuse (niyya) puis « Bismillâh ». Un hadith rapporte : « Il n'y a pas d'ablution pour celui qui n'a pas mentionné le Nom d'Allah » (Abou Dâwoud, Ibn Mâjah — <a href="https://search.hadith-mcp.org/?id=49174" target="_blank" rel="noopener">vérifier la source</a>) ; chaîne jugée faible par le compilateur mais renforcée par des versions corroborantes (hasan bi-chawâhidih).</div>
+        <div class="usage-line"><b>TP en classe</b> — matériel : 8 étiquettes numérotées + un point d'eau (ou gestes à sec). Les enfants miment chaque étape dans l'ordre en énonçant son numéro ; variante « Jacques a dit » : le maître énonce les étapes dans le désordre une fois sur deux, les enfants ne miment que si l'ordre annoncé est correct.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Repère · Ce que l'on dit pendant la prière</span><span class="pill info">Ressource interne</span></div>
+        <ul class="pillars-list" style="grid-template-columns:repeat(3,1fr);">
+          <li><span class="num">Takbîr</span>« Allâhou Akbar »<br><span style="font-size:11px;">au début, debout</span></li>
+          <li><span class="num">Roukoû'</span>« Soubhâna Rabbiya-l-'Adhîm »<br><span style="font-size:11px;">incliné</span></li>
+          <li><span class="num">Soujoûd</span>« Soubhâna Rabbiya-l-A'lâ »<br><span style="font-size:11px;">prosterné</span></li>
+        </ul>
+        <div class="source-line">Repère factuel (fiqh de la prière) — adapté du support « La prière » (nospetitsmusulmans.com, Drive).</div>
+        <div class="usage-line"><b>Lien activité</b> — jeu « Jacques a dit » : le maître mime une position, les enfants disent la formule correspondante.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · La porte du Rayyân</span><span class="pill good">Vérifié — muttafaq 'alayh</span></div>
+        <blockquote>« Il y a au Paradis une porte appelée Ar-Rayyân, par laquelle entreront ceux qui jeûnaient, au Jour de la Résurrection ; nul autre qu'eux n'y entrera. On dira : "Où sont ceux qui jeûnaient ?" et ils y entreront. Une fois le dernier d'entre eux entré, elle sera fermée, et plus personne n'y entrera. »</blockquote>
+        <div class="arabic-text" lang="ar">إِنَّ فِي الْجَنَّةِ بَابًا يُقَالُ لَهُ الرَّيَّانُ يَدْخُلُ مِنْهُ الصَّائِمُونَ يَوْمَ الْقِيَامَةِ لَا يَدْخُلُ مَعَهُمْ أَحَدٌ غَيْرُهُمْ</div>
+        <div class="source-line">Sahîh Mouslim, n°2594 (muttafaq 'alayh, selon Sahl ibn Sa'd) — <a href="https://search.hadith-mcp.org/?id=9871" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — image forte pour clore le mois de Ramadan : dessiner « la porte du Rayyân » comme récompense collective de la classe.</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">✓</span>Quiz éclair — ce qu'il faut retenir</h3>
+      <div class="quiz-item"><div class="q">1. Combien de piliers compte l'Islam ?</div><div class="opts">3 · <span class="correct">5</span> · 6</div></div>
+      <div class="quiz-item"><div class="q">2. Cite les 5 piliers de l'Islam dans l'ordre.</div><div class="opts"><span class="correct">Chahâda, Salât, Zakât, Sawm, Hajj</span> · Salât, Hajj, Zakât, Sawm, Chahâda · Zakât, Chahâda, Hajj, Sawm, Salât</div></div>
+      <div class="quiz-item"><div class="q">3. Combien de prières obligatoires par jour ?</div><div class="opts">3 · <span class="correct">5</span> · 7</div></div>
+      <div class="quiz-item"><div class="q">4. Avec quoi le Prophète ﷺ recommandait-il de rompre le jeûne ?</div><div class="opts">Du pain · <span class="correct">Des dattes (ou de l'eau)</span> · Du lait</div></div>
+      <div class="quiz-item"><div class="q">5. Comment s'appelle la porte du Paradis réservée à ceux qui jeûnent ?</div><div class="opts">Bab As-Salâm · <span class="correct">Ar-Rayyân</span> · Bab Al-Jannah</div></div>
+      <div class="quiz-item"><div class="q">6. Où peut-on prier ?</div><div class="opts">N'importe où · <span class="correct">Dans un endroit propre</span> · Uniquement à la mosquée</div></div>
+      <div class="quiz-item"><div class="q">7. Que dit-on en se prosternant (Soujoûd) ?</div><div class="opts">« Allâhou Akbar » · <span class="correct">« Soubhâna Rabbiya-l-A'lâ »</span> · « Soubhâna Rabbiya-l-'Adhîm »</div></div>
+    </section>
+
+    <!-- SIRA -->
+    <section id="sira">
+      <div class="domain-head">
+        <div class="domain-mark">س</div>
+        <h2 class="domain-title">Sîra / Qisas</h2>
+        <div class="domain-sub">Récits à raconter, avec leur point d'ancrage scripturaire</div>
+      </div>
+
+      <div class="year-divider year-a"><span class="badge">Année A</span><span class="label">Émerveillement — naissance du Prophète ﷺ, enfance, nourrice Halima ; histoire de Nouh</span><span class="rule"></span></div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Récit · L'année de l'Éléphant, en 5 temps</span><span class="pill good">Vérifié — Sourate Al-Fîl (105)</span></div>
+        <p><b>1.</b> Abraha, roi du Yémen, décide de détruire la Ka'ba : il part avec son armée et un grand éléphant.</p>
+        <p><b>2.</b> Arrivé sur le chemin de la Ka'ba, l'éléphant s'arrête, s'assoit par terre et refuse d'avancer. Abraha se met en colère.</p>
+        <p><b>3.</b> Quand on tourne l'éléphant vers le Yémen, il se met à courir sans hésiter — il ne veut avancer que dans un sens : loin de la Ka'ba.</p>
+        <p><b>4.</b> Abraha et ses soldats refusent de renoncer et continuent d'avancer à pied vers la Ka'ba pour la détruire.</p>
+        <p><b>5.</b> Allah envoie alors des oiseaux (Abâbîl) qui lancent des pierres sur l'armée entière, qui périt. Cette année-là naît le Prophète ﷺ, un lundi 12 Rabî' al-Awwal — d'où le nom « année de l'Éléphant ».</p>
+        <div class="source-line">Récit détaillé en 5 étapes (source : histoiremaoulid_bilingue.pdf, Drive « السيرة النبوية »). Confirmé : la Sourate Al-Fîl porte le n°105, compte 5 versets, révélation mecquoise (vérifié via l'outil de consultation coranique) — à lire/réciter en clôture du théâtre.</div>
+        <div class="usage-line"><b>Lien activité</b> — texte-support du « Théâtre de l'année de l'Éléphant » (marionnettes, bruitages) : les 5 temps du récit correspondent aux 5 scènes à jouer.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Récit · La naissance et le nom « Mouhammad »</span><span class="pill info">Ressource interne — récit</span></div>
+        <p>Son grand-père Abdoul Mouttalib est si heureux et fier de ce petit-fils qu'il le prend dans ses bras et entre avec lui à la Ka'ba pour prier et remercier Allah. C'est là qu'il lui donne son nom : <b>Mouhammad</b>.</p>
+        <p>Peu après, l'enfant est confié à une nourrice, Halima, qui vivait pauvrement à la campagne — ses brebis étaient maigres et l'herbe autour d'elle avait séché. Mais dès qu'elle prend le nouveau-né pour l'allaiter, ses brebis se mettent à mieux se nourrir et à engraisser : les enfants y voient un signe de la bénédiction (baraka) portée par le Prophète ﷺ dès son plus jeune âge.</p>
+        <div class="source-line">Source : histoiremaoulid_bilingue.pdf (Drive) — récit pédagogique bilingue arabe/français ; les éléments factuels (lieu, jour, nom du grand-père et de la nourrice) sont conformes à la chronologie usuelle de la Sîra.</div>
+        <div class="usage-line"><b>Lien activité</b> — à raconter juste avant la « chasse au trésor de la création » : le geste du grand-père qui remercie Allah pour un nouveau-né fait écho au rituel de gratitude.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Récit · Nouh (Noé), en 5 temps</span><span class="pill warn">Résumé narratif</span></div>
+        <p><b>1.</b> Nouh est un prophète envoyé par Allah pour inviter son peuple à L'adorer.</p>
+        <p><b>2.</b> Allah demande à Nouh de construire un grand bateau. Nouh obéit ; seules quelques personnes le croient et l'aident.</p>
+        <p><b>3.</b> Allah ordonne à Nouh de faire monter dans le bateau tous ceux qui ont cru, puis des animaux de chaque espèce.</p>
+        <p><b>4.</b> Une pluie très abondante tombe : c'est le déluge (tûfân).</p>
+        <p><b>5.</b> Tous ceux qui n'ont pas cru en Nouh et n'ont pas obéi à Allah sont engloutis ; ceux qui étaient montés dans le bateau sont sauvés.</p>
+        <div class="source-line">Récit détaillé en 5 étapes (source : histoire_saydna_nouh.pdf, texte et illustrations : Hanène, Drive). Aucune sourate précise n'est citée dans le support d'origine ; le récit de Nouh est développé notamment en Sourate Nûh (71) et Hûd (11).</div>
+        <div class="usage-line"><b>Lien activité</b> — texte-support de l'atelier « Construis ton arche » : les 5 temps du récit peuvent structurer 5 étapes de construction de la maquette.</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">02</span>La vie du Prophète ﷺ — trame à raconter en 10 épisodes</h3>
+      <p class="usage-line" style="margin-bottom:16px; display:block;">Un épisode par séance sur les deux années (Année A : naissance → révélation ; Année B : appel → Médine → victoire → rappel à Allah). Sources biographiques reconnues (Ar-Rahîq al-Makhtûm de Safiy-our-Rahmân Al-Mubârakfûrî ; As-Sîra an-Nabawiyya d'Abou l-Hasan An-Nadwî) — voir bibliographie en fin de section.</p>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 1 · Naissance et enfance — Al-Amîn</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>Mohammad ﷺ naît à la Mecque, l'année de l'Éléphant. Son père Abdoullah meurt avant sa naissance ; sa mère Amina meurt quand il a 6 ans. Il est recueilli par son grand-père Abdoul Mouttalib, puis par son oncle Abou Tâlib, qui l'aime plus que ses propres fils. Confié tout bébé à la nourrice Halîma, il grandit ensuite à la Mecque et devient berger pour subvenir à ses besoins.</p>
+        <div class="recit-meta">Contrairement aux jeunes de son époque — qui buvaient du vin et adoraient des idoles de pierre —, il se distingue par son honnêteté totale : jamais il ne ment, jamais il ne trahit. Les Mecquois le surnomment <em>Al-Amîn</em>, « le digne de confiance ».</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 2 · Mariage avec Khadîja</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>Khadîja bint Khouwaylid, riche et respectée commerçante de la Mecque, engage des hommes de confiance pour convoyer ses caravanes. Elle a déjà refusé de nombreux prétendants. Quand elle confie une caravane vers la Syrie à Mohammad ﷺ, alors âgé de 25 ans, elle est frappée par son honnêteté. Elle envoie son amie Nafîssa lui proposer le mariage : il accepte. Ils resteront mariés plus de 25 ans, et il n'épousera aucune autre femme tant qu'elle sera en vie.</p>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 3 · La première révélation, dans la grotte de Hirâ</span><span class="pill good">Vérifié — Sourate Al-'Alaq (96), v. 1-5</span></div>
+        <p>À 40 ans, dans la grotte de Hirâ où il se retirait pour méditer, un ange de lumière apparaît à Mohammad ﷺ un soir de Ramadan et lui ordonne : « Lis ! ». « Je ne sais pas lire », répond-il. L'ange le serre trois fois avant de lui transmettre les cinq premiers versets révélés. Effrayé, le Prophète ﷺ rentre chez lui en tremblant et dit à Khadîja : « Enveloppe-moi ! ». Elle le rassure : « Allah ne laissera jamais tomber quelqu'un d'aussi honnête et bienveillant que toi. »</p>
+        <div class="arabic-text quran" lang="ar">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ﴿١﴾ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ﴿٢﴾ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ﴿٣﴾ الَّذِي عَلَّمَ بِالْقَلَمِ ﴿٤﴾ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ ﴿٥﴾</div>
+        <div class="source-line">Sourate Al-'Alaq (96), versets 1 à 5, confirmés via l'outil de consultation coranique. Traduction libre : « Lis, au nom de ton Seigneur qui a créé ! Il a créé l'Homme d'un caillot de sang. Lis, car ton Seigneur est le Très Généreux, qui a instruit l'Homme au moyen du calame, qui a enseigné à l'Homme ce qu'il ne savait pas. »</div>
+        <div class="usage-line"><b>Lien activité</b> — Khadîja fut la première personne à croire au message : un bon point de départ pour parler de la loyauté en amitié.</div>
+      </div>
+
+      <div class="year-divider year-b"><span class="badge">Année B</span><span class="label">Ancrage — qualités du Prophète ﷺ (Al-Amîn), appel, Médine, victoire, rappel à Allah</span><span class="rule"></span></div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 4 · La patience de Khabbâb face à l'épreuve</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>Quand les habitants de la Mecque se mettent à croire de plus en plus nombreux, certains chefs de la ville se fâchent et maltraitent les nouveaux musulmans. Khabbâb, un forgeron, est de ceux-là : on l'expose au soleil brûlant pour qu'il renie sa foi. Chaque fois qu'on lui demande ce qu'il pense de Mohammad ﷺ, il répond, sans jamais changer d'avis : « C'est le serviteur d'Allah et Son messager, il nous a été envoyé pour nous sortir des ténèbres vers la lumière. »</p>
+        <div class="recit-meta">Cette histoire illustre le courage tranquille : rester fidèle à ce qu'on croit juste, même quand c'est difficile. Elle peut être racontée en insistant sur la détermination plutôt que sur les détails de la souffrance, selon l'âge du groupe.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 5 · Le voyage à Tâ'if et la plus belle des invocations</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>Après la mort de son oncle Abou Tâlib et de Khadîja la même année (« l'année de la tristesse »), le Prophète ﷺ se rend à Tâ'if pour y proposer l'Islam. Les habitants se moquent de lui et le chassent à coups de pierres jusqu'à ce que ses pieds saignent. Réfugié dans un verger, il ne se met pas en colère : il invoque Allah avec une immense douceur, sans jamais demander de vengeance.</p>
+        <div class="recit-meta">Un ange des montagnes propose d'anéantir la ville. Le Prophète ﷺ refuse et répond : « J'espère qu'Allah fera naître de leurs descendants des gens qui n'adoreront que Lui. » — une leçon de patience et d'espoir plutôt que de rancune.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 6 · L'Hégire, la grotte et l'araignée</span><span class="pill good">Vérifié — Sourate At-Tawba (9), v. 40</span></div>
+        <p>Menacé à la Mecque, le Prophète ﷺ part de nuit vers Médine avec son fidèle compagnon Abou Bakr. Ils se cachent trois jours dans la grotte du mont Thawr. Une araignée tisse sa toile à l'entrée, et des poursuivants passent tout près sans les voir. Abou Bakr s'inquiète ; le Prophète ﷺ le rassure : « Que penses-tu de deux personnes dont le troisième est Allah ? »</p>
+        <div class="source-line">Allusion confirmée en Sourate At-Tawba (9), verset 40 : « ... Ne sois pas triste, car Allah est avec nous. »</div>
+        <div class="usage-line"><b>Lien activité</b> — beau point d'ancrage pour l'atelier confiance/entraide, en écho au thème Sîra Année A.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 7 · L'accueil chez Abou Ayoûb</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>Arrivé à Médine, le Prophète ﷺ loge chez Abou Ayoûb Al-Ansârî, dans une maison à étage. Par respect, le Prophète ﷺ s'installe au rez-de-chaussée. Une nuit, une jarre d'eau se renverse à l'étage : Abou Ayoûb et son épouse, inquiets que l'eau ne coule sur leur hôte, épongent tout avec leur unique couverture et passent la nuit au froid plutôt que de le déranger.</p>
+        <div class="recit-meta">Une histoire simple sur l'hospitalité et l'attention portée à l'invité — à relier au thème de la bonté envers autrui (Adab).</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 8 · La bataille de Badr</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>En l'an 2 de l'Hégire, une petite troupe de 313 musulmans, très peu équipée, affronte une armée mecquoise bien plus nombreuse. Avant le combat, le Prophète ﷺ implore Allah avec insistance. Contre toute attente, les musulmans remportent une victoire éclatante — un moment fondateur qui montre que la confiance en Allah compte plus que le nombre.</p>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 9 · Le traité de Houdaybiya et le pardon à la Mecque</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>En l'an 6, le Prophète ﷺ signe avec les Mecquois un traité de paix à Houdaybiya, acceptant des conditions difficiles pour éviter la guerre. Deux ans plus tard, après que les Mecquois ont rompu le pacte, il entre dans la ville à la tête d'une grande troupe — mais sans combattre. Il pardonne à tous ceux qui l'avaient persécuté et fait retirer les idoles de la Ka'ba.</p>
+        <div class="recit-meta">La conquête de la Mecque est restée dans l'histoire comme un modèle de victoire sans vengeance : pas une goutte de sang versée.</div>
+      </div>
+
+      <div class="card recit">
+        <div class="card-top"><span class="ref-tag">Épisode 10 · Le dernier pèlerinage et le rappel à Allah</span><span class="pill good">Vérifié — sources biographiques</span></div>
+        <p>En l'an 10, le Prophète ﷺ accomplit son unique et dernier pèlerinage, où il prononce un grand discours d'adieu. Peu après, il tombe malade. Jusqu'à son dernier souffle, il insiste auprès des musulmans sur l'importance de la prière. Il meurt à Médine à l'âge de 63 ans, entouré des siens.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Bibliographie de la trame Sîra</span><span class="pill info">Sources</span></div>
+        <div class="source-line" style="margin-bottom:0;">Source : <em>assira_anabawiyah.pdf</em> — « Raconte-moi le Prophète Mohammed : son message, sa vie et ses enseignements » (nospetitsmusulmans.com, Drive « السيرة النبوية »), lui-même adapté du <em>Nectar Cacheté</em> (Ar-Rahîq al-Makhtûm, Safiy-our-Rahmân Al-Mubârakfûrî). Les 10 épisodes ci-dessus en sont un résumé fidèle, simplifié pour un public de 6-8 ans (l'épisode de Khabbâb a été volontairement adouci sur les détails de la torture).</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">03</span>Bienveillance du Prophète ﷺ envers les enfants <span class="year-pill a">Année A</span></h3>
+      <p class="usage-line" style="margin-bottom:16px; display:block;">Thème charnière entre Sîra et Adab — à raconter pour humaniser le Prophète ﷺ aux yeux des enfants.</p>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Prière écourtée pour un enfant qui pleure</span><span class="pill good">Vérifié — Sahîh Al-Boukhârî</span></div>
+        <blockquote>« Quand je débute la prière avec l'intention de la prolonger, mais que j'entends les pleurs d'un enfant, j'abrège ma prière, sachant combien ces pleurs affectent sa mère. »</blockquote>
+        <div class="arabic-text" lang="ar">إِنِّي لأَدْخُلُ فِي الصَّلاَةِ وَأَنَا أُرِيدُ إِطَالَتَهَا، فَأَسْمَعُ بُكَاءَ الصَّبِيِّ، فَأَتَجَوَّزُ فِي صَلاَتِي مِمَّا أَعْلَمُ مِنْ شِدَّةِ وَجْدِ أُمِّهِ مِنْ بُكَائِهِ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°692 — <a href="https://search.hadith-mcp.org/?id=692" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — à raconter avant l'atelier « Prophète et Livre » : le Prophète ﷺ, chef de la prière, pensait avant tout à la mère et à l'enfant.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Récit · Hassan et Hussein sur le dos du Prophète ﷺ</span><span class="pill info">Ressource interne — récit</span></div>
+        <p style="margin:0 0 10px;">Pendant qu'il priait, ses petits-fils Hassan et Hussein grimpèrent sur son dos au moment de la prosternation. Les gens voulurent les arrêter, mais il leur fit signe de les laisser faire. Après sa prière, il les installa sur ses genoux et dit : « Celui qui m'aime doit aimer ces deux enfants. »</p>
+        <div class="source-line">Source : Assirah_Atelier ELNE.docx (Drive, dossier « السيرة النبوية ») — anecdote couramment rapportée dans les recueils de Sîra ; référence de hadith précise non retrouvée dans le corpus indexé, à confirmer avant citation formelle.</div>
+        <div class="usage-line"><b>Lien activité</b> — à raconter en écho au « Collier des formules » : la patience et la tendresse du Prophète ﷺ envers les enfants.</div>
+      </div>
+    </section>
+
+    <!-- ADAB -->
+    <section id="adab">
+      <div class="domain-head">
+        <div class="domain-mark">أ</div>
+        <h2 class="domain-title">Adab / Akhlâq</h2>
+        <div class="domain-sub">Comportement, hypocrisie et clémence</div>
+      </div>
+
+      <div class="year-divider year-a"><span class="badge">Année A</span><span class="label">Formules rituelles (Bismillah, Alhamdulillah) — respect des parents et des aînés</span><span class="rule"></span></div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · La clémence (Ar-Rahma)</span><span class="pill good">Vérifié — muttafaq 'alayh</span></div>
+        <blockquote>« Le Prophète ﷺ embrassa son petit-fils Hassan ibn 'Alî en présence d'Al-Aqra' ibn Hâbis, qui dit : "J'ai dix enfants et je n'en ai jamais embrassé un seul." Le Messager d'Allah ﷺ le regarda et dit : "Celui qui ne fait pas preuve de miséricorde ne recevra pas de miséricorde." »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ لَا يَرْحَمُ لَا يُرْحَمُ</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°214 (muttafaq 'alayh) — <a href="https://search.hadith-mcp.org/?id=41279" target="_blank" rel="noopener">vérifier la source</a>. Variante proche : Sahîh Mouslim, n°2318 — <a href="https://search.hadith-mcp.org/?id=13149" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — remplace l'exercice « cocher les situations de clémence » (14_hadiths_livret_d_activites.pdf) dont le hadith d'origine restait introuvable ; ce hadith, désormais vérifié, sert de texte de référence pour l'atelier sur l'entraide envers les petits et le respect des aînés.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Récit · Le garçon et les dattes</span><span class="pill warn">Résumé narratif</span></div>
+        <p style="margin:0 0 10px;">Un jeune garçon jetait des pierres sur des palmiers pour en faire tomber les dattes. Plutôt que de le gronder, le Prophète ﷺ lui dit : « Ne jette pas de pierres sur les palmiers, mais mange ce qui en est tombé. » Puis il caressa la tête de l'enfant et dit : « Ô Allah, remplis son ventre. »</p>
+        <div class="source-line">Source : Assirah_Atelier ELNE.docx (Drive) — anecdote pédagogique classique ; référence de hadith précise non retrouvée dans le corpus indexé lors de cette recherche, à confirmer avant citation formelle.</div>
+        <div class="usage-line"><b>Lien activité</b> — bon point de départ pour discuter d'une réponse bienveillante à une bêtise, en écho au jeu « Vérité ou piège ? ».</div>
+      </div>
+
+      <div class="year-divider year-b"><span class="badge">Année B</span><span class="label">Invocations quotidiennes, vérité (Sidq), partage</span><span class="rule"></span></div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Signes de l'hypocrite</span><span class="pill good">Vérifié — Sahîh Al-Boukhârî n°33</span></div>
+        <blockquote>« Les signes de l'hypocrite sont au nombre de trois : quand il parle, il ment ; quand il promet, il ne tient pas sa promesse ; quand on lui confie quelque chose, il trahit cette confiance. »</blockquote>
+        <div class="arabic-text" lang="ar">آيَةُ الْمُنَافِقِ ثَلَاثٌ: إِذَا حَدَّثَ كَذَبَ، وَإِذَا وَعَدَ أَخْلَفَ، وَإِذَا اؤْتُمِنَ خَانَ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, Livre de la Foi, n°33, selon Abou Hourayra — <a href="https://search.hadith-mcp.org/?id=33" target="_blank" rel="noopener">vérifier la source</a>. Statut : muttafaq 'alayh (agréé par Al-Boukhârî et Mouslim).</div>
+        <div class="usage-line"><b>Lien activité</b> — à relier au jeu « Vérité ou piège ? » sur la sincérité (Sidq).</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Le colporteur de médisances</span><span class="pill good">Vérifié — Sahîh Al-Boukhârî n°5827</span></div>
+        <blockquote>« Le colporteur (celui qui répand des propos pour semer la discorde) n'entrera pas au Paradis. »</blockquote>
+        <div class="arabic-text" lang="ar">لَا يَدْخُلُ الْجَنَّةَ قَتَّاتٌ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°5827, selon Houdhayfa — <a href="https://search.hadith-mcp.org/?id=5827" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — à relier au « Collier des formules » : distinguer une bonne parole (sourate rapportée en Hadith fil rouge) d'une parole qui divise.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Le musulman est le frère du musulman</span><span class="pill good">Vérifié — muttafaq 'alayh</span></div>
+        <blockquote>« Le musulman est le frère du musulman : il ne lui fait pas d'injustice et ne le trahit pas. Celui qui aide son frère dans le besoin, Allah l'aide ; celui qui soulage un musulman d'une difficulté, Allah le soulagera d'une difficulté au Jour de la Résurrection. »</blockquote>
+        <div class="arabic-text" lang="ar">الْمُسْلِمُ أَخُو الْمُسْلِمِ لَا يَظْلِمُهُ وَلَا يُسْلِمُهُ</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°1461 (muttafaq 'alayh, selon Ibn 'Omar) — <a href="https://search.hadith-mcp.org/?id=42526" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — texte central pour introduire l'entraide entre camarades avant un jeu coopératif (« Le tapis des mots », etc.).</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Toute ma communauté entrera au Paradis</span><span class="pill good">Vérifié — Sahîh Al-Boukhârî</span></div>
+        <blockquote>« Toute ma communauté entrera au Paradis, sauf celui qui refuse. » On demanda : « Et qui refuse, Ô Messager d'Allah ? » Il répondit : « Celui qui m'obéit entrera au Paradis, et celui qui me désobéit aura refusé. »</blockquote>
+        <div class="arabic-text" lang="ar">كُلُّ أُمَّتِي يَدْخُلُونَ الْجَنَّةَ، إِلاَّ مَنْ أَبَى</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°7004, selon Abou Hourayra — <a href="https://search.hadith-mcp.org/?id=7004" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — à relier au « Vrai ou Faux » gestuel : obéir au Prophète ﷺ, c'est suivre ce qu'il a montré par ses paroles et son exemple.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Le sourire est une aumône</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Ton sourire au visage de ton frère est une aumône pour toi ; ordonner le bien et interdire le mal est une aumône ; guider un homme égaré est une aumône pour toi ; ôter une pierre, une épine ou un os du chemin est une aumône pour toi. »</blockquote>
+        <div class="arabic-text" lang="ar">تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ</div>
+        <div class="source-line">Sunan At-Tirmidhy, n°2024, selon Abou Dharr (hadith hasan gharîb) — <a href="https://search.hadith-mcp.org/?id=27804" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — coin lecture « J'aime le Prophète ﷺ » (islam_livre_complet.pdf) : relier ce hadith au « Collier des formules ».</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · S'offrir des cadeaux</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Offrez-vous des cadeaux, vous vous aimerez. »</blockquote>
+        <div class="arabic-text" lang="ar">تَهَادَوْا تَحَابُّوا</div>
+        <div class="source-line">Al-Adab Al-Moufrad d'Al-Boukhârî, n°594 (hadith hasan) — <a href="https://search.hadith-mcp.org/?id=50202" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — atelier « boîte à cadeaux » entre camarades avant une fête ou fin de trimestre.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Qui salue en premier</span><span class="pill good">Vérifié — Sahîh Al-Boukhârî</span></div>
+        <blockquote>« Celui qui est monté salue celui qui marche, celui qui marche salue celui qui est assis, et le petit groupe salue le grand groupe. »</blockquote>
+        <div class="arabic-text" lang="ar">يُسَلِّمُ الرَّاكِبُ عَلَى الْمَاشِي وَالْمَاشِي عَلَى الْقَاعِدِ، وَالْقَلِيلُ عَلَى الْكَثِيرِ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°5998, selon Abou Hourayra — <a href="https://search.hadith-mcp.org/?id=5998" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — jeu de rôle « qui salue qui ? » : mimer les situations (à vélo, à pied, assis) et faire deviner qui doit saluer en premier.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Hadith · Voisin, invité et bonne parole</span><span class="pill good">Vérifié — muttafaq 'alayh</span></div>
+        <blockquote>« Que celui qui croit en Allah et au Jour Dernier honore son voisin ; que celui qui croit en Allah et au Jour Dernier honore son invité ; que celui qui croit en Allah et au Jour Dernier dise une bonne parole ou se taise. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلَا يُؤْذِ جَارَهُ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ ضَيْفَهُ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°1525 (muttafaq 'alayh, selon Abou Hourayra) — <a href="https://search.hadith-mcp.org/?id=42590" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Lien activité</b> — trois mini-scènes à jouer (accueillir un invité, aider un voisin, choisir ses mots) — coin lecture « Bonnes manières » (islam_livre_complet.pdf).</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">✓</span>Quiz éclair — ce qu'il faut retenir</h3>
+      <div class="quiz-item"><div class="q">1. Cite un des trois signes de l'hypocrite.</div><div class="opts"><span class="correct">Il ment / il ne tient pas sa promesse / il trahit la confiance</span> · Il prie beaucoup · Il jeûne souvent</div></div>
+      <div class="quiz-item"><div class="q">2. Que se passe-t-il quand on s'offre des cadeaux ?</div><div class="opts">Rien de particulier · <span class="correct">On s'aime davantage</span> · On devient jaloux</div></div>
+      <div class="quiz-item"><div class="q">3. Qui salue en premier : celui qui marche ou celui qui est assis ?</div><div class="opts"><span class="correct">Celui qui marche salue celui qui est assis</span> · Celui qui est assis salue celui qui marche · Peu importe</div></div>
+      <div class="quiz-item"><div class="q">4. « Ton sourire au visage de ton frère est une ... » ?</div><div class="opts">Une politesse · <span class="correct">Une aumône (sadaqa)</span> · Une habitude</div></div>
+      <div class="quiz-item"><div class="q">5. Que doit faire un musulman envers son voisin ?</div><div class="opts">L'ignorer · <span class="correct">Ne pas lui faire de mal et être bon avec lui</span> · Ne lui parler que s'il le salue en premier</div></div>
+      <div class="quiz-item"><div class="q">6. Vrai ou Faux : celui qui ne fait pas preuve de clémence envers les autres ne recevra pas de clémence.</div><div class="opts"><span class="correct">Vrai</span> · Faux</div></div>
+    </section>
+
+    <!-- ADHKAR -->
+    <section id="adhkar">
+      <div class="domain-head">
+        <div class="domain-mark">﴾</div>
+        <h2 class="domain-title">Adhkar — invocations du quotidien</h2>
+        <div class="domain-sub">Année B · Invocations quotidiennes (réveil, repas, toilettes, salutation)</div>
+      </div>
+      <p class="usage-line" style="margin-bottom:18px; display:block;">Quatre formules courtes, vérifiées, pour le coucher, le réveil, le repas et l'entrée à la maison — chaque carte précise le moment exact où la dire.</p>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Invocation du coucher</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« C'est en Ton nom, Ô Allah, que je meurs et que je vis. »</blockquote>
+        <div class="arabic-text" lang="ar">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°137 (Sahîh Al-Boukhârî) — <a href="https://search.hadith-mcp.org/?id=41202" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — juste avant de s'endormir, allongé, la main sous la joue.</div>
+        <div class="usage-line"><b>Lien activité</b> — à associer au « Collier des formules » : une perle pour chaque soir où l'enfant la récite avant de dormir.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Invocation du réveil</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Louange à Allah qui nous a rendus à la vie après nous avoir fait mourir (le sommeil), et c'est vers Lui le retour. »</blockquote>
+        <div class="arabic-text" lang="ar">الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°767 (Sahîh Al-Boukhârî) — <a href="https://search.hadith-mcp.org/?id=41832" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — dès le réveil, avant de se lever du lit.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Invocation du repas (si Bismillah oubliée)</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Que l'un de vous mentionne le Nom d'Allah [en commençant]. S'il l'a oublié au début, qu'il dise : "Au nom d'Allah, au début et à la fin." »</blockquote>
+        <div class="arabic-text" lang="ar">إِذَا أَكَلَ أَحَدُكُمْ فَلْيَذْكُرِ اسْمَ اللَّهِ تَعَالَى، فَإِنْ نَسِيَ أَنْ يَذْكُرَ اسْمَ اللَّهِ تَعَالَى فِي أَوَّلِهِ فَلْيَقُلْ بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ</div>
+        <div class="source-line">Rapporté dans Riyad as-Sâlihîn, n°49 (Abou Dâwoud, At-Tirmidhy) — <a href="https://search.hadith-mcp.org/?id=41114" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — dès qu'on se rend compte, en mangeant, qu'on a oublié de dire « Bismillah » au début du repas.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Invocation en entrant à la maison</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Ô Allah ! Je Te demande le bien en entrant et le bien en sortant. C'est au nom d'Allah que nous entrons, au nom d'Allah que nous sortons, et c'est en Allah, notre Seigneur, que nous plaçons notre confiance. » — puis saluer sa famille.</blockquote>
+        <div class="arabic-text" lang="ar">اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ وَخَيْرَ الْمَخْرَجِ، بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا</div>
+        <div class="source-line">Sunan Abî Dâwoud, n°5098 — <a href="https://search.hadith-mcp.org/?id=25602" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — au moment de franchir la porte de la maison, puis on salue sa famille.</div>
+        <div class="usage-line"><b>Lien activité</b> — à placer sur les cartes-doa de l'atelier « Vérité ou piège ? » (formule « entrée de maison »).</div>
+      </div>
+
+      <h3 class="sub-title"><span class="n">✓</span>Quiz éclair — ce qu'il faut retenir</h3>
+      <div class="quiz-item"><div class="q">1. Que dit-on juste avant de dormir ?</div><div class="opts">« Al-hamdou lillâh » · <span class="correct">« Allâhoumma bismika amoutou wa ahyâ »</span> · « Soubhân Allah »</div></div>
+      <div class="quiz-item"><div class="q">2. Que dit-on au réveil ?</div><div class="opts"><span class="correct">« Al-hamdou lillâhi-lladhî ahyânâ ba'da mâ amâtanâ... »</span> · « Bismillah » · « Allâhou Akbar »</div></div>
+      <div class="quiz-item"><div class="q">3. Si on a oublié de dire « Bismillah » avant de manger, que dit-on en s'en rappelant ?</div><div class="opts">Rien, c'est trop tard · <span class="correct">« Bismillâhi awwalahou wa âkhirah »</span> · « Al-hamdou lillâh »</div></div>
+      <div class="quiz-item"><div class="q">4. Que dit-on en entrant dans la maison ?</div><div class="opts">« Assalâmou 'alaykoum » seulement · <span class="correct">« Bismillâhi walajnâ wa bismillâhi kharajnâ... »</span> · Rien de particulier</div></div>
+    </section>
+
+    <!-- HADITH TRANSVERSAL -->
+    <section id="hadith">
+      <div class="domain-head">
+        <div class="domain-mark">ح</div>
+        <h2 class="domain-title">Hadith — fil rouge</h2>
+        <div class="domain-sub">Transversal aux deux années · Banque pour le tournoi de hadiths</div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">2 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Celui qui nous trompe (dans le commerce) n'est pas des nôtres. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ غَشَّنَا فَلَيْسَ مِنَّا</div>
+        <div class="source-line">Sunan Ibn Mâjah, n°1959 — <a href="https://search.hadith-mcp.org/?id=31792" target="_blank" rel="noopener">vérifier la source</a> (également rapporté par Mouslim).</div>
+        <div class="usage-line"><b>Quand ?</b> — en échangeant, vendant ou troquant un objet avec un camarade : dire la vérité sur ce qu'on donne.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">2 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Une bonne parole est une aumône. »</blockquote>
+        <div class="arabic-text" lang="ar">وَالْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°2775 — <a href="https://search.hadith-mcp.org/?id=2775" target="_blank" rel="noopener">vérifier la source</a> (extrait du hadith sur l'aumône due chaque jour pour chaque articulation du corps).</div>
+        <div class="usage-line"><b>Quand ?</b> — à chaque fois qu'on parle à quelqu'un : choisir des mots gentils compte comme une aumône.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">2 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« La pudeur (Al-Hayâ') est une branche de la Foi. »</blockquote>
+        <div class="arabic-text" lang="ar">الْحَيَاءُ شُعْبَةٌ مِنَ الْإِيمَانِ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°9 — <a href="https://search.hadith-mcp.org/?id=9" target="_blank" rel="noopener">vérifier la source</a> ; également Sahîh Mouslim, n°60 — <a href="https://search.hadith-mcp.org/?id=7337" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — dans sa tenue, ses gestes et son comportement, à tout moment de la journée.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">4 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« La bonté (Al-Birr), c'est le bon comportement. »</blockquote>
+        <div class="arabic-text" lang="ar">الْبِرُّ حُسْنُ الْخُلُقِ</div>
+        <div class="source-line">Sunan At-Tirmidhy, n°2458 (hadith an-Nawawi n°27, selon An-Nawwâs Ibn Sam'ân) — <a href="https://search.hadith-mcp.org/?id=28238" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — dans chaque interaction avec les autres : à la récré, en famille, avec les camarades.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">4 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Tout acte de bonté est une aumône. »</blockquote>
+        <div class="arabic-text" lang="ar">كُلُّ مَعْرُوفٍ صَدَقَةٌ</div>
+        <div class="source-line">Rapporté par Al-Boukhârî (Boulough al-Marâm, n°1660) — <a href="https://search.hadith-mcp.org/?id=50777" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — pour chaque petit geste gentil du quotidien, même sans argent (aider, sourire, tenir une porte...).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">4 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« La purification (At-Tuhûr) est la moitié de la Foi. »</blockquote>
+        <div class="arabic-text" lang="ar">الطُّهُورُ شَطْرُ الْإِيمَانِ</div>
+        <div class="source-line">Sahîh Mouslim, n°440 (hadith an-Nawawi n°23) — <a href="https://search.hadith-mcp.org/?id=7717" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — avant chacune des 5 prières, au moment du Wudû' (voir TP ablutions, Fiqh Année B).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">4 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« La religion, c'est le bon conseil (sincérité) — envers Allah, Son Livre, Son Messager, les dirigeants des musulmans et les gens en général. »</blockquote>
+        <div class="arabic-text" lang="ar">الدِّينُ النَّصِيحَةُ</div>
+        <div class="source-line">Recueil des 40 hadiths d'An-Nawawi, n°7 (Sahîh Mouslim) — <a href="https://search.hadith-mcp.org/?id=40950" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — quand un ami se trompe : lui donner un conseil sincère plutôt que de se moquer ou de se taire.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Celui qui guide vers un bien aura la même récompense que celui qui l'accomplit. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ دَلَّ عَلَى خَيْرٍ فَلَهُ مِثْلُ أَجْرِ فَاعِلِهِ</div>
+        <div class="source-line">Rapporté par Mouslim (Boulough al-Marâm, n°1664) — <a href="https://search.hadith-mcp.org/?id=50781" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — quand on montre à un camarade comment bien faire quelque chose (un geste, une prière, un devoir).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Il y a deux bienfaits dont beaucoup de gens se privent (par négligence) : la santé et le temps libre. »</blockquote>
+        <div class="arabic-text" lang="ar">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°6173 — <a href="https://search.hadith-mcp.org/?id=6173" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — à rappeler quand on est en forme et qu'on a du temps libre : c'est le bon moment pour bien agir.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le musulman est celui dont les musulmans sont à l'abri du mal de sa langue et de sa main. »</blockquote>
+        <div class="arabic-text" lang="ar">الْمُسْلِمُ مَنْ سَلِمَ النَّاسُ مِنْ لِسَانِهِ وَيَدِهِ</div>
+        <div class="source-line">Sunan An-Nasâ'î, n°5004 — <a href="https://search.hadith-mcp.org/?id=19740" target="_blank" rel="noopener">vérifier la source</a> ; formulation proche dans Sunan At-Tirmidhy, n°2697.</div>
+        <div class="usage-line"><b>Quand ?</b> — dans une dispute ou un désaccord : ne pas insulter, ne pas frapper.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Les gens qui seront les plus proches de moi au Jour de la Résurrection seront ceux qui auront invoqué le plus de bénédictions sur moi. »</blockquote>
+        <div class="arabic-text" lang="ar">أَوْلَى النَّاسِ بِي يَوْمَ الْقِيَامَةِ أَكْثَرُهُمْ عَلَيَّ صَلَاةً</div>
+        <div class="source-line">Sunan At-Tirmidhy, n°484 — <a href="https://search.hadith-mcp.org/?id=26264" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — chaque fois qu'on entend ou prononce le nom du Prophète ﷺ : dire « ﷺ » (salla Allahou 'alayhi wa sallam).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le moment où le serviteur est le plus proche de son Seigneur, c'est lorsqu'il est prosterné ; multipliez alors les invocations. »</blockquote>
+        <div class="arabic-text" lang="ar">أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ فَأَكْثِرُوا الدُّعَاءَ</div>
+        <div class="source-line">Sahîh Mouslim, n°985 — <a href="https://search.hadith-mcp.org/?id=8262" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — pendant le Soujoûd (prosternation) de la Salât — voir le repère « Ce que l'on dit pendant la prière », Fiqh.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le meilleur d'entre vous est celui qui apprend le Coran et qui l'enseigne. »</blockquote>
+        <div class="arabic-text" lang="ar">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+        <div class="source-line">Sunan Abî Dâwoud, n°1453, rapporté également par Al-Boukhârî — <a href="https://search.hadith-mcp.org/?id=21957" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — à rappeler pendant les séances de récitation collective (« la chaîne de récitation »).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Bonus Ramadan · 8 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Quiconque assure à un jeûneur son repas de rupture du jeûne aura la même récompense que lui, sans que cela ne diminue en rien la récompense du jeûneur. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ فَطَّرَ صَائِمًا كَانَ لَهُ مِثْلُ أَجْرِهِ غَيْرَ أَنَّهُ لَا يَنْقُصُ مِنْ أَجْرِ الصَّائِمِ شَيْئًا</div>
+        <div class="source-line">Sunan At-Tirmidhy, n°807 — <a href="https://search.hadith-mcp.org/?id=26587" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — pendant le Ramadan, en offrant à quelqu'un de quoi rompre son jeûne (dattes, eau, repas).</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Bonus Ramadan · 4 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Celui qui ne renonce pas au mensonge et à agir selon ce mensonge, Allah n'a nul besoin qu'il renonce à sa nourriture et à sa boisson. »</blockquote>
+        <div class="arabic-text" lang="ar">مَنْ لَمْ يَدَعْ قَوْلَ الزُّورِ وَالْعَمَلَ بِهِ فَلَيْسَ لِلَّهِ حَاجَةٌ أَنْ يَدَعَ طَعَامَهُ وَشَرَابَهُ</div>
+        <div class="source-line">Sahîh Al-Boukhârî, n°5828 — <a href="https://search.hadith-mcp.org/?id=5828" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — pendant le Ramadan, pour rappeler que le jeûne ce n'est pas que ne pas manger : c'est aussi bien se comporter.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><span class="ref-tag">Bonus Ramadan · 2 points</span><span class="pill good">Vérifié</span></div>
+        <blockquote>« Le jeûne est une protection. Quand l'un de vous jeûne, qu'il parle convenablement et n'agisse pas en ignorant. Si quelqu'un l'insulte ou cherche la dispute, qu'il dise : "Je jeûne, je jeûne." »</blockquote>
+        <div class="arabic-text" lang="ar">إِذَا أَصْبَحَ أَحَدُكُمْ يَوْمًا صَائِمًا فَلَا يَرْفُثْ وَلَا يَجْهَلْ، فَإِنِ امْرُؤٌ شَاتَمَهُ أَوْ قَاتَلَهُ فَلْيَقُلْ: إِنِّي صَائِمٌ</div>
+        <div class="source-line">Sahîh Mouslim, n°2587 — <a href="https://search.hadith-mcp.org/?id=9864" target="_blank" rel="noopener">vérifier la source</a>.</div>
+        <div class="usage-line"><b>Quand ?</b> — pendant le Ramadan, si un camarade cherche la dispute ou nous embête.</div>
+      </div>
+    </section>
+
+    <!-- EVALUATION -->
+    <section id="evaluation">
+      <div class="domain-head">
+        <div class="domain-mark">✓</div>
+        <h2 class="domain-title">Banque d'évaluation</h2>
+        <div class="domain-sub">Contrôle approfondi Sîra — Année B</div>
+      </div>
+      <p class="usage-line" style="margin-bottom:18px; display:block;">Les « Quiz éclair » de chaque section (Coran, Aqîda, Fiqh, Adab, Adhkar) vérifient l'essentiel après chaque séance. Cette banque-ci va plus loin sur la Sîra, pour une évaluation de fin de séquence : questions <b>outils pédagogiques internes</b> (adaptées des supports Quizz / Éval de l'atelier Elne), pas des hadiths — à utiliser pour le « Passeport des sourates », la « Boîte à défis » ou un contrôle ludique.</p>
+
+      <div class="quiz-item">
+        <div class="q">1. En quelle année (du calendrier musulman des événements) le Prophète ﷺ est-il né ?</div>
+        <div class="opts">569 · <span class="correct">l'année de l'Éléphant</span> · 632</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">2. Avant l'arrivée de l'Islam, que faisaient les gens de la Mecque ?</div>
+        <div class="opts">Rien de particulier · <span class="correct">Ils adoraient des idoles</span> · Ils adoraient Allah seul</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">3. Comment s'appelait la mère du Prophète ﷺ ?</div>
+        <div class="opts"><span class="correct">Amina</span> · Khadîja · Fatima</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">4. Comment s'appelait l'oncle qui l'a recueilli après la mort de son grand-père ?</div>
+        <div class="opts">Hamza · <span class="correct">Abou Talib</span> · Abou Lahab</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">5. Quel âge avait le Prophète ﷺ quand l'ange Jibrîl lui rendit visite pour la première fois ?</div>
+        <div class="opts">30 ans · 35 ans · <span class="correct">40 ans</span></div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">6. Comment s'appelait sa nourrice ?</div>
+        <div class="opts">Sumayyah · <span class="correct">Halima</span> · Zainab</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">7. Dans quelle grotte a-t-il reçu la première révélation ?</div>
+        <div class="opts">Tawr · <span class="correct">Hira</span> · Jabal</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">8. Vers quelle ville a-t-il émigré (l'Hégire) ?</div>
+        <div class="opts"><span class="correct">Médine</span> · Le Caire · Riyad</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">9. Quel est le premier mot de la révélation ?</div>
+        <div class="opts">Écoute · <span class="correct">Lis</span> · Adore</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">10. Comment est surnommée l'année où le Prophète ﷺ est né ?</div>
+        <div class="opts">L'année de l'abeille · <span class="correct">L'année de l'Éléphant</span> · L'année du chameau</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">11. Comment était surnommé le Prophète ﷺ avant la révélation, en raison de son honnêteté ?</div>
+        <div class="opts"><span class="correct">Al-Amîn (le digne de confiance)</span> · Al-Karîm · As-Sadîq</div>
+      </div>
+      <div class="quiz-item">
+        <div class="q">12. Vrai ou Faux : le Prophète ﷺ a pour ancêtres les prophètes Ibrahîm et Ismaïl.</div>
+        <div class="opts"><span class="correct">Vrai</span> · Faux</div>
+      </div>
+      <div class="source-line" style="margin-top:12px;">Questions adaptées de « Quizz 1.pdf » et « Eval - La vie du prophète SAWS.pdf » (Drive, dossier « السيرة النبوية / Evaluation S1 ») — reformulées en questions fermées à 3 propositions pour l'oral collectif ; à recouper avec les épisodes de la trame Sîra ci-dessus avant usage.</div>
+    </section>
+
+    <!-- QUIZ GLOBAL -->
+    <section id="quiz-global">
+      <div class="domain-head">
+        <div class="domain-mark">★</div>
+        <h2 class="domain-title">Quiz global du livret</h2>
+        <div class="domain-sub">5 questions par thème — contrôle de fin d'année ou de cycle</div>
+      </div>
+      <p class="usage-line" style="margin-bottom:18px; display:block;">30 questions couvrant l'ensemble du livret, cinq par thème, distinctes des « Quiz éclair » de chaque section — à utiliser en revue générale (fin d'année, fin de cycle, ou pour préparer une rencontre entre familles).</p>
+
+      <h3 class="sub-title"><span class="n">ق</span>Coran</h3>
+      <div class="quiz-item"><div class="q">1. Quelle sourate est la base de chaque prière ?</div><div class="opts"><span class="correct">Al-Fâtiha</span> · Al-Ikhlâs · An-Nâs</div></div>
+      <div class="quiz-item"><div class="q">2. Quelle sourate parle de la gratitude envers Allah pour la sécurité et la nourriture ?</div><div class="opts">Al-Fîl · <span class="correct">Al-Quraysh</span> · Az-Zalzalah</div></div>
+      <div class="quiz-item"><div class="q">3. Que rappelle la Sourate Az-Zalzalah ?</div><div class="opts">L'histoire de Nouh · <span class="correct">Chaque bonne ou mauvaise action, même infime, compte devant Allah</span> · Les Noms d'Allah</div></div>
+      <div class="quiz-item"><div class="q">4. Sous quelle forme le Coran doit-il être appris en classe pour la récitation ?</div><div class="opts">Uniquement en français · <span class="correct">À partir d'un support audio/mushaf validé</span> · De mémoire sans support</div></div>
+      <div class="quiz-item"><div class="q">5. Combien de sourates du programme sont vues en Année A ?</div><div class="opts">7 · <span class="correct">2 (Al-Fâtiha et Al-Mâ'ûn)</span> · 5</div></div>
+
+      <h3 class="sub-title"><span class="n">ه</span>Aqîda / Îmân</h3>
+      <div class="quiz-item"><div class="q">6. Que veut dire « Al-Khâliq » ?</div><div class="opts">Le Pardonneur · <span class="correct">Le Créateur</span> · L'Audient</div></div>
+      <div class="quiz-item"><div class="q">7. Qui a dit « Tu as dit vrai » au Prophète ﷺ après sa description de l'Îmân ?</div><div class="opts">Abou Bakr · <span class="correct">L'ange Jibrîl</span> · Khadîja</div></div>
+      <div class="quiz-item"><div class="q">8. Quel ange souffle dans la Trompe au Jour de la Résurrection ?</div><div class="opts">Mikâ'îl · Jibrîl · <span class="correct">Isrâfîl</span></div></div>
+      <div class="quiz-item"><div class="q">9. Qui a créé l'Homme, la nuit et le jour ?</div><div class="opts">Personne · <span class="correct">Allah</span> · Les anges</div></div>
+      <div class="quiz-item"><div class="q">10. « As-Salâm » est un des Noms d'Allah : que signifie-t-il ?</div><div class="opts"><span class="correct">La Paix</span> · La Force · Le Voyant</div></div>
+
+      <h3 class="sub-title"><span class="n">ف</span>Fiqh</h3>
+      <div class="quiz-item"><div class="q">11. Quel pilier de l'Islam vient juste après la Chahâda ?</div><div class="opts">Le Hajj · <span class="correct">La Salât (la prière)</span> · Le Sawm</div></div>
+      <div class="quiz-item"><div class="q">12. Combien de fois lave-t-on chaque partie du corps pendant le Wudû' ?</div><div class="opts">Une fois · <span class="correct">Trois fois (sauf la tête, une fois)</span> · Cinq fois</div></div>
+      <div class="quiz-item"><div class="q">13. Combien de rak'a compte la prière du Maghrib ?</div><div class="opts">2 · <span class="correct">3</span> · 4</div></div>
+      <div class="quiz-item"><div class="q">14. Que dit-on en se relevant du Rukû' (Roukoû') ?</div><div class="opts"><span class="correct">« Soubhâna Rabbiya-l-'Adhîm »</span> · « Soubhâna Rabbiya-l-A'lâ » · « Allâhou Akbar »</div></div>
+      <div class="quiz-item"><div class="q">15. Quel geste ouvre les ablutions, juste après l'intention ?</div><div class="opts">Laver le visage · <span class="correct">Se laver les mains trois fois</span> · Essuyer la tête</div></div>
+
+      <h3 class="sub-title"><span class="n">س</span>Sîra / Qisas</h3>
+      <div class="quiz-item"><div class="q">16. Comment s'appelle la nourrice du Prophète ﷺ ?</div><div class="opts">Khadîja · <span class="correct">Halîma</span> · Nafîssa</div></div>
+      <div class="quiz-item"><div class="q">17. Quel âge avait le Prophète ﷺ lors de son mariage avec Khadîja ?</div><div class="opts">18 ans · <span class="correct">25 ans</span> · 40 ans</div></div>
+      <div class="quiz-item"><div class="q">18. Qui a accompagné le Prophète ﷺ dans la grotte du mont Thawr pendant l'Hégire ?</div><div class="opts">'Alî · <span class="correct">Abou Bakr</span> · 'Omar</div></div>
+      <div class="quiz-item"><div class="q">19. Combien de compagnons combattaient à la bataille de Badr ?</div><div class="opts">700 · <span class="correct">313</span> · 3000</div></div>
+      <div class="quiz-item"><div class="q">20. Que fit le Prophète ﷺ en entrant à la Mecque après la victoire ?</div><div class="opts">Il se vengea de ses ennemis · <span class="correct">Il pardonna à tous ceux qui l'avaient persécuté</span> · Il quitta la ville aussitôt</div></div>
+
+      <h3 class="sub-title"><span class="n">أ</span>Adab / Akhlâq</h3>
+      <div class="quiz-item"><div class="q">21. Que doit dire un musulman quand il ne peut pas dire de bonne parole ?</div><div class="opts">Mentir un peu · <span class="correct">Se taire</span> · Se fâcher</div></div>
+      <div class="quiz-item"><div class="q">22. D'après le hadith de la fraternité, que fait Allah pour celui qui aide un musulman dans le besoin ?</div><div class="opts">Rien de particulier · <span class="correct">Allah l'aide à son tour</span> · Il l'oublie</div></div>
+      <div class="quiz-item"><div class="q">23. Comment appelle-t-on celui qui répand des propos pour semer la discorde ?</div><div class="opts">Al-Amîn · <span class="correct">Un colporteur (qattât)</span> · Un Sâdiq</div></div>
+      <div class="quiz-item"><div class="q">24. Vrai ou Faux : offrir des cadeaux fait grandir l'amour entre les gens.</div><div class="opts"><span class="correct">Vrai</span> · Faux</div></div>
+      <div class="quiz-item"><div class="q">25. Un des trois signes de l'hypocrite est : « quand on lui confie quelque chose... »</div><div class="opts">« il en prend grand soin » · <span class="correct">« il trahit cette confiance »</span> · « il le partage »</div></div>
+
+      <h3 class="sub-title"><span class="n">﴾</span>Adhkar</h3>
+      <div class="quiz-item"><div class="q">26. Que dit-on juste avant de dormir ?</div><div class="opts">« Bismillah » seul · <span class="correct">« Allâhoumma bismika amoutou wa ahyâ »</span> · « Al-hamdou lillâh »</div></div>
+      <div class="quiz-item"><div class="q">27. Que dit-on au réveil ?</div><div class="opts"><span class="correct">« Al-hamdou lillâhi-lladhî ahyânâ ba'da mâ amâtanâ... »</span> · « Bismillah, tawakkaltou 'ala Allah » · Rien de particulier</div></div>
+      <div class="quiz-item"><div class="q">28. À quel moment dit-on « Bismillâhi awwalahou wa âkhirah » ?</div><div class="opts">En entrant à la maison · <span class="correct">Quand on se souvient, en mangeant, d'avoir oublié le Bismillah</span> · Au réveil</div></div>
+      <div class="quiz-item"><div class="q">29. Que fait-on juste après avoir dit l'invocation en entrant dans la maison ?</div><div class="opts">Rien de particulier · <span class="correct">On salue sa famille</span> · On se lave les mains</div></div>
+      <div class="quiz-item"><div class="q">30. Vrai ou Faux : il existe une invocation précise pour chaque moment de la journée (coucher, réveil, repas, entrée maison).</div><div class="opts"><span class="correct">Vrai</span> · Faux</div></div>
+
+      <div class="source-line" style="margin-top:16px;">Quiz de synthèse construit à partir du contenu vérifié de chaque section du présent livret — toutes les réponses sont sourcées dans la section correspondante ci-dessus.</div>
+    </section>
+
+    <div class="foot-note">
+      <span>Sources : corpus local du projet (piliers.pdf, salat.pdf, attributs_allah_livre.pdf, histoire_saydna_nouh.pdf, histoiremaoulid_bilingue.pdf, assira_anabawiyah.pdf, jeu_completer_hadith.pdf, jeu_41_hadiths.pdf, 14_hadiths_livret_d_activites.pdf, 30_hadiths_ramadan_ar_p1.pdf — nospetitsmusulmans.com), enrichi par les ressources du Drive « التربية الإسلامية » / « السيرة النبوية » (Institut / atelier Elne) et par le corpus hadith-json vérifié via MCP. Les zones signalées « à vérifier » ou « ressource interne » doivent être validées par un enseignant qualifié avant impression officielle.</span>
+      <span>Institut d'Éducation Islamique · Livret clé en main Cycle 1 · v9</span>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<script>
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link[data-target]'));
+  var sections = links.map(function (l) { return document.getElementById(l.dataset.target); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (l) {
+            l.classList.toggle('active', l.dataset.target === entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+</script>
+</body>
+</html>

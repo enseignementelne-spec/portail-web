@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Référentiel Pédagogique — Cycle 3</title>
+<style>
+  :root {
+    --bg: #F3EFE3;
+    --bg-raised: #FBF9F2;
+    --ink: #23211D;
+    --ink-soft: #5B584E;
+    --ink-faint: #8B8778;
+    --accent: #1F5F52;
+    --accent-soft: #DCE7DE;
+    --gold: #A9853C;
+    --rule: #DAD3C0;
+    --status-good: #5E7A4E;
+    --status-good-bg: #E4EBDD;
+    --status-warn: #A9853C;
+    --status-warn-bg: #F1E7CE;
+    --status-bad: #A44A3B;
+    --status-bad-bg: #F1E0DA;
+    --shadow: 0 1px 2px rgba(35,33,29,0.06), 0 8px 24px rgba(35,33,29,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131F1B;
+      --bg-raised: #1B2B25;
+      --ink: #EDE8DC;
+      --ink-soft: #B7B1A0;
+      --ink-faint: #7C8078;
+      --accent: #74C2AA;
+      --accent-soft: #22392F;
+      --gold: #DAB96C;
+      --rule: #2B3A32;
+      --status-good: #93BD7D;
+      --status-good-bg: #24371F;
+      --status-warn: #DAB96C;
+      --status-warn-bg: #3A2F1A;
+      --status-bad: #DE8973;
+      --status-bad-bg: #3B241E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 96px; }
+
+  /* ---------- Header ---------- */
+  .cover { position: relative; padding: 64px 28px 48px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 28px);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+  .cover-inner { max-width: 980px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+  h1.title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: clamp(34px, 5vw, 52px); letter-spacing: -0.01em;
+    text-wrap: balance; margin: 0 0 10px; color: var(--ink);
+  }
+  .title em { color: var(--accent); font-style: normal; }
+  .subtitle { font-size: 18px; color: var(--ink-soft); max-width: 62ch; margin: 0 0 32px; }
+  .meta-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;
+  }
+  .meta-cell { background: var(--bg-raised); padding: 16px 18px; }
+  .meta-cell .k {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); margin-bottom: 6px;
+  }
+  .meta-cell .v { font-size: 15px; color: var(--ink); font-weight: 600; }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 56px 0 0; }
+  .section-head { margin-bottom: 28px; }
+  .section-num { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.1em; }
+  h2.section-title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: 27px; margin: 4px 0 8px; text-wrap: balance;
+  }
+  .section-lede { color: var(--ink-soft); max-width: 68ch; font-size: 15.5px; }
+
+  /* ---------- Philosophy ---------- */
+  .philosophy { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 14px; padding: 28px 32px; box-shadow: var(--shadow); }
+  .philosophy p { margin: 0 0 14px; font-size: 16px; }
+  .philosophy p:last-child { margin-bottom: 0; }
+  .philosophy .lead-word { font-family: Georgia, serif; font-size: 22px; color: var(--accent); }
+
+  /* ---------- Domain legend ---------- */
+  .legend { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
+  .legend-chip { border: 1px solid var(--rule); border-radius: 10px; padding: 14px 14px 16px; background: var(--bg-raised); }
+  .legend-chip .mark {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 15px; margin-bottom: 10px;
+  }
+  .legend-chip .name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .legend-chip .def { font-size: 12.5px; color: var(--ink-soft); line-height: 1.4; }
+
+  /* ---------- Single-year domain rows (Cycle 3 & 4 have one year only) ---------- */
+  .spread { margin-top: 8px; }
+  .spread-row {
+    display: grid; grid-template-columns: 168px 1fr;
+    border: 1px solid var(--rule); border-top: none; background: var(--bg-raised);
+  }
+  .spread-row:first-child { border-top: 1px solid var(--rule); border-radius: 12px 12px 0 0; overflow: hidden; }
+  .spread-row:last-of-type { border-radius: 0 0 12px 12px; overflow: hidden; }
+  .spread-rail {
+    padding: 20px 16px; background: var(--accent-soft); border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .spread-rail .domain-name { font-weight: 700; font-size: 14px; color: var(--accent); }
+  .spread-cell { padding: 20px 22px; }
+  .spread-cell .year-tag {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px;
+  }
+  .spread-cell p { margin: 0 0 12px; font-size: 14.5px; }
+  .resource-tag {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-soft);
+    background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 9px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  .resource-tag::before { content: "\2318"; color: var(--gold); font-family: -apple-system, sans-serif; }
+
+  .header-row { display: grid; grid-template-columns: 168px 1fr; margin-top: 24px; }
+  .header-row .hcell {
+    padding: 0 22px 10px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold);
+  }
+  .header-row .hcell:first-child { padding-left: 16px; }
+
+  /* ---------- Hadith band / note band ---------- */
+  .hadith-band {
+    margin-top: 32px; border-radius: 12px; background: linear-gradient(135deg, var(--accent-soft), var(--bg-raised));
+    border: 1px solid var(--rule); padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  }
+  .hadith-band .glyph { font-family: Georgia, serif; font-size: 34px; color: var(--gold); }
+  .hadith-band h3 { margin: 0 0 6px; font-size: 16px; font-family: Georgia, serif; font-weight: 400; }
+  .hadith-band p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---------- Ancrage quotidien (contexte de vie) ---------- */
+  .context-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+  .context-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+  .context-card .idx { font-family: ui-monospace, monospace; font-size: 11px; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .context-card h4 { font-family: Georgia, serif; font-weight: 400; font-size: 16px; margin: 0 0 10px; }
+  .context-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-soft); }
+  .context-card li { margin-bottom: 6px; }
+
+  /* ---------- Evaluation cards ---------- */
+  .eval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .eval-card { background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 12px; padding: 22px; box-shadow: var(--shadow); }
+  .eval-card .idx { font-family: ui-monospace, monospace; font-size: 11px; color: var(--gold); margin-bottom: 12px; letter-spacing: 0.08em; }
+  .eval-card h4 { font-family: Georgia, serif; font-weight: 400; font-size: 17px; margin: 0 0 8px; }
+  .eval-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  /* ---------- Bibliography ---------- */
+  .biblio-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin-top: 20px; }
+  .biblio-row { background: var(--bg-raised); padding: 16px 20px; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: start; }
+  .biblio-title { font-weight: 700; font-size: 14.5px; }
+  .biblio-source { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .biblio-usage { font-size: 12.5px; color: var(--ink-faint); margin-top: 6px; grid-column: 1 / -1; }
+  .pill { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 999px; white-space: nowrap; height: fit-content; }
+  .pill.good { color: var(--status-good); background: var(--status-good-bg); }
+  .pill.warn { color: var(--status-warn); background: var(--status-warn-bg); }
+  .pill.bad { color: var(--status-bad); background: var(--status-bad-bg); }
+
+  /* ---------- Footer ---------- */
+  .foot-note {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-faint);
+    display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .meta-strip { grid-template-columns: repeat(2, 1fr); }
+    .legend { grid-template-columns: repeat(2, 1fr); }
+    .spread-row, .header-row { grid-template-columns: 1fr; }
+    .spread-rail { border-right: none; border-bottom: 1px solid var(--rule); }
+    .eval-grid, .context-grid { grid-template-columns: 1fr; }
+    .header-row { display: none; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cover-inner, section { animation: rise 0.5s ease both; }
+    section:nth-of-type(2) { animation-delay: 0.05s; }
+    section:nth-of-type(3) { animation-delay: 0.1s; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="eyebrow">Référentiel pédagogique · Éducation islamique</div>
+      <h1 class="title">Cycle 3 — <em>La raison qui s'éveille</em></h1>
+      <p class="subtitle">Palier charnière d'un an destiné aux enfants de 10 à 11 ans : la pratique déjà acquise en Cycle 1-2 commence à s'accompagner d'un « pourquoi », tandis que chaque notion est systématiquement ramenée à un geste concret de la vie quotidienne.</p>
+      <div class="meta-strip">
+        <div class="meta-cell"><div class="k">Public</div><div class="v">10–11 ans</div></div>
+        <div class="meta-cell"><div class="k">Durée</div><div class="v">1 an (palier charnière)</div></div>
+        <div class="meta-cell"><div class="k">Approche</div><div class="v">Raisonnée &amp; ancrée au réel</div></div>
+        <div class="meta-cell"><div class="k">Volume</div><div class="v">25 semaines · 1h/semaine</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Philosophie du cycle</h2>
+      </div>
+      <div class="philosophy">
+        <p><span class="lead-word">L'enfant</span> de 10-11 ans commence à raisonner et à questionner ce qu'il a appris par imitation en Cycle 1-2. Il ne suffit plus de savoir <em>quoi</em> faire : il veut comprendre <em>pourquoi</em>. C'est aussi l'âge où son monde social s'élargit — trajet seul ou en groupe, autonomie dans la cour, premiers rapports plus francs avec les enseignants — ce qui rend chaque notion de foi immédiatement testable dans la vie réelle.</p>
+        <p><strong>Principe directeur du cycle :</strong> ne jamais laisser une notion abstraite (Tawhîd, Qadar, akhlâq) sans l'attacher explicitement à un comportement concret — à la maison, dans la rue, dans le bus, dans la cour de récréation avec les camarades, et face aux enseignants. Voir section 04.</p>
+        <p><strong>Objectif terminal du cycle :</strong> comprendre le sens des piliers pratiqués depuis l'enfance, prier en groupe et jeûner pleinement, situer les grandes batailles fondatrices de la Sîra, et savoir expliquer avec ses propres mots pourquoi on se comporte bien même quand personne ne regarde.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Les 5 domaines de l'apprentissage</h2>
+        <p class="section-lede">Mêmes 5 domaines que les cycles précédents — la continuité de la nomenclature aide l'enfant à se repérer d'une année sur l'autre.</p>
+      </div>
+      <div class="legend">
+        <div class="legend-chip"><div class="mark">ق</div><div class="name">Coran</div><div class="def">Fin du Juz 'Amma, premières règles de tajwîd nommées.</div></div>
+        <div class="legend-chip"><div class="mark">ه</div><div class="name">Aqîda / Îmân</div><div class="def">Tawhîd approfondi, Jour Dernier, premiers repères sur le Qadar.</div></div>
+        <div class="legend-chip"><div class="mark">ف</div><div class="name">Fiqh</div><div class="def">Prière en groupe, jeûne complet accompagné, propreté rituelle.</div></div>
+        <div class="legend-chip"><div class="mark">س</div><div class="name">Sîra / Qisas</div><div class="def">Badr, Uhud, la tranchée, Hudaybiyya.</div></div>
+        <div class="legend-chip"><div class="mark">أ</div><div class="name">Adab / Akhlâq</div><div class="def">Identité, groupe, estime de soi, premiers repères écrans.</div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Progression de l'année unique</h2>
+        <p class="section-lede">Un seul palier de 25 semaines — pas de découpage Année A/B comme en Cycle 1-2 : la matière est plus dense mais reste un cycle de transition, pas un cycle long.</p>
+      </div>
+
+      <div class="header-row">
+        <div class="hcell">Domaine</div>
+        <div class="hcell">Contenu de l'année (10–11 ans)</div>
+      </div>
+
+      <div class="spread">
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Coran</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Cœur de l'année</div>
+            <p>Sourates restantes du Juz 'Amma non encore couvertes (Al-'Alaq entière, Al-Qadr, At-Tîn, Ash-Sharh, Ad-Duhâ...). Première initiation structurée au tajwîd : règles de base nommées (madd, idghâm, ikhfâ simples) plutôt que seulement imitées.</p>
+          </div>
+        </div>
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Aqîda</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Cœur de l'année</div>
+            <p>Tawhîd approfondi — Rubûbiyya (Allah Créateur et Maître) et Ulûhiyya (Allah seul mérite l'adoration) expliqués en mots simples. Le Jour Dernier détaillé au-delà de la simple mention. Premiers repères sur le Qadar (la prédestination expliquée sans fatalisme).</p>
+          </div>
+        </div>
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Fiqh</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Cœur de l'année</div>
+            <p>Prière en groupe (jamâ'a) — pourquoi et comment se ranger, suivre l'imam. Jeûne complet du mois de Ramadân encouragé et accompagné avec bienveillance. Propreté rituelle abordée avec tact selon l'âge et le développement de l'enfant.</p>
+          </div>
+        </div>
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Sîra / Qisas</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Cœur de l'année</div>
+            <p>La bataille de Badr (la foi mise à l'épreuve du nombre), Uhud (la leçon de la discipline), la tranchée / Khandaq (la ruse au service de la défense), le traité de Hudaybiyya (la patience stratégique).</p>
+          </div>
+        </div>
+        <div class="spread-row">
+          <div class="spread-rail"><div class="domain-name">Adab / Akhlâq</div></div>
+          <div class="spread-cell">
+            <div class="year-tag">Cœur de l'année</div>
+            <p>Identité et appartenance à l'aube de la pré-adolescence, comment résister à la pression du groupe, construire une estime de soi saine, premiers repères raisonnés sur les écrans et réseaux (déjà entrevus en Cycle 2, ici approfondis).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hadith-band">
+        <div class="glyph">﴾</div>
+        <div>
+          <h3>Hadith — fil rouge transversal (suite)</h3>
+          <p>Le même principe qu'en Cycle 1-2 : 8 à 10 hadiths courts exploités en activité plutôt que traités en domaine séparé, choisis cette année pour éclairer directement les situations de la section 04 (respect, patience, sincérité au quotidien).</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">04</div>
+        <h2 class="section-title">L'ancrage quotidien — relier foi et geste concret</h2>
+        <p class="section-lede">Exigence transversale à chaque chapitre, quel que soit le domaine : ne jamais laisser une notion flotter dans l'abstrait. Chaque leçon doit se terminer par une mise en situation dans l'un de ces quatre contextes de vie de l'enfant.</p>
+      </div>
+      <div class="context-grid">
+        <div class="context-card">
+          <div class="idx">À la maison</div>
+          <h4>Avec les parents et la fratrie</h4>
+          <ul>
+            <li>Aider sans qu'on le demande deux fois</li>
+            <li>Parler avec douceur à un frère/une sœur énervé(e)</li>
+            <li>Demander la permission avant d'entrer chez les parents</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Rue &amp; transports</div>
+          <h4>Sur le chemin, dans le bus</h4>
+          <ul>
+            <li>Céder sa place à une personne âgée dans le bus</li>
+            <li>Garder les yeux baissés, ne pas fixer les gens</li>
+            <li>Traverser prudemment, respecter les autres passants</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Cour de l'école</div>
+          <h4>Avec les camarades</h4>
+          <ul>
+            <li>Inclure un camarade laissé de côté dans le jeu</li>
+            <li>Ne pas répéter une moquerie même si tout le monde rit</li>
+            <li>S'excuser le premier après une dispute</li>
+          </ul>
+        </div>
+        <div class="context-card">
+          <div class="idx">Avec les enseignants</div>
+          <h4>En classe, hors de la classe</h4>
+          <ul>
+            <li>Écouter sans couper la parole, même en désaccord</li>
+            <li>Dire la vérité sur un devoir non fait plutôt que mentir</li>
+            <li>Remercier et saluer sans qu'on l'exige</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Outils d'évaluation</h2>
+        <p class="section-lede">L'évaluation reste formative, mais introduit un carnet de suivi personnel — l'enfant commence à s'auto-observer, pas seulement à être observé.</p>
+      </div>
+      <div class="eval-grid">
+        <div class="eval-card">
+          <div class="idx">Adab</div>
+          <h4>Le carnet des 4 lieux</h4>
+          <p>Un carnet où l'enfant note chaque semaine une action concrète vécue dans l'un des 4 contextes de la section 04.</p>
+        </div>
+        <div class="eval-card">
+          <div class="idx">Aqîda</div>
+          <h4>Le « pourquoi » en une phrase</h4>
+          <p>Face à une notion vue en classe, l'enfant doit reformuler en une phrase simple pourquoi on y croit ou pourquoi on agit ainsi.</p>
+        </div>
+        <div class="eval-card">
+          <div class="idx">Fiqh</div>
+          <h4>Passeport de la prière en groupe</h4>
+          <p>Un suivi des prières effectuées en jamâ'a (à la mosquée ou en famille), tamponné plutôt que noté.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Bibliographie</h2>
+        <p class="section-lede">Mêmes sources vérifiées que le référentiel Cycle 1, complétées le cas échéant après recoupement.</p>
+      </div>
+      <div class="biblio-list">
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">J'aime ma religion</div>
+            <div class="biblio-source">Éditions Jeunesse Sans Frontières (JSF) — Dr Habib Affes, 7 niveaux</div>
+            <div class="biblio-usage">Référence principale recommandée, niveau adapté à cet âge.</div>
+          </div>
+          <span class="pill good">Vérifié</span>
+        </div>
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">Quranic Tarbiyah</div>
+            <div class="biblio-source">Life With Allah — gratuit, 5 domaines</div>
+            <div class="biblio-usage">Structure proche de ce référentiel, réutilisable pour le tajwîd de base.</div>
+          </div>
+          <span class="pill good">Vérifié</span>
+        </div>
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">Précis de Fiqh Malikite</div>
+            <div class="biblio-source">C. Pabiot</div>
+            <div class="biblio-usage">Référence pour les règles de prière en groupe et de jeûne selon l'école malikite.</div>
+          </div>
+          <span class="pill good">Vérifié</span>
+        </div>
+        <div class="biblio-row">
+          <div>
+            <div class="biblio-title">Yaqeen Curriculum</div>
+            <div class="biblio-source">Yaqeen Institute for Islamic Research</div>
+            <div class="biblio-usage">Toujours inadapté à ce cycle — réservé au Cycle 5 (12-14 ans).</div>
+          </div>
+          <span class="pill bad">Écarté pour ce cycle</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot-note">
+      <span>Référentiel Cycle 3 — brouillon initial, à valider avant la fabrication du manuel élève et du guide enseignant.</span>
+      <span>Institut d'Éducation Islamique · Référentiel Cycle 3 · v1</span>
+    </div>
+  </div>
+
+</body>
+</html>

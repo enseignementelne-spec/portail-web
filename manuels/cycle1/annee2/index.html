@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon livre d'éducation islamique — 2ème année</title>
+<style>
+  :root{
+    --paper:#F6F0DF; --paper-2:#EFE7CF; --card:#FFFFFF; --ink:#2E2A20; --ink-soft:#6B6252;
+    --line:#E2D8BC; --gold:#B3811E; --gold-soft:#E8D49C;
+    --coran:#6E4C9F; --coran-soft:#EFE7F7;
+    --aqida:#24568C; --aqida-soft:#E4EDF6;
+    --fiqh:#2F7A4E; --fiqh-soft:#E4F3E9;
+    --sira:#B3811E; --sira-soft:#F7EFD9;
+    --akhlaq:#C15A22; --akhlaq-soft:#FBE9DE;
+    --prophetes:#1B8080; --prophetes-soft:#DFF3F3;
+    --adhkar:#7A4A2C; --adhkar-soft:#F0E3D6;
+    --radius:18px; --shadow:0 8px 24px rgba(46,38,20,0.08);
+  }
+  :root[data-theme="dark"]{
+    --paper:#1D1811; --paper-2:#241D14; --card:#2A2318; --ink:#EFE7D6; --ink-soft:#B8AD97;
+    --line:#3B3222; --gold:#E3BE63; --gold-soft:#4A3C1E;
+    --coran-soft:#3A3050; --aqida-soft:#233246; --fiqh-soft:#22392B; --sira-soft:#3D3420;
+    --akhlaq-soft:#402719; --prophetes-soft:#1B3535; --adhkar-soft:#3A2C1E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1D1811; --paper-2:#241D14; --card:#2A2318; --ink:#EFE7D6; --ink-soft:#B8AD97;
+      --line:#3B3222; --gold:#E3BE63; --gold-soft:#4A3C1E;
+      --coran-soft:#3A3050; --aqida-soft:#233246; --fiqh-soft:#22392B; --sira-soft:#3D3420;
+      --akhlaq-soft:#402719; --prophetes-soft:#1B3535; --adhkar-soft:#3A2C1E;
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,sans-serif;
+    display:flex; min-height:100vh;
+  }
+  ::selection{background:var(--gold-soft);}
+
+  h1,h2,h3,.display{
+    font-family:"Segoe UI Semibold","Segoe UI",ui-rounded,system-ui,sans-serif;
+    font-weight:800; text-wrap:balance; letter-spacing:-0.01em;
+  }
+  .ar{ font-family:"Traditional Arabic","Scheherazade New","Sakkal Majalla","Segoe UI",serif; direction:rtl; }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    width:280px; flex-shrink:0; background:var(--card); border-right:1px solid var(--line);
+    padding:22px 16px; overflow-y:auto; height:100vh; position:sticky; top:0;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; padding:4px 8px 18px; border-bottom:2px solid var(--gold-soft); margin-bottom:14px;}
+  .brand-mark{ width:38px;height:38px;border-radius:10px;background:linear-gradient(150deg,var(--coran),var(--aqida)); display:flex;align-items:center;justify-content:center; color:#fff; font-size:1.2em; flex-shrink:0;}
+  .brand-text{ font-size:0.95em; font-weight:800; line-height:1.15;}
+  .brand-text small{ display:block; font-weight:600; color:var(--ink-soft); font-size:0.78em; margin-top:2px;}
+  .nav-group{ font-size:0.72em; text-transform:uppercase; color:var(--ink-soft); font-weight:800; letter-spacing:0.08em; margin:16px 6px 6px;}
+  .nav-item{ display:flex; align-items:center; gap:10px; padding:8px 8px; border-radius:10px; text-decoration:none; color:var(--ink); font-weight:600; font-size:0.88em; transition:background .15s;}
+  .nav-item:hover{ background:var(--paper-2); }
+  .nav-item.active{ background:var(--gold-soft); }
+  .nav-dot{ width:22px;height:22px;border-radius:50%; flex-shrink:0; display:flex;align-items:center;justify-content:center; color:#fff;font-weight:800;font-size:0.68em;}
+
+  /* ---------- MAIN ---------- */
+  .main{ flex:1; min-width:0; padding:48px clamp(20px,4vw,64px); }
+  .wrap{ max-width:760px; margin:0 auto; }
+
+  .cover{
+    border-radius:38px; padding:clamp(36px,6vw,64px); text-align:center; color:#fff; margin-bottom:56px;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,255,255,0.22) 0, transparent 42%),
+      radial-gradient(circle at 85% 85%, rgba(255,255,255,0.16) 0, transparent 38%),
+      linear-gradient(135deg, #F6B93B 0%, #F0834D 42%, #3AA6A0 100%);
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+    border:6px solid rgba(255,255,255,0.5);
+  }
+  .cover::after{
+    content:"✨ ⭐ ✨ ☾ ✨ ⭐ ✨"; position:absolute; inset:auto 0 10px 0; text-align:center;
+    font-size:1.1em; opacity:0.55; letter-spacing:0.3em; pointer-events:none;
+  }
+  .cover .eyebrow{ font-size:0.9em; letter-spacing:0.14em; text-transform:uppercase; opacity:0.95; font-weight:800; background:rgba(255,255,255,0.22); display:inline-block; padding:6px 16px; border-radius:99px;}
+  .cover h1{ font-size:clamp(2.1em,5vw,3.2em); margin:16px 0 8px; text-shadow:0 3px 10px rgba(0,0,0,0.15);}
+  .cover .sub{ font-size:1.25em; font-weight:700; opacity:0.96; margin-bottom:28px;}
+  .cover .meta{ display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center;}
+  .pill{ background:rgba(255,255,255,0.24); border:2px solid rgba(255,255,255,0.45); padding:10px 20px; border-radius:99px; font-weight:800; font-size:1em; backdrop-filter:blur(4px);}
+  .cover .year{ margin-top:24px; font-weight:900; font-size:1.25em; color:#FFF3C4;}
+  .cover .authors{ margin-top:8px; font-size:0.9em; font-weight:700; opacity:0.92;}
+  .cover-credits{ margin-top:24px; padding-top:18px; border-top:2px dashed rgba(255,255,255,0.4); font-size:0.88em; opacity:0.95; line-height:1.7; font-weight:600;}
+  .cover-credits .license{ opacity:0.8; font-size:0.94em; font-style:italic; font-weight:500;}
+  .cover-img{ width:100%; max-width:640px; height:auto; border-radius:24px; margin:0 auto 24px; display:block; box-shadow:0 10px 30px rgba(0,0,0,0.25); border:5px solid rgba(255,255,255,0.7); }
+  .cover-note{ margin-top:26px; font-size:0.92em; opacity:0.92; max-width:46ch; margin-left:auto;margin-right:auto; line-height:1.6; font-weight:600;}
+
+  .toc-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px; margin-bottom:56px; box-shadow:var(--shadow);}
+  .toc-card h2{ margin:0 0 12px; font-size:1.1em;}
+  .toc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; }
+  .toc-grid a{ color:var(--ink); text-decoration:none; font-size:0.9em; font-weight:600; padding:4px 0; border-bottom:1px dashed var(--line);}
+  .toc-grid a:hover{ color:var(--gold); }
+  @media (max-width:640px){ .toc-grid{grid-template-columns:1fr;} }
+
+  /* ---------- TUILES DE NAVIGATION (accueil enfant) ---------- */
+  .tile-nav{ display:grid; grid-template-columns:repeat(auto-fill,minmax(135px,1fr)); gap:14px; }
+  .tile{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    text-decoration:none; color:#fff; border-radius:18px; padding:16px 8px; min-height:110px; text-align:center;
+    box-shadow:0 6px 16px rgba(46,38,20,0.16); transition:transform .15s, box-shadow .15s;
+  }
+  .tile:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 10px 22px rgba(46,38,20,0.22); }
+  .tile:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+  .tile .tile-num{ font-size:0.68em; font-weight:800; opacity:0.85; letter-spacing:0.04em; }
+  .tile .tile-ico{ font-size:2.1em; line-height:1; }
+  .tile .tile-lbl{ font-size:0.8em; font-weight:800; line-height:1.25; }
+
+  /* ---------- FRISE CHRONOLOGIQUE SÎRA ---------- */
+  .sira-timeline{ position:relative; display:flex; align-items:flex-start; gap:4px; margin:0 0 26px; padding:18px 12px 6px; background:var(--prophetes-soft); border-radius:14px; overflow-x:auto; }
+  .sira-timeline::before{ content:''; position:absolute; top:27px; left:6%; right:6%; height:2px; background:var(--line); z-index:0; }
+  .sira-timeline .st-item{ flex:1; min-width:76px; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; position:relative; z-index:1; }
+  .sira-timeline .st-dot{ width:16px; height:16px; border-radius:50%; background:var(--card); border:2px solid var(--line); }
+  .sira-timeline .st-age{ font-size:0.68em; font-weight:800; color:var(--ink-soft); }
+  .sira-timeline .st-label{ font-size:0.74em; font-weight:700; color:var(--ink-soft); line-height:1.25; max-width:90px; }
+  .sira-timeline .st-item.active .st-dot{ background:var(--prophetes); border-color:var(--prophetes); box-shadow:0 0 0 4px rgba(27,128,128,0.18); }
+  .sira-timeline .st-item.active .st-age, .sira-timeline .st-item.active .st-label{ color:var(--prophetes); }
+
+  /* ---------- PASSEPORT DES SOURATES ---------- */
+  .passport-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px; margin-bottom:56px; box-shadow:var(--shadow); }
+  .passport-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+  .passport-head h2{ margin:0; font-size:1.1em; }
+  .passport-count{ font-size:0.85em; font-weight:800; color:var(--gold); background:var(--gold-soft); padding:4px 12px; border-radius:99px; }
+  .passport-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .star-btn{
+    display:flex; flex-direction:column; align-items:center; gap:6px; padding:14px 10px; border-radius:14px;
+    border:1.5px solid var(--line); background:var(--paper-2); cursor:pointer; font:inherit; color:var(--ink);
+    transition:transform .12s, background .15s, border-color .15s;
+  }
+  .star-btn:hover{ transform:translateY(-2px); }
+  .star-btn:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .star-btn svg{ width:30px; height:30px; color:var(--line); transition:color .15s, transform .2s; }
+  .star-btn .lbl{ font-size:0.8em; font-weight:700; text-align:center; line-height:1.25; }
+  .star-btn.earned{ background:var(--sira-soft); border-color:var(--gold); }
+  .star-btn.earned svg{ color:var(--gold); transform:scale(1.1); }
+  .passport-hint{ margin:14px 0 0; font-size:0.8em; color:var(--ink-soft); text-align:center; }
+
+  /* ---------- CHAPTER ---------- */
+  .chapter{ margin-bottom:72px; scroll-margin-top:20px; }
+  .ch-hero{
+    background:var(--ch-color); color:#fff; border-radius:20px 20px 0 0; padding:34px 32px;
+    position:relative; overflow:hidden;
+  }
+  .ch-hero .badge{ display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); padding:5px 14px; border-radius:99px; font-weight:800; font-size:0.78em; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;}
+  .ch-hero .num{ font-size:0.85em; opacity:0.85; font-weight:700; display:block; margin-bottom:4px;}
+  .ch-hero h1{ margin:0; font-size:clamp(1.4em,2.6vw,1.9em); }
+  .ch-home{ position:absolute; top:16px; right:16px; display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); color:#fff; text-decoration:none; padding:7px 14px; border-radius:99px; font-weight:700; font-size:0.8em; transition:background .15s; }
+  .ch-home:hover{ background:rgba(255,255,255,0.32); }
+  .ch-body{ background:var(--card); border:1px solid var(--line); border-top:none; border-radius:0 0 20px 20px; padding:30px 32px 34px; box-shadow:var(--shadow);}
+
+  .section{ margin-bottom:26px; }
+  .section:last-child{ margin-bottom:0; }
+  .stitle{ display:flex; align-items:center; gap:9px; font-size:1.05em; font-weight:800; margin:0 0 10px; color:var(--ch-color);}
+  .stitle .ico{ width:26px;height:26px; border-radius:8px; background:var(--ch-color); color:#fff; display:flex;align-items:center;justify-content:center; flex-shrink:0; font-size:0.85em;}
+
+  .box{ border-radius:14px; padding:18px 20px; border:1px solid var(--line); }
+  .box.tinted{ background:var(--ch-soft); border-color:transparent; }
+  .box p, .box li{ margin:0 0 6px; line-height:1.6; font-size:0.96em; }
+  .box ul{ margin:0; padding-left:20px; }
+
+  .lesson-text p{ line-height:1.75; font-size:1em; margin:0 0 14px; }
+  .lesson-text strong{ color:var(--ch-color); }
+  .dropcap:first-letter{ font-family:"Segoe UI Semibold",serif; font-size:2.6em; font-weight:800; float:left; line-height:0.85; padding-right:8px; padding-top:4px; color:var(--ch-color); }
+
+  .verse{
+    background:var(--paper-2); border-left:5px solid var(--ch-color); border-radius:12px;
+    padding:22px 24px; margin:18px 0;
+  }
+  .verse .ar{ font-size:1.7em; text-align:center; line-height:2; margin-bottom:10px; color:var(--ink);}
+  .verse .translit{ text-align:center; font-style:italic; color:var(--ink-soft); font-size:0.92em; margin-bottom:8px;}
+  .verse .fr{ text-align:center; font-weight:700; font-size:1em; margin-bottom:8px;}
+  .verse .ref{ display:block; text-align:right; font-size:0.78em; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:8px; margin-top:8px;}
+  .listen-link{ display:inline-flex; align-items:center; gap:8px; margin-top:12px; padding:8px 16px; border-radius:99px; background:var(--ch-color); color:#fff !important; text-decoration:none; font-weight:800; font-size:0.85em; }
+  .listen-link:hover{ opacity:0.9; }
+  .listen-link .ico{ font-size:1.05em; }
+
+  .illus{
+    display:flex; gap:12px; align-items:flex-start; background:transparent; border:1.5px dashed var(--line);
+    border-radius:12px; padding:14px 16px; margin:16px 0; font-size:0.86em; color:var(--ink-soft);
+  }
+  .illus .ico{ font-size:1.3em; flex-shrink:0; }
+  .illus b{ color:var(--ink); }
+
+  .chapter-img{ width:100%; height:auto; border-radius:16px; margin:16px 0; box-shadow:var(--shadow); display:block; }
+
+  .mini-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:10px;}
+  .mini{ background:var(--card); border:1px solid var(--line); border-left:4px solid var(--ch-color); border-radius:12px; padding:14px 16px; box-shadow:0 3px 10px rgba(46,38,20,0.05);}
+  .mini .t{ font-weight:800; margin-bottom:4px; font-size:0.98em;}
+  .mini .d{ font-size:0.86em; color:var(--ink-soft); margin:0; line-height:1.5;}
+
+  details.exo{ border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-top:8px; background:var(--card);}
+  details.exo + details.exo{ margin-top:10px; }
+  details.exo summary{ cursor:pointer; font-weight:700; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  details.exo summary::-webkit-details-marker{ display:none; }
+  details.exo summary::after{ content:"Voir la réponse"; font-size:0.78em; font-weight:700; color:var(--ch-color); border:1px solid var(--ch-color); border-radius:99px; padding:3px 10px; flex-shrink:0;}
+  details.exo[open] summary::after{ content:"Masquer"; }
+  details.exo .answer{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:0.92em; color:var(--ink-soft);}
+  details.exo .answer strong{ color:var(--fiqh); }
+
+  .vocab-list{ display:grid; gap:8px; }
+  .vocab-list .term{ font-weight:800; color:var(--ch-color); }
+
+  .savais{ background:var(--sira-soft); border:1px solid transparent; border-radius:14px; padding:16px 20px; }
+  .defi{ background:var(--akhlaq-soft); border-radius:14px; padding:16px 20px; }
+  .retenir-box{ background:var(--ch-soft); border-radius:14px; padding:18px 22px; text-align:center; }
+  .retenir-box p{ font-size:1.08em; font-weight:700; font-style:italic; margin:0; }
+
+  footer.book-end{ text-align:center; padding:40px 0 10px; color:var(--ink-soft); font-size:0.85em; }
+
+  @media (max-width:860px){
+    .sidebar{ display:none; }
+    .main{ padding:32px 16px; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    *{ box-shadow:none !important; text-shadow:none !important; backdrop-filter:none !important; }
+    html, body{ background:#fff !important; color:#000 !important; display:block !important; }
+    a{ color:#000 !important; text-decoration:none !important; }
+    .sidebar{ display:none !important; }
+    .main{ padding:0 !important; }
+    .wrap{ max-width:100% !important; }
+
+    .cover{ background:#fff !important; color:#000 !important; border:3px solid #000 !important; border-radius:0 !important; }
+    .cover::before{ display:none !important; }
+    .cover .eyebrow, .cover .authors{ color:#000 !important; }
+    .pill{ background:transparent !important; border:1px solid #000 !important; color:#000 !important; }
+    .cover .year{ color:#000 !important; }
+
+    .toc-card{ border:1px solid #000 !important; box-shadow:none !important; break-inside:avoid; }
+    .toc-grid a{ color:#000 !important; border-bottom:1px dotted #000 !important; }
+    .tile{ background:#fff !important; color:#000 !important; border:1px solid #000 !important; box-shadow:none !important; }
+
+    .chapter{ break-inside:auto; }
+    .ch-hero{ background:#fff !important; color:#000 !important; border:2px solid #000 !important; border-radius:0 !important; break-after:avoid; }
+    .ch-hero .badge{ background:transparent !important; border:1px solid #000 !important; color:#000 !important; }
+    .ch-body{ background:#fff !important; border:1px solid #000 !important; border-top:none !important; box-shadow:none !important; border-radius:0 !important; }
+    .ch-home{ display:none !important; }
+
+    .box{ border:1px solid #000 !important; break-inside:avoid; }
+    .box.tinted{ background:#fff !important; }
+    .stitle{ color:#000 !important; }
+    .stitle .ico{ background:#fff !important; color:#000 !important; border:1px solid #000 !important; }
+
+    .verse{ background:#fff !important; border:1px solid #000 !important; border-left:4px solid #000 !important; break-inside:avoid; }
+    .verse .ref{ color:#000 !important; border-top:1px dashed #000 !important; }
+    .listen-link{ display:none !important; }
+    .verse .translit, .verse .fr{ color:#000 !important; }
+
+    .illus{ border:1px dashed #000 !important; color:#000 !important; }
+    .illus b{ color:#000 !important; }
+
+    .mini-grid{ break-inside:avoid; }
+    .mini{ background:#fff !important; border:1px solid #000 !important; border-left:3px solid #000 !important; box-shadow:none !important; }
+    .mini .d{ color:#000 !important; }
+
+    details.exo{ border:1px solid #000 !important; background:#fff !important; break-inside:avoid; }
+    details.exo summary::after{ display:none !important; }
+    details.exo .answer{ border-top:1px dashed #000 !important; color:#000 !important; }
+    details.exo .answer strong{ color:#000 !important; }
+
+    .savais, .defi, .retenir-box{ background:#fff !important; border:1px dashed #000 !important; break-inside:avoid; }
+    .retenir-box p{ color:#000 !important; }
+
+    .vocab-list .term{ color:#000 !important; }
+
+    .passport-card{ border:1px solid #000 !important; box-shadow:none !important; }
+    .passport-count{ background:transparent !important; border:1px solid #000 !important; color:#000 !important; }
+    .star-btn{ border:1px solid #000 !important; background:#fff !important; }
+    .star-btn svg{ color:#000 !important; }
+    .passport-hint{ display:none !important; }
+
+    .sira-timeline{ background:#fff !important; border:1px solid #000 !important; }
+    .sira-timeline::before{ background:#000 !important; }
+    .sira-timeline .st-dot{ border-color:#000 !important; }
+    .sira-timeline .st-age, .sira-timeline .st-label{ color:#000 !important; }
+    .sira-timeline .st-item.active .st-dot{ background:#000 !important; box-shadow:none !important; }
+
+    footer.book-end{ color:#000 !important; }
+  }
+</style>
+</head>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5c2-1 5-1 8 0v14c-3-1-6-1-8 0V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 5c-2-1-5-1-8 0v14c3-1 6-1 8 0V5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M7 8c-2 0-3 1.5-3 3.5S5 15 7 15c0 2-1 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 8c-2 0-3 1.5-3 3.5S15 15 17 15c0 2-1 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M9 4h4v2.5a1.5 1.5 0 0 0 3 0V4h4v4h-2.5a1.5 1.5 0 0 0 0 3H20v4h-4v-2.5a1.5 1.5 0 0 0-3 0V15H9v-4H6.5a1.5 1.5 0 0 1 0-3H9V4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 17l-5.6 3.1 1.4-6.3-4.8-4.3 6.4-.6L12 3z" fill="currentColor"/></symbol>
+  <symbol id="i-vocab" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 17a2 2 0 0 0 2 2h12" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M8 14a5 5 0 1 1 8 0c-.8.9-1 1.6-1 3H9c0-1.4-.2-2.1-1-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 3v18M6 4h12l-3 4 3 4H6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<body>
+
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">☾</div>
+    <div class="brand-text">Mon livre d'éducation<br>islamique<small>Niveau Initiation · 2ème année</small></div>
+  </div>
+
+  <a href="#cover" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B8860B)">🏠</div>Accueil</a>
+
+  <div class="nav-group">Trimestre 1</div>
+  <a href="#ch1" class="nav-item"><div class="nav-dot" style="background:var(--coran)">1</div>Sourate Al-Kawthar</a>
+  <a href="#ch2" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">2</div>As-Samî', Al-Basîr</a>
+  <a href="#ch3" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">3</div>La Zakât</a>
+  <a href="#ch4" class="nav-item"><div class="nav-dot" style="background:var(--sira)">4</div>Le voyage en Syrie</a>
+  <a href="#ch5" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">5</div>Le partage</a>
+  <a href="#ch6" class="nav-item"><div class="nav-dot" style="background:var(--adhkar)">6</div>Entrer et sortir</a>
+  <a href="#ch7" class="nav-item"><div class="nav-dot" style="background:var(--coran)">7</div>Sourate Al-'Asr</a>
+  <a href="#ch8" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">8</div>Le Jour Dernier</a>
+  <a href="#ch9" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">9</div>Le jeûne (Sawm)</a>
+  <a href="#ch10" class="nav-item"><div class="nav-dot" style="background:var(--sira)">10</div>Mariage avec Khadîja</a>
+
+  <div class="nav-group">Trimestre 2</div>
+  <a href="#ch11" class="nav-item"><div class="nav-dot" style="background:var(--coran)">11</div>Sourate An-Nasr</a>
+  <a href="#ch12" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">12</div>Al-'Alîm, Al-Hakîm</a>
+  <a href="#ch13" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">13</div>La prière en détail</a>
+  <a href="#ch14" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">14</div>Le Hajj</a>
+  <a href="#ch15" class="nav-item"><div class="nav-dot" style="background:var(--sira)">15</div>Première Révélation</a>
+  <a href="#ch16" class="nav-item"><div class="nav-dot" style="background:var(--prophetes)">16</div>Ibrâhîm & Ismâ'îl</a>
+  <a href="#ch17" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">17</div>Respecter les aînés</a>
+  <a href="#ch18" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">18</div>La sincérité (Ikhlâs)</a>
+  <a href="#ch19" class="nav-item"><div class="nav-dot" style="background:var(--adhkar)">19</div>Invocation du voyage</a>
+  <a href="#ch20" class="nav-item"><div class="nav-dot" style="background:var(--coran)">20</div>Al-Kâfirûn & Quraysh</a>
+</nav>
+
+<main class="main">
+<div class="wrap">
+
+  <section id="cover" class="cover">
+    <img class="cover-img" alt="Illustration : petits pieds posés sur la terre, regard et tête levés vers un ciel dégradé de vert et de bleu, symbole d'élévation spirituelle" src="images/img01.png">
+    <div class="eyebrow">Association de la fraternité d'Elne</div>
+    <h1>Mon livre d'éducation islamique</h1>
+    <div class="sub">Niveau Initiation — 2ème année</div>
+    <div class="meta">
+      <span class="pill">👧 Avec Nour, 8 ans</span>
+      <span class="pill">20 chapitres</span>
+      <span class="pill">2 trimestres</span>
+    </div>
+    <div class="year">Année 2026 – 2027</div>
+    <div class="authors">Auteurs : KADDOURI El Hassane et NAJIH Youssef</div>
+    <div class="cover-credits">
+      <div class="license"><svg class="license-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="vertical-align:-3px;margin-right:5px;opacity:0.85"><circle cx="12" cy="12" r="10"/><path d="M15 9.3c0-1.3-1.3-2.3-3-2.3s-3 .9-3 2c0 1 .8 1.5 2.1 1.8l1.8.4c1.3.3 2.1.9 2.1 2 0 1.2-1.3 2.1-3 2.1s-3-.9-3-2.1"/><line x1="9.3" y1="6.2" x2="9.3" y2="17.8"/><line x1="14.7" y1="6.2" x2="14.7" y2="17.8"/><line x1="5" y1="19" x2="19" y2="5"/></svg>Libre de droit — sans usage commercial</div>
+    </div>
+    <p class="cover-note">Nour a maintenant 8 ans et son Passeport des Sourates porte déjà 5 étoiles ! Cette année, tu vas la suivre pour en gagner 5 de plus, découvrir de nouveaux noms d'Allah, de nouvelles pages de la vie du Prophète ﷺ, et grandir encore un peu plus dans ta foi, in shâ Allah.</p>
+  </section>
+
+  <section class="passport-card">
+    <div class="passport-head">
+      <h2>⭐ Mon Passeport des Sourates — Année B</h2>
+      <span class="passport-count" data-passport-count>0 / 5 étoiles</span>
+    </div>
+    <div class="passport-grid" data-passport="cycle2-sourates">
+      <button type="button" class="star-btn" data-star="kawthar"><svg><use href="#i-star"/></svg><span class="lbl">Al-Kawthar</span></button>
+      <button type="button" class="star-btn" data-star="asr"><svg><use href="#i-star"/></svg><span class="lbl">Al-'Asr</span></button>
+      <button type="button" class="star-btn" data-star="nasr"><svg><use href="#i-star"/></svg><span class="lbl">An-Nasr</span></button>
+      <button type="button" class="star-btn" data-star="kafirun"><svg><use href="#i-star"/></svg><span class="lbl">Al-Kâfirûn</span></button>
+      <button type="button" class="star-btn" data-star="quraysh"><svg><use href="#i-star"/></svg><span class="lbl">Quraysh</span></button>
+    </div>
+    <p class="passport-hint">Clique sur une étoile dès que tu sais réciter la sourate par cœur — avec les 5 de l'Année A, tu arriveras à 10 ! Ta progression est sauvegardée sur cet appareil.</p>
+  </section>
+
+  <section class="toc-card">
+    <h2>📖 Sommaire</h2>
+    <div class="toc-grid">
+      <a href="#ch1">1. Sourate Al-Kawthar</a>
+      <a href="#ch11">11. Sourate An-Nasr</a>
+      <a href="#ch2">2. As-Samî', Al-Basîr</a>
+      <a href="#ch12">12. Al-'Alîm, Al-Hakîm</a>
+      <a href="#ch3">3. La Zakât</a>
+      <a href="#ch13">13. La prière en détail</a>
+      <a href="#ch4">4. Le voyage en Syrie, Bahîra</a>
+      <a href="#ch14">14. Le Hajj</a>
+      <a href="#ch5">5. Le partage et la générosité</a>
+      <a href="#ch15">15. La première Révélation</a>
+      <a href="#ch6">6. Entrer et sortir de la maison</a>
+      <a href="#ch16">16. Ibrâhîm & Ismâ'îl</a>
+      <a href="#ch7">7. Sourate Al-'Asr</a>
+      <a href="#ch17">17. Respecter les aînés</a>
+      <a href="#ch8">8. Le Jour Dernier</a>
+      <a href="#ch18">18. La sincérité (Ikhlâs)</a>
+      <a href="#ch9">9. Le jeûne (Sawm)</a>
+      <a href="#ch19">19. Invocation du voyage</a>
+      <a href="#ch10">10. Le mariage avec Khadîja</a>
+      <a href="#ch20">20. Al-Kâfirûn & Quraysh</a>
+    </div>
+  </section>
+
+  <section class="toc-card">
+    <h2>🧭 Choisis ton chapitre</h2>
+    <div class="tile-nav">
+      <a href="#ch1" class="tile" style="background:var(--coran)"><span class="tile-num">Ch. 1</span><span class="tile-ico">📗</span><span class="tile-lbl">Sourate Al-Kawthar</span></a>
+      <a href="#ch2" class="tile" style="background:var(--aqida)"><span class="tile-num">Ch. 2</span><span class="tile-ico">🕌</span><span class="tile-lbl">As-Samî', Al-Basîr</span></a>
+      <a href="#ch3" class="tile" style="background:var(--fiqh)"><span class="tile-num">Ch. 3</span><span class="tile-ico">🕋</span><span class="tile-lbl">La Zakât</span></a>
+      <a href="#ch4" class="tile" style="background:var(--sira)"><span class="tile-num">Ch. 4</span><span class="tile-ico">🐫</span><span class="tile-lbl">Voyage en Syrie, Bahîra</span></a>
+      <a href="#ch5" class="tile" style="background:var(--akhlaq)"><span class="tile-num">Ch. 5</span><span class="tile-ico">💛</span><span class="tile-lbl">Partage et générosité</span></a>
+      <a href="#ch6" class="tile" style="background:var(--adhkar)"><span class="tile-num">Ch. 6</span><span class="tile-ico">🚪</span><span class="tile-lbl">Entrer/sortir de la maison</span></a>
+      <a href="#ch7" class="tile" style="background:var(--coran)"><span class="tile-num">Ch. 7</span><span class="tile-ico">📗</span><span class="tile-lbl">Sourate Al-'Asr</span></a>
+      <a href="#ch8" class="tile" style="background:var(--aqida)"><span class="tile-num">Ch. 8</span><span class="tile-ico">🕌</span><span class="tile-lbl">Le Jour Dernier</span></a>
+      <a href="#ch9" class="tile" style="background:var(--fiqh)"><span class="tile-num">Ch. 9</span><span class="tile-ico">🌙</span><span class="tile-lbl">Le jeûne (Sawm)</span></a>
+      <a href="#ch10" class="tile" style="background:var(--sira)"><span class="tile-num">Ch. 10</span><span class="tile-ico">💍</span><span class="tile-lbl">Mariage avec Khadîja</span></a>
+      <a href="#ch11" class="tile" style="background:var(--coran)"><span class="tile-num">Ch. 11</span><span class="tile-ico">📗</span><span class="tile-lbl">Sourate An-Nasr</span></a>
+      <a href="#ch12" class="tile" style="background:var(--aqida)"><span class="tile-num">Ch. 12</span><span class="tile-ico">🕌</span><span class="tile-lbl">Al-'Alîm, Al-Hakîm</span></a>
+      <a href="#ch13" class="tile" style="background:var(--fiqh)"><span class="tile-num">Ch. 13</span><span class="tile-ico">🕋</span><span class="tile-lbl">La prière en détail</span></a>
+      <a href="#ch14" class="tile" style="background:var(--fiqh)"><span class="tile-num">Ch. 14</span><span class="tile-ico">🕋</span><span class="tile-lbl">Le Hajj</span></a>
+      <a href="#ch15" class="tile" style="background:var(--sira)"><span class="tile-num">Ch. 15</span><span class="tile-ico">🌄</span><span class="tile-lbl">La première Révélation</span></a>
+      <a href="#ch16" class="tile" style="background:var(--prophetes)"><span class="tile-num">Ch. 16</span><span class="tile-ico">🕋</span><span class="tile-lbl">Ibrâhîm & Ismâ'îl</span></a>
+      <a href="#ch17" class="tile" style="background:var(--akhlaq)"><span class="tile-num">Ch. 17</span><span class="tile-ico">💛</span><span class="tile-lbl">Respecter les aînés</span></a>
+      <a href="#ch18" class="tile" style="background:var(--akhlaq)"><span class="tile-num">Ch. 18</span><span class="tile-ico">💛</span><span class="tile-lbl">La sincérité (Ikhlâs)</span></a>
+      <a href="#ch19" class="tile" style="background:var(--adhkar)"><span class="tile-num">Ch. 19</span><span class="tile-ico">🚗</span><span class="tile-lbl">Invocation du voyage</span></a>
+      <a href="#ch20" class="tile" style="background:var(--coran)"><span class="tile-num">Ch. 20</span><span class="tile-ico">📗</span><span class="tile-lbl">Al-Kâfirûn & Quraysh</span></a>
+    </div>
+  </section>
+
+<!-- ============ CH1 ============ -->
+<article id="ch1" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 1 · Coran</span><span class="badge">📗 Le Coran</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>Sourate Al-Kawthar</span><span class="ar">سُورَةُ الْكَوْثَر</span></h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul>
+        <li>Découvrir la 6ème sourate de mon passeport.</li>
+        <li>Comprendre que l'Abondance est un cadeau d'Allah.</li>
+        <li>Savoir comment remercier Allah.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour, qui a maintenant 8 ans, retrouve son passeport de l'Année A : 5 étoiles brillent déjà dessus. « Maîtresse, il reste des pages vides ! » dit-elle. « Oui, dit la maîtresse, cette année on va en remplir 5 de plus. La première s'appelle Al-Kawthar. »</p>
+        <p>La sourate commence ainsi : « Certes, Nous t'avons accordé Al-Kawthar », ce qui signifie qu'Allah a offert au Prophète ﷺ un fleuve du Paradis appelé <strong>Al-Kawthar</strong>. Ses eaux sont plus blanches que le lait et plus douces que le miel ! En réponse à ce cadeau, la sourate demande deux choses : prier et être généreux.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille souriante regarde fièrement son passeport orné de 5 étoiles dorées." src="images/img02.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Sourate Al-Kawthar</div>
+      <div class="verse">
+        <div class="ar">إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ<br>فَصَلِّ لِرَبِّكَ وَانْحَرْ<br>إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ</div>
+        <div class="translit">Innâ a'taynâka-l-kawthar. Fa salli li-Rabbika wa-nhar. Inna shâni'aka huwa-l-abtar.</div>
+        <div class="fr">« Nous t'avons certes, accordé l'Abondance. Accomplis la Ṣalât pour ton Seigneur et sacrifie. Celui qui te hait sera certes, sans postérité. »</div>
+        <span class="ref">Sourate Al-Kawthar (108), versets 1 à 3</span>
+        <a class="listen-link" href="https://youtu.be/tirDJxGu_aY?si=khvAZ-dv_K_jHZZI" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter la récitation</a>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : ma 6ème étoile du passeport</div>
+      <p>Écoute bien la récitation de la sourate avec la classe. Une fois que tu la reconnais, tu pourras tamponner l'étoile <strong>Al-Kawthar</strong>, la première des 5 nouvelles de l'Année B !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Qu'est-ce qu'Al-Kawthar ?</summary><div class="answer"><strong>Réponse :</strong> Un fleuve du Paradis offert par Allah au Prophète ﷺ.</div></details>
+      <details class="exo"><summary>2. Que demande la sourate en réponse à ce cadeau ?</summary><div class="answer"><strong>Réponse :</strong> Prier et être généreux.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Allah a offert à Son Prophète ﷺ le fleuve Al-Kawthar : je Lui réponds par la prière et le partage. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-Kawthar :</span> Un fleuve du Paradis.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH2 ============ -->
+<article id="ch2" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 2 · Aqîda</span><span class="badge">🕌 Croyance</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>As-Samî', Al-Basîr</span><span class="ar">السَّمِيعُ الْبَصِيرُ</span></h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Apprendre deux nouveaux noms d'Allah : As-Samî' et Al-Basîr.</li><li>Comprendre qu'Allah voit et entend tout.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour chuchote un secret à l'oreille de sa sœur, tout bas, dans le noir. « Est-ce qu'Allah m'a entendue quand même ? » demande-t-elle ensuite à sa maîtresse.</p>
+        <p>La maîtresse lui explique qu'Allah est <strong>As-Samî'</strong> (Celui qui entend tout). Il entend le moindre murmure, même le plus silencieux. Allah est aussi <strong>Al-Basîr</strong> (Celui qui voit tout) : Il voit tout, même dans l'obscurité totale.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille chuchotant un secret à l'oreille de sa petite sœur, ambiance douce et intime." src="images/img03.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Ce que dit le Coran</div>
+      <div class="verse"><div class="ar">إِنَّ اللَّهَ سَمِيعٌ بَصِيرٌ</div><div class="translit">Inna-Llâha samî'un basîr</div><div class="fr">« Certes Allah est Audient et Clairvoyant »</div><span class="ref">Sourate Luqmân (31), verset 28 (extrait) — trad. M. Hamidullah</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : le chuchotement</div>
+      <p>Chuchote un mot très doux à l'oreille de ton camarade à l'autre bout de la salle. Même sans micro, il y a Quelqu'un qui entend absolument tout, toujours.</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que signifie « As-Samî' » ?</summary><div class="answer"><strong>Réponse :</strong> Celui qui entend tout.</div></details>
+      <details class="exo"><summary>2. Allah peut-Il nous voir dans le noir ?</summary><div class="answer"><strong>Réponse :</strong> Oui, car Il est Al-Basîr, Celui qui voit tout.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Allah entend tout ce que je dis, et voit tout ce que je fais. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">As-Samî' :</span> Celui qui entend tout.</div><div><span class="term">Al-Basîr :</span> Celui qui voit tout.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH3 ============ -->
+<article id="ch3" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 3 · Fiqh</span><span class="badge">🕋 Pratique</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>La Zakât expliquée aux enfants</span><span class="ar">الزَّكَاةُ</span></h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Comprendre ce qu'est la Zakât, un des 5 piliers de l'Islam.</li><li>Apprendre à partager avec ceux qui en ont besoin.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour compte ses économies dans une tirelire. « Papa, quand je serai grande, je devrai donner une partie de mon argent ? » Son père sourit : « Oui, ma chérie, c'est l'un des 5 piliers, tu te souviens ? La Zakât. »</p>
+        <p>La <strong>Zakât</strong> est l'aumône obligatoire : chaque année, celui qui possède suffisamment de biens en donne une petite part aux personnes qui en ont besoin. C'est un pilier qui purifie les biens.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille et son papa mettant une pièce dans une belle tirelire décorée." src="images/img04.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Ce que dit le Coran</div>
+      <div class="verse"><div class="ar">وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ</div><div class="translit">Wa aqîmu-s-salâta wa âtu-z-zakâh</div><div class="fr">« …accomplissez la prière et acquittez l'aumône. Et tout ce que vous avancez de bien pour vous-mêmes, vous le retrouverez auprès d'Allah… »</div><span class="ref">Sourate Al-Baqara (2), verset 110 (extrait) — trad. M. Hamidullah</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la tirelire de la classe</div>
+      <p>Une tirelire collective est remplie sur plusieurs semaines. En fin de trimestre, la classe choisira ensemble une cause à qui remettre le contenu.</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Qu'est-ce que la Zakât ?</summary><div class="answer"><strong>Réponse :</strong> L'aumône obligatoire.</div></details>
+      <details class="exo"><summary>2. À qui la donne-t-on ?</summary><div class="answer"><strong>Réponse :</strong> Aux personnes qui en ont besoin.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Ce que je possède n'est pas qu'à moi : je partage ce qu'Allah m'a donné. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Az-Zakât :</span> L'aumône obligatoire.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH4 ============ -->
+<article id="ch4" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 4 · Sîra</span><span class="badge">🐫 Histoire</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>Le voyage en Syrie, Bahîra</span><span class="ar">رِحْلَةُ الشَّامِ وَبَحِيرَى</span></h1></div>
+  <div class="ch-body">
+    <div class="sira-timeline" aria-label="Frise de la vie du Prophète ﷺ">
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">570</span><span class="st-label">Naissance</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">~5 ans</span><span class="st-label">Chez Halîma</span></div>
+      <div class="st-item active"><span class="st-dot"></span><span class="st-age">12 ans</span><span class="st-label">Voyage en Syrie</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">25 ans</span><span class="st-label">Mariage avec Khadîja</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">40 ans</span><span class="st-label">Première Révélation</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir le voyage du jeune Prophète ﷺ en Syrie.</li><li>Connaître la rencontre avec le moine Bahîra.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour demande : « Le Prophète ﷺ a-t-il beaucoup voyagé quand il était enfant ? » « Oui, dit la maîtresse, et une fois, un vieux moine l'a reconnu rien qu'en le regardant. »</p>
+        <p>Vers l'âge de 12 ans, Mouhammad ﷺ accompagne son oncle <strong>Abû Tâlib</strong> dans une caravane commerciale vers la <strong>Syrie</strong>. En chemin, un moine nommé <strong>Bahîra</strong> reconnaît en lui des signes annonçant qu'il deviendrait un grand Prophète, et conseille à Abû Tâlib de le protéger.</p>
+      </div>
+      <img class="chapter-img" alt="Une caravane de chameaux avançant dans le désert au coucher du soleil, en Arabie du 7e siècle." src="images/img05.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la carte du voyage</div>
+      <p>Sur la carte de la classe, trace avec un bout de laine le chemin de La Mecque jusqu'en Syrie, et place l'étiquette « Bahîra » à l'endroit de la rencontre.</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Avec qui le jeune Mouhammad ﷺ voyage-t-il ?</summary><div class="answer"><strong>Réponse :</strong> Son oncle Abû Tâlib.</div></details>
+      <details class="exo"><summary>2. Qui reconnaît des signes particuliers chez lui ?</summary><div class="answer"><strong>Réponse :</strong> Le moine Bahîra.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Même enfant, mon Prophète ﷺ portait déjà en lui des signes que d'autres ont su reconnaître. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Syrie :</span> Le pays où se rendait la caravane.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH5 ============ -->
+<article id="ch5" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 5 · Akhlâq</span><span class="badge">💛 Savoir-être</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>Le partage et la générosité</span><span class="ar">الْمُشَارَكَةُ وَالْكَرَمُ</span></h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Comprendre que la générosité ne concerne pas que l'argent.</li><li>Apprendre la valeur du partage (Karam).</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour a deux gâteaux dans son sac. Son voisin de table n'en a pas. Elle hésite un instant… puis lui en tend un. « Pourquoi as-tu fait ça ? » demande la maîtresse. « Parce que ça me rend heureuse », répond Nour.</p>
+        <p>La générosité (<strong>Karam</strong>) est une qualité aimée d'Allah. Elle ne se limite pas à l'argent : partager son goûter, prêter un jouet, donner du temps à quelqu'un — tout cela est une forme de générosité.</p>
+      </div>
+      <div class="verse"><div class="ar">كَرَمٌ</div><div class="translit">Karam</div><div class="fr">La générosité</div></div>
+      <img class="chapter-img" alt="Une petite fille souriante offrant l'un de ses deux gâteaux à son camarade de classe ravi." src="images/img06.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la chaîne du partage</div>
+      <p>Chaque fois que tu partages quelque chose cette semaine, accroche un maillon en papier sur la grande frise de la classe !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Faut-il forcément de l'argent pour être généreux ?</summary><div class="answer"><strong>Réponse :</strong> Non.</div></details>
+      <details class="exo"><summary>2. Cite un exemple de partage à l'école.</summary><div class="answer"><strong>Réponse :</strong> Partager son goûter, prêter un jouet.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Partager ce que j'ai me rend heureux, et rend Allah content de moi. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Karam :</span> La générosité.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH6 ============ -->
+<article id="ch6" class="chapter" style="--ch-color:var(--adhkar); --ch-soft:var(--adhkar-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 6 · Adhkâr</span><span class="badge">🚪 Invocations</span><h1 style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span>Entrer et sortir de la maison</span><span class="ar">دُخُولُ الْبَيْتِ وَالْخُرُوجُ مِنْهُ</span></h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>L'invocation à dire en sortant de la maison.</li><li>Savoir qu'il faut saluer en entrant.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Chaque matin, avant de partir à l'école, Nour a pris l'habitude de dire une petite phrase sur le pas de la porte. « C'est comme un bouclier avant de sortir dans le monde », lui a expliqué sa maman.</p>
+        <p>En sortant de la maison, on dit une invocation qui place sa confiance en Allah. Et en y entrant, on salue les personnes présentes.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille sur le pas de la porte avec son sac à dos, disant son invocation avant de sortir." src="images/img07.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>L'invocation de sortie</div>
+      <div class="verse">
+        <div class="ar">بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ</div>
+        <div class="translit">Bismillâhi tawakkaltu 'ala-Llâhi wa lâ hawla wa lâ quwwata illâ bi-Llâh</div>
+        <div class="fr">« Au nom d'Allah, je place ma confiance en Allah ; il n'y a de force et de puissance qu'en Allah »</div>
+        <span class="ref">Abû Dâwûd, n°5095 & At-Tirmidhî, n°3426 (hasan sahîh)</span>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : le rituel du pas de la porte</div>
+      <p>On colle une belle affiche près de la porte de la classe. Entraîne-toi à dire l'invocation à voix basse en sortant pour la récréation !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que veut dire « tawakkaltu » ?</summary><div class="answer"><strong>Réponse :</strong> Je place ma confiance.</div></details>
+      <details class="exo"><summary>2. Que fait-on en entrant chez soi ?</summary><div class="answer"><strong>Réponse :</strong> On salue.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Avant de sortir, je place ma confiance en Allah. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Tawakkaltu :</span> J'ai placé ma confiance (en Allah).</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH7 ============ -->
+<article id="ch7" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 7 · Coran</span><span class="badge">📗 Le Coran</span><h1>Sourate Al-'Asr</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir la 7ème sourate du passeport.</li><li>Comprendre que le temps est très précieux.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>« Maîtresse, pourquoi le temps passe si vite ? » demande Nour en regardant l'horloge de la classe. « C'est une bonne question, dit la maîtresse. Il existe une sourate entière sur le temps. »</p>
+        <p><strong>Al-'Asr</strong> (« Le Temps ») rappelle que le temps qui passe est précieux. La personne qui réussit est celle qui croit, agit bien, dit la vérité et reste patiente.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille regardant un sablier en bois, pensive, réfléchissant au temps qui passe." src="images/img08.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Sourate Al-'Asr</div>
+      <div class="verse">
+        <div class="ar">وَالْعَصْرِ<br>إِنَّ الْإِنْسَانَ لَفِي خُسْرٍ<br>إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ</div>
+        <div class="translit">Wa-l-'asr. Inna-l-insâna lafî khusr. Illa-lladhîna âmanû wa 'amilu-s-sâlihâti wa tawâsaw bi-l-haqqi wa tawâsaw bi-s-sabr.</div>
+        <div class="fr">« Par le Temps ! L'homme est certes, en perdition, sauf ceux qui croient et accomplissent les bonnes œuvres, s'enjoignent mutuellement la vérité et s'enjoignent mutuellement l'endurance. »</div>
+        <span class="ref">Sourate Al-'Asr (103), versets 1 à 3 — trad. M. Hamidullah</span>
+        <a class="listen-link" href="https://www.youtube.com/playlist?list=PLnOXGZJNQdmYNKGCa-uM4qPWCcWIUpkvT" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter (Cheikh Al-Husary — Juz 'Amma)</a>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : ma 7ème étoile du passeport</div>
+      <p>Un petit sablier passe de main en main : cite vite une bonne action que tu pourrais faire aujourd'hui avant que le sable ne s'écoule !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. De quoi parle la sourate Al-'Asr ?</summary><div class="answer"><strong>Réponse :</strong> Du temps.</div></details>
+      <details class="exo"><summary>2. Que doit-on se recommander mutuellement ?</summary><div class="answer"><strong>Réponse :</strong> La vérité et la patience.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Le temps passe : je veux le remplir de bonnes actions. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-'Asr :</span> Le Temps.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH8 ============ -->
+<article id="ch8" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 8 · Aqîda</span><span class="badge">🕌 Croyance</span><h1>Le Jour Dernier</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Comprendre ce qu'est le Jour Dernier, un pilier de la foi.</li><li>Savoir qu'Allah n'oublie aucune bonne action.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour se souvient de l'Année A : le Jour Dernier faisait partie des 6 piliers de la foi. « Mais c'est quoi exactement, ce jour ? » demande-t-elle.</p>
+        <p>Le <strong>Jour Dernier</strong> est le jour où Allah jugera chaque personne selon ses actions. C'est un jour de justice parfaite : rien n'est oublié, même une toute petite bonne action !</p>
+      </div>
+      <div class="verse"><div class="ar">الْيَوْمُ الْآخِرُ</div><div class="translit">Al-Yawm al-Âkhir</div><div class="fr">Le Jour Dernier</div></div>
+      <img class="chapter-img" alt="Une belle balance dorée et lumineuse, symbole de la justice divine, entourée d'étincelles." src="images/img09.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la balance des actions</div>
+      <p>Avec une balance en carton, plaçons nos étiquettes « bonnes actions ». Découvrons ensemble que chaque petite action a un poids important !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que se passe-t-il le Jour Dernier ?</summary><div class="answer"><strong>Réponse :</strong> Allah juge chacun selon ses actions.</div></details>
+      <details class="exo"><summary>2. Une petite bonne action peut-elle être oubliée ?</summary><div class="answer"><strong>Réponse :</strong> Non, rien n'est oublié.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Allah voit et garde en mémoire tout ce que je fais, même les petites choses. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-Yawm al-Âkhir :</span> Le Jour Dernier.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH9 ============ -->
+<article id="ch9" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 9 · Fiqh</span><span class="badge">🌙 Pratique</span><h1>Le jeûne (Sawm)</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Comprendre ce qu'est le jeûne du mois de Ramadan.</li><li>Apprendre les leçons de patience et d'empathie.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour a vu ses parents ne rien manger ni boire toute une journée pendant le Ramadan. « Vous n'avez pas faim ? » leur a-t-elle demandé, impressionnée.</p>
+        <p>Le <strong>Sawm</strong> (jeûne) consiste à ne rien manger ni boire du lever au coucher du soleil, pendant le mois de <strong>Ramadan</strong>. Il apprend la patience, la maîtrise de soi et à penser à ceux qui ont faim. En tant qu'enfant, tu peux t'entraîner en douceur, par exemple pendant une demi-journée.</p>
+      </div>
+      <img class="chapter-img" alt="Une belle table de Ftour avec des dattes et du lait ; une famille réunie et souriante au coucher du soleil." src="images/img10.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Ce que dit le Coran</div>
+      <div class="verse">
+        <div class="ar">يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِنْ قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ</div>
+        <div class="translit">Yâ ayyuha-lladhîna âmanû kutiba 'alaykumu-s-siyâmu kamâ kutiba 'ala-lladhîna min qablikum la'allakum tattaqûn</div>
+        <div class="fr">« Ô les croyants ! On vous a prescrit le jeûne comme on l'a prescrit à ceux d'avant vous, ainsi atteindrez-vous la piété. »</div>
+        <span class="ref">Sourate Al-Baqara (2), verset 183 — trad. M. Hamidullah</span>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : le calendrier du jeûne</div>
+      <p>Fabriquons un calendrier de Ramadan avec une case spéciale pour noter une bonne action offerte à quelqu'un qui a faim !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Pendant quel mois jeûne-t-on ?</summary><div class="answer"><strong>Réponse :</strong> Ramadan.</div></details>
+      <details class="exo"><summary>2. Du lever à quel moment dure le jeûne ?</summary><div class="answer"><strong>Réponse :</strong> Du lever au coucher du soleil.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Le jeûne m'apprend la patience et à penser à ceux qui ont moins que moi. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">As-Siyâm (Sawm) :</span> Le jeûne.</div><div><span class="term">Ramadân :</span> Le mois du jeûne.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH10 ============ -->
+<article id="ch10" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 10 · Sîra</span><span class="badge">💍 Histoire</span><h1>Le mariage avec Khadîja</h1></div>
+  <div class="ch-body">
+    <div class="sira-timeline" aria-label="Frise de la vie du Prophète ﷺ">
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">570</span><span class="st-label">Naissance</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">~5 ans</span><span class="st-label">Chez Halîma</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">12 ans</span><span class="st-label">Voyage en Syrie</span></div>
+      <div class="st-item active"><span class="st-dot"></span><span class="st-age">25 ans</span><span class="st-label">Mariage avec Khadîja</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">40 ans</span><span class="st-label">Première Révélation</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir l'histoire du mariage du Prophète ﷺ.</li><li>Comprendre que l'honnêteté attire la confiance.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour se souvient : « Al-Amîn », le digne de confiance — c'est le surnom qu'on avait donné au Prophète ﷺ enfant. « Est-ce que d'autres personnes lui ont fait confiance plus tard ? » demande-t-elle.</p>
+        <p>Devenu jeune homme, Mouhammad ﷺ gère les affaires commerciales d'une riche marchande, <strong>Khadîja</strong>. Il le fait avec tant d'honnêteté qu'elle décide de l'épouser. Khadîja sera un grand soutien toute sa vie, et la première à croire en lui lorsqu'il deviendra Prophète.</p>
+      </div>
+      <div class="verse"><div class="ar">خَدِيجَةُ</div><div class="translit">Khadîja</div><div class="fr">Khadîja, la première épouse du Prophète ﷺ</div></div>
+      <img class="chapter-img" alt="Une caravane de chameaux chargée de marchandises précieuses arrivant devant une demeure de la Mecque." src="images/img11.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : les qualités de confiance</div>
+      <p>Écris sur des étiquettes les qualités qui donnent envie de faire confiance à quelqu'un (honnêteté, tenir sa parole…).</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Comment s'appelle la marchande qui l'emploie ?</summary><div class="answer"><strong>Réponse :</strong> Khadîja.</div></details>
+      <details class="exo"><summary>2. Pourquoi décide-t-elle de l'épouser ?</summary><div class="answer"><strong>Réponse :</strong> Pour son honnêteté et sa droiture.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« La confiance se gagne par l'honnêteté, jour après jour. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Khadîja :</span> La première épouse du Prophète ﷺ.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH11 ============ -->
+<article id="ch11" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 11 · Coran</span><span class="badge">📗 Le Coran</span><h1>Sourate An-Nasr</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir la 8ème sourate de mon passeport.</li><li>Apprendre à remercier Allah et rester humble quand on gagne.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>« Maîtresse, est-ce qu'Allah aide toujours les croyants à réussir ? » demande Nour. « Il y a une sourate entière qui parle de la victoire, et de ce qu'il faut faire après », répond la maîtresse.</p>
+        <p><strong>An-Nasr</strong> (« Le Secours ») annonce l'arrivée du secours d'Allah et la victoire. Elle demande alors de glorifier Allah, de Le louer, et de Lui demander pardon — même après une grande réussite, on doit rester humble.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille heureuse après un exercice réussi, regardant le ciel avec gratitude." src="images/img12.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Sourate An-Nasr</div>
+      <div class="verse">
+        <div class="ar">إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ<br>وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا<br>فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ إِنَّهُ كَانَ تَوَّابًا</div>
+        <div class="translit">Idhâ jâ'a nasru-Llâhi wa-l-fath. Wa ra'ayta-n-nâsa yadkhulûna fî dîni-Llâhi afwâjâ. Fa sabbih bi-hamdi Rabbika wa-staghfirh, innahu kâna tawwâbâ.</div>
+        <div class="fr">« Lorsque vient le secours d'Allah ainsi que la victoire, et que tu vois les gens entrer en foule dans la religion d'Allah, alors, par la louange, célèbre la gloire de ton Seigneur et implore Son pardon. Car c'est Lui le grand Accueillant au repentir. »</div>
+        <span class="ref">Sourate An-Nasr (110), versets 1 à 3 — trad. M. Hamidullah</span>
+        <a class="listen-link" href="https://youtu.be/ba1674_6Yqk?si=gYBF38wvnT_9r6oq" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter la récitation</a>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : ma 8ème étoile du passeport</div>
+      <p>Discutons tous ensemble : « Comment rester humble quand on a réussi quelque chose ? » Puis ajoute ta nouvelle étoile !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. De quoi parle la sourate An-Nasr ?</summary><div class="answer"><strong>Réponse :</strong> Du secours d'Allah et de la victoire.</div></details>
+      <details class="exo"><summary>2. Que doit-on faire après une grande réussite ?</summary><div class="answer"><strong>Réponse :</strong> Glorifier Allah et Lui demander pardon.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Même quand je réussis, je reste humble et je remercie Allah. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">An-Nasr :</span> Le Secours.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH12 ============ -->
+<article id="ch12" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 12 · Aqîda</span><span class="badge">🕌 Croyance</span><h1>Al-'Alîm, Al-Hakîm</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir deux nouveaux attributs grandioses d'Allah.</li><li>Comprendre la Sagesse d'Allah dans toute chose.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour pose une question à laquelle personne ne sait répondre : « Pourquoi le ciel est-il bleu et pas vert ? » « Il y a Quelqu'un qui connaît la réponse à toutes les questions », lui dit sa maîtresse en souriant.</p>
+        <p>Allah est <strong>Al-'Alîm</strong> (Celui qui sait tout) : Il connaît chaque chose, visible et cachée. Allah est aussi <strong>Al-Hakîm</strong> (Le Sage) : tout ce qu'Il fait a une sagesse, même quand on ne la comprend pas tout de suite.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille posant une question, avec un grand point d'interrogation lumineux au-dessus de sa tête." src="images/img13.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Ce que dit le Coran</div>
+      <div class="verse"><div class="ar">إِنَّ رَبَّكَ حَكِيمٌ عَلِيمٌ</div><div class="translit">Inna Rabbaka hakîmun 'alîm</div><div class="fr">« Ton Seigneur est Sage et Omniscient »</div><span class="ref">Sourate Al-An'âm (6), verset 83 (extrait) — trad. M. Hamidullah</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la boîte à questions</div>
+      <p>Écris une question difficile sur un papier et mets-la dans la boîte. Seul Allah possède toutes les réponses de l'Univers !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que signifie « Al-'Alîm » ?</summary><div class="answer"><strong>Réponse :</strong> Celui qui sait tout.</div></details>
+      <details class="exo"><summary>2. Est-ce grave de ne pas comprendre tout de suite la sagesse d'Allah ?</summary><div class="answer"><strong>Réponse :</strong> Non, on peut Lui faire totalement confiance.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Allah sait tout, et tout ce qu'Il fait a une sagesse. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-'Alîm :</span> Celui qui sait tout.</div><div><span class="term">Al-Hakîm :</span> Le Sage.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH13 ============ -->
+<article id="ch13" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 13 · Fiqh</span><span class="badge">🕋 Pratique</span><h1>La prière en détail</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Apprendre comment se compose une prière.</li><li>Comprendre ce qu'est une « Rak'a ».</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour a déjà appris les gestes de la prière l'an dernier : Qiyâm, Rukû', Sujûd, Julûs, Taslîm. « Mais combien de fois on les répète ? » demande-t-elle cette fois.</p>
+        <p>Chaque prière (Salât) est composée d'un nombre précis de <strong>rak'a</strong> (unités de prière), qui varie selon le moment de la journée. Une rak'a enchaîne Qiyâm, Rukû', Sujûd (deux fois) et Julûs.</p>
+      </div>
+      <div class="verse"><div class="ar">رَكْعَةٌ</div><div class="translit">Rak'a</div><div class="fr">Unité de prière</div></div>
+      <img class="chapter-img" alt="Une horloge illustrée montrant différents moments de la journée, avec une petite fille priant à côté." src="images/img14.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : compter ses rak'a</div>
+      <p>Jouons avec un jeu de plateau : avance d'une case à chaque rak'a mimée. Arrête-toi à la fin de la prière du moment tirée au sort !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Comment appelle-t-on une unité de prière ?</summary><div class="answer"><strong>Réponse :</strong> Une rak'a.</div></details>
+      <details class="exo"><summary>2. Le nombre de rak'a est-il le même à chaque prière ?</summary><div class="answer"><strong>Réponse :</strong> Non, il varie selon la prière de la journée.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Chaque prière a son nombre de rak'a : je les compte et je me concentre. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Rak'a :</span> Unité de prière.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH14 ============ -->
+<article id="ch14" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 14 · Fiqh</span><span class="badge">🕋 Pratique</span><h1>Le Hajj</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir le grand pèlerinage.</li><li>Savoir ce que représente la Ka'ba.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour a vu une photo de milliers de personnes habillées en blanc, tournant toutes autour d'un grand cube noir. « C'est quoi cet endroit ? » demande-t-elle, impressionnée.</p>
+        <p>Le <strong>Hajj</strong> est le pèlerinage à <strong>La Mecque</strong>, obligatoire une fois dans la vie pour celui qui en a les moyens. Les pèlerins tournent 7 fois autour de la <strong>Ka'ba</strong> (le <strong>Tawâf</strong>), habillés simplement, tous égaux devant Allah.</p>
+      </div>
+      <img class="chapter-img" alt="La majestueuse Ka'ba de nuit, entourée d'une foule de pèlerins vêtus de blanc marchant en cercle." src="images/img15.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Ce que dit le Coran</div>
+      <div class="verse"><div class="ar">وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا</div><div class="translit">Wa lillâhi 'ala-n-nâsi hijju-l-bayti mani-statâ'a ilayhi sabîlâ</div><div class="fr">« …et c'est un devoir envers Allah, pour les gens qui en ont les moyens, d'aller faire le pèlerinage de la Maison »</div><span class="ref">Sourate Âli 'Imrân (3), verset 97 (extrait) — trad. M. Hamidullah</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la maquette de la Ka'ba</div>
+      <p>Construisons ensemble une maquette en carton noir de la Ka'ba. Puis mimez le Tawâf en tournant sept fois autour !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Où se rend-on pour le Hajj ?</summary><div class="answer"><strong>Réponse :</strong> À La Mecque, autour de la Ka'ba.</div></details>
+      <details class="exo"><summary>2. Combien de fois tourne-t-on autour de la Ka'ba ?</summary><div class="answer"><strong>Réponse :</strong> 7 fois (le Tawâf).</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Au Hajj, tous les croyants sont égaux devant Allah. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-Hajj :</span> Le pèlerinage à La Mecque.</div><div><span class="term">At-Tawâf :</span> Les 7 tours autour de la Ka'ba.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH15 ============ -->
+<article id="ch15" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 15 · Sîra</span><span class="badge">🌄 Histoire</span><h1>La première Révélation</h1></div>
+  <div class="ch-body">
+    <div class="sira-timeline" aria-label="Frise de la vie du Prophète ﷺ">
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">570</span><span class="st-label">Naissance</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">~5 ans</span><span class="st-label">Chez Halîma</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">12 ans</span><span class="st-label">Voyage en Syrie</span></div>
+      <div class="st-item"><span class="st-dot"></span><span class="st-age">25 ans</span><span class="st-label">Mariage avec Khadîja</span></div>
+      <div class="st-item active"><span class="st-dot"></span><span class="st-age">40 ans</span><span class="st-label">Première Révélation</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul>
+        <li>Découvrir le jour où le Prophète ﷺ a reçu la Révélation de l'ange Jibrîl.</li>
+        <li>Apprendre le premier mot du Coran descendu du ciel.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour demande : « Comment le Coran est-il arrivé jusqu'à nous, la toute première fois ? » La maîtresse s'assoit et raconte, calmement, le tout premier jour.</p>
+        <p>À l'âge de 40 ans, pendant le mois de Ramadan, Mouhammad ﷺ aimait aller dans une grotte appelée <strong>Hirâ'</strong> pour adorer Allah en silence. Une nuit, l'ange <strong>Jibrîl</strong> lui apparaît et lui dit <strong>« Iqra' »</strong> (« Lis »). Le Prophète ﷺ répond : « Je ne sais pas lire. » Jibrîl récite alors les tout premiers mots du Coran.</p>
+      </div>
+      <div class="verse">
+        <div class="ar">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+        <div class="translit">Iqra' bismi Rabbika-lladhî khalaq</div>
+        <div class="fr">« Lis, au nom de ton Seigneur qui a créé »</div>
+        <span class="ref">Sourate Al-'Alaq (96), verset 1 — trad. M. Hamidullah</span>
+        <a class="listen-link" href="https://www.youtube.com/playlist?list=PLnOXGZJNQdmYNKGCa-uM4qPWCcWIUpkvT" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter (Cheikh Al-Husary — Juz 'Amma)</a>
+      </div>
+      <p>Bouleversé, il rentre chez lui. Son épouse Khadîja le réconforte en lui disant : « N'aie crainte, Allah ne t'infligera jamais d'affront, car tu es bon envers tes proches et tu aides les faibles. » Elle l'emmène ensuite voir Waraqa ibn Nawfal, qui reconnaît en Jibrîl l'ange envoyé aux prophètes d'autrefois.</p>
+      <img class="chapter-img" alt="La montagne de Hira éclairée par une douce lumière céleste de nuit, avec le mot « Iqra' » rayonnant." src="images/img16.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : le premier mot</div>
+      <p>Sur une belle carte, calligraphie le mot « Iqra' ». Garde-la comme rappel que le Coran a commencé par une invitation à lire et apprendre !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Comment s'appelle la grotte ?</summary><div class="answer"><strong>Réponse :</strong> La grotte de Hirâ'.</div></details>
+      <details class="exo"><summary>2. Quel est le premier mot révélé par l'ange Jibrîl ?</summary><div class="answer"><strong>Réponse :</strong> « Iqra' » (Lis).</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Le Coran a commencé par un seul mot : "Lis." »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Hirâ' :</span> La grotte de la première Révélation.</div><div><span class="term">Iqra' :</span> Lis.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH16 ============ -->
+<article id="ch16" class="chapter" style="--ch-color:var(--prophetes); --ch-soft:var(--prophetes-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 16 · Prophètes</span><span class="badge">🕋 Récit</span><h1>Ibrâhîm & Ismâ'îl</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Savoir qui a construit la Ka'ba.</li><li>Comprendre que l'on ne doit adorer qu'Allah seul.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour se souvient de la maquette de la Ka'ba construite en classe. « Mais qui l'a construite, la toute première fois ? » demande-t-elle.</p>
+        <p>Le prophète <strong>Ibrâhîm</strong> ('alayhi as-salâm) a refusé d'adorer des idoles pour n'adorer qu'Allah Seul. Sur l'ordre d'Allah, Ibrâhîm et son fils <strong>Ismâ'îl</strong> élèvent les fondations de la <strong>Ka'ba</strong> à La Mecque.</p>
+      </div>
+      <div class="verse">
+        <div class="ar">وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ رَبَّنَا تَقَبَّلْ مِنَّا</div>
+        <div class="translit">Wa idh yarfa'u Ibrâhîmu-l-qawâ'ida mina-l-bayti wa Ismâ'îl, Rabbanâ taqabbal minnâ</div>
+        <div class="fr">« Et quand Abraham et Ismaël élevaient les assises de la Maison : "Ô notre Seigneur ! Accepte ceci de notre part ! Car c'est Toi l'Audient, l'Omniscient." »</div>
+        <span class="ref">Sourate Al-Baqara (2), verset 127 — trad. M. Hamidullah</span>
+      </div>
+      <img class="chapter-img" alt="Deux silhouettes construisant la Ka'ba, posant les pierres avec dévotion sous le soleil du désert." src="images/img17.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : les bâtisseurs</div>
+      <p>En binômes, empilez des cubes en carton pour « construire » votre Ka'ba miniature, en répétant « Rabbanâ taqabbal minnâ » à la pose de chaque cube !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Qui construit la Ka'ba avec son fils ?</summary><div class="answer"><strong>Réponse :</strong> Le prophète Ibrâhîm.</div></details>
+      <details class="exo"><summary>2. Comment s'appelle son fils ?</summary><div class="answer"><strong>Réponse :</strong> Ismâ'îl.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Comme Ibrâhîm, je n'adore qu'Allah seul, et je bâtis ma foi sur cette certitude. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Ibrâhîm :</span> Le prophète Abraham.</div><div><span class="term">Ismâ'îl :</span> Le prophète Ismaël.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH17 ============ -->
+<article id="ch17" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 17 · Akhlâq</span><span class="badge">💛 Savoir-être</span><h1>Respecter les aînés</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Apprendre le respect envers les plus grands.</li><li>Connaître les bons gestes du quotidien.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Un grand-père entre dans la classe. Sans qu'on le lui dise, Nour se lève et lui propose sa chaise. « Comme c'est gentil ! » dit-il, touché.</p>
+        <p>Respecter ses enseignants et les personnes plus âgées est très important en Islam : on les écoute, on ne leur coupe pas la parole, on les aide, et on leur laisse la priorité.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille souriante offrant sa chaise à une personne âgée qui entre dans la pièce." src="images/img18.png">
+    </div>
+
+    <div class="section savais">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-bulb"/></svg></span>Le savais-tu ?</div>
+      <p>Le Prophète ﷺ a dit : « Ne fait pas partie des nôtres celui qui n'est pas miséricordieux envers nos plus jeunes et ne respecte pas le droit de nos aînés. » (Abû Dâwûd, n°4943)</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : le petit geste du jour</div>
+      <p>Choisis un geste de respect à offrir dans la semaine (céder sa place, aider à porter un sac) et raconte-le à la classe la semaine suivante !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Cite un geste de respect envers un aîné.</summary><div class="answer"><strong>Réponse :</strong> Céder sa place, écouter, aider.</div></details>
+      <details class="exo"><summary>2. Doit-on couper la parole d'un enseignant ?</summary><div class="answer"><strong>Réponse :</strong> Non.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Je respecte ceux qui m'enseignent et ceux qui sont plus âgés que moi. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Adab :</span> Le bon comportement.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH18 ============ -->
+<article id="ch18" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 18 · Akhlâq</span><span class="badge">💛 Savoir-être</span><h1>La sincérité (Ikhlâs)</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Comprendre que l'intention cachée est la plus importante.</li><li>Savoir faire de bonnes actions seulement pour Allah.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour range sa chambre sans que personne ne le lui demande. « Pourquoi tu ne l'as pas dit à maman ? » demande son frère. « Je l'ai fait pour Allah, pas pour qu'on me félicite », répond-elle.</p>
+        <p>L'<strong>Ikhlâs</strong> (sincérité) signifie faire une bonne action pour plaire à Allah, et non pour être vu. C'est l'intention du cœur qui donne sa vraie valeur à une action.</p>
+      </div>
+      <img class="chapter-img" alt="Une petite fille seule dans sa chambre, rangeant joyeusement ses jouets, contente de sa bonne action secrète." src="images/img19.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>Un hadith célèbre</div>
+      <div class="verse"><div class="ar">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ</div><div class="translit">Innama-l-a'mâlu bi-n-niyyât</div><div class="fr">« Les actions ne valent que par les intentions »</div><span class="ref">Sahîh al-Bukhârî, hadith n°1</span></div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la bonne action secrète</div>
+      <p>Fais une bonne action sans le dire à personne dans la semaine. En classe, on discutera de ce que cela change de la garder secrète !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que signifie « Ikhlâs » ?</summary><div class="answer"><strong>Réponse :</strong> La sincérité de l'intention.</div></details>
+      <details class="exo"><summary>2. Pour qui doit-on faire une bonne action ?</summary><div class="answer"><strong>Réponse :</strong> Pour Allah, pas pour être vu.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Je fais le bien pour Allah, même quand personne ne me regarde. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-Ikhlâs :</span> La sincérité de l'intention.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH19 ============ -->
+<article id="ch19" class="chapter" style="--ch-color:var(--adhkar); --ch-soft:var(--adhkar-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 19 · Adhkâr</span><span class="badge">🚗 Invocations</span><h1>Invocation du voyage</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Mémoriser la belle phrase à dire avant de voyager.</li><li>Remercier Allah pour les moyens de transport.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour part en voyage. Avant de démarrer la voiture, son père récite une petite invocation. « On la dit à chaque fois qu'on part loin », lui explique-t-il.</p>
+        <p>Avant un voyage, on place sa confiance en Allah et on Lui demande de rendre le chemin facile et le retour sûr.</p>
+      </div>
+      <img class="chapter-img" alt="Une famille souriante dans la voiture ; le père prononce l'invocation avant de démarrer." src="images/img20.png">
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-quote"/></svg></span>L'invocation du voyage</div>
+      <div class="verse">
+        <div class="ar">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنْقَلِبُونَ</div>
+        <div class="translit">Subhâna-lladhî sakhkhara lanâ hâdhâ wa mâ kunnâ lahu muqrinîn, wa innâ ilâ Rabbinâ lamunqalibûn</div>
+        <div class="fr">« Gloire à Celui qui nous a soumis tout cela alors que nous n'étions pas capables de les dominer. Et c'est vers notre Seigneur que nous retournerons. »</div>
+        <span class="ref">Sourate Az-Zukhruf (43), versets 13-14 — trad. M. Hamidullah</span>
+      </div>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : la carte du voyageur</div>
+      <p>Fabrique une petite carte plastifiée à garder dans le sac ou la voiture, avec l'invocation du voyage écrite dessus !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Quand récite-t-on cette invocation ?</summary><div class="answer"><strong>Réponse :</strong> Avant de partir en voyage.</div></details>
+      <details class="exo"><summary>2. Que demande-t-on à Allah ?</summary><div class="answer"><strong>Réponse :</strong> Un chemin facile et un retour sûr.</div></details>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Avant de voyager, je remercie Allah et je Lui confie mon chemin. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Safar :</span> Le voyage.</div></div>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ CH20 ============ -->
+<article id="ch20" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+  <div class="ch-hero"><span class="num">Chapitre 20 · Coran</span><span class="badge">📗 Le Coran</span><h1>Al-Kâfirûn & Quraysh</h1></div>
+  <div class="ch-body">
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-target"/></svg></span>Ce que je vais apprendre</div>
+      <ul><li>Découvrir mes 9ème et 10ème étoiles du passeport.</li><li>Apprendre la tolérance et la gratitude.</li></ul>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-book"/></svg></span>L'histoire de Nour</div>
+      <div class="lesson-text dropcap">
+        <p>Nour ouvre son passeport : il ne reste que 2 pages vides. « Les 2 dernières sourates de l'année ! » s'exclame-t-elle, très fière.</p>
+        <p><strong>Al-Kâfirûn</strong> (« Les Mécréants ») enseigne que chacun est libre de croire ou non. Le musulman n'adore qu'Allah, sans forcer personne. <strong>Quraysh</strong> rappelle que la tribu de La Mecque voyageait en sécurité grâce à Allah ; elle devait donc L'adorer pour les avoir nourris et protégés.</p>
+      </div>
+
+      <div class="verse">
+        <div class="ar">قُلْ يَا أَيُّهَا الْكَافِرُونَ<br>لَا أَعْبُدُ مَا تَعْبُدُونَ<br>وَلَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ<br>وَلَا أَنَا عَابِدٌ مَا عَبَدْتُمْ<br>وَلَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ<br>لَكُمْ دِينُكُمْ وَلِيَ دِينِ</div>
+        <div class="translit">Qul yâ ayyuha-l-kâfirûn. Lâ a'budu mâ ta'budûn. Wa lâ antum 'âbidûna mâ a'bud. Wa lâ ana 'âbidun mâ 'abadtum. Wa lâ antum 'âbidûna mâ a'bud. Lakum dînukum wa liya dîn.</div>
+        <div class="fr">« Dis : "Ô vous les infidèles ! Je n'adore pas ce que vous adorez. Et vous n'êtes pas adorateurs de ce que j'adore. Je ne suis pas adorateur de ce que vous adorez. Et vous n'êtes pas adorateurs de ce que j'adore. À vous votre religion, et à moi ma religion." »</div>
+        <span class="ref">Sourate Al-Kâfirûn (109), versets 1 à 6 — trad. M. Hamidullah</span>
+        <a class="listen-link" href="https://youtu.be/sQPQYetwGEc?si=ujOdcNcVbNW42l" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter la récitation</a>
+      </div>
+
+      <div class="verse">
+        <div class="ar">لِإِيلَافِ قُرَيْشٍ<br>إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ<br>فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ<br>الَّذِي أَطْعَمَهُمْ مِنْ جُوعٍ وَآمَنَهُمْ مِنْ خَوْفٍ</div>
+        <div class="translit">Li-îlâfi Quraysh. Îlâfihim rihlata-sh-shitâ'i wa-s-sayf. Fal-ya'budû Rabba hâdha-l-bayt. Alladhî at'amahum min jû'in wa âmanahum min khawf.</div>
+        <div class="fr">« À cause de l'habitude des Quraysh, de leur habitude [concernant] les voyages d'hiver et d'été, qu'ils adorent donc le Seigneur de cette Maison [la Ka'ba], qui les a nourris contre la faim et rassurés de la crainte. »</div>
+        <span class="ref">Sourate Quraysh (106), versets 1 à 4 — trad. M. Hamidullah</span>
+        <a class="listen-link" href="https://youtu.be/c932gp43_rw?si=s_dO35U8u6EQPSnc" target="_blank" rel="noopener"><span class="ico">▶️</span> Écouter la récitation</a>
+      </div>
+
+      <img class="chapter-img" alt="Une petite fille tamponnant joyeusement la dernière étoile dorée de son passeport des sourates." src="images/img21.png">
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-puzzle"/></svg></span>Activité : mes 2 dernières étoiles</div>
+      <p>Grande cérémonie en classe ! Récitons ensemble et tamponne tes 2 dernières étoiles pour compléter ton passeport à 10 sourates !</p>
+    </div>
+
+    <div class="section">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-pencil"/></svg></span>Je m'exerce</div>
+      <details class="exo"><summary>1. Que veut dire « Al-Kâfirûn » ?</summary><div class="answer"><strong>Réponse :</strong> Les mécréants.</div></details>
+      <details class="exo"><summary>2. Combien de sourates compte le passeport à la fin de l'Année B ?</summary><div class="answer"><strong>Réponse :</strong> 10 sourates.</div></details>
+    </div>
+
+    <div class="section defi">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-flag"/></svg></span>Défi de fin d'année</div>
+      <p>Récite de mémoire, devant ta famille, les 10 sourates de ton passeport, dans l'ordre où tu les as apprises depuis l'Année A. Demande à un adulte de te signer un joli diplôme !</p>
+    </div>
+
+    <div class="section retenir-box">
+      <div class="stitle" style="justify-content:center"><span class="ico"><svg width="15" height="15"><use href="#i-star"/></svg></span>À retenir</div>
+      <p>« Je n'adore qu'Allah, librement, et je Le remercie pour tout ce qu'Il me donne. »</p>
+    </div>
+
+    <div class="section box tinted">
+      <div class="stitle"><span class="ico"><svg width="15" height="15"><use href="#i-vocab"/></svg></span>Vocabulaire</div>
+      <div class="vocab-list"><div><span class="term">Al-Kâfirûn :</span> Les mécréants.</div><div><span class="term">Quraysh :</span> La tribu de La Mecque.</div></div>
+    </div>
+
+  </div>
+</article>
+
+  <section class="toc-card" style="margin-bottom:24px;">
+    <h2 style="font-size:0.95em;">📚 Sources des traductions</h2>
+    <p style="font-size:0.85em; color:var(--ink-soft); line-height:1.6; margin:0;">
+      Les versets coraniques cités dans ce manuel sont traduits d'après <strong>Muhammad Hamidullah</strong>, traduction de référence en langue française (consultée via quran.com).
+      Les hadiths sont vérifiés d'après les recueils authentiques : <strong>Sahîh al-Bukhârî</strong>, <strong>Sahîh Muslim</strong>, <strong>Sunan Abî Dâwûd</strong> et <strong>Jâmi' at-Tirmidhî</strong> (numérotation sunnah.com).
+    </p>
+  </section>
+
+  <footer class="book-end">☾ Association de la fraternité d'Elne — Mon livre d'éducation islamique, Niveau Initiation 2ème année · 2026-2027 ☾</footer>
+
+</div>
+</main>
+
+<script>
+  (function(){
+    const KEY = 'passeport-cycle2-sourates-v1';
+    const grid = document.querySelector('[data-passport="cycle2-sourates"]');
+    if (!grid) return;
+    const countEl = document.querySelector('[data-passport-count]');
+    const buttons = Array.from(grid.querySelectorAll('.star-btn'));
+    let earned = [];
+    try { earned = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e) { earned = []; }
+
+    function render(){
+      buttons.forEach(btn => {
+        const id = btn.dataset.star;
+        const on = earned.includes(id);
+        btn.classList.toggle('earned', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      if (countEl) countEl.textContent = earned.length + ' / ' + buttons.length + ' étoiles';
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.star;
+        earned = earned.includes(id) ? earned.filter(x => x !== id) : earned.concat(id);
+        try { localStorage.setItem(KEY, JSON.stringify(earned)); } catch(e) {}
+        render();
+      });
+    });
+
+    render();
+  })();
+
+  const items = document.querySelectorAll('.nav-item');
+  const chapters = document.querySelectorAll('.chapter, #cover');
+  const map = new Map();
+  items.forEach(it => map.set(it.getAttribute('href').slice(1), it));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        items.forEach(i => i.classList.remove('active'));
+        const link = map.get(en.target.id);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  chapters.forEach(c => obs.observe(c));
+</script>
+</body>
+</html>

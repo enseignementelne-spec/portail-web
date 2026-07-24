@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide de l'enseignant — Cycle 1</title>
+<style>
+  :root {
+    --bg: #F3EFE3;
+    --bg-raised: #FBF9F2;
+    --ink: #23211D;
+    --ink-soft: #5B584E;
+    --ink-faint: #8B8778;
+    --accent: #1F5F52;
+    --accent-soft: #DCE7DE;
+    --gold: #A9853C;
+    --gold-soft: #F1E7CE;
+    --rule: #DAD3C0;
+    --shadow: 0 1px 2px rgba(35,33,29,0.06), 0 8px 24px rgba(35,33,29,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131F1B; --bg-raised: #1B2B25; --ink: #EDE8DC; --ink-soft: #B7B1A0; --ink-faint: #7C8078;
+      --accent: #74C2AA; --accent-soft: #22392F; --gold: #DAB96C; --gold-soft: #3A2F1A; --rule: #2B3A32;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px 96px; }
+
+  .cover { position: relative; padding: 64px 28px 44px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.5;
+    background-image: repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 28px),
+                       repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 28px);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+  .cover-inner { max-width: 1040px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+  h1.title {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    font-weight: 400; font-size: clamp(32px, 4.6vw, 48px); letter-spacing: -0.01em; text-wrap: balance;
+    margin: 0 0 10px;
+  }
+  .title em { color: var(--accent); font-style: normal; }
+  .subtitle { font-size: 17px; color: var(--ink-soft); max-width: 66ch; margin: 0; }
+
+  section { padding: 52px 0 0; }
+  .domain-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+  .domain-mark {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 18px; flex-shrink: 0;
+  }
+  h2.domain-title { font-family: Georgia, "Iowan Old Style", serif; font-weight: 400; font-size: 25px; margin: 0; }
+  .domain-sub { color: var(--ink-faint); font-size: 13.5px; margin-left: auto; text-align: right; }
+
+  .fiche-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .fiche {
+    background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 14px;
+    padding: 22px 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px;
+  }
+  .fiche-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+  .year-pill {
+    font-family: ui-monospace, monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  h3.activity-title { font-family: Georgia, serif; font-weight: 400; font-size: 18.5px; margin: 0; text-wrap: balance; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 11px; color: var(--ink-soft); background: var(--bg); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 3px 8px; font-family: ui-monospace, monospace;
+  }
+  ol.steps { margin: 0; padding-left: 20px; font-size: 14px; }
+  ol.steps li { margin-bottom: 7px; }
+  ol.steps li:last-child { margin-bottom: 0; }
+  .interact-box {
+    background: var(--gold-soft); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 12px 14px; font-size: 13.5px; margin-top: auto;
+  }
+  .interact-label {
+    font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--gold); display: block; margin-bottom: 5px; font-weight: 700;
+  }
+
+  .tournoi {
+    margin-top: 20px; border-radius: 14px; border: 1px solid var(--rule);
+    background: linear-gradient(135deg, var(--accent-soft), var(--bg-raised)); padding: 24px 28px;
+  }
+  .tournoi h3 { font-family: Georgia, serif; font-weight: 400; font-size: 19px; margin: 0 0 8px; }
+  .tournoi p { margin: 0 0 12px; font-size: 14.5px; color: var(--ink-soft); }
+  .points-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .point-tag {
+    font-family: ui-monospace, monospace; font-size: 12px; background: var(--bg-raised); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 6px 12px;
+  }
+  .point-tag b { color: var(--gold); }
+
+  .foot-note {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--ink-faint); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .fiche-pair { grid-template-columns: 1fr; }
+    .domain-head { flex-wrap: wrap; }
+    .domain-sub { margin-left: 0; text-align: left; }
+  }
+
+  /* ---------- Sidebar navigation ---------- */
+  .app { display: flex; align-items: flex-start; }
+  .sidebar {
+    position: sticky; top: 0; align-self: flex-start; height: 100vh;
+    width: 216px; flex: 0 0 auto; overflow-y: auto;
+    background: var(--bg-raised); border-right: 1px solid var(--rule);
+    padding: 22px 14px; display: flex; flex-direction: column; gap: 2px; z-index: 30;
+  }
+  .sidebar-label {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint);
+    padding: 0 10px; margin-bottom: 10px;
+  }
+  .home-btn {
+    display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--bg-raised);
+    background: var(--accent); border-radius: 9px; padding: 10px 12px; font-size: 13.5px; font-weight: 700;
+    margin-bottom: 14px; transition: opacity 0.15s ease;
+  }
+  .home-btn:hover { opacity: 0.88; }
+  .home-btn .glyph { font-family: Georgia, serif; font-size: 15px; line-height: 1; }
+  .nav-divider { height: 1px; background: var(--rule); margin: 4px 10px 12px; }
+  .nav-link {
+    display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-soft);
+    padding: 9px 10px; border-radius: 8px; font-size: 13.5px; border-left: 2px solid transparent;
+  }
+  .nav-link .mark {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 12px; flex-shrink: 0;
+  }
+  .nav-link:hover { background: var(--accent-soft); color: var(--ink); }
+  .nav-link.active { color: var(--ink); font-weight: 700; border-left-color: var(--gold); background: var(--accent-soft); }
+  .home-btn:focus-visible, .nav-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .main { flex: 1; min-width: 0; }
+
+  @media (max-width: 900px) {
+    .app { flex-direction: column; }
+    .sidebar {
+      position: sticky; top: 0; height: auto; width: auto; flex-direction: row;
+      overflow-x: auto; overflow-y: hidden; border-right: none; border-bottom: 1px solid var(--rule);
+      padding: 10px 12px; gap: 6px; align-items: center;
+    }
+    .sidebar-label { display: none; }
+    .nav-divider { display: none; }
+    .home-btn { margin-bottom: 0; flex-shrink: 0; }
+    .nav-link { flex-shrink: 0; white-space: nowrap; border-left: none; border-bottom: 2px solid transparent; }
+    .nav-link.active { border-left-color: transparent; border-bottom-color: var(--gold); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" aria-label="Navigation du guide">
+    <a class="home-btn" href="#top"><span class="glyph">⌂</span>Accueil</a>
+    <div class="sidebar-label">Domaines</div>
+    <a class="nav-link" href="#coran" data-target="coran"><span class="mark">ق</span>Coran</a>
+    <a class="nav-link" href="#aqida" data-target="aqida"><span class="mark">ه</span>Aqîda / Îmân</a>
+    <a class="nav-link" href="#fiqh" data-target="fiqh"><span class="mark">ف</span>Fiqh</a>
+    <a class="nav-link" href="#sira" data-target="sira"><span class="mark">س</span>Sîra / Qisas</a>
+    <a class="nav-link" href="#adab" data-target="adab"><span class="mark">أ</span>Adab / Akhlâq</a>
+    <a class="nav-link" href="#hadith" data-target="hadith"><span class="mark">﴾</span>Hadith</a>
+  </nav>
+
+  <div class="main">
+
+  <div class="cover" id="top">
+    <div class="cover-inner">
+      <div class="eyebrow">Guide de l'enseignant · Cycle 1 (6–8 ans)</div>
+      <h1 class="title">Faire vivre le <em>référentiel</em> en classe</h1>
+      <p class="subtitle">Pour chaque rubrique du référentiel, une fiche d'activité prête à l'emploi : matériel, déroulé, et une dose d'interactivité systématique — jeu, mise en scène, geste ou défi collectif.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- CORAN -->
+    <section id="coran">
+      <div class="domain-head">
+        <div class="domain-mark">ق</div>
+        <h2 class="domain-title">Coran</h2>
+        <div class="domain-sub">Sens par le récit → mémorisation guidée</div>
+      </div>
+      <div class="fiche-pair">
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Le tapis des mots</h3>
+            <span class="year-pill">Année A</span>
+          </div>
+          <div class="chips"><span class="chip">15 min</span><span class="chip">cartes-mots</span><span class="chip">tapis au sol</span></div>
+          <ol class="steps">
+            <li>Raconter le sens d'Al-Fâtiha avec des mots simples (une lettre à Allah, une demande d'aide).</li>
+            <li>Distribuer de grandes cartes portant chaque segment de verset, mélangées.</li>
+            <li>Les enfants, assis en cercle sur un tapis, doivent remettre les cartes dans l'ordre en écoutant la récitation du maître.</li>
+            <li>Récitation collective une fois l'ordre validé, main sur le cœur.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Jeu de tri collaboratif au sol — chaque enfant ne détient qu'un morceau du verset, la réussite est collective.</div>
+        </div>
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">La chaîne de récitation</h3>
+            <span class="year-pill">Année B</span>
+          </div>
+          <div class="chips"><span class="chip">10 min</span><span class="chip">passeport des sourates</span><span class="chip">en cercle</span></div>
+          <ol class="steps">
+            <li>Les enfants forment un cercle ; le maître désigne un point de départ.</li>
+            <li>Chaque enfant récite un seul verset de la sourate du jour (Al-Quraysh, An-Nasr...), puis désigne son voisin.</li>
+            <li>En cas d'hésitation, le groupe entier souffle le mot manquant à voix basse — jamais d'élimination, seulement de l'entraide.</li>
+            <li>Tampon "étoile" au passeport pour tout enfant ayant tenu son tour deux fois de suite.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Jeu à effet domino en cercle — la mémorisation individuelle devient un exploit de groupe.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AQIDA -->
+    <section id="aqida">
+      <div class="domain-head">
+        <div class="domain-mark">ه</div>
+        <h2 class="domain-title">Aqîda / Îmân</h2>
+        <div class="domain-sub">Allah Créateur → les 6 piliers de la foi</div>
+      </div>
+      <div class="fiche-pair">
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">La chasse au trésor de la création</h3>
+            <span class="year-pill">Année A</span>
+          </div>
+          <div class="chips"><span class="chip">25 min</span><span class="chip">cour/classe</span><span class="chip">panier</span></div>
+          <ol class="steps">
+            <li>Cacher ou disperser des objets naturels (feuille, caillou, coquillage, plume).</li>
+            <li>Les enfants partent en petits groupes les récolter dans un panier.</li>
+            <li>Retour en cercle : chaque objet trouvé déclenche la question « Qui a créé cela ? » — réponse en chœur « Allah ! ».</li>
+            <li>Coloriage libre de l'objet préféré trouvé pendant la chasse.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Chasse au trésor en petits groupes + question-réponse rituelle en chœur.</div>
+        </div>
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Prophète et Livre</h3>
+            <span class="year-pill">Année B</span>
+          </div>
+          <div class="chips"><span class="chip">15 min</span><span class="chip">cartes à associer</span><span class="chip">binômes</span></div>
+          <ol class="steps">
+            <li>Distribuer un jeu de cartes mêlant noms de prophètes (Moussa, Issa, Mouhammad) et livres révélés (Torah, Évangile, Coran).</li>
+            <li>En binômes, associer chaque prophète à son livre en un temps limité (sablier).</li>
+            <li>Correction collective : le binôme qui présente une paire explique en une phrase à quoi sert ce livre.</li>
+            <li>Clôture par le "Vrai ou Faux" gestuel sur les anges et le jour dernier (mains levées / bras croisés).</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Jeu d'association chronométré en binômes, suivi d'un vote gestuel collectif.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIQH -->
+    <section id="fiqh">
+      <div class="domain-head">
+        <div class="domain-mark">ف</div>
+        <h2 class="domain-title">Fiqh</h2>
+        <div class="domain-sub">5 piliers, propreté → Wudû' et Salât</div>
+      </div>
+      <div class="fiche-pair">
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">La mosquée à 5 piliers</h3>
+            <span class="year-pill">Année A</span>
+          </div>
+          <div class="chips"><span class="chip">30 min</span><span class="chip">carton, gobelets</span><span class="chip">atelier manuel</span></div>
+          <ol class="steps">
+            <li>Construire en petits groupes une maquette de mosquée avec 5 piliers (gobelets ou rouleaux en carton).</li>
+            <li>Chaque pilier reçoit une étiquette dictée par le maître (chahâda, prière, zakât, jeûne, pèlerinage).</li>
+            <li>À tour de rôle, un enfant retire un pilier et doit citer son nom de mémoire pour le "reposer".</li>
+            <li>Atelier pratique de lavage des mains, avec verbalisation à voix haute de chaque geste.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Manipulation physique de la maquette — retirer/reposer un pilier fait office de test de mémoire.</div>
+        </div>
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Jacques a dit... les ablutions</h3>
+            <span class="year-pill">Année B</span>
+          </div>
+          <div class="chips"><span class="chip">15 min</span><span class="chip">tapis à empreintes</span><span class="chip">debout</span></div>
+          <ol class="steps">
+            <li>Le maître énonce chaque étape du Wudû' dans le désordre volontaire une fois sur deux.</li>
+            <li>Les enfants ne miment le geste que si l'étape est correcte dans la séquence réelle — sinon ils restent immobiles.</li>
+            <li>Variante Salât : sur le tapis à empreintes, mimer Rukû' et Sujûd au signal, en nommant la position.</li>
+            <li>Course en équipes pour ordonner la frise chronologique du Wudû' le plus vite possible.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Jeu de type "Jacques a dit" détournant l'attention pour ancrer le bon ordre des gestes.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIRA -->
+    <section id="sira">
+      <div class="domain-head">
+        <div class="domain-mark">س</div>
+        <h2 class="domain-title">Sîra / Qisas</h2>
+        <div class="domain-sub">Naissance du Prophète, Nouh → Al-Amîn, second récit</div>
+      </div>
+      <div class="fiche-pair">
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Théâtre de l'année de l'Éléphant</h3>
+            <span class="year-pill">Année A</span>
+          </div>
+          <div class="chips"><span class="chip">25 min</span><span class="chip">marionnettes</span><span class="chip">rôles distribués</span></div>
+          <ol class="steps">
+            <li>Distribuer des rôles/marionnettes simples : Abraha, l'éléphant, les oiseaux, la Ka'ba.</li>
+            <li>Rejouer la scène où l'éléphant refuse d'avancer, avec bruitages faits par les enfants spectateurs.</li>
+            <li>Pour Nouh : atelier "construis ton arche" en pâte à modeler, en discutant "qui embarquerais-tu ?".</li>
+            <li>Clore par la question : pourquoi cette année s'appelle-t-elle "l'année de l'Éléphant" ?</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Saynète avec rôles et bruitages en direct, puis atelier de construction manuelle.</div>
+        </div>
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Le marché de la confiance</h3>
+            <span class="year-pill">Année B</span>
+          </div>
+          <div class="chips"><span class="chip">20 min</span><span class="chip">jeu de rôle</span><span class="chip">objets factices</span></div>
+          <ol class="steps">
+            <li>Installer un faux étal ; un enfant "commerçant" confie un objet à un autre pour un service.</li>
+            <li>Le groupe observe si l'objet est rendu intact et à l'heure dite — discussion sur Al-Amîn (le digne de confiance).</li>
+            <li>Le maître raconte ensuite le second récit prophétique (Younous ou Ibrahim) au sens introductif.</li>
+            <li>Débat court : quelle qualité du Prophète retrouve-t-on dans cette histoire ?</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Mise en situation de confiance jouée en direct avant d'être reliée au concept religieux.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADAB -->
+    <section id="adab">
+      <div class="domain-head">
+        <div class="domain-mark">أ</div>
+        <h2 class="domain-title">Adab / Akhlâq</h2>
+        <div class="domain-sub">Formules rituelles, respect → invocations, vérité</div>
+      </div>
+      <div class="fiche-pair">
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Le collier des formules</h3>
+            <span class="year-pill">Année A</span>
+          </div>
+          <div class="chips"><span class="chip">toute la semaine</span><span class="chip">perles/gommettes</span><span class="chip">fil</span></div>
+          <ol class="steps">
+            <li>Chaque enfant reçoit un fil vide en début de semaine.</li>
+            <li>Une perle est ajoutée chaque fois qu'il/elle utilise spontanément Bismillah ou Alhamdulillah au bon moment.</li>
+            <li>Le vendredi, comptage collectif des perles et récit d'un moment où la formule a été utilisée.</li>
+            <li>Le collier repart à la maison comme trace visible de la semaine.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Renforcement positif filé sur la semaine — l'enfant devient acteur de son propre suivi.</div>
+        </div>
+        <div class="fiche">
+          <div class="fiche-top">
+            <h3 class="activity-title">Vérité ou piège ?</h3>
+            <span class="year-pill">Année B</span>
+          </div>
+          <div class="chips"><span class="chip">15 min</span><span class="chip">cartes-doa</span><span class="chip">mise en scène</span></div>
+          <ol class="steps">
+            <li>Le maître raconte de courtes scènes ("Yassine casse un jouet et dit que c'est son frère") ; les enfants votent vrai/piège.</li>
+            <li>Discussion : que dirait un musulman sincère (Sidq) dans cette situation ?</li>
+            <li>Atelier de placement des cartes-doa (réveil, repas, toilettes, salutation) aux bons endroits d'une maison miniature ou d'une affiche.</li>
+            <li>Chaque enfant repart avec une carte-doa à coller chez lui à l'endroit correspondant.</li>
+          </ol>
+          <div class="interact-box"><span class="interact-label">Interaction</span>Jeu de vote sur des dilemmes moraux racontés, suivi d'un placement concret à ramener à la maison.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HADITH TRANSVERSAL -->
+    <section id="hadith">
+      <div class="domain-head">
+        <div class="domain-mark">﴾</div>
+        <h2 class="domain-title">Hadith — fil rouge</h2>
+        <div class="domain-sub">Transversal aux deux années</div>
+      </div>
+      <div class="tournoi">
+        <h3>Le tournoi des hadiths</h3>
+        <p>Reprend le barème du jeu de cartes existant : chaque équipe tire un hadith caché et doit le compléter ou en expliquer le sens pour marquer les points affichés sur la carte. Les hadiths les plus courts rapportent moins, les plus longs davantage — ce qui pousse naturellement les enfants vers les formulations les plus riches au fil des séances.</p>
+        <div class="points-row">
+          <span class="point-tag"><b>2 pts</b> — compléter un hadith très court</span>
+          <span class="point-tag"><b>4 pts</b> — expliquer le sens en une phrase</span>
+          <span class="point-tag"><b>8 pts</b> — réciter le hadith en entier sans aide</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="foot-note">
+      <span>Chaque fiche est volontairement courte : à adapter selon la taille du groupe et le temps réellement disponible.</span>
+      <span>Institut d'Éducation Islamique · Guide enseignant Cycle 1 · v1</span>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<script>
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link[data-target]'));
+  var sections = links.map(function (l) { return document.getElementById(l.dataset.target); }).filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (l) {
+            l.classList.toggle('active', l.dataset.target === entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+</script>
+</body>
+</html>
