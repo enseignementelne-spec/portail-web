@@ -69,6 +69,32 @@ header.hero .badge {
   font-size: 0.9rem;
 }
 
+.pillars-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pillar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  color: var(--vert-fonce);
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: transform 0.15s ease;
+}
+
+.pillar-link:hover { transform: translateY(-3px); }
+
+.pillar-icon { font-size: 1.3rem; }
+
 /* Sections */
 section.section {
   padding: 56px 0;
