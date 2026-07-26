@@ -316,3 +316,185 @@ footer a { text-decoration: underline; }
   header.hero { padding: 48px 0 56px; }
   section.section { padding: 40px 0; }
 }
+
+/* CTA inscription (bandeau accueil) */
+.cta-inscription {
+  background: var(--vert-fonce);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+  color: #fff;
+  margin-top: 40px;
+}
+
+.cta-inscription h2 { color: #fff; margin: 0 0 8px; }
+.cta-inscription p { opacity: 0.9; margin: 0 0 18px; }
+
+.cta-inscription .btn-primary {
+  background: var(--or);
+  color: var(--texte);
+  font-size: 1rem;
+  padding: 12px 26px;
+}
+
+.cta-inscription .btn-primary:hover { box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+
+/* Formulaire d'inscription */
+.form-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-intro {
+  color: var(--texte-clair);
+  margin-bottom: 28px;
+}
+
+.form-inscription fieldset {
+  background: var(--carte);
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--ombre);
+  padding: 24px;
+  margin: 0 0 22px;
+}
+
+.form-inscription legend {
+  font-weight: 700;
+  color: var(--vert-fonce);
+  padding: 0 6px;
+  font-size: 1.05rem;
+}
+
+.form-inscription label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--texte);
+  margin-bottom: 16px;
+}
+
+.form-inscription label:last-child { margin-bottom: 0; }
+
+.parcours-info {
+  margin: 0 0 18px;
+  padding-left: 20px;
+  color: var(--texte);
+  font-weight: 500;
+}
+
+.parcours-info li { margin-bottom: 6px; }
+
+.form-inscription input[type="text"],
+.form-inscription input[type="date"],
+.form-inscription input[type="tel"],
+.form-inscription input[type="email"],
+.form-inscription select,
+.form-inscription textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 10px 12px;
+  border: 1.5px solid var(--vert-clair);
+  border-radius: 10px;
+  background: var(--fond);
+  color: var(--texte);
+}
+
+.form-inscription input:focus,
+.form-inscription select:focus,
+.form-inscription textarea:focus {
+  outline: none;
+  border-color: var(--vert);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) {
+  .form-row-2 { grid-template-columns: 1fr; }
+}
+
+.form-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 10px !important;
+  font-weight: 500 !important;
+}
+
+.check input { width: 18px; height: 18px; flex-shrink: 0; }
+
+.check-precise {
+  flex-wrap: wrap;
+}
+
+.check-precise span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check-precise input[type="text"] {
+  flex: 1 1 100%;
+  margin-left: 28px;
+  width: calc(100% - 28px);
+}
+
+.consent {
+  background: var(--or-clair);
+  padding: 16px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--texte);
+}
+
+.btn-submit {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.05rem;
+  padding: 14px;
+}
+
+.form-back {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.form-back a {
+  color: var(--vert-fonce);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Google Form intégré */
+.gform-wrap {
+  background: var(--carte);
+  border-radius: var(--radius);
+  box-shadow: var(--ombre);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.gform-wrap iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 1400px;
+  border: none;
+}
+
+@media (max-width: 560px) {
+  .gform-wrap iframe { height: 1900px; }
+}
