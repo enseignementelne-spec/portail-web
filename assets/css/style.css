@@ -346,7 +346,7 @@ footer a { text-decoration: underline; }
 }
 
 .form-intro {
-  color: var(--texte-clair);
+  color: #000000;
   margin-bottom: 28px;
 }
 
