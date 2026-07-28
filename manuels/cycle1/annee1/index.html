@@ -201,6 +201,55 @@
   .retenir-box{ background:var(--ch-soft); border-radius:14px; padding:18px 22px; text-align:center; }
   .retenir-box p{ font-size:1.08em; font-weight:700; font-style:italic; margin:0; }
 
+  /* ---------- QUIZ FINAL ---------- */
+  .quiz-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:28px clamp(18px,4vw,34px); margin-bottom:56px; box-shadow:var(--shadow); }
+  .quiz-card > h2{ margin:0 0 6px; font-size:1.3em; }
+  .quiz-sub{ margin:0 0 22px; color:var(--ink-soft); font-size:0.92em; line-height:1.5; }
+  .quiz-name{ display:flex; flex-wrap:wrap; gap:16px; background:var(--paper-2); border-radius:14px; padding:16px 18px; margin-bottom:20px; }
+  .quiz-field{ display:flex; flex-direction:column; gap:5px; flex:1; min-width:160px; }
+  .quiz-field label, .quiz-field .quiz-field-label{ font-weight:800; font-size:0.85em; }
+  .quiz-field input{ padding:8px 12px; border-radius:10px; border:1.5px solid var(--line); font:inherit; background:var(--card); color:var(--ink); }
+  .semestre-toggle{ display:flex; gap:8px; }
+  .sem-btn{ flex:1; border:1.5px solid var(--line); background:var(--card); color:var(--ink); font:inherit; font-weight:700; padding:8px 10px; border-radius:10px; cursor:pointer; transition:background .15s, border-color .15s; }
+  .sem-btn.active{ background:var(--gold); border-color:var(--gold); color:#fff; }
+  .quiz-field-hint{ font-size:0.72em; color:var(--ink-soft); font-weight:600; }
+  .quiz-score{ position:sticky; top:10px; z-index:5; display:flex; justify-content:center; background:var(--gold-soft); color:var(--gold); border-radius:99px; padding:8px 18px; margin-bottom:24px; font-weight:800; font-size:0.95em; }
+  .quiz-q{ border:1px solid var(--line); border-radius:16px; padding:18px 20px; margin-bottom:18px; }
+  .quiz-q .q-type{ display:inline-block; font-size:0.68em; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; background:var(--gold); padding:3px 10px; border-radius:99px; margin-bottom:8px; }
+  .quiz-q .q-text{ font-weight:700; margin:0 0 12px; line-height:1.5; }
+  .quiz-q .q-situation{ font-style:italic; color:var(--ink-soft); margin:0 0 10px; line-height:1.6; }
+
+  .opt-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .opt-btn{ border:1.5px solid var(--line); background:var(--paper-2); color:var(--ink); font:inherit; font-weight:700; padding:10px 16px; border-radius:99px; cursor:pointer; transition:transform .12s, background .15s, border-color .15s; }
+  .opt-btn:hover{ transform:translateY(-2px); }
+  .opt-btn.selected{ border-color:var(--gold); background:var(--gold-soft); }
+  .opt-btn.correct{ background:#DCF3E3; border-color:#2F7A4E; color:#1F5C36; }
+  .opt-btn.incorrect{ background:#FBE1DE; border-color:#C1422B; color:#7A231A; }
+  .opt-btn[disabled]{ cursor:default; opacity:0.95; }
+
+  .vf-grid{ display:flex; gap:12px; }
+  .vf-btn{ flex:1; border:1.5px solid var(--line); background:var(--paper-2); font:inherit; font-weight:800; padding:12px; border-radius:14px; cursor:pointer; font-size:1em; color:var(--ink); }
+  .vf-btn.correct{ background:#DCF3E3; border-color:#2F7A4E; }
+  .vf-btn.incorrect{ background:#FBE1DE; border-color:#C1422B; }
+  .vf-btn[disabled]{ cursor:default; }
+
+  .qcm-check-btn{ margin-top:10px; border:none; background:var(--ch-color,var(--gold)); color:#fff; font:inherit; font-weight:800; padding:8px 18px; border-radius:99px; cursor:pointer; }
+  .qcm-check-btn[disabled]{ opacity:0.6; cursor:default; }
+  .q-feedback{ margin-top:10px; font-size:0.88em; font-weight:700; min-height:1.2em; }
+  .q-feedback.ok{ color:#1F5C36; }
+  .q-feedback.ko{ color:#7A231A; }
+
+  .match-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; }
+  .match-item{ border:1.5px solid var(--line); background:var(--paper-2); border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:700; text-align:center; transition:background .15s,border-color .15s; }
+  .match-item.selected{ border-color:var(--gold); background:var(--gold-soft); }
+  .match-item.matched{ background:#DCF3E3; border-color:#2F7A4E; cursor:default; }
+  .match-item.wrong{ background:#FBE1DE; border-color:#C1422B; }
+
+  .quiz-actions{ text-align:center; margin-top:28px; }
+  .btn-print{ display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:#fff; border:none; font:inherit; font-weight:800; padding:14px 28px; border-radius:99px; cursor:pointer; font-size:1em; }
+  .btn-print:hover{ opacity:0.92; }
+  .quiz-hint{ margin-top:10px; font-size:0.8em; color:var(--ink-soft); }
+
   footer.book-end{ text-align:center; padding:40px 0 10px; color:var(--ink-soft); font-size:0.85em; }
 
   @media (max-width:860px){
@@ -317,6 +366,8 @@
   <a href="#ch18" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">18</div>Respecter ses parents</a>
   <a href="#ch19" class="nav-item"><div class="nav-dot" style="background:var(--adhkar)">19</div>Invocations du repas</a>
   <a href="#ch20" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">20</div>As-Salâmu 'alaykum</a>
+
+  <a href="#quiz" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🎓</div>Grand Quiz de fin d'année</a>
 </nav>
 
 <main class="main">
@@ -1477,6 +1528,180 @@
   </div>
 </article>
 
+  <section id="quiz" class="quiz-card">
+    <h2>🎓 Grand Quiz de fin d'année</h2>
+    <p class="quiz-sub">Réponds à toutes les questions pour vérifier ce que tu as appris cette année ! À la fin, imprime ton récapitulatif pour le montrer à ta maîtresse ou ton maître.</p>
+
+    <div class="quiz-name">
+      <div class="quiz-field">
+        <label for="quiz-eleve-nom">Prénom et nom :</label>
+        <input type="text" id="quiz-eleve-nom" placeholder="Écris ton prénom et ton nom" autocomplete="off">
+      </div>
+      <div class="quiz-field">
+        <label for="quiz-classe">Classe / groupe :</label>
+        <input type="text" id="quiz-classe" placeholder="Ex : CE1, groupe du samedi..." autocomplete="off">
+      </div>
+      <div class="quiz-field">
+        <label for="quiz-annee">Année scolaire :</label>
+        <input type="text" id="quiz-annee" placeholder="2026-2027" autocomplete="off">
+        <span class="quiz-field-hint">Détectée automatiquement, modifiable</span>
+      </div>
+      <div class="quiz-field">
+        <span class="quiz-field-label">Semestre :</span>
+        <div class="semestre-toggle">
+          <button type="button" class="sem-btn" data-sem="1">Semestre 1</button>
+          <button type="button" class="sem-btn" data-sem="2">Semestre 2</button>
+        </div>
+        <span class="quiz-field-hint">Pré-sélectionné selon la date, modifiable</span>
+      </div>
+    </div>
+
+    <div class="quiz-score" id="quiz-score">Score : 0 / 15</div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="vrai">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">1. Le Coran est la Parole d'Allah.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="vrai">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">2. Il faut être en état de pureté (Tâhir) pour toucher le Coran.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="faux">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">3. La foi (Al-Îmân) ne tient que sur 5 piliers.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">4. Qui a apporté le Coran au Prophète ﷺ ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Jibrîl</button>
+        <button type="button" class="opt-btn" data-correct="false">Mikâ'îl</button>
+        <button type="button" class="opt-btn" data-correct="false">Halîma</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">5. Combien de piliers compte l'Islam ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">4</button>
+        <button type="button" class="opt-btn" data-correct="true">5</button>
+        <button type="button" class="opt-btn" data-correct="false">6</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">6. Comment s'appelait la nourrice qui a pris soin du petit Mouhammad ﷺ dans le désert ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Khadîja</button>
+        <button type="button" class="opt-btn" data-correct="true">Halîma</button>
+        <button type="button" class="opt-btn" data-correct="false">Aïcha</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">7. Que veut dire « As-salâmu 'alaykum » ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Bonne nuit</button>
+        <button type="button" class="opt-btn" data-correct="false">Merci beaucoup</button>
+        <button type="button" class="opt-btn" data-correct="true">Que la paix soit sur vous</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcm">
+      <span class="q-type">Choix multiple</span>
+      <p class="q-text">8. Coche tous les noms d'Allah que tu as appris cette année :</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Ar-Rahmân</button>
+        <button type="button" class="opt-btn" data-correct="true">Al-Khâliq</button>
+        <button type="button" class="opt-btn" data-correct="true">Ar-Rahîm</button>
+        <button type="button" class="opt-btn" data-correct="true">Al-Wahhâb</button>
+        <button type="button" class="opt-btn" data-correct="false">Jibrîl</button>
+        <button type="button" class="opt-btn" data-correct="false">Halîma</button>
+      </div>
+      <button type="button" class="qcm-check-btn">Je vérifie</button>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcm">
+      <span class="q-type">Choix multiple</span>
+      <p class="q-text">9. Coche tous les gestes des ablutions (Wudû') :</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Se laver les mains</button>
+        <button type="button" class="opt-btn" data-correct="true">Se laver le visage</button>
+        <button type="button" class="opt-btn" data-correct="true">Se laver les pieds</button>
+        <button type="button" class="opt-btn" data-correct="false">Manger un fruit</button>
+        <button type="button" class="opt-btn" data-correct="false">Faire la sieste</button>
+      </div>
+      <button type="button" class="qcm-check-btn">Je vérifie</button>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Mise en situation</span>
+      <p class="q-situation">Nour trouve une gomme qui n'est pas à elle dans la cour de récréation.</p>
+      <p class="q-text">10. Que doit-elle faire, comme le Prophète ﷺ Al-Amîn ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">La garder pour elle</button>
+        <button type="button" class="opt-btn" data-correct="true">La rendre à la maîtresse pour retrouver son propriétaire</button>
+        <button type="button" class="opt-btn" data-correct="false">La jeter à la poubelle</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Mise en situation</span>
+      <p class="q-situation">Pendant un orage, Nour a très peur dans sa chambre.</p>
+      <p class="q-text">11. Que peut-elle réciter pour se sentir protégée ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Al-Ikhlâs</button>
+        <button type="button" class="opt-btn" data-correct="true">Al-Falaq et An-Nâs</button>
+        <button type="button" class="opt-btn" data-correct="false">Al-Kawthar</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="match">
+      <span class="q-type">Relie les éléments</span>
+      <p class="q-text">12. Relie chaque position de la prière à son nom :</p>
+      <div class="match-wrap">
+        <div class="match-col">
+          <div class="match-item" data-pair="qiyam">Debout</div>
+          <div class="match-item" data-pair="ruku">Incliné</div>
+          <div class="match-item" data-pair="sujud">Prosterné</div>
+          <div class="match-item" data-pair="julus">Assis</div>
+        </div>
+        <div class="match-col">
+          <div class="match-item" data-pair="sujud">Sujûd</div>
+          <div class="match-item" data-pair="qiyam">Qiyâm</div>
+          <div class="match-item" data-pair="julus">Julûs</div>
+          <div class="match-item" data-pair="ruku">Rukû'</div>
+        </div>
+      </div>
+      <p class="quiz-hint">Touche un mot à gauche, puis son correspondant à droite.</p>
+    </div>
+
+    <div class="quiz-actions">
+      <button type="button" class="btn-print" id="quiz-print-btn"><span>🖨️</span> Générer mon récapitulatif</button>
+      <p class="quiz-hint">Le récapitulatif (nom, score, date) peut être imprimé ou enregistré en PDF pour ton enseignant(e).</p>
+    </div>
+  </section>
+
   <section class="toc-card" style="margin-bottom:24px;">
     <h2 style="font-size:0.95em;">📚 Sources des traductions</h2>
     <p style="font-size:0.85em; color:var(--ink-soft); line-height:1.6; margin:0;">
@@ -1523,7 +1748,7 @@
   })();
 
   const items = document.querySelectorAll('.nav-item');
-  const chapters = document.querySelectorAll('.chapter, #cover');
+  const chapters = document.querySelectorAll('.chapter, #cover, #quiz');
   const map = new Map();
   items.forEach(it => map.set(it.getAttribute('href').slice(1), it));
   const obs = new IntersectionObserver((entries) => {
@@ -1536,6 +1761,205 @@
     });
   }, { rootMargin: '-40% 0px -50% 0px' });
   chapters.forEach(c => obs.observe(c));
+</script>
+
+<script>
+  (function(){
+    const quizRoot = document.getElementById('quiz');
+    if (!quizRoot) return;
+
+    let score = 0;
+    const maxScore = 15;
+    const scoreEl = document.getElementById('quiz-score');
+    function addScore(n){
+      score += n;
+      if (scoreEl) scoreEl.textContent = 'Score : ' + score + ' / ' + maxScore;
+    }
+
+    // Détection automatique de l'année scolaire et du semestre
+    const anneeInput = document.getElementById('quiz-annee');
+    const semBtns = quizRoot.querySelectorAll('.sem-btn');
+    let semestreChoisi = 1;
+
+    (function autoDetect(){
+      const now = new Date();
+      const mois = now.getMonth(); // 0=janvier ... 11=décembre
+      const anneeCiv = now.getFullYear();
+      let anneeScolaire, semestreAuto;
+      if (mois >= 8) { // septembre à décembre
+        anneeScolaire = anneeCiv + '-' + (anneeCiv + 1);
+        semestreAuto = 1;
+      } else if (mois === 0) { // janvier
+        anneeScolaire = (anneeCiv - 1) + '-' + anneeCiv;
+        semestreAuto = 1;
+      } else { // février à août
+        anneeScolaire = (anneeCiv - 1) + '-' + anneeCiv;
+        semestreAuto = 2;
+      }
+      if (anneeInput && !anneeInput.value) anneeInput.value = anneeScolaire;
+      semestreChoisi = semestreAuto;
+      semBtns.forEach(b => b.classList.toggle('active', Number(b.dataset.sem) === semestreAuto));
+    })();
+
+    semBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        semestreChoisi = Number(btn.dataset.sem);
+        semBtns.forEach(b => b.classList.toggle('active', b === btn));
+      });
+    });
+
+    // Vrai / Faux
+    quizRoot.querySelectorAll('[data-qtype="vf"]').forEach(block => {
+      const correct = block.dataset.correct;
+      const btns = block.querySelectorAll('.vf-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          const isCorrect = btn.dataset.answer === correct;
+          btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+          if (!isCorrect) {
+            const goodBtn = block.querySelector('[data-answer="' + correct + '"]');
+            if (goodBtn) goodBtn.classList.add('correct');
+          }
+          btns.forEach(b => b.disabled = true);
+          if (isCorrect) addScore(1);
+        });
+      });
+    });
+
+    // QCU (choix unique)
+    quizRoot.querySelectorAll('[data-qtype="qcu"]').forEach(block => {
+      const opts = block.querySelectorAll('.opt-btn');
+      opts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          const isCorrect = btn.dataset.correct === 'true';
+          btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+          if (!isCorrect) {
+            const goodBtn = block.querySelector('[data-correct="true"]');
+            if (goodBtn) goodBtn.classList.add('correct');
+          }
+          opts.forEach(o => o.disabled = true);
+          if (isCorrect) addScore(1);
+        });
+      });
+    });
+
+    // QCM (choix multiple)
+    quizRoot.querySelectorAll('[data-qtype="qcm"]').forEach(block => {
+      const opts = block.querySelectorAll('.opt-btn');
+      const checkBtn = block.querySelector('.qcm-check-btn');
+      const feedback = block.querySelector('.q-feedback');
+      opts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          btn.classList.toggle('selected');
+        });
+      });
+      if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          let allGood = true;
+          opts.forEach(o => {
+            const shouldBe = o.dataset.correct === 'true';
+            const isSelected = o.classList.contains('selected');
+            if (shouldBe && isSelected) { o.classList.add('correct'); }
+            else if (shouldBe && !isSelected) { o.classList.add('correct'); allGood = false; }
+            else if (!shouldBe && isSelected) { o.classList.add('incorrect'); allGood = false; }
+            o.disabled = true;
+          });
+          checkBtn.disabled = true;
+          if (feedback) {
+            feedback.textContent = allGood ? '✅ Parfait !' : '➡️ Les bonnes réponses sont surlignées en vert.';
+            feedback.classList.add(allGood ? 'ok' : 'ko');
+          }
+          if (allGood) addScore(1);
+        });
+      }
+    });
+
+    // Relier des éléments (clic-clic)
+    quizRoot.querySelectorAll('[data-qtype="match"]').forEach(block => {
+      let selected = null;
+      const items = block.querySelectorAll('.match-item');
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          if (item.classList.contains('matched')) return;
+          if (!selected) {
+            selected = item;
+            item.classList.add('selected');
+            return;
+          }
+          if (selected === item) {
+            selected.classList.remove('selected');
+            selected = null;
+            return;
+          }
+          if (selected.closest('.match-col') === item.closest('.match-col')) {
+            selected.classList.remove('selected');
+            selected = item;
+            item.classList.add('selected');
+            return;
+          }
+          if (selected.dataset.pair === item.dataset.pair) {
+            selected.classList.remove('selected');
+            selected.classList.add('matched');
+            item.classList.add('matched');
+            selected = null;
+            addScore(1);
+          } else {
+            const a = selected, b = item;
+            a.classList.add('wrong'); b.classList.add('wrong');
+            setTimeout(() => { a.classList.remove('wrong', 'selected'); b.classList.remove('wrong'); }, 500);
+            selected = null;
+          }
+        });
+      });
+    });
+
+    // Export / impression du récapitulatif
+    const printBtn = document.getElementById('quiz-print-btn');
+    const nomInput = document.getElementById('quiz-eleve-nom');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        const nom = ((nomInput && nomInput.value) || 'Élève').trim();
+        const classe = ((document.getElementById('quiz-classe') || {}).value || '').trim();
+        const anneeScolaire = ((anneeInput || {}).value || '').trim();
+        const semestreTxt = 'Semestre ' + semestreChoisi;
+        const date = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+        const w = window.open('', '_blank', 'width=650,height=800');
+        if (!w) { alert("Merci d'autoriser les fenêtres popup pour générer le récapitulatif."); return; }
+        w.document.write(
+          '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
+          '<title>Récapitulatif — ' + nom + '</title>' +
+          '<style>' +
+          'body{ font-family:"Segoe UI",sans-serif; padding:40px; color:#2E2A20; }' +
+          'h1{ font-size:1.5em; margin-bottom:4px; }' +
+          '.meta{ color:#6B6252; margin-bottom:24px; line-height:1.6; }' +
+          '.score-box{ border:2px solid #B3811E; border-radius:16px; padding:24px; text-align:center; margin-bottom:24px; }' +
+          '.score-box .big{ font-size:2.2em; font-weight:800; color:#B3811E; }' +
+          'footer{ margin-top:40px; font-size:0.85em; color:#6B6252; text-align:center; }' +
+          '</style></head><body>' +
+          '<h1>🎓 Récapitulatif — Grand Quiz</h1>' +
+          '<p class="meta">Mon livre d\'éducation islamique — Niveau Initiation, 1ère année<br>' +
+          'Élève : <strong>' + nom + '</strong><br>' +
+          (classe ? 'Classe / groupe : <strong>' + classe + '</strong><br>' : '') +
+          'Année scolaire : <strong>' + (anneeScolaire || '—') + '</strong> · ' + semestreTxt + '<br>' +
+          'Date : ' + date + '</p>' +
+          '<div class="score-box"><div class="big">' + score + ' / ' + maxScore + '</div><div>bonnes réponses</div></div>' +
+          '<p>Ce récapitulatif peut être remis à l\'enseignant(e) pour compléter le bulletin scolaire (éducation islamique).</p>' +
+          '<footer>Association de la Fraternité d\'Elne — ' + new Date().getFullYear() + '</footer>' +
+          '</body></html>'
+        );
+        w.document.close();
+        w.focus();
+        setTimeout(() => { w.print(); }, 300);
+      });
+    }
+  })();
 </script>
 </body>
 </html>
