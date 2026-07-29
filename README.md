@@ -19,3 +19,7 @@ Les manuels élève étaient initialement livrés en HTML unique avec images enc
 ## Applications liées
 
 - [Hourouffi — niveau 1](https://enseignementelne-spec.github.io/Hourouffi-niveau-1/) — apprentissage de l'arabe en jouant.
+
+## Licence
+
+Contenus sous licence [CC BY-NC-SA 4.0](LICENSE) — partage et adaptation libres, usage non commercial, attribution requise, partage dans les mêmes conditions.
