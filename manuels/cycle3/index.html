@@ -1,0 +1,2560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon livre d'éducation islamique — Cycle 3 (5ème année)</title>
+<style>
+  :root{
+    --paper:#F6F0DF; --paper-2:#EFE7CF; --card:#FFFFFF; --ink:#2E2A20; --ink-soft:#6B6252;
+    --line:#E2D8BC; --gold:#B3811E; --gold-soft:#E8D49C;
+    --coran:#6E4C9F; --coran-soft:#EFE7F7;
+    --aqida:#24568C; --aqida-soft:#E4EDF6;
+    --fiqh:#2F7A4E; --fiqh-soft:#E4F3E9;
+    --sira:#B3811E; --sira-soft:#F7EFD9;
+    --akhlaq:#C15A22; --akhlaq-soft:#FBE9DE;
+    --radius:18px; --shadow:0 8px 24px rgba(46,38,20,0.08);
+  }
+  :root[data-theme="dark"]{
+    --paper:#1D1811; --paper-2:#241D14; --card:#2A2318; --ink:#EFE7D6; --ink-soft:#B8AD97;
+    --line:#3B3222; --gold:#E3BE63; --gold-soft:#4A3C1E;
+    --coran-soft:#3A3050; --aqida-soft:#233246; --fiqh-soft:#22392B; --sira-soft:#3D3420; --akhlaq-soft:#402719;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1D1811; --paper-2:#241D14; --card:#2A2318; --ink:#EFE7D6; --ink-soft:#B8AD97;
+      --line:#3B3222; --gold:#E3BE63; --gold-soft:#4A3C1E;
+      --coran-soft:#3A3050; --aqida-soft:#233246; --fiqh-soft:#22392B; --sira-soft:#3D3420; --akhlaq-soft:#402719;
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,sans-serif; display:flex; min-height:100vh; }
+  .wrap{ max-width:820px; margin:0 auto; padding:40px clamp(16px,4vw,64px) 96px; }
+  h1,h2,h3{ font-weight:800; letter-spacing:-0.01em; }
+  .ar{ font-family:"Traditional Arabic","Scheherazade New","Sakkal Majalla","Segoe UI",serif; direction:rtl; }
+
+  .sidebar{ width:270px; flex-shrink:0; background:var(--card); border-right:1px solid var(--line); padding:20px 14px; overflow-y:auto; height:100vh; position:sticky; top:0; }
+  .brand{ display:flex; align-items:center; gap:10px; padding:4px 8px 16px; border-bottom:2px solid var(--gold-soft); margin-bottom:12px; }
+  .brand-mark{ width:36px;height:36px;border-radius:10px; background:linear-gradient(150deg,var(--coran),var(--aqida)); display:flex;align-items:center;justify-content:center; color:#fff; font-size:1.15em; flex-shrink:0; }
+  .brand-text{ font-size:0.92em; font-weight:800; line-height:1.15; }
+  .brand-text small{ display:block; font-weight:600; color:var(--ink-soft); font-size:0.76em; margin-top:2px; }
+  .nav-group{ font-size:0.7em; text-transform:uppercase; color:var(--ink-soft); font-weight:800; letter-spacing:0.08em; margin:14px 6px 6px; }
+  .nav-item{ display:flex; align-items:center; gap:9px; padding:7px 8px; border-radius:10px; text-decoration:none; color:var(--ink); font-weight:600; font-size:0.86em; transition:background .15s; }
+  .nav-item:hover{ background:var(--paper-2); }
+  .nav-dot{ width:20px;height:20px;border-radius:50%; flex-shrink:0; display:flex;align-items:center;justify-content:center; color:#fff; font-weight:800; font-size:0.65em; }
+  .main{ flex:1; min-width:0; }
+  @media (max-width:860px){ .sidebar{ display:none; } }
+  @media print{ .sidebar{ display:none !important; } }
+
+  .cover{ border-radius:24px; padding:clamp(32px,6vw,56px); text-align:center; color:#fff; margin-bottom:40px;
+    background:linear-gradient(150deg,var(--coran),var(--aqida) 65%); box-shadow:var(--shadow); }
+  .cover .eyebrow{ font-size:0.85em; letter-spacing:0.14em; text-transform:uppercase; opacity:0.85; font-weight:700;}
+  .cover h1{ font-size:clamp(1.6em,4vw,2.4em); margin:12px 0 6px; }
+  .cover .sub{ font-size:1.05em; font-weight:600; opacity:0.92; margin-bottom:20px;}
+  .cover .meta{ display:inline-flex; gap:8px; flex-wrap:wrap; justify-content:center;}
+  .pill{ background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); padding:6px 14px; border-radius:99px; font-weight:700; font-size:0.85em; }
+  .cover-credits{ margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.25); font-size:0.82em; opacity:0.9; line-height:1.6; }
+  .cover-credits .license{ opacity:0.75; font-size:0.92em; font-style:italic; }
+  .cover-img{ width:100%; max-width:640px; height:auto; border-radius:18px; margin:0 auto 24px; display:block; box-shadow:0 10px 30px rgba(0,0,0,0.25); }
+
+  .toc-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px; margin-bottom:32px; box-shadow:var(--shadow);}
+  .toc-card h2{ margin:0 0 4px; font-size:1.15em;}
+  .toc-card .lede{ margin:0 0 16px; font-size:0.88em; color:var(--ink-soft);}
+  .toc-list{ display:grid; gap:6px; }
+  .toc-row{ display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:10px; text-decoration:none; color:var(--ink); }
+  .toc-row.done{ background:var(--paper-2); }
+  .toc-row .wk{ font-size:0.72em; font-weight:800; color:var(--ink-soft); width:34px; flex-shrink:0;}
+  .toc-row .dot{ width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .toc-row .lbl{ flex:1; font-size:0.9em; font-weight:600; }
+  .toc-row .dom{ font-size:0.72em; color:var(--ink-soft); font-weight:700; }
+  .toc-row .stat{ font-size:0.7em; font-weight:800; padding:2px 9px; border-radius:99px; flex-shrink:0; }
+  .stat.ok{ background:var(--fiqh-soft); color:var(--fiqh); }
+
+  .legend{ display:flex; gap:14px; flex-wrap:wrap; margin-top:14px; padding-top:14px; border-top:1px solid var(--line); font-size:0.78em; color:var(--ink-soft);}
+  .legend span{ display:inline-flex; align-items:center; gap:5px; }
+  .legend .dot{ width:9px;height:9px;border-radius:50%; }
+
+  .passport-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px; margin-bottom:40px; box-shadow:var(--shadow);}
+  .passport-card h2{ margin:0 0 4px; font-size:1.1em;}
+  .passport-card .lede{ margin:0 0 14px; font-size:0.86em; color:var(--ink-soft);}
+  .passport-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .passport-count{ font-size:0.85em; font-weight:800; color:var(--gold); background:var(--gold-soft); padding:4px 12px; border-radius:99px; white-space:nowrap; }
+  .sourate-row{ display:flex; align-items:center; gap:10px; padding:6px 0; font-size:0.92em; }
+  .sourate-row .flag{ font-size:0.9em; }
+  button.sourate-row{ width:100%; background:none; border:none; text-align:left; font-family:inherit; cursor:pointer; border-radius:8px; padding:8px 10px; color:inherit; transition:background .15s; }
+  button.sourate-row:hover{ background:var(--gold-soft); }
+  button.sourate-row:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  button.sourate-row .flag{ transition:transform .15s; }
+  button.sourate-row.earned .flag{ transform:scale(1.15); }
+
+  .tool-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:14px; }
+  .tool-cell{ border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--paper-2); font-size:0.82em; }
+  .tool-cell .k{ font-weight:800; font-size:0.76em; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); margin-bottom:6px; }
+  .tool-cell ul{ margin:0; padding-left:16px; }
+  .tool-cell li{ margin-bottom:4px; line-height:1.4; }
+  @media (max-width:760px){ .tool-grid{ grid-template-columns:1fr 1fr; } }
+
+  .chapter{ margin-bottom:44px; scroll-margin-top:20px; }
+  .ch-hero{ background:var(--ch-color); color:#fff; border-radius:20px 20px 0 0; padding:30px 30px; position:relative; }
+  .ch-hero .badge{ display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.2); padding:5px 14px; border-radius:99px; font-weight:800; font-size:0.76em; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
+  .ch-hero .num{ font-size:0.82em; opacity:0.85; font-weight:700; display:block; margin-bottom:4px;}
+  .ch-hero h2{ margin:0; font-size:clamp(1.3em,2.4vw,1.7em); display:flex; justify-content:space-between; align-items:baseline; gap:16px; }
+  .ch-body{ background:var(--card); border:1px solid var(--line); border-top:none; border-radius:0 0 20px 20px; padding:28px 30px 32px; box-shadow:var(--shadow);}
+
+  .section{ margin-bottom:24px; }
+  .stitle{ display:flex; align-items:center; gap:9px; font-size:1.02em; font-weight:800; margin:0 0 10px; color:var(--ch-color);}
+  .stitle .ico{ width:24px;height:24px; border-radius:8px; background:var(--ch-color); color:#fff; display:flex;align-items:center;justify-content:center; flex-shrink:0; font-size:0.8em;}
+
+  .box{ border-radius:14px; padding:16px 20px; border:1px solid var(--line); }
+  .box.tinted{ background:var(--ch-soft); border-color:transparent; }
+  .box p, .box li{ margin:0 0 6px; line-height:1.6; font-size:0.95em; }
+  .box ul, .box ol{ margin:0; padding-left:20px; }
+
+  .lesson-text p{ line-height:1.7; font-size:0.98em; margin:0 0 12px; }
+  .lesson-text strong{ color:var(--ch-color); }
+  .dropcap:first-letter{ font-size:2.4em; font-weight:800; float:left; line-height:0.85; padding-right:7px; padding-top:3px; color:var(--ch-color); }
+
+  .verse{ background:var(--paper-2); border-left:5px solid var(--ch-color); border-radius:12px; padding:20px 22px; margin:16px 0; }
+  .verse .bismillah{ font-size:1.3em; text-align:center; line-height:1.9; margin-bottom:14px; padding-bottom:12px; border-bottom:1px dashed var(--line); color:var(--gold, var(--ch-color)); }
+  .verse .ar{ font-size:1.55em; text-align:center; line-height:2.05; margin-bottom:10px; color:var(--ink);}
+  .verse .translit{ text-align:center; font-style:italic; color:var(--ink-soft); font-size:0.9em; margin-bottom:8px;}
+  .verse .fr{ text-align:center; font-weight:700; font-size:0.98em; margin-bottom:8px;}
+  .verse .ref{ display:block; text-align:right; font-size:0.76em; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:8px; margin-top:8px;}
+  .listen-link{ display:inline-flex; align-items:center; gap:8px; margin-top:10px; padding:7px 15px; border-radius:99px; background:var(--ch-color); color:#fff !important; text-decoration:none; font-weight:800; font-size:0.82em; }
+
+  .hadith-box{ background:var(--paper-2); border:1px dashed var(--ch-color); border-radius:12px; padding:18px 20px; margin:16px 0; }
+  .hadith-box .ar{ font-size:1.2em; text-align:center; line-height:1.9; margin-bottom:10px; }
+  .hadith-box .fr{ font-weight:700; font-size:0.96em; margin-bottom:8px; }
+  .hadith-box .ref{ display:block; font-size:0.76em; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:8px; margin-top:8px;}
+  .hadith-box .ref a{ color:var(--ch-color); }
+
+  .savais{ background:var(--sira-soft); border-radius:14px; padding:15px 20px; }
+
+  details.exo{ border:1px solid var(--line); border-radius:12px; padding:13px 17px; margin-top:7px; background:var(--card);}
+  details.exo + details.exo{ margin-top:9px; }
+  details.exo summary{ cursor:pointer; font-weight:700; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:0.94em;}
+  details.exo summary::-webkit-details-marker{ display:none; }
+  details.exo summary::after{ content:"Voir la réponse"; font-size:0.76em; font-weight:700; color:var(--ch-color); border:1px solid var(--ch-color); border-radius:99px; padding:3px 9px; flex-shrink:0;}
+  details.exo[open] summary::after{ content:"Masquer"; }
+  details.exo .answer{ margin-top:9px; padding-top:9px; border-top:1px dashed var(--line); font-size:0.9em; color:var(--ink-soft);}
+  details.exo .answer strong{ color:var(--ch-color); }
+
+  .retenir-box{ background:var(--ch-soft); border-radius:14px; padding:16px 20px; text-align:center; }
+  .retenir-box p{ font-size:1.04em; font-weight:700; font-style:italic; margin:0; }
+
+  .vocab-list{ display:grid; gap:7px; }
+  .vocab-list > div{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .vocab-list .term{ font-weight:800; color:var(--ch-color); }
+  .vocab-list .ar{ font-size:1.15em; font-weight:700; color:var(--ink); flex-shrink:0; }
+  .stitle.center{ justify-content:center; }
+
+  .essentiel-list{ display:grid; gap:10px; margin-top:4px; }
+  .essentiel-item{ display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:11px 15px; }
+  .essentiel-item .n{ width:24px; height:24px; border-radius:50%; background:var(--ch-color); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.78em; flex-shrink:0; }
+  .essentiel-item p{ margin:0; font-size:0.92em; line-height:1.55; }
+
+  .chapter-img{ width:100%; height:auto; border-radius:16px; margin:16px 0; box-shadow:var(--shadow); display:block; }
+
+  .charte-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px 24px; margin-bottom:32px; box-shadow:var(--shadow); font-size:0.9em; }
+  .charte-card h2{ margin:0 0 8px; font-size:1.05em; }
+  .charte-card ul{ margin:0; padding-left:20px; }
+  .charte-card li{ margin-bottom:5px; line-height:1.55; }
+
+  /* ---------- Ancrage quotidien (nouveau Cycle 3) ---------- */
+  .ancrage-box{ background:var(--paper-2); border:1.5px dashed var(--gold); border-radius:14px; padding:16px 20px; margin-top:8px; }
+  .ancrage-tag{ display:inline-block; font-size:0.68em; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; background:var(--gold); padding:3px 10px; border-radius:99px; margin-bottom:8px; }
+  .ancrage-box p{ margin:0; font-size:0.94em; line-height:1.6; }
+
+  /* ---------- QUIZ FINAL ---------- */
+  .quiz-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:28px clamp(18px,4vw,34px); margin-bottom:56px; box-shadow:var(--shadow); }
+  .quiz-card > h2{ margin:0 0 6px; font-size:1.3em; }
+  .quiz-sub{ margin:0 0 22px; color:var(--ink-soft); font-size:0.92em; line-height:1.5; }
+  .quiz-name{ display:flex; flex-wrap:wrap; gap:16px; background:var(--paper-2); border-radius:14px; padding:16px 18px; margin-bottom:20px; }
+  .quiz-field{ display:flex; flex-direction:column; gap:5px; flex:1; min-width:160px; }
+  .quiz-field label{ font-weight:800; font-size:0.85em; }
+  .quiz-field input{ padding:8px 12px; border-radius:10px; border:1.5px solid var(--line); font:inherit; background:var(--card); color:var(--ink); }
+  .quiz-field-hint{ font-size:0.72em; color:var(--ink-soft); font-weight:600; }
+  .quiz-score{ position:sticky; top:10px; z-index:5; display:flex; justify-content:center; background:var(--gold-soft); color:var(--gold); border-radius:99px; padding:8px 18px; margin-bottom:24px; font-weight:800; font-size:0.95em; }
+  .quiz-q{ border:1px solid var(--line); border-radius:16px; padding:18px 20px; margin-bottom:18px; }
+  .quiz-q .q-type{ display:inline-block; font-size:0.68em; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:#fff; background:var(--gold); padding:3px 10px; border-radius:99px; margin-bottom:8px; }
+  .quiz-q .q-text{ font-weight:700; margin:0 0 12px; line-height:1.5; }
+  .quiz-q .q-situation{ font-style:italic; color:var(--ink-soft); margin:0 0 10px; line-height:1.6; }
+
+  .opt-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .opt-btn{ border:1.5px solid var(--line); background:var(--paper-2); color:var(--ink); font:inherit; font-weight:700; padding:10px 16px; border-radius:99px; cursor:pointer; transition:transform .12s, background .15s, border-color .15s; }
+  .opt-btn:hover{ transform:translateY(-2px); }
+  .opt-btn.selected{ border-color:var(--gold); background:var(--gold-soft); }
+  .opt-btn.correct{ background:#DCF3E3; border-color:#2F7A4E; color:#1F5C36; }
+  .opt-btn.incorrect{ background:#FBE1DE; border-color:#C1422B; color:#7A231A; }
+  .opt-btn[disabled]{ cursor:default; opacity:0.95; }
+
+  .vf-grid{ display:flex; gap:12px; }
+  .vf-btn{ flex:1; border:1.5px solid var(--line); background:var(--paper-2); font:inherit; font-weight:800; padding:12px; border-radius:14px; cursor:pointer; font-size:1em; color:var(--ink); }
+  .vf-btn.correct{ background:#DCF3E3; border-color:#2F7A4E; }
+  .vf-btn.incorrect{ background:#FBE1DE; border-color:#C1422B; }
+  .vf-btn[disabled]{ cursor:default; }
+
+  .qcm-check-btn{ margin-top:10px; border:none; background:var(--ch-color,var(--gold)); color:#fff; font:inherit; font-weight:800; padding:8px 18px; border-radius:99px; cursor:pointer; }
+  .qcm-check-btn[disabled]{ opacity:0.6; cursor:default; }
+  .q-feedback{ margin-top:10px; font-size:0.88em; font-weight:700; min-height:1.2em; }
+  .q-feedback.ok{ color:#1F5C36; }
+  .q-feedback.ko{ color:#7A231A; }
+
+  .match-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; }
+  .match-item{ border:1.5px solid var(--line); background:var(--paper-2); border-radius:12px; padding:10px 14px; cursor:pointer; font-weight:700; text-align:center; transition:background .15s,border-color .15s; }
+  .match-item.selected{ border-color:var(--gold); background:var(--gold-soft); }
+  .match-item.matched{ background:#DCF3E3; border-color:#2F7A4E; cursor:default; }
+  .match-item.wrong{ background:#FBE1DE; border-color:#C1422B; }
+
+  .quiz-actions{ text-align:center; margin-top:28px; }
+  .btn-print{ display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:#fff; border:none; font:inherit; font-weight:800; padding:14px 28px; border-radius:99px; cursor:pointer; font-size:1em; }
+  .btn-print:hover{ opacity:0.92; }
+  .quiz-hint{ margin-top:10px; font-size:0.8em; color:var(--ink-soft); }
+
+  @media print{
+    body{ background:#fff; }
+    .cover, .toc-card, .passport-card{ box-shadow:none; }
+    .chapter{ break-inside:auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">☾</div>
+    <div class="brand-text">Mon livre d'éducation<br>islamique<small>Cycle 3 · 5ème année</small></div>
+  </div>
+
+  <a href="#cover" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🏠</div>Accueil</a>
+  <a href="#sommaire" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">☰</div>Sommaire</a>
+  <a href="#charte" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🎨</div>Charte des illustrations</a>
+  <a href="#passeport" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🏅</div>Passeport des sourates</a>
+  <a href="#outils" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🧭</div>Mes outils de l'année</a>
+
+  <div class="nav-group">Les 25 semaines</div>
+  <a href="#s1" class="nav-item"><div class="nav-dot" style="background:var(--coran)">1</div>Al-Balad</a>
+  <a href="#s2" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">2</div>Ar-Rabb, mon Créateur et Maître</a>
+  <a href="#s3" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">3</div>Prier en groupe</a>
+  <a href="#s4" class="nav-item"><div class="nav-dot" style="background:var(--sira)">4</div>Badr (1) — l'attente et la prière</a>
+  <a href="#s5" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">5</div>Qui suis-je ?</a>
+  <a href="#s6" class="nav-item"><div class="nav-dot" style="background:var(--coran)">6</div>Ash-Shams</a>
+  <a href="#s7" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">7</div>Allah seul mérite l'adoration</a>
+  <a href="#s8" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">8</div>Suivre l'imam</a>
+  <a href="#s9" class="nav-item"><div class="nav-dot" style="background:var(--sira)">9</div>Badr (2) — la bataille et la leçon</a>
+  <a href="#s10" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">10</div>Résister à la pression du groupe</a>
+  <a href="#s11" class="nav-item"><div class="nav-dot" style="background:var(--coran)">11</div>Al-Layl</a>
+  <a href="#s12" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">12</div>Le Jour Dernier (1)</a>
+  <a href="#s13" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">13</div>Le jeûne complet du Ramadân</a>
+  <a href="#s14" class="nav-item"><div class="nav-dot" style="background:var(--sira)">14</div>Uhud</a>
+  <a href="#s15" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">15</div>Construire une estime de soi saine</a>
+  <a href="#s16" class="nav-item"><div class="nav-dot" style="background:var(--coran)">16</div>Al-'Alaq</a>
+  <a href="#s17" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">17</div>Le Jour Dernier (2)</a>
+  <a href="#s18" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">18</div>Ce qui casse le jeûne</a>
+  <a href="#s19" class="nav-item"><div class="nav-dot" style="background:var(--sira)">19</div>Le Khandaq</a>
+  <a href="#s20" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">20</div>Mes écrans, mon temps</a>
+  <a href="#s21" class="nav-item"><div class="nav-dot" style="background:var(--coran)">21</div>Al-Bayyina</a>
+  <a href="#s22" class="nav-item"><div class="nav-dot" style="background:var(--aqida)">22</div>Le Qadar</a>
+  <a href="#s23" class="nav-item"><div class="nav-dot" style="background:var(--fiqh)">23</div>La propreté rituelle</a>
+  <a href="#s24" class="nav-item"><div class="nav-dot" style="background:var(--sira)">24</div>Hudaybiyya</a>
+  <a href="#s25" class="nav-item"><div class="nav-dot" style="background:var(--akhlaq)">25</div>Mon carnet des 4 lieux (clôture)</a>
+
+  <a href="#quiz" class="nav-item"><div class="nav-dot" style="background:var(--gold,#B3811E)">🎓</div>Grand Quiz de fin d'année</a>
+</nav>
+
+<main class="main">
+<div class="wrap">
+
+  <section id="cover" class="cover">
+    <img class="cover-img" alt="Ouverture lumineuse vers un ciel infini, degrade de vert et de bleu, ambiance inspirante et paisible" src="images/img01.webp">
+    <div class="eyebrow">Association de la Fraternité d'Elne · Unité éducative et pédagogique</div>
+    <h1>Mon livre d'éducation islamique</h1>
+    <div class="sub">Cycle 3 — « La raison qui s'éveille » · 5ème année</div>
+    <div class="meta">
+      <span class="pill">👤 10–11 ans</span>
+      <span class="pill">🗓️ 25 semaines · 1h/semaine</span>
+      <span class="pill">📗 Coran · 🕌 Aqîda · 💧 Fiqh · 🕋 Sîra · 🤝 Hadith &amp; Adab</span>
+    </div>
+    <div class="cover-credits">
+      <div>Responsables : K. El Hassane et N. Youssef</div>
+      <div>Année 2026 – 2027</div>
+      <div>Illustrations générées par IA (Gemini)</div>
+      <div class="license">Contenu sous licence <a href="../../LICENSE" style="color:inherit" target="_blank" rel="license noopener">CC BY-NC-SA 4.0</a> — libre, non commercial</div>
+    </div>
+  </section>
+
+  <section class="toc-card" style="margin-bottom:32px;">
+    <h2>👋 Bienvenue, Ahmed t'accompagne cette année</h2>
+    <p class="lede" style="margin-bottom:0">Ahmed a 10 ans. C'est un nouveau copain qui va grandir avec toi tout au long de cette année : il va à l'école comme toi, il a des frères et sœurs, des copains dans la cour, et parfois des questions qu'il n'ose pas toujours poser tout haut. Cette année, on ne se contente plus de savoir <em>quoi</em> faire : avec Ahmed, on cherche aussi à comprendre <em>pourquoi</em> — et à relier chaque leçon à un geste concret, à la maison, dans la rue, dans la cour de récréation ou avec tes enseignants.</p>
+  </section>
+
+  <section id="sommaire" class="toc-card">
+    <h2>🧭 Sommaire de l'année</h2>
+    <p class="lede">Le Coran accueille <strong>5 nouvelles sourates</strong> qui poursuivent le Juz 'Amma là où le Cycle 2 s'est arrêté (Al-Balad, Ash-Shams, Al-Layl, Al-'Alaq entière, Al-Bayyina), chacune reliée à 3 idées essentielles de foi/spiritualité. Les 20 autres semaines se répartissent également entre Aqîda (5), Fiqh (5), Sîra (5) et Hadith &amp; Adab (5). <strong>Nouveauté de ce cycle :</strong> chaque chapitre se termine par un <strong>ancrage quotidien</strong> — une mise en situation à la maison, dans la rue/les transports, dans la cour d'école, ou avec les enseignants.</p>
+    <div class="box tinted" style="margin-bottom:14px;font-size:0.84em">
+      ✅ <strong>Vérifié via MCP quran (2026-08-03) :</strong> les 5 sourates de cette année (Al-Balad, Ash-Shams, Al-Layl, Al-'Alaq, Al-Bayyina) ont été confrontées verset par verset au texte arabe, à la traduction de M. Hamidullah et au tafsir d'As-Sa'dî — aucune erreur. Les hadiths cités ont été vérifiés via MCP hadith (Riyad as-Salihin, Sahih al-Bukhari, Sahih Muslim).
+    </div>
+    <div class="toc-list">
+      <a class="toc-row done" href="#s1"><span class="wk">S1</span><span class="dot" style="background:var(--coran)"></span><span class="lbl">Coran — Al-Balad — Le chemin difficile</span><span class="dom">Coran 1/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s2"><span class="wk">S2</span><span class="dot" style="background:var(--aqida)"></span><span class="lbl">Ar-Rabb — mon Créateur et mon Maître</span><span class="dom">Aqîda 1/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s3"><span class="wk">S3</span><span class="dot" style="background:var(--fiqh)"></span><span class="lbl">Pourquoi et comment prier en groupe</span><span class="dom">Fiqh 1/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s4"><span class="wk">S4</span><span class="dot" style="background:var(--sira)"></span><span class="lbl">Badr (1) — l'attente et la prière du Prophète ﷺ</span><span class="dom">Sîra 1/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s5"><span class="wk">S5</span><span class="dot" style="background:var(--akhlaq)"></span><span class="lbl">Qui suis-je ? Identité et appartenance</span><span class="dom">Hadith 1/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s6"><span class="wk">S6</span><span class="dot" style="background:var(--coran)"></span><span class="lbl">Coran — Ash-Shams — le soleil et l'âme purifiée</span><span class="dom">Coran 2/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s7"><span class="wk">S7</span><span class="dot" style="background:var(--aqida)"></span><span class="lbl">Allah seul mérite l'adoration (Ulûhiyya)</span><span class="dom">Aqîda 2/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s8"><span class="wk">S8</span><span class="dot" style="background:var(--fiqh)"></span><span class="lbl">Suivre l'imam, du premier au dernier geste</span><span class="dom">Fiqh 2/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s9"><span class="wk">S9</span><span class="dot" style="background:var(--sira)"></span><span class="lbl">Badr (2) — la bataille et la leçon du petit nombre</span><span class="dom">Sîra 2/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s10"><span class="wk">S10</span><span class="dot" style="background:var(--akhlaq)"></span><span class="lbl">Résister à la pression du groupe</span><span class="dom">Hadith 2/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s11"><span class="wk">S11</span><span class="dot" style="background:var(--coran)"></span><span class="lbl">Coran — Al-Layl — la nuit et les deux chemins</span><span class="dom">Coran 3/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s12"><span class="wk">S12</span><span class="dot" style="background:var(--aqida)"></span><span class="lbl">Le Jour Dernier (1) — la résurrection et le jugement</span><span class="dom">Aqîda 3/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s13"><span class="wk">S13</span><span class="dot" style="background:var(--fiqh)"></span><span class="lbl">Le jeûne complet du Ramadân</span><span class="dom">Fiqh 3/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s14"><span class="wk">S14</span><span class="dot" style="background:var(--sira)"></span><span class="lbl">Uhud — la leçon de la discipline</span><span class="dom">Sîra 3/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s15"><span class="wk">S15</span><span class="dot" style="background:var(--akhlaq)"></span><span class="lbl">Construire une estime de soi saine</span><span class="dom">Hadith 3/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s16"><span class="wk">S16</span><span class="dot" style="background:var(--coran)"></span><span class="lbl">Coran — Al-'Alaq — « Lis ! »</span><span class="dom">Coran 4/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s17"><span class="wk">S17</span><span class="dot" style="background:var(--aqida)"></span><span class="lbl">Le Jour Dernier (2) — le Paradis</span><span class="dom">Aqîda 4/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s18"><span class="wk">S18</span><span class="dot" style="background:var(--fiqh)"></span><span class="lbl">Ce qui casse (ou ne casse pas) le jeûne</span><span class="dom">Fiqh 4/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s19"><span class="wk">S19</span><span class="dot" style="background:var(--sira)"></span><span class="lbl">Le Khandaq — la ruse au service de la défense</span><span class="dom">Sîra 4/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s20"><span class="wk">S20</span><span class="dot" style="background:var(--akhlaq)"></span><span class="lbl">Mes écrans, mon temps libre</span><span class="dom">Hadith 4/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s21"><span class="wk">S21</span><span class="dot" style="background:var(--coran)"></span><span class="lbl">Coran — Al-Bayyina — la Preuve évidente</span><span class="dom">Coran 5/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s22"><span class="wk">S22</span><span class="dot" style="background:var(--aqida)"></span><span class="lbl">Le Qadar, sans fatalisme</span><span class="dom">Aqîda 5/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s23"><span class="wk">S23</span><span class="dot" style="background:var(--fiqh)"></span><span class="lbl">La propreté rituelle, avec tact</span><span class="dom">Fiqh 5/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s24"><span class="wk">S24</span><span class="dot" style="background:var(--sira)"></span><span class="lbl">Hudaybiyya — la patience stratégique</span><span class="dom">Sîra 5/5</span><span class="stat ok">Rédigée</span></a>
+      <a class="toc-row done" href="#s25"><span class="wk">S25</span><span class="dot" style="background:var(--akhlaq)"></span><span class="lbl">Mon carnet des 4 lieux — bilan de l'année (clôture)</span><span class="dom">Hadith 5/5</span><span class="stat ok">Rédigée</span></a>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--coran)"></span>Coran</span>
+      <span><span class="dot" style="background:var(--aqida)"></span>Aqîda</span>
+      <span><span class="dot" style="background:var(--fiqh)"></span>Fiqh</span>
+      <span><span class="dot" style="background:var(--sira)"></span>Sîra</span>
+      <span><span class="dot" style="background:var(--akhlaq)"></span>Hadith &amp; Adab</span>
+    </div>
+  </section>
+
+  <section id="charte" class="charte-card">
+    <h2>🎨 Charte des illustrations</h2>
+    <p style="margin:0 0 8px;color:var(--ink-soft)">Règles à respecter :</p>
+    <ul>
+      <li><strong>Jamais</strong> de représentation d'Allah, d'un ange, ou d'un Prophète (visage, silhouette identifiable) — y compris le Prophète Muhammad ﷺ.</li>
+      <li>Pour les scènes de Sîra (Badr, Uhud, Khandaq, Hudaybiyya), préférer une scène symbolique (lieu, objet, ambiance) plutôt qu'un portrait identifiable ou une violence explicite.</li>
+      <li>Ahmed, notre personnage d'enfant fictif (10-11 ans), peut être illustré normalement (style éducatif doux, non réaliste).</li>
+      <li>Style recommandé : illustration douce façon aquarelle/vectoriel simple, palette chaleureuse assortie au manuel (terracotta, or, vert sauge, bleu profond), sans texte intégré à l'image.</li>
+    </ul>
+  </section>
+
+  <section id="passeport" class="passport-card">
+    <div class="passport-head">
+      <h2>⭐ Mon Passeport des Sourates</h2>
+      <span class="passport-count" data-passport-count>0 / 5 sourates</span>
+    </div>
+    <p class="lede">5 nouvelles sourates au programme cette année, qui s'ajoutent aux 21 déjà mémorisées en Cycle 1 et Cycle 2. Clique sur une sourate dès que tu sais la réciter par cœur — ta progression est sauvegardée sur cet appareil.</p>
+    <div class="passport-grid" data-passport="cycle3-sourates">
+      <button type="button" class="sourate-row" data-star="balad" aria-pressed="false"><span class="flag" aria-hidden="true">⬜</span> Al-Balad (90) — S1, le chemin difficile</button>
+      <button type="button" class="sourate-row" data-star="shams" aria-pressed="false"><span class="flag" aria-hidden="true">⬜</span> Ash-Shams (91) — S6, le soleil et l'âme purifiée</button>
+      <button type="button" class="sourate-row" data-star="layl" aria-pressed="false"><span class="flag" aria-hidden="true">⬜</span> Al-Layl (92) — S11, la nuit et les deux chemins</button>
+      <button type="button" class="sourate-row" data-star="alaq" aria-pressed="false"><span class="flag" aria-hidden="true">⬜</span> Al-'Alaq (96, entière) — S16, « Lis ! »</button>
+      <button type="button" class="sourate-row" data-star="bayyina" aria-pressed="false"><span class="flag" aria-hidden="true">⬜</span> Al-Bayyina (98) — S21, la Preuve évidente (clôture)</button>
+    </div>
+  </section>
+
+  <section id="outils" class="passport-card">
+    <h2>🧭 Mes outils de l'année</h2>
+    <p class="lede">Trois outils simples à utiliser sur papier ou à imprimer, pour t'aider à suivre tes progrès sans pression — l'objectif est de t'observer toi-même, pas seulement d'être observé.</p>
+    <div class="tool-grid">
+      <div class="tool-cell"><div class="k">Le carnet des 4 lieux</div>Chaque semaine, note une action concrète que tu as vécue dans l'un des 4 contextes : maison, rue/transports, cour d'école, avec un enseignant. Un exemple t'est proposé à la fin de chaque chapitre, dans la boîte « Ancrage quotidien ».</div>
+      <div class="tool-cell"><div class="k">Le « pourquoi » en une phrase</div>Après une leçon d'Aqîda, essaie de répondre en une seule phrase simple : pourquoi je crois cela, ou pourquoi j'agis ainsi ? Pas besoin d'être parfait — l'important est d'essayer de formuler toi-même.</div>
+      <div class="tool-cell"><div class="k">Passeport de la prière en groupe</div>Fais tamponner ou cocher une case à chaque prière effectuée en jamâ'a (à la mosquée ou en famille) — un simple tableau de 25 cases à imprimer suffit, pas besoin d'application.</div>
+    </div>
+  </section>
+
+  <!-- ============ S1 · CORAN ============ -->
+  <article id="s1" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 1 · Coran</span>
+      <span class="badge">📗 Le Coran</span>
+      <h2><span>Le chemin difficile</span><span class="ar">الْبَلَد</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une ruelle de vieille ville au crepuscule, une main tendue vers une autre en signe d'aide, ambiance chaleureuse et digne, sans visage detaille. Pas de texte dans l'image." src="images/img02.webp">
+
+      <div class="section">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <div class="box tinted">
+          <ul>
+            <li>Découvrir la sourate Al-Balad (« La Cité »), 20 versets.</li>
+            <li>Comprendre ce qu'est « le chemin difficile » (al-'aqaba) dont parle Allah.</li>
+            <li>Relier cette sourate à un geste concret d'entraide.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Sourate Al-Balad (90)</div>
+        <div class="verse">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div class="ar">لَا أُقْسِمُ بِهَٰذَا الْبَلَدِ<br>وَأَنتَ حِلٌّ بِهَٰذَا الْبَلَدِ<br>وَوَالِدٍ وَمَا وَلَدَ<br>لَقَدْ خَلَقْنَا الْإِنسَانَ فِي كَبَدٍ<br>أَيَحْسَبُ أَن لَّن يَقْدِرَ عَلَيْهِ أَحَدٌ<br>يَقُولُ أَهْلَكْتُ مَالًا لُّبَدًا<br>أَيَحْسَبُ أَن لَّمْ يَرَهُ أَحَدٌ<br>أَلَمْ نَجْعَل لَّهُ عَيْنَيْنِ<br>وَلِسَانًا وَشَفَتَيْنِ<br>وَهَدَيْنَاهُ النَّجْدَيْنِ<br>فَلَا اقْتَحَمَ الْعَقَبَةَ<br>وَمَا أَدْرَاكَ مَا الْعَقَبَةُ<br>فَكُّ رَقَبَةٍ<br>أَوْ إِطْعَامٌ فِي يَوْمٍ ذِي مَسْغَبَةٍ<br>يَتِيمًا ذَا مَقْرَبَةٍ<br>أَوْ مِسْكِينًا ذَا مَتْرَبَةٍ<br>ثُمَّ كَانَ مِنَ الَّذِينَ آمَنُوا وَتَوَاصَوْا بِالصَّبْرِ وَتَوَاصَوْا بِالْمَرْحَمَةِ<br>أُولَٰئِكَ أَصْحَابُ الْمَيْمَنَةِ<br>وَالَّذِينَ كَفَرُوا بِآيَاتِنَا هُمْ أَصْحَابُ الْمَشْأَمَةِ<br>عَلَيْهِمْ نَارٌ مُّؤْصَدَةٌ</div>
+          <div class="fr">« Non !... Je jure par cette Cité ! et toi, tu es un résident dans cette cité — Et par le père et ce qu'il engendre ! Nous avons, certes, créé l'homme pour une vie de lutte. Pense-t-il que personne ne pourra rien contre lui ? Il dit : "J'ai gaspillé beaucoup de biens." Pense-t-il que nul ne l'a vu ? Ne lui avons-Nous pas assigné deux yeux, et une langue et deux lèvres ? Ne l'avons-Nous pas guidé aux deux voies ? Or, il ne s'engage pas dans la voie difficile ! Et qui te dira ce qu'est la voie difficile ? C'est délier un joug [affranchir un esclave], ou nourrir, en un jour de famine, un orphelin proche parent, ou un pauvre dans le dénouement. Et c'est être, en outre, de ceux qui croient et s'enjoignent mutuellement l'endurance, et s'enjoignent mutuellement la miséricorde. Ceux-là sont les gens de la droite ; alors que ceux qui ne croient pas en Nos versets sont les gens de la gauche. Le Feu se refermera sur eux. »</div>
+          <span class="ref">Sourate Al-Balad (90), versets 1 à 20 — trad. M. Hamidullah</span>
+        </div>
+        <a class="listen-link" href="https://www.youtube.com/watch?v=hVQDpftSops" target="_blank" rel="noopener">▶️ Écouter la récitation</a>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Allah jure par la Cité (La Mecque) et rappelle qu'Il a créé l'être humain « dans la lutte » (kabad) : la vie comporte des efforts et des épreuves pour tout le monde, riche ou pauvre. Certains oublient que tout ce qu'ils possèdent — jusqu'à leurs yeux, leur langue, leurs lèvres — est un don d'Allah, et pensent pouvoir agir comme bon leur semble sans être vus ni jugés.</p>
+          <p>Puis Allah pose une question : est-ce que cette personne s'est engagée dans « le chemin difficile » ? Ce chemin, ce n'est pas une montagne à escalader : c'est un effort du cœur, celui de donner quelque chose qui coûte — libérer une personne de l'esclavage, ou nourrir un orphelin ou un pauvre au moment où on en a le plus besoin. La sourate ajoute qu'il faut aussi s'encourager les uns les autres à la patience et à la miséricorde : la foi ne se vit jamais seul.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Allah m'a donné des yeux, une langue, des lèvres, et m'a montré les deux chemins (le bien et le mal) : ce sont des bienfaits énormes que j'oublie souvent de remarquer.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Le vrai courage dans la foi, c'est de choisir le chemin qui coûte un effort : aider quelqu'un dans le besoin plutôt que de regarder ailleurs.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Je ne dois pas seulement bien agir moi-même : je dois aussi encourager mes proches à la patience et à la bonté, comme le dit la sourate.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que veut dire « al-'aqaba », le chemin difficile ?</summary><div class="answer"><strong>Réponse :</strong> Un effort du cœur qui coûte quelque chose, comme aider un orphelin ou un pauvre, plutôt qu'un effort physique.</div></details>
+        <details class="exo"><summary>2. Cite deux bienfaits qu'Allah nous rappelle dans cette sourate.</summary><div class="answer"><strong>Réponse :</strong> Les yeux, la langue, les lèvres, et le fait d'avoir été guidés vers les deux chemins (bien/mal) — plusieurs réponses possibles.</div></details>
+        <details class="exo"><summary>3. Que doit-on faire en plus de bien agir, selon le verset 17 ?</summary><div class="answer"><strong>Réponse :</strong> S'encourager mutuellement à la patience et à la miséricorde.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le vrai chemin, c'est celui qui me coûte un effort pour aider les autres — et je ne le porte pas seul(e). »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Al-'Aqaba :</span> le chemin difficile, l'effort qui coûte.</span> <span class="ar">الْعَقَبَة</span></div>
+          <div><span><span class="term">Kabad :</span> la lutte, l'effort de la vie humaine.</span> <span class="ar">كَبَد</span></div>
+          <div><span><span class="term">Marhama :</span> la miséricorde envers les autres.</span> <span class="ar">مَرْحَمَة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Cette semaine, aide un membre de ta famille sans qu'on ait besoin de te le demander deux fois — porter des courses, mettre la table, aider un petit frère ou une petite sœur. C'est un petit exemple du « chemin difficile » de la sourate.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S2 · AQÎDA ============ -->
+  <article id="s2" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 2 · Aqîda</span>
+      <span class="badge">🕌 Croyance</span>
+      <h2><span>Ar-Rabb — mon Créateur et mon Maître</span><span class="ar">الرَّبّ</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir le Tawhîd ar-Rubûbiyya : croire qu'Allah seul crée, possède et gouverne tout ce qui existe.</li>
+          <li>Comprendre que cette croyance, à elle seule, ne suffit pas encore à être pleinement musulman (on le verra en S7).</li>
+          <li>Apprendre à me reposer sur Allah dans les moments où je me sens petit(e) face à un problème.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Ahmed regarde un documentaire sur l'espace avec son père : des milliards d'étoiles, des galaxies immenses, une Terre minuscule au milieu de tout cela. « Papa, qui a fait tout ça ? » Son père sourit. « C'est une excellente question, Ahmed. Tout ce que tu vois — les étoiles, la Terre, toi-même, moi — a un seul Créateur : Allah. On L'appelle <strong>Ar-Rabb</strong>, le Maître qui crée, qui possède et qui gère absolument tout, du plus grand astre au plus petit insecte. »</p>
+          <p>« Mais alors, dit Ahmed, même les gens qui ne prient pas, ils savent que c'est Allah qui a tout créé ? » « La plupart du temps, oui, répond son père. Presque tout le monde reconnaît qu'il existe un Créateur derrière l'univers, même sans le nommer précisément. Mais croire qu'Allah a tout créé n'est qu'une première étape. On en reparlera bientôt : savoir qui a tout créé, c'est une chose. Adorer uniquement Celui qui a tout créé, c'en est une autre. »</p>
+        </div>
+      </div>
+
+      <img class="chapter-img" alt="Un enfant et son pere regardent le ciel etoile depuis un balcon, ambiance de decouverte et d'emerveillement calme. Pas de representation d'Allah, pas de texte dans l'image." src="images/img03.webp">
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Ce que dit le Coran</div>
+        <div class="verse">
+          <div class="ar">اللَّهُ خَالِقُ كُلِّ شَيْءٍ ۖ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ وَكِيلٌ</div>
+          <div class="translit">Allâhu khâliqu kulli shay'in wa huwa 'alâ kulli shay'in wakîl.</div>
+          <div class="fr">« Allah est le Créateur de toute chose, et de toute chose Il est Garant. »</div>
+          <span class="ref">Sourate Az-Zumar (39), verset 62 — trad. M. Hamidullah</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>D'après le tafsîr d'As-Sa'dî, ce verset signifie qu'absolument tout ce qui existe — sauf Allah Lui-même — est créé par Lui : rien ne s'est fait tout seul, rien n'existait avant Lui. Être « Garant » (wakîl) de toute chose veut dire qu'Allah connaît parfaitement tout ce qu'Il a créé, qu'Il a le pouvoir complet de le gérer, et qu'Il le fait avec une sagesse parfaite.</p>
+          <p>C'est ce qu'on appelle le <strong>Tawhîd ar-Rubûbiyya</strong> : croire qu'Allah seul est le Rabb (Créateur, Maître, Pourvoyeur) de tout l'univers. Presque tous les êtres humains, même ceux qui ne pratiquent aucune religion, reconnaissent qu'il existe un Créateur. Mais comme l'explique la suite du programme de cette année (voir S7), reconnaître qui a tout créé ne suffit pas encore : il faut aussi n'adorer que Lui.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Un hadith pour la vie de tous les jours</div>
+        <div class="fr">« Préserve les commandements d'Allah, Il te préservera. Préserve Ses droits, tu Le trouveras toujours avec toi. Si tu demandes, demande à Allah ; et si tu cherches du secours, cherche-le auprès d'Allah. »</div>
+        <span class="ref">Ibn 'Abbâs — Riyad as-Salihin, n°1279 (rapporté par At-Tirmidhî) — <a href="https://search.hadith-mcp.org/?id=42344" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>La prochaine fois qu'un problème te semble trop grand pour toi (un contrôle difficile, une dispute), rappelle-toi que le Créateur de l'univers entier est aussi Celui à qui tu peux demander de l'aide directement.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que signifie le Tawhîd ar-Rubûbiyya ?</summary><div class="answer"><strong>Réponse :</strong> Croire qu'Allah seul est le Créateur, le Maître et le Gérant de tout l'univers.</div></details>
+        <details class="exo"><summary>2. Est-ce que croire qu'Allah a tout créé suffit à être pleinement musulman ?</summary><div class="answer"><strong>Réponse :</strong> Non — il faut aussi n'adorer que Lui seul (voir S7).</div></details>
+        <details class="exo"><summary>3. D'après le hadith, à qui dois-je demander de l'aide en premier ?</summary><div class="answer"><strong>Réponse :</strong> À Allah.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Allah, Ar-Rabb, a créé et gère tout l'univers — je peux Lui faire confiance et Lui demander de l'aide directement. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Ar-Rabb :</span> le Maître, le Créateur, Celui qui gère tout.</span> <span class="ar">الرَّبّ</span></div>
+          <div><span><span class="term">Rubûbiyya :</span> la croyance qu'Allah seul crée et gère l'univers.</span> <span class="ar">رُبُوبِيَّة</span></div>
+          <div><span><span class="term">Wakîl :</span> le Garant, Celui qui gère avec pouvoir et sagesse.</span> <span class="ar">وَكِيل</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🚌 Ancrage quotidien — rue &amp; transports</span>
+        <p>La prochaine fois que tu attends le bus ou que tu marches dans la rue, prends 10 secondes pour observer ce qui t'entoure (arbres, ciel, gens) et rappelle-toi que tout cela a un seul Créateur, Ar-Rabb — puis dis simplement « Al-hamdu lillâh ».</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S3 · FIQH ============ -->
+  <article id="s3" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 3 · Fiqh</span>
+      <span class="badge">💧 La pratique</span>
+      <h2><span>Pourquoi et comment prier en groupe</span><span class="ar">صَلَاةُ الْجَمَاعَة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une rangee de tapis de priere alignes cote a cote dans une mosquee simple et lumineuse, ambiance d'unite et de serenite, aucun visage detaille. Pas de texte dans l'image." src="images/img04.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Comprendre pourquoi la prière en groupe (jamâ'a) est tellement encouragée.</li>
+          <li>Savoir comment se ranger correctement dans les rangs (saff).</li>
+          <li>Découvrir ce qu'on fait si on arrive en retard à la prière en groupe.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Depuis cette année, Ahmed accompagne parfois son grand frère à la mosquée du quartier pour la prière du vendredi. La première fois, il ne savait pas où se mettre : trop près, trop loin, un espace vide au milieu du rang ? Un homme âgé lui a montré gentiment comment se serrer épaule contre épaule, sans laisser de trou dans la ligne. « Un rang bien serré, c'est plus solide, comme une chaîne, » lui a-t-il expliqué en souriant.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Pourquoi prier en groupe ?</div>
+        <div class="lesson-text">
+          <p>Prier seul(e) est valable, mais prier en groupe (en jamâ'a) est bien plus encouragé en Islam : cela rassemble les musulmans, apprend l'humilité (on suit le même mouvement que son voisin, riche ou pauvre), et la récompense en est multipliée. Voici comment se ranger simplement : on se place derrière l'imam (celui qui dirige la prière), on complète d'abord les rangs de devant sans laisser de trous, et on se tient épaule contre épaule.</p>
+          <p>Si tu arrives après le début de la prière, tu rejoins discrètement le rang, tu suis l'imam depuis le moment où tu arrives, et tu rattraperas ensuite chez toi (ou après le salâm final) les rak'a que tu as manquées — sans jamais courir ni bousculer les autres pour arriver à temps.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="ar">صَلاَةُ الْجَمَاعَةِ تَفْضُلُ صَلاَةَ الْفَذِّ بِسَبْعٍ وَعِشْرِينَ دَرَجَةً</div>
+        <div class="fr">« La prière en groupe est vingt-sept fois supérieure à la prière accomplie seul. »</div>
+        <span class="ref">Rapporté par 'Abdullah ibn 'Umar — Sahih al-Bukhari, n°630 — <a href="https://search.hadith-mcp.org/?id=630" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Le savais-tu ?</div>
+        <p>Si tu arrives pendant que l'imam est encore en train de faire la première rak'a, tu peux entrer directement dans la prière avec le groupe — pas besoin d'attendre le début exact.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Combien de fois la prière en groupe est-elle supérieure à la prière seul(e), d'après le hadith ?</summary><div class="answer"><strong>Réponse :</strong> Vingt-sept fois.</div></details>
+        <details class="exo"><summary>2. Comment doit-on se ranger dans les rangs ?</summary><div class="answer"><strong>Réponse :</strong> Épaule contre épaule, sans laisser de trous, en complétant d'abord les rangs de devant.</div></details>
+        <details class="exo"><summary>3. Que fait-on si on arrive en retard ?</summary><div class="answer"><strong>Réponse :</strong> On rejoint discrètement le rang, on suit l'imam, et on rattrape ensuite les rak'a manquées.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Prier ensemble, épaule contre épaule, rend le rang plus solide — comme une chaîne. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Jamâ'a :</span> la prière accomplie en groupe.</span> <span class="ar">جَمَاعَة</span></div>
+          <div><span><span class="term">Saff :</span> le rang de la prière.</span> <span class="ar">صَفّ</span></div>
+          <div><span><span class="term">Imam :</span> celui qui dirige la prière.</span> <span class="ar">إِمَام</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — avec les enseignants</span>
+        <p>Comme dans un rang de prière où chacun suit le même mouvement sans désordre, en classe aussi : écoute la consigne de ton enseignant du début à la fin avant d'agir, sans te précipiter ni couper la parole.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S4 · SÎRA ============ -->
+  <article id="s4" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 4 · Sîra</span>
+      <span class="badge">🕋 L'histoire du Prophète ﷺ</span>
+      <h2><span>Badr (1) — l'attente et la prière du Prophète ﷺ</span><span class="ar">بَدْر</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un campement simple sous des palmiers pres d'un point d'eau dans le desert, a la tombee de la nuit, ambiance solennelle et calme, aucun personnage identifiable. Pas de texte dans l'image." src="images/img05.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Comprendre le contexte de la bataille de Badr, en l'an 2 de l'Hégire.</li>
+          <li>Découvrir comment le Prophète ﷺ a passé la nuit avant la bataille.</li>
+          <li>Comprendre que la foi ne dispense jamais de la préparation sérieuse.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>Le contexte</div>
+        <div class="lesson-text dropcap">
+          <p>Deux ans après l'Hégire (le départ de La Mecque vers Médine), le Prophète ﷺ apprend qu'une caravane commerçante des Mecquois, dirigée par Abû Sufyân, revient de Syrie. Les musulmans, encore peu nombreux et affaiblis par des années de persécution, partent à sa rencontre — pas pour un affrontement, au départ, mais pour répondre à des années d'injustice. La caravane leur échappe finalement, mais les Mecquois, avertis, envoient une armée nombreuse pour protéger leurs intérêts et écraser les musulmans une bonne fois pour toutes.</p>
+          <p>Les musulmans, environ 313 hommes très peu équipés, se retrouvent donc face à une armée mecquoise d'environ 1000 combattants, bien armés. Le lieu de la rencontre : les puits de Badr.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>La nuit avant la bataille</div>
+        <div class="lesson-text">
+          <p>Avant l'affrontement, le Prophète ﷺ a d'abord fait preuve d'une stratégie réfléchie : sur le conseil d'un compagnon, il fait déplacer le campement musulman près du point d'eau le plus proche de l'ennemi, pour que les musulmans aient accès à l'eau et que les Mecquois en soient privés. Ce n'est qu'après cette préparation concrète que le Prophète ﷺ passe une grande partie de la nuit en prière et en invocation, demandant à Allah le secours face à une armée bien plus nombreuse et mieux équipée.</p>
+          <p>Cette nuit-là enseigne une leçon essentielle : la foi en Allah ne remplace jamais la préparation sérieuse — elle vient en plus. Le Prophète ﷺ a organisé l'armée, choisi le meilleur emplacement, ET invoqué Allah avec insistance. Les deux vont toujours ensemble.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Se préparer sérieusement (étudier avant un contrôle, s'entraîner avant un match) n'est pas un manque de confiance en Allah — c'est ce que le Prophète ﷺ a fait lui-même.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Même bien préparé, on garde besoin d'invoquer Allah : la préparation humaine et la confiance en Allah avancent ensemble, jamais l'une sans l'autre.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Face à une situation qui semble injuste depuis longtemps, les musulmans de Badr ont choisi de rester organisés plutôt que de céder à la panique.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Combien y avait-il de musulmans face aux Mecquois à Badr, environ ?</summary><div class="answer"><strong>Réponse :</strong> Environ 313 musulmans face à environ 1000 Mecquois.</div></details>
+        <details class="exo"><summary>2. Pourquoi le campement a-t-il été déplacé près du point d'eau ?</summary><div class="answer"><strong>Réponse :</strong> Pour que les musulmans aient accès à l'eau et que l'ennemi en soit privé — une décision stratégique.</div></details>
+        <details class="exo"><summary>3. Que nous enseigne la nuit passée en prière par le Prophète ﷺ ?</summary><div class="answer"><strong>Réponse :</strong> Que la préparation sérieuse et la confiance en Allah vont toujours ensemble.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Se préparer sérieusement et invoquer Allah : les deux vont toujours ensemble, jamais l'un sans l'autre. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Badr :</span> le lieu des puits où eut lieu la bataille.</span> <span class="ar">بَدْر</span></div>
+          <div><span><span class="term">Hégire :</span> le départ de La Mecque vers Médine.</span> <span class="ar">هِجْرَة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Avant un contrôle ou un événement important, prépare-toi sérieusement ET fais une petite invocation avant de dormir — comme le Prophète ﷺ à Badr, les deux ensemble.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S5 · ADAB ============ -->
+  <article id="s5" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 5 · Adab</span>
+      <span class="badge">🤝 Bienséance</span>
+      <h2><span>Qui suis-je ? Identité et appartenance</span><span class="ar">الْهُوِيَّة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un groupe d'enfants divers assis en cercle dans une cour d'ecole, souriants, ambiance d'appartenance et de confiance. Pas de texte dans l'image." src="images/img06.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Réfléchir à ce qui construit mon identité (famille, foi, amis, goûts).</li>
+          <li>Comprendre que grandir, c'est parfois se sentir « entre deux mondes » — et que c'est normal.</li>
+          <li>Découvrir un hadith qui parle de l'importance de bien choisir ses amis.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>En CM2, Ahmed remarque que certains camarades commencent à former des petits groupes fermés, où il faut aimer les mêmes choses pour être accepté. Un jour, un camarade lui dit : « Tu es bizarre, tu ne regardes même pas telle série et tu ne dis jamais de gros mots. » Ahmed rentre chez lui un peu troublé et en parle à sa mère. Elle lui répond : « Ahmed, ton identité, ce n'est pas seulement ce que les autres attendent de toi. C'est ta famille, ta foi, tes valeurs, mais aussi tes goûts à toi, tes qualités, ce qui te rend unique. Tu n'as pas à choisir entre "être toi-même" et "avoir des amis" : les vrais amis acceptent qui tu es vraiment. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Grandir, c'est se poser des questions</div>
+        <div class="lesson-text">
+          <p>À 10-11 ans, il est tout à fait normal de commencer à se demander « qui suis-je vraiment ? », de comparer sa famille à celle des autres, ou de se sentir parfois différent(e). C'est une étape importante de la croissance, pas un problème à résoudre en urgence. Ton identité repose sur plusieurs piliers solides : ta famille, ta foi, tes valeurs personnelles, tes qualités, et aussi les amitiés que tu choisis de construire.</p>
+          <p>Justement, le choix des amis compte énormément à cet âge, car on est influencé, sans toujours s'en rendre compte, par les personnes qu'on fréquente le plus.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="ar">الرَّجُلُ عَلَى دِينِ خَلِيلِهِ، فَلْيَنْظُرْ أَحَدُكُمْ مَنْ يُخَالِلُ</div>
+        <div class="fr">« Chacun suit la religion (les habitudes) de son ami proche ; regardez donc bien qui vous prenez pour ami. »</div>
+        <span class="ref">Abû Hurayra — Riyad as-Salihin, n°1584 (rapporté par Abû Dâwûd et At-Tirmidhî) — <a href="https://search.hadith-mcp.org/?id=42649" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>Fais la liste (dans ta tête ou sur un papier) de 3 personnes que tu fréquentes le plus. Demande-toi : est-ce qu'elles m'encouragent à être une meilleure version de moi-même ?</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Cite 3 éléments qui construisent ton identité.</summary><div class="answer"><strong>Réponse :</strong> Famille, foi, valeurs, qualités personnelles, amitiés — plusieurs réponses possibles.</div></details>
+        <details class="exo"><summary>2. D'après le hadith, pourquoi faut-il bien choisir ses amis ?</summary><div class="answer"><strong>Réponse :</strong> Parce qu'on est influencé par les habitudes de ceux qu'on fréquente le plus.</div></details>
+        <details class="exo"><summary>3. Est-ce grave de se sentir "différent" parfois à cet âge ?</summary><div class="answer"><strong>Réponse :</strong> Non, c'est normal — cela fait partie de grandir.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Mon identité, c'est ma famille, ma foi, mes valeurs et mes qualités — pas seulement ce que les autres attendent de moi. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Khalîl :</span> l'ami proche.</span> <span class="ar">خَلِيل</span></div>
+          <div><span><span class="term">Identité :</span> ce qui fait de moi qui je suis.</span> <span class="ar">هُوِيَّة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — cour d'école</span>
+        <p>Si un camarade essaie de te faire dire ou faire quelque chose qui ne te ressemble pas pour « faire comme tout le monde », entraîne-toi à répondre calmement « non merci, ce n'est pas pour moi » — sans te justifier davantage.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S6 · CORAN ============ -->
+  <article id="s6" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 6 · Coran</span>
+      <span class="badge">📗 Le Coran</span>
+      <h2><span>Le soleil et l'âme purifiée</span><span class="ar">الشَّمْس</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un lever de soleil sur des collines, contraste doux entre lumiere et ombre, ambiance de purete et de reflexion. Pas de texte dans l'image." src="images/img07.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la sourate Ash-Shams (« Le Soleil »), 15 versets.</li>
+          <li>Comprendre ce que signifie « purifier son âme » (tazkiyat an-nafs).</li>
+          <li>Connaître l'histoire du peuple de Thamûd et de la chamelle.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Sourate Ash-Shams (91)</div>
+        <div class="verse">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div class="ar">وَالشَّمْسِ وَضُحَاهَا<br>وَالْقَمَرِ إِذَا تَلَاهَا<br>وَالنَّهَارِ إِذَا جَلَّاهَا<br>وَاللَّيْلِ إِذَا يَغْشَاهَا<br>وَالسَّمَاءِ وَمَا بَنَاهَا<br>وَالْأَرْضِ وَمَا طَحَاهَا<br>وَنَفْسٍ وَمَا سَوَّاهَا<br>فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا<br>قَدْ أَفْلَحَ مَن زَكَّاهَا<br>وَقَدْ خَابَ مَن دَسَّاهَا<br>كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا<br>إِذِ انبَعَثَ أَشْقَاهَا<br>فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا<br>فَكَذَّبُوهُ فَعَقَرُوهَا فَدَمْدَمَ عَلَيْهِمْ رَبُّهُم بِذَنبِهِمْ فَسَوَّاهَا<br>وَلَا يَخَافُ عُقْبَاهَا</div>
+          <div class="fr">« Par le soleil et par sa clarté ! Et par la lune quand elle le suit ! Et par le jour quand il l'éclaire ! Et par la nuit quand elle l'enveloppe ! Et par le ciel et Celui qui l'a construit ! Et par la terre et Celui qui l'a étendue ! Et par l'âme et Celui qui l'a harmonieusement façonnée ; et lui a alors inspiré son immoralité, de même que sa piété ! A réussi, certes celui qui la purifie. Et est perdu, certes, celui qui la corrompt. Les Thamûd, par leur transgression, ont crié au mensonge, lorsque le plus misérable d'entre eux se leva (pour tuer la chamelle). Le Messager d'Allah leur avait dit : "La chamelle d'Allah ! Laissez-la boire." Mais, ils le traitèrent de menteur, et la tuèrent. Leur Seigneur les détruisit donc, pour leur péché et étendit Son châtiment sur tous. Et Allah n'a aucune crainte des conséquences. »</div>
+          <span class="ref">Sourate Ash-Shams (91), versets 1 à 15 — trad. M. Hamidullah</span>
+        </div>
+        <a class="listen-link" href="https://www.youtube.com/watch?v=xsjeNGRN7FY" target="_blank" rel="noopener">▶️ Écouter la récitation</a>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Allah jure par le soleil, la lune, le jour, la nuit, le ciel, la terre — et par l'âme humaine elle-même. Il rappelle qu'Il a créé chaque âme avec en elle la capacité de reconnaître le mal (fujûr) et le bien (taqwâ) : personne ne naît sans repère. Réussit celui qui purifie son âme (zakkâhâ), échoue celui qui l'enfouit sous les mauvaises habitudes (dassâhâ).</p>
+          <p>La sourate raconte ensuite l'histoire du peuple de Thamûd : Allah leur avait envoyé une chamelle comme signe, avec l'ordre de la laisser boire sans lui faire de mal. Le plus égaré d'entre eux l'a tuée par défi — et le châtiment d'Allah s'est abattu sur tout le peuple à cause de ce péché collectif, car ils avaient tous accepté ce crime.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Allah a mis en moi, dès la naissance, la capacité de distinguer le bien du mal — je n'ai pas besoin d'inventer ma propre morale.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Réussir dans la vie, au sens le plus important, c'est purifier son âme jour après jour, pas seulement réussir à l'école ou dans le sport.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Accepter en silence une injustice qu'on voit commettre (comme Thamûd face à la chamelle) peut rendre tout un groupe responsable, pas seulement celui qui agit.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que veut dire « zakkâhâ » (celui qui la purifie) ?</summary><div class="answer"><strong>Réponse :</strong> Purifier son âme des péchés et la faire grandir par de bonnes actions.</div></details>
+        <details class="exo"><summary>2. Quel signe Allah a-t-Il envoyé au peuple de Thamûd ?</summary><div class="answer"><strong>Réponse :</strong> Une chamelle qu'il ne fallait pas maltraiter.</div></details>
+        <details class="exo"><summary>3. Pourquoi tout le peuple a-t-il été puni, alors qu'un seul homme a tué la chamelle ?</summary><div class="answer"><strong>Réponse :</strong> Parce qu'ils ont accepté et soutenu cet acte collectivement.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Réussir vraiment, c'est purifier mon âme chaque jour, pas seulement accumuler des réussites extérieures. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Tazkiya :</span> la purification de l'âme.</span> <span class="ar">تَزْكِيَة</span></div>
+          <div><span><span class="term">Fujûr :</span> l'immoralité, le mal.</span> <span class="ar">فُجُور</span></div>
+          <div><span><span class="term">Thamûd :</span> peuple ancien auquel Allah envoya le prophète Sâlih.</span> <span class="ar">ثَمُود</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Ce soir, avant de dormir, repense à une seule chose que tu as faite dans la journée pour « purifier » un peu ton comportement (une parole retenue, une aide apportée) — pas besoin d'en parler à voix haute, juste y penser.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S7 · AQÎDA ============ -->
+  <article id="s7" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 7 · Aqîda</span>
+      <span class="badge">🕌 Croyance</span>
+      <h2><span>Allah seul mérite l'adoration</span><span class="ar">الْأُلُوهِيَّة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir le Tawhîd al-Ulûhiyya : n'adorer qu'Allah seul.</li>
+          <li>Comprendre la différence avec le Tawhîd ar-Rubûbiyya vu en S2.</li>
+          <li>Réfléchir à ce que veut vraiment dire « adorer ».</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Ahmed se souvient de la leçon sur Ar-Rabb (S2) : Allah a tout créé. « Mais alors, demande-t-il à sa mère, pourquoi est-ce qu'on prie seulement Allah, si presque tout le monde reconnaît qu'Il est le Créateur ? » Sa mère lui répond : « C'est exactement la bonne question, Ahmed. Reconnaître qu'Allah a tout créé (Rubûbiyya), c'est une chose. Mais Lui seul adresser toute mon adoration — ma prière, mes invocations, ma confiance totale — c'en est une autre : on appelle cela le Tawhîd al-Ulûhiyya. Beaucoup de peuples anciens reconnaissaient un Dieu créateur, mais adoraient quand même des idoles à côté de Lui, en pensant qu'elles pouvaient les rapprocher de Lui. C'est justement cette erreur que l'Islam corrige. »</p>
+        </div>
+      </div>
+
+      <img class="chapter-img" alt="Un enfant assis en priere calme sur un tapis, seul face a la qibla stylisee, ambiance de devotion sincere. Pas de representation d'Allah, pas de texte dans l'image." src="images/img08.webp">
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Ce que dit le Coran</div>
+        <div class="verse">
+          <div class="ar">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</div>
+          <div class="translit">Wa mâ khalaqtu al-jinna wal-insa illâ liya'budûn.</div>
+          <div class="fr">« Je n'ai créé les djinns et les hommes que pour qu'ils M'adorent. »</div>
+          <span class="ref">Sourate Adh-Dhâriyât (51), verset 56 — trad. M. Hamidullah</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>D'après le tafsîr d'As-Sa'dî, ce verset indique le véritable but pour lequel Allah a créé les djinns et les êtres humains : L'adorer, ce qui implique de Le connaître, de L'aimer, de se tourner vers Lui et de se détourner de tout ce qui n'est pas Lui. Adorer ne se limite pas à la prière rituelle : cela englobe toute forme de dévotion, d'espoir, de peur ou de confiance totale placée en un être.</p>
+          <p>C'est pour cela qu'un musulman ne dirige aucune de ces formes d'adoration vers un autre qu'Allah — ni statue, ni astre, ni personne, aussi vénérée soit-elle. Croire qu'Allah a tout créé (Rubûbiyya) sans Lui vouer une adoration exclusive (Ulûhiyya) ne suffit pas : c'était justement l'erreur de nombreux peuples anciens.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="fr">Le Prophète ﷺ demanda à Mu'âdh : « Sais-tu quel est le droit d'Allah sur Ses serviteurs, et le droit des serviteurs sur Allah ? » Mu'âdh répondit : « Allah et Son Messager savent mieux. » Il dit : « Le droit d'Allah sur Ses serviteurs est qu'ils L'adorent sans rien Lui associer ; et le droit des serviteurs sur Allah est qu'Il ne punisse pas celui qui ne Lui associe rien. »</div>
+        <span class="ref">Mu'âdh ibn Jabal — Riyad as-Salihin, n°1643 (Muttafaq 'alayh) — <a href="https://search.hadith-mcp.org/?id=42708" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Quelle est la différence entre Rubûbiyya et Ulûhiyya ?</summary><div class="answer"><strong>Réponse :</strong> Rubûbiyya = croire qu'Allah a tout créé ; Ulûhiyya = n'adorer qu'Allah seul.</div></details>
+        <details class="exo"><summary>2. D'après le verset 51:56, pourquoi Allah a-t-Il créé les djinns et les hommes ?</summary><div class="answer"><strong>Réponse :</strong> Pour qu'ils L'adorent.</div></details>
+        <details class="exo"><summary>3. Quelle était l'erreur de nombreux peuples anciens ?</summary><div class="answer"><strong>Réponse :</strong> Reconnaître Allah comme Créateur tout en adorant aussi des idoles à côté de Lui.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le droit d'Allah sur moi, c'est que je L'adore Lui seul, sans rien Lui associer. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Ulûhiyya :</span> n'adorer qu'Allah seul.</span> <span class="ar">أُلُوهِيَّة</span></div>
+          <div><span><span class="term">'Ibâda :</span> l'adoration, sous toutes ses formes.</span> <span class="ar">عِبَادَة</span></div>
+          <div><span><span class="term">Shirk :</span> associer un autre à Allah dans l'adoration.</span> <span class="ar">شِرْك</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🚌 Ancrage quotidien — rue &amp; transports</span>
+        <p>Quand tu passes devant un lieu où beaucoup de gens attendent quelque chose avec espoir (une file d'attente, une boutique), rappelle-toi : la vraie confiance totale, celle qui ne déçoit jamais, ne se place qu'en Allah.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S8 · FIQH ============ -->
+  <article id="s8" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 8 · Fiqh</span>
+      <span class="badge">💧 La pratique</span>
+      <h2><span>Suivre l'imam, du premier au dernier geste</span><span class="ar">اِئْتِمَام</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Des silhouettes en priere qui s'inclinent ensemble dans une mosquee, mouvement synchrone et paisible, aucun visage detaille. Pas de texte dans l'image." src="images/img09.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Comprendre pourquoi on ne doit jamais devancer l'imam dans les mouvements de la prière.</li>
+          <li>Connaître l'ordre exact à suivre : takbîr, inclinaison, redressement, prosternation.</li>
+          <li>Comprendre ce que veut dire « l'imam est nommé pour être suivi ».</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>À la mosquée, Ahmed a remarqué qu'un jeune garçon se relevait de l'inclinaison (rukû') un peu avant l'imam, pressé d'aller plus vite. Après la prière, l'imam lui a rappelé gentiment : « On ne devance jamais l'imam, même d'une seconde — on le suit, on ne le précède pas, et on ne bouge pas non plus exactement en même temps que lui : on attend qu'il commence, puis on le suit. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>L'imam est désigné précisément pour être suivi : quand il dit « Allâhu akbar », on dit « Allâhu akbar » ; quand il s'incline (rukû'), on s'incline ; quand il dit « sami' Allâhu liman hamidah », on répond « Rabbanâ wa lakal-hamd » ; quand il se prosterne, on se prosterne. L'ordre est toujours le même : l'imam commence son geste, et c'est seulement après qu'on le suit — jamais avant, jamais exactement en même temps.</p>
+          <p>Cette règle simple enseigne une discipline importante : dans un groupe, il y a un moment pour l'initiative et un moment pour suivre calmement, sans se précipiter pour être « le premier ».</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="ar">إِنَّمَا جُعِلَ الإِمَامُ لِيُؤْتَمَّ بِهِ</div>
+        <div class="fr">« L'imam n'est nommé que pour être suivi. Aussi, quand il prononce le takbîr, prononcez-le ; quand il s'incline, inclinez-vous. »</div>
+        <span class="ref">Abû Hurayra — Sahih Muslim, n°837 — <a href="https://search.hadith-mcp.org/?id=8114" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Peut-on s'incliner avant l'imam ?</summary><div class="answer"><strong>Réponse :</strong> Non, jamais — on suit toujours après lui.</div></details>
+        <details class="exo"><summary>2. Que répond-on quand l'imam dit « sami' Allâhu liman hamidah » ?</summary><div class="answer"><strong>Réponse :</strong> « Rabbanâ wa lakal-hamd ».</div></details>
+        <details class="exo"><summary>3. Pourquoi l'imam est-il nommé, d'après le hadith ?</summary><div class="answer"><strong>Réponse :</strong> Pour être suivi par les fidèles.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« On suit l'imam, on ne le devance jamais — la discipline du groupe passe avant l'envie d'aller vite. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">I'timâm :</span> le fait de suivre l'imam.</span> <span class="ar">اِئْتِمَام</span></div>
+          <div><span><span class="term">Rukû' :</span> l'inclinaison dans la prière.</span> <span class="ar">رُكُوع</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — avec les enseignants</span>
+        <p>En classe, attends que ton enseignant ait fini sa consigne avant de commencer un exercice, même si tu penses déjà savoir quoi faire — comme on attend l'imam avant de bouger.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S9 · SÎRA ============ -->
+  <article id="s9" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 9 · Sîra</span>
+      <span class="badge">🕋 L'histoire du Prophète ﷺ</span>
+      <h2><span>Badr (2) — la bataille et la leçon du petit nombre</span><span class="ar">بَدْر</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un desert au lever du jour avec des traces de pas dans le sable et des palmiers au loin, ambiance solennelle sans violence explicite, aucun personnage identifiable. Pas de texte dans l'image." src="images/img10.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir l'issue de la bataille de Badr, en l'an 2 de l'Hégire.</li>
+          <li>Comprendre pourquoi Badr est appelée « le jour du Discernement » (Yawm al-Furqân).</li>
+          <li>Retenir la leçon principale : la victoire ne dépend pas du nombre.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>Le récit</div>
+        <div class="lesson-text dropcap">
+          <p>Le lendemain de la nuit de prière (voir S4), les 313 musulmans font face à l'armée mecquoise, bien plus nombreuse et mieux équipée. Contre toute attente, la petite armée musulmane remporte une victoire décisive. Les récits de la Sîra rapportent que les musulmans ont ressenti, ce jour-là, un secours qui dépassait largement leurs propres forces et leur préparation — un rappel que la victoire, en définitive, appartient à Allah, et non simplement au nombre de combattants ou à la puissance des armes.</p>
+          <p>Cette bataille est appelée dans le Coran <strong>Yawm al-Furqân</strong>, « le jour du Discernement » : le jour où la vérité s'est clairement distinguée de l'erreur, où la petite communauté musulmane a compris qu'elle pouvait tenir face à l'adversité si elle restait unie et confiante.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Être en petit nombre ou avoir moins de moyens que les autres n'empêche pas de réussir, si on reste organisé, préparé et confiant en Allah.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Badr est appelée « le jour du Discernement » : un moment où le bon chemin est devenu clair pour la jeune communauté musulmane.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>La victoire de Badr a renforcé la conviction que la préparation sérieuse, jointe à la confiance en Allah (vue en S4), porte ses fruits.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Qui a remporté la bataille de Badr ?</summary><div class="answer"><strong>Réponse :</strong> Les musulmans, malgré leur petit nombre face à l'armée mecquoise.</div></details>
+        <details class="exo"><summary>2. Comment appelle-t-on aussi la bataille de Badr dans le Coran ?</summary><div class="answer"><strong>Réponse :</strong> Yawm al-Furqân, « le jour du Discernement ».</div></details>
+        <details class="exo"><summary>3. Quelle leçon peut-on tirer de Badr quand on se sent en minorité (à l'école, dans un groupe) ?</summary><div class="answer"><strong>Réponse :</strong> Le nombre ne fait pas tout — rester organisé et confiant compte davantage.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« À Badr, la victoire n'a pas dépendu du nombre — être peu nombreux n'empêche pas de tenir bon. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Yawm al-Furqân :</span> « le jour du Discernement », autre nom de Badr.</span> <span class="ar">يَوْم الْفُرْقَان</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — cour d'école</span>
+        <p>Si tu te retrouves en minorité dans une discussion ou un jeu (le seul à penser une chose), rappelle-toi que le nombre n'a pas empêché les musulmans de Badr de tenir bon — reste calme et fidèle à ce que tu penses juste.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S10 · ADAB ============ -->
+  <article id="s10" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 10 · Adab</span>
+      <span class="badge">🤝 Bienséance</span>
+      <h2><span>Résister à la pression du groupe</span><span class="ar">ضَغْط الْمَجْمُوعَة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un enfant qui s'ecarte calmement d'un petit groupe qui rit mechamment d'un autre enfant, ambiance de courage tranquille. Pas de texte dans l'image." src="images/img11.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Reconnaître ce qu'est la pression du groupe (vouloir faire comme tout le monde).</li>
+          <li>Apprendre des phrases simples pour dire non sans conflit.</li>
+          <li>Comprendre le lien avec le hadith de l'ami vu en S5.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Un groupe de camarades décide de se moquer d'un élève plus timide en imitant sa façon de parler. Tout le monde rit, et l'un d'eux se tourne vers Ahmed : « Vas-y, toi aussi, imite-le ! » Ahmed sent son cœur battre plus vite — il ne veut ni se moquer, ni se faire rejeter par le groupe. Il se souvient alors de la leçon de la semaine 5 : ses vrais amis n'ont pas besoin qu'il fasse du mal aux autres pour l'accepter. Il répond simplement : « Non, ça ne me fait pas rire », et il s'éloigne pour aller parler à l'élève moqué.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Reconnaître la pression du groupe</div>
+        <div class="lesson-text">
+          <p>La pression du groupe, c'est cette envie forte de faire ou dire quelque chose uniquement parce que les autres le font, même si au fond de toi, tu sais que ce n'est pas bien. Elle est plus forte à cet âge parce que l'avis des camarades commence à compter énormément. Voici quelques phrases simples à garder en tête pour dire non sans grand conflit : « Non merci, ce n'est pas pour moi » ; « Je préfère ne pas » ; « Vous pouvez continuer, moi je passe ». Pas besoin de faire un long discours ni de convaincre le groupe entier — une phrase courte et calme suffit.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>La prochaine fois qu'un groupe te pousse à faire quelque chose qui ne te ressemble pas, essaie une des phrases ci-dessus — à voix calme, sans crier ni te justifier longuement.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Qu'est-ce que la pression du groupe ?</summary><div class="answer"><strong>Réponse :</strong> L'envie de faire comme les autres même quand on sait que ce n'est pas bien.</div></details>
+        <details class="exo"><summary>2. Cite une phrase simple pour dire non à un groupe.</summary><div class="answer"><strong>Réponse :</strong> « Non merci, ce n'est pas pour moi » (ou une phrase équivalente).</div></details>
+        <details class="exo"><summary>3. Que fait Ahmed après avoir refusé de se moquer ?</summary><div class="answer"><strong>Réponse :</strong> Il va parler à l'élève moqué.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Une phrase courte et calme suffit pour dire non à un groupe — je n'ai pas besoin de me justifier longuement. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Pression du groupe :</span> l'envie de se conformer aux autres.</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — cour d'école</span>
+        <p>Entraîne-toi cette semaine à dire calmement « non merci, ce n'est pas pour moi » face à une petite pression du groupe — même pour une chose sans grande gravité, pour t'entraîner.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S11 · CORAN ============ -->
+  <article id="s11" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 11 · Coran</span>
+      <span class="badge">📗 Le Coran</span>
+      <h2><span>La nuit et les deux chemins</span><span class="ar">اللَّيْل</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une main qui donne une piece a une autre main dans la penombre du soir, ambiance de generosite discrete. Pas de texte dans l'image." src="images/img12.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la sourate Al-Layl (« La Nuit »), 21 versets.</li>
+          <li>Comprendre les deux chemins opposés que décrit la sourate.</li>
+          <li>Relier cette sourate à la générosité et à la sincérité.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Sourate Al-Layl (92)</div>
+        <div class="verse">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div class="ar">وَاللَّيْلِ إِذَا يَغْشَىٰ<br>وَالنَّهَارِ إِذَا تَجَلَّىٰ<br>وَمَا خَلَقَ الذَّكَرَ وَالْأُنثَىٰ<br>إِنَّ سَعْيَكُمْ لَشَتَّىٰ<br>فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ<br>وَصَدَّقَ بِالْحُسْنَىٰ<br>فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ<br>وَأَمَّا مَن بَخِلَ وَاسْتَغْنَىٰ<br>وَكَذَّبَ بِالْحُسْنَىٰ<br>فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ<br>وَمَا يُغْنِي عَنْهُ مَالُهُ إِذَا تَرَدَّىٰ<br>إِنَّ عَلَيْنَا لَلْهُدَىٰ<br>وَإِنَّ لَنَا لَلْآخِرَةَ وَالْأُولَىٰ<br>فَأَنذَرْتُكُمْ نَارًا تَلَظَّىٰ<br>لَا يَصْلَاهَا إِلَّا الْأَشْقَى<br>الَّذِي كَذَّبَ وَتَوَلَّىٰ<br>وَسَيُجَنَّبُهَا الْأَتْقَى<br>الَّذِي يُؤْتِي مَالَهُ يَتَزَكَّىٰ<br>وَمَا لِأَحَدٍ عِندَهُ مِن نِّعْمَةٍ تُجْزَىٰ<br>إِلَّا ابْتِغَاءَ وَجْهِ رَبِّهِ الْأَعْلَىٰ<br>وَلَسَوْفَ يَرْضَىٰ</div>
+          <div class="fr">« Par la nuit quand elle enveloppe tous ! Par le jour quand il éclaire ! Et par ce qu'Il a créé, mâle et femelle ! Vos efforts sont divergents. Celui qui donne et craint (Allah), et déclare véridique la plus belle récompense, Nous lui faciliterons la voie au plus grand bonheur. Et quand à celui qui est avare, se dispense (de l'adoration d'Allah), et traite de mensonge la plus belle récompense, Nous lui faciliterons la voie à la plus grande difficulté, et à rien ne lui serviront ses richesses quand il sera jeté (au Feu). C'est à Nous, certes, de guider ; à Nous appartient, certes, la vie dernière et la vie présente. Je vous ai donc avertis d'un Feu qui flambe, où ne brûlera que le damné, qui dément et tourne le dos ; alors qu'en sera écarté le pieux, qui donne ses biens pour se purifier, et auprès de qui personne ne profite d'un bienfait intéressé, mais seulement pour la recherche de La Face de son seigneur le Très-Haut. Et certes, il sera bientôt satisfait ! »</div>
+          <span class="ref">Sourate Al-Layl (92), versets 1 à 21 — trad. M. Hamidullah</span>
+        </div>
+        <a class="listen-link" href="https://www.youtube.com/watch?v=4xIJHAEL1xE" target="_blank" rel="noopener">▶️ Écouter la récitation</a>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Cette sourate décrit deux chemins totalement opposés. Le premier : celui qui donne, craint Allah, et croit en la plus belle récompense — Allah lui facilite le chemin vers l'aisance (al-yusrâ). Le second : celui qui est avare, se croit indépendant d'Allah, et rejette la récompense promise — Allah lui facilite le chemin vers la difficulté (al-'usrâ). Ses richesses ne lui serviront à rien face à ce choix.</p>
+          <p>Le point essentiel : le pieux donne « pour se purifier », c'est-à-dire sans rien attendre en retour de la personne aidée, uniquement pour rechercher la satisfaction d'Allah — pas pour se faire remarquer ou recevoir une faveur en échange.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Mes efforts et mes choix ne mènent pas tous au même endroit : donner et craindre Allah facilite le chemin, l'avarice le complique.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>La vraie générosité, selon cette sourate, ne cherche aucune faveur en retour de la personne aidée — seulement la satisfaction d'Allah.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Les richesses seules ne suffisent à rien si le cœur n'est pas tourné vers Allah avec sincérité.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que se passe-t-il pour celui qui donne et craint Allah ?</summary><div class="answer"><strong>Réponse :</strong> Allah lui facilite le chemin vers l'aisance (al-yusrâ).</div></details>
+        <details class="exo"><summary>2. Pourquoi le pieux donne-t-il ses biens, d'après le verset 20 ?</summary><div class="answer"><strong>Réponse :</strong> Pour rechercher uniquement la satisfaction (« la Face ») d'Allah, sans attendre de retour.</div></details>
+        <details class="exo"><summary>3. Que dit la sourate sur les richesses de celui qui est avare ?</summary><div class="answer"><strong>Réponse :</strong> Elles ne lui serviront à rien.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Je donne pour la satisfaction d'Allah, jamais pour recevoir quelque chose en retour de la personne aidée. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Al-Yusrâ :</span> l'aisance, le chemin facilité.</span> <span class="ar">الْيُسْرَى</span></div>
+          <div><span><span class="term">Al-'Usrâ :</span> la difficulté, le chemin compliqué.</span> <span class="ar">الْعُسْرَى</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🚌 Ancrage quotidien — rue &amp; transports</span>
+        <p>Si tu vois une occasion de rendre un petit service à quelqu'un dans la rue ou les transports (tenir une porte, céder une place), fais-le sans attendre de remerciement particulier — juste pour la satisfaction d'Allah.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S12 · AQÎDA ============ -->
+  <article id="s12" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 12 · Aqîda</span>
+      <span class="badge">🕌 Croyance</span>
+      <h2><span>Le Jour Dernier (1) — la résurrection et le jugement</span><span class="ar">الْيَوْم الْآخِر</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un ciel au crepuscule avec une lumiere douce entre nuages, ambiance solennelle mais paisible, sans imagerie effrayante, pas de personnage identifiable. Pas de texte dans l'image." src="images/img13.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir ce qu'est le Jour Dernier (al-Yawm al-Âkhir), l'un des 6 piliers de la foi.</li>
+          <li>Comprendre que chacun sera ressuscité et jugé sur ses actes.</li>
+          <li>Aborder ce sujet avec sérénité, pas avec peur.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Après avoir vu un reportage sur des fouilles archéologiques très anciennes, Ahmed demande à son père : « Est-ce que tout ce qui existe finira par disparaître pour toujours ? » Son père réfléchit un instant. « Non, Ahmed. Tout ce monde tel qu'on le connaît prendra fin un jour — c'est ce qu'on appelle l'Heure. Mais ce n'est pas une fin définitive : Allah ressuscitera ensuite toutes les personnes qui ont vécu, pour qu'elles rendent compte de leurs actes. On appelle cela le Jour Dernier. Ce n'est pas un sujet à craindre en permanence, mais une vérité à connaître calmement, comme les autres piliers de la foi. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Ce que dit le Coran</div>
+        <div class="verse">
+          <div class="ar">وَأَنَّ السَّاعَةَ آتِيَةٌ لَّا رَيْبَ فِيهَا وَأَنَّ اللَّهَ يَبْعَثُ مَن فِي الْقُبُورِ</div>
+          <div class="translit">Wa anna as-sâ'ata âtiyatun lâ rayba fîhâ wa anna Allâha yab'athu man fil-qubûr.</div>
+          <div class="fr">« Et que l'Heure arrivera, pas de doute à son sujet, et qu'Allah ressuscitera ceux qui sont dans les tombes. »</div>
+          <span class="ref">Sourate Al-Hajj (22), verset 7 — trad. M. Hamidullah</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>D'après le tafsîr d'As-Sa'dî, ce verset affirme deux vérités sans place au doute : l'Heure viendra, et Allah ressuscitera tous ceux qui sont morts pour les rétribuer selon leurs actes, bons ou mauvais. Croire au Jour Dernier fait partie des 6 piliers de la foi (comme le rappelle le célèbre hadith de l'ange Jibrîl, cité en Cycle 1 : croire en Allah, Ses anges, Ses livres, Ses messagers, le Jour Dernier, et le Qadar — que nous verrons en S22).</p>
+          <p>Cette croyance donne du sens à la vie présente : rien de ce que nous faisons n'est définitivement perdu ou oublié, tout compte pour ce jour-là.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>Le Jour Dernier n'est pas un sujet à craindre en permanence : c'est plutôt un rappel motivant que chaque petite bonne action compte, même celles que personne ne voit.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que veut dire « al-Yawm al-Âkhir » ?</summary><div class="answer"><strong>Réponse :</strong> Le Jour Dernier, jour de la résurrection et du jugement des actes.</div></details>
+        <details class="exo"><summary>2. D'après le verset 22:7, qu'est-ce qui arrivera sans aucun doute ?</summary><div class="answer"><strong>Réponse :</strong> L'Heure, et la résurrection de tous ceux qui sont morts.</div></details>
+        <details class="exo"><summary>3. Pourquoi croire au Jour Dernier est-il motivant plutôt qu'effrayant ?</summary><div class="answer"><strong>Réponse :</strong> Parce que chaque bonne action compte et n'est jamais oubliée.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Rien de ce que je fais n'est perdu : tout compte pour le Jour Dernier, même ce que personne ne voit. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Al-Yawm al-Âkhir :</span> le Jour Dernier.</span> <span class="ar">الْيَوْم الْآخِر</span></div>
+          <div><span><span class="term">As-Sâ'a :</span> l'Heure, la fin du monde tel qu'on le connaît.</span> <span class="ar">السَّاعَة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Ce soir, fais une petite bonne action à la maison sans que personne ne te voie ni ne te remercie (ranger discrètement quelque chose, par exemple) — en pensant que même cela compte pour le Jour Dernier.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S13 · FIQH ============ -->
+  <article id="s13" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 13 · Fiqh</span>
+      <span class="badge">💧 La pratique</span>
+      <h2><span>Le jeûne complet du Ramadân</span><span class="ar">صِيَام</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une famille reunie autour d'une table au coucher du soleil pour la rupture du jeune, dattes et eau posees devant chacun, ambiance chaleureuse et joyeuse. Pas de texte dans l'image." src="images/img14.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Être encouragé(e) et accompagné(e) pour jeûner le mois complet de Ramadân.</li>
+          <li>Comprendre que le jeûne est un secret entre moi et Allah.</li>
+          <li>Découvrir pourquoi la récompense du jeûne est différente des autres actes.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Cette année, Ahmed a jeûné son premier Ramadân complet, avec l'accompagnement bienveillant de ses parents (qui ont adapté certains jours selon sa fatigue). Un midi, un camarade non-jeûneur lui propose discrètement un bonbon en lui disant : « Personne ne le saura. » Ahmed refuse gentiment. Le soir, il raconte cela à son père, qui lui sourit : « Tu viens de comprendre l'essentiel du jeûne, Ahmed : ce n'est pas une question de surveillance humaine. C'est un secret entre toi et Allah. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Le jeûne du mois de Ramadân consiste à s'abstenir de nourriture, de boisson et d'autres choses permises normalement, du lever de l'aube (fajr) jusqu'au coucher du soleil (maghrib), avec une intention sincère (niyya). C'est un acte facilement caché : personne ne peut vraiment vérifier si quelqu'un jeûne ou non, ce qui en fait un acte de sincérité par excellence.</p>
+          <p>C'est pour cette raison qu'Allah réserve à ce seul acte une récompense particulière, comme le rappelle le hadith ci-dessous : contrairement aux autres bonnes actions, dont la récompense est multipliée par dix, le jeûne appartient directement à Allah, qui en fixe Lui-même la récompense.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="fr">Allah dit : « Toute action du fils d'Adam lui appartient, sauf le jeûne : il M'appartient et c'est Moi qui le récompense. » [...] « Celui qui jeûne connaît deux joies : quand il rompt son jeûne, il se réjouit ; et quand il rencontre son Seigneur, il se réjouit de son jeûne. »</div>
+        <span class="ref">Abû Hurayra — Riyad as-Salihin, n°536 (Muttafaq 'alayh) — <a href="https://search.hadith-mcp.org/?id=41601" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Le savais-tu ?</div>
+        <p>Le hadith précise aussi que si quelqu'un cherche à te provoquer alors que tu jeûnes, la meilleure réponse est simplement de dire « je jeûne » — pas besoin de te disputer.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. De quand à quand dure le jeûne dans la journée ?</summary><div class="answer"><strong>Réponse :</strong> Du lever de l'aube (fajr) au coucher du soleil (maghrib).</div></details>
+        <details class="exo"><summary>2. Pourquoi la récompense du jeûne est-elle différente des autres actes ?</summary><div class="answer"><strong>Réponse :</strong> Parce que le jeûne est facilement caché, donc particulièrement sincère — Allah seul en connaît la récompense exacte.</div></details>
+        <details class="exo"><summary>3. Que dire si quelqu'un te provoque pendant que tu jeûnes ?</summary><div class="answer"><strong>Réponse :</strong> « Je jeûne » — sans se disputer.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le jeûne est un secret entre Allah et moi — je le respecte même quand personne ne me voit. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Sawm / Siyâm :</span> le jeûne.</span> <span class="ar">صِيَام</span></div>
+          <div><span><span class="term">Niyya :</span> l'intention sincère.</span> <span class="ar">نِيَّة</span></div>
+          <div><span><span class="term">Fajr / Maghrib :</span> l'aube / le coucher du soleil.</span> <span class="ar">فَجْر / مَغْرِب</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Pendant le Ramadân, propose d'aider à préparer la table du ftûr (rupture du jeûne) en famille, même les jours où c'est un peu fatigant.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S14 · SÎRA ============ -->
+  <article id="s14" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 14 · Sîra</span>
+      <span class="badge">🕋 L'histoire du Prophète ﷺ</span>
+      <h2><span>Uhud — la leçon de la discipline</span><span class="ar">أُحُد</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une colline rocheuse aux abords d'une plaine, ambiance grave et instructive, sans violence explicite ni personnage identifiable. Pas de texte dans l'image." src="images/img15.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la bataille d'Uhud, en l'an 3 de l'Hégire.</li>
+          <li>Comprendre la consigne donnée aux archers, et ce qui s'est passé quand elle n'a pas été respectée.</li>
+          <li>Retenir la leçon principale : la discipline collective compte plus que l'appât du gain immédiat.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>Le récit</div>
+        <div class="lesson-text dropcap">
+          <p>Un an après Badr, les Mecquois reviennent avec une armée plus importante pour prendre leur revanche, près du mont Uhud, non loin de Médine. Le Prophète ﷺ place un groupe d'archers sur une colline stratégique avec une consigne très claire : rester à leur poste, quoi qu'il arrive, tant qu'il ne leur en donnerait pas l'ordre — même si les musulmans semblaient prendre l'avantage.</p>
+          <p>Au début de la bataille, les musulmans prennent effectivement le dessus. Voyant l'ennemi reculer et croyant la victoire acquise, une partie des archers quitte leur poste pour rejoindre le butin abandonné par les Mecquois. Cette colline, laissée sans protection, est aussitôt exploitée par la cavalerie ennemie, qui contourne les musulmans par-derrière et retourne le cours de la bataille, causant de lourdes pertes, dont celle de nombreux compagnons.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Une consigne claire donnée par un responsable doit être suivie jusqu'au bout, même quand la situation semble déjà gagnée.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Céder à la tentation immédiate (le butin) a fait perdre de vue l'objectif d'ensemble — une leçon valable bien au-delà d'une bataille.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Uhud enseigne l'humilité : même une communauté sincère peut connaître un revers quand la discipline fait défaut.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Quelle consigne le Prophète ﷺ a-t-il donnée aux archers ?</summary><div class="answer"><strong>Réponse :</strong> Rester à leur poste sur la colline, quoi qu'il arrive, sans ordre contraire.</div></details>
+        <details class="exo"><summary>2. Pourquoi une partie des archers a-t-elle quitté son poste ?</summary><div class="answer"><strong>Réponse :</strong> En pensant la victoire acquise, pour rejoindre le butin abandonné.</div></details>
+        <details class="exo"><summary>3. Quelle est la leçon principale d'Uhud ?</summary><div class="answer"><strong>Réponse :</strong> La discipline collective et le respect des consignes comptent plus que l'appât du gain immédiat.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Une consigne se suit jusqu'au bout, même quand tout semble déjà gagné. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Uhud :</span> montagne près de Médine, lieu de la bataille.</span> <span class="ar">أُحُد</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — avec les enseignants</span>
+        <p>Quand un enseignant te donne une consigne pour un exercice ou une sortie, suis-la jusqu'au bout, même si tu penses que ce n'est plus nécessaire — comme la leçon des archers d'Uhud.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S15 · ADAB ============ -->
+  <article id="s15" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 15 · Adab</span>
+      <span class="badge">🤝 Bienséance</span>
+      <h2><span>Construire une estime de soi saine</span><span class="ar">تَقْدِير الذَّات</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un enfant qui se regarde avec confiance dans un miroir simple, ambiance positive et sereine, sans exageration. Pas de texte dans l'image." src="images/img16.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Comprendre ce qu'est une estime de soi saine, ni trop haute ni trop basse.</li>
+          <li>Découvrir un hadith sur le croyant fort et le croyant faible.</li>
+          <li>Apprendre une phrase à se répéter après un échec.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Ahmed a raté son évaluation de mathématiques et se dit intérieurement : « Je suis nul, je n'y arriverai jamais. » Son grand frère, en le voyant abattu, lui dit : « Ahmed, une mauvaise note ne dit pas qui tu es — elle dit juste que cette fois, il faut retravailler ce point précis. Une estime de soi saine, ce n'est pas se croire meilleur que tout le monde, ni se croire nul : c'est reconnaître calmement ses points forts et ses points à améliorer, sans exagérer dans un sens ou dans l'autre. »</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="fr">« Le croyant fort est meilleur et plus aimé d'Allah que le croyant faible, bien qu'il y ait du bien en chacun d'eux. Recherche ce qui te profite, demande le secours d'Allah, et ne te laisse pas abattre. Si quelque chose t'atteint, ne dis pas : "Si j'avais fait ceci, cela serait arrivé" ; mais dis plutôt : "Allah l'a décrété, et Il fait ce qu'Il veut" — car "si" ouvre la porte à l'action de Satan. »</div>
+        <span class="ref">Abû Hurayra — Riyad as-Salihin, n°1317 (rapporté par Muslim) — <a href="https://search.hadith-mcp.org/?id=42382" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Ce hadith enseigne que la « force » du croyant n'est pas physique : c'est une force intérieure faite de persévérance, de demande d'aide à Allah, et de refus de se laisser abattre par un échec. Il donne aussi un conseil très concret contre les regrets : plutôt que de ressasser « si j'avais fait autrement », il vaut mieux accepter ce qui est arrivé et avancer — les regrets sans fin n'aident jamais à progresser.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>Après un échec, essaie de dire (à voix haute ou dans ta tête) : « Cela n'a pas marché cette fois, mais je peux retravailler ce point » — plutôt que « je suis nul(le) ».</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Qu'est-ce qu'une estime de soi saine ?</summary><div class="answer"><strong>Réponse :</strong> Reconnaître calmement ses points forts et ses points à améliorer, sans exagérer dans un sens ni dans l'autre.</div></details>
+        <details class="exo"><summary>2. D'après le hadith, en quoi consiste la « force » du croyant ?</summary><div class="answer"><strong>Réponse :</strong> En persévérance et en demande d'aide à Allah, pas en force physique.</div></details>
+        <details class="exo"><summary>3. Que faut-il éviter de dire après un échec, selon le hadith ?</summary><div class="answer"><strong>Réponse :</strong> « Si j'avais fait ceci... » — car cela ouvre la porte aux regrets sans fin.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Une mauvaise note ne dit pas qui je suis — je reconnais mes points forts et ceux à améliorer, sans me juger sévèrement. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Estime de soi :</span> la façon dont je me perçois moi-même.</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>La prochaine fois qu'un membre de ta famille rate quelque chose (un plat raté, une erreur), encourage-le avec une phrase positive plutôt que de te moquer — entraîne-toi à donner à un autre ce que tu voudrais recevoir.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S16 · CORAN ============ -->
+  <article id="s16" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 16 · Coran</span>
+      <span class="badge">📗 Le Coran</span>
+      <h2><span>« Lis ! » — la première Révélation</span><span class="ar">الْعَلَق</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="L'entree d'une grotte rocheuse dans le desert au crepuscule, lumiere douce, ambiance solennelle et silencieuse, aucun personnage identifiable. Pas de texte dans l'image." src="images/img17.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la sourate Al-'Alaq (« L'Adhérence »), 19 versets, la première révélée au Prophète ﷺ.</li>
+          <li>Comprendre pourquoi le savoir et la lecture sont si valorisés en Islam.</li>
+          <li>Situer cette sourate au tout début de la prophétie, à la grotte de Hirâ'.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Sourate Al-'Alaq (96)</div>
+        <div class="verse">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div class="ar">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ<br>خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ<br>اقْرَأْ وَرَبُّكَ الْأَكْرَمُ<br>الَّذِي عَلَّمَ بِالْقَلَمِ<br>عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ<br>كَلَّا إِنَّ الْإِنسَانَ لَيَطْغَىٰ<br>أَن رَّآهُ اسْتَغْنَىٰ<br>إِنَّ إِلَىٰ رَبِّكَ الرُّجْعَىٰ<br>أَرَأَيْتَ الَّذِي يَنْهَىٰ<br>عَبْدًا إِذَا صَلَّىٰ<br>أَرَأَيْتَ إِن كَانَ عَلَى الْهُدَىٰ<br>أَوْ أَمَرَ بِالتَّقْوَىٰ<br>أَرَأَيْتَ إِن كَذَّبَ وَتَوَلَّىٰ<br>أَلَمْ يَعْلَم بِأَنَّ اللَّهَ يَرَىٰ<br>كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ<br>نَاصِيَةٍ كَاذِبَةٍ خَاطِئَةٍ<br>فَلْيَدْعُ نَادِيَهُ<br>سَنَدْعُ الزَّبَانِيَةَ<br>كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِب</div>
+          <div class="fr">« Lis, au nom de ton Seigneur qui a créé, qui a créé l'homme d'une adhérence. Lis ! Ton Seigneur est le Très Noble, qui a enseigné par la plume [le calame], a enseigné à l'homme ce qu'il ne savait pas. Prenez-garde ! Vraiment l'homme devient rebelle, dès qu'il estime qu'il peut se suffire à lui-même (à cause de sa richesse). Mais, c'est vers ton Seigneur qu'est le retour. As-tu vu celui qui interdit à un serviteur d'Allah (Mohammed) de célébrer la prière (As-Salât) ? Vois-tu s'il est sur la bonne voie, ou s'il ordonne la piété ? Vois-tu s'il dément et tourne le dos ? Ne sait-il pas que vraiment Allah voit ? Mais non ! S'il ne cesse pas, Nous le saisirons certes, par le toupet, le toupet d'un menteur, d'un pécheur. Qu'il appelle donc son assemblée. Nous appellerons les gardiens (de l'Enfer). Non ! Ne lui obéis pas ; mais prosterne-toi et rapproche-toi. »</div>
+          <span class="ref">Sourate Al-'Alaq (96), versets 1 à 19 — trad. M. Hamidullah</span>
+        </div>
+        <a class="listen-link" href="https://www.youtube.com/watch?v=kGvcdHo3EwQ" target="_blank" rel="noopener">▶️ Écouter la récitation</a>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Les cinq premiers versets de cette sourate sont les tout premiers mots du Coran révélés au Prophète ﷺ, dans la grotte de Hirâ', par l'ange Jibrîl. Allah y rappelle qu'Il a créé l'être humain, et qu'Il lui a enseigné par la plume ce qu'il ne savait pas — le savoir est donc, dès le premier message coranique, présenté comme un don immense d'Allah.</p>
+          <p>La suite de la sourate met en garde contre la « rébellion » qui naît souvent de la richesse ou du sentiment de suffisance (« je n'ai besoin de personne »), et évoque celui qui a tenté d'empêcher le Prophète ﷺ de prier — un rappel qu'Allah voit tout, même ce que l'on croit caché.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Le tout premier message du Coran commence par « Lis » — le savoir et l'apprentissage sont valorisés dès le début de la Révélation.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Se sentir « suffisant » ou supérieur à cause de ce qu'on possède peut mener à la rébellion contre ce qui est juste — une leçon d'humilité.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Allah voit tout ce que je fais, même quand je pense être seul(e) et que personne ne regarde.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Où et par qui la première révélation a-t-elle été apportée au Prophète ﷺ ?</summary><div class="answer"><strong>Réponse :</strong> À la grotte de Hirâ', par l'ange Jibrîl.</div></details>
+        <details class="exo"><summary>2. Par quoi Allah a-t-Il enseigné à l'homme ce qu'il ne savait pas ?</summary><div class="answer"><strong>Réponse :</strong> Par la plume (al-qalam).</div></details>
+        <details class="exo"><summary>3. Que provoque souvent le sentiment de « se suffire à soi-même » ?</summary><div class="answer"><strong>Réponse :</strong> La rébellion (at-tughyân), selon la sourate.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le premier mot du Coran est "Lis" — apprendre est un acte de foi, pas seulement un devoir scolaire. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Hirâ' :</span> la grotte de la première Révélation.</span> <span class="ar">حِرَاء</span></div>
+          <div><span><span class="term">Qalam :</span> la plume, le calame.</span> <span class="ar">قَلَم</span></div>
+          <div><span><span class="term">Tughyân :</span> la rébellion, l'excès.</span> <span class="ar">طُغْيَان</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — avec les enseignants</span>
+        <p>Cette semaine, pose au moins une vraie question à un enseignant sur un sujet que tu ne comprends pas encore, sans avoir honte de ne pas savoir — comme le rappelle le premier mot du Coran, « Lis ».</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S17 · AQÎDA ============ -->
+  <article id="s17" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 17 · Aqîda</span>
+      <span class="badge">🕌 Croyance</span>
+      <h2><span>Le Jour Dernier (2) — le Paradis</span><span class="ar">الْجَنَّة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un jardin lumineux avec des ruisseaux et des arbres fruitiers stylises, ambiance de paix et d'emerveillement, sans imagerie effrayante, pas de personnage identifiable. Pas de texte dans l'image." src="images/img18.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Poursuivre la découverte du Jour Dernier en parlant du Paradis (Jannah).</li>
+          <li>Comprendre que le Paradis dépasse tout ce qu'on peut imaginer.</li>
+          <li>Garder un ton serein et motivant, sans peur, sur ce sujet.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Après la leçon de la semaine 12, Ahmed demande à sa mère : « Mais alors, à quoi ça ressemble, le Paradis ? » Sa mère sourit : « C'est une question que beaucoup de gens se posent. La vérité, c'est qu'aucun humain ne peut vraiment se l'imaginer, parce que c'est bien plus beau que tout ce qu'on connaît sur terre. Allah nous dit simplement qu'Il l'a préparé pour Ses serviteurs sincères, comme une immense joie qui dépasse notre imagination. »</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="fr">Allah, Exalté soit-Il, a dit : « J'ai préparé pour Mes serviteurs vertueux ce qu'aucun œil n'a vu, ce qu'aucune oreille n'a entendu, et ce qu'aucun cœur d'homme n'a imaginé. »</div>
+        <span class="ref">Abû Hurayra — Riyad as-Salihin, n°1202 (Muttafaq 'alayh) — <a href="https://search.hadith-mcp.org/?id=42267" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Ce que dit le Coran</div>
+        <div class="verse">
+          <div class="ar">فَلَا تَعْلَمُ نَفْسٌ مَّا أُخْفِيَ لَهُم مِّن قُرَّةِ أَعْيُنٍ جَزَاءً بِمَا كَانُوا يَعْمَلُونَ</div>
+          <div class="translit">Falâ ta'lamu nafsun mâ ukhfiya lahum min qurrati a'yunin jazâ'an bimâ kânû ya'malûn.</div>
+          <div class="fr">« Aucun être ne sait ce qu'on a réservé pour eux comme réjouissance pour les yeux, en récompense de ce qu'ils œuvraient ! »</div>
+          <span class="ref">Sourate As-Sajda (32), verset 17 — trad. M. Hamidullah</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>D'après le tafsîr d'As-Sa'dî, ce verset annonce une récompense cachée, réservée à ceux qui ont bien agi en secret (prières de nuit, invocations discrètes) : de la même façon qu'ils ont caché leurs bonnes actions, Allah leur cache une joie extraordinaire dont l'ampleur dépasse toute imagination humaine. Ce Paradis n'est donc pas un lieu à décrire avec des mots trop précis : c'est une promesse de joie sans limite pour ceux qui auront cru et bien agi.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. D'après le hadith, qu'est-ce qu'aucun œil n'a jamais vu ?</summary><div class="answer"><strong>Réponse :</strong> Ce qu'Allah a préparé pour Ses serviteurs vertueux au Paradis.</div></details>
+        <details class="exo"><summary>2. Pourquoi ne peut-on pas décrire précisément le Paradis ?</summary><div class="answer"><strong>Réponse :</strong> Parce qu'il dépasse tout ce qu'un être humain peut imaginer.</div></details>
+        <details class="exo"><summary>3. Comment doit-on parler du Paradis : avec peur ou avec espoir ?</summary><div class="answer"><strong>Réponse :</strong> Avec espoir et sérénité.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le Paradis dépasse tout ce que je peux imaginer — c'est une promesse de joie qui donne envie de bien agir. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Jannah :</span> le Paradis.</span> <span class="ar">جَنَّة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Fais une bonne action discrète à la maison cette semaine sans la raconter à personne — comme un petit entraînement à la sincérité évoquée dans cette leçon.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S18 · FIQH ============ -->
+  <article id="s18" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 18 · Fiqh</span>
+      <span class="badge">💧 La pratique</span>
+      <h2><span>Ce qui casse (ou ne casse pas) le jeûne</span><span class="ar">مُفْطِرَات</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un verre d'eau pose sur une table a cote d'une horloge simple, ambiance calme et pedagogique. Pas de texte dans l'image." src="images/img19.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Connaître les repères simples de ce qui casse le jeûne (manger, boire volontairement).</li>
+          <li>Comprendre que l'oubli ne casse pas le jeûne.</li>
+          <li>Savoir quoi faire en cas de doute ou d'oubli.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Un jour de Ramadân, Ahmed, distrait par une conversation, boit une gorgée d'eau sans y penser. Pris de panique, il pense que son jeûne est cassé et va tout arrêter. Sa mère le rassure aussitôt : « Non, Ahmed, si tu as bu ou mangé par pur oubli, sans le faire exprès, ton jeûne reste valable — continue simplement comme si de rien n'était, dès que tu t'en rends compte. Allah, dans Sa miséricorde, ne punit pas ce qui est involontaire. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Quelques repères simples</div>
+        <div class="lesson-text">
+          <p>Casse le jeûne (de façon volontaire) : manger ou boire volontairement, du lever de l'aube au coucher du soleil. Ne casse PAS le jeûne : manger ou boire par pur oubli (on continue simplement le jeûne dès qu'on s'en rend compte) ; se brosser les dents ou se rincer la bouche avec précaution ; une prise de sang ou une piqûre médicale non nutritive (selon l'avis le plus répandu) ; le fait de goûter très légèrement un plat sans avaler, pour une personne qui cuisine, si c'est nécessaire.</p>
+          <p>En cas de doute sérieux, il vaut toujours mieux demander à un parent ou à un enseignant plutôt que de deviner seul(e) — le fiqh du jeûne s'apprend avec l'aide d'adultes de confiance.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Le savais-tu ?</div>
+        <p>Un jeûne cassé par oubli n'a même pas besoin d'être rattrapé plus tard : il compte comme valide pour la journée, à la différence d'un jeûne rompu volontairement.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que faut-il faire si on mange par pur oubli pendant le jeûne ?</summary><div class="answer"><strong>Réponse :</strong> Continuer simplement le jeûne dès qu'on s'en rend compte — il reste valable.</div></details>
+        <details class="exo"><summary>2. Que casse le jeûne, de façon générale ?</summary><div class="answer"><strong>Réponse :</strong> Manger ou boire volontairement pendant les heures de jeûne.</div></details>
+        <details class="exo"><summary>3. Que faire en cas de doute sérieux sur le jeûne ?</summary><div class="answer"><strong>Réponse :</strong> Demander à un parent ou un adulte de confiance plutôt que de deviner seul.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Un oubli ne casse pas mon jeûne — Allah ne punit pas ce qui est involontaire. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Muftirât :</span> ce qui casse le jeûne.</span> <span class="ar">مُفْطِرَات</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🚌 Ancrage quotidien — rue &amp; transports</span>
+        <p>Si tu oublies quelque chose par accident (une consigne, un objet), ne panique pas et ne te juge pas sévèrement — corrige calmement, comme pour un oubli pendant le jeûne.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S19 · SÎRA ============ -->
+  <article id="s19" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 19 · Sîra</span>
+      <span class="badge">🕋 L'histoire du Prophète ﷺ</span>
+      <h2><span>Le Khandaq — la ruse au service de la défense</span><span class="ar">الْخَنْدَق</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Une tranchee creusee autour d'une ville stylisee, vue en hauteur discrete, ambiance strategique et calme, aucun personnage identifiable. Pas de texte dans l'image." src="images/img20.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la bataille du Khandaq (« la Tranchée »), en l'an 5 de l'Hégire.</li>
+          <li>Comprendre l'idée proposée par Salmân al-Fârisî.</li>
+          <li>Retenir que l'intelligence stratégique fait partie de la foi bien vécue.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>Le récit</div>
+        <div class="lesson-text dropcap">
+          <p>En l'an 5 de l'Hégire, une coalition de plusieurs tribus, alliées contre les musulmans, s'apprête à assiéger Médine avec une armée considérable. Face à cette menace, un compagnon d'origine perse, Salmân al-Fârisî, propose une stratégie inconnue jusque-là des Arabes : creuser une large tranchée (khandaq) autour des zones vulnérables de la ville, empêchant ainsi la cavalerie ennemie de charger directement.</p>
+          <p>Le Prophète ﷺ adopte cette idée et participe lui-même, avec ses compagnons, au creusement de la tranchée, malgré le froid et la faim. Grâce à cet obstacle inattendu, l'armée coalisée, incapable de franchir la tranchée, finit par se retirer sans grande bataille frontale, après un siège long et éprouvant.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Le Prophète ﷺ a accepté une idée venue d'un compagnon (Salmân), montrant que l'intelligence pratique compte, d'où qu'elle vienne.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>La défense peut être plus sage que l'affrontement direct : creuser plutôt que foncer tête baissée.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>Le Prophète ﷺ a participé lui-même au travail difficile, aux côtés de ses compagnons, sans se considérer au-dessus de la tâche.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Qui a proposé l'idée de creuser une tranchée ?</summary><div class="answer"><strong>Réponse :</strong> Salmân al-Fârisî.</div></details>
+        <details class="exo"><summary>2. Pourquoi la tranchée a-t-elle été efficace ?</summary><div class="answer"><strong>Réponse :</strong> Elle empêchait la cavalerie ennemie de charger directement sur la ville.</div></details>
+        <details class="exo"><summary>3. Qu'est-ce que cette bataille enseigne sur les bonnes idées ?</summary><div class="answer"><strong>Réponse :</strong> Une bonne idée mérite d'être écoutée, peu importe qui la propose.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Une bonne idée mérite d'être écoutée, peu importe d'où elle vient. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Khandaq :</span> la tranchée.</span> <span class="ar">خَنْدَق</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — cour d'école</span>
+        <p>Si un camarade propose une idée pour un jeu ou un projet de groupe, écoute-la vraiment avant de la rejeter — même si elle vient de quelqu'un qu'on écoute rarement.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S20 · ADAB ============ -->
+  <article id="s20" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 20 · Adab</span>
+      <span class="badge">🤝 Bienséance</span>
+      <h2><span>Mes écrans, mon temps libre</span><span class="ar">وَقْتِي</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un enfant qui range une tablette pour aller jouer dehors au ballon, transition entre interieur et exterieur ensoleille, ambiance positive et equilibree. Pas de texte dans l'image." src="images/img21.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Approfondir mes repères sur les écrans et le temps libre, déjà vus en Cycle 2.</li>
+          <li>Découvrir un hadith sur deux bienfaits que beaucoup de gens gaspillent.</li>
+          <li>Apprendre à repérer si mon temps d'écran m'aide vraiment ou non.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Ahmed réalise qu'un dimanche entier vient de passer sans qu'il ait presque bougé de son écran, alors qu'il avait prévu d'aller jouer dehors avec ses cousins et de lire un peu. Le soir, il se sent étrangement fatigué et un peu vide, alors qu'il n'a rien « fait » de fatigant. Sa mère lui explique : « Le temps libre est un cadeau, Ahmed, pas seulement un vide à combler avec n'importe quoi. »</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="ar">نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ، وَالْفَرَاغُ</div>
+        <div class="fr">« Il y a deux bienfaits dont beaucoup de gens sont perdants : la santé, et le temps libre. »</div>
+        <span class="ref">Ibn 'Abbâs — Riyad as-Salihin, n°1314 (rapporté par Al-Bukhârî) — <a href="https://search.hadith-mcp.org/?id=42379" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Ce hadith enseigne que le temps libre est un vrai bienfait d'Allah — mais un bienfait qu'on gaspille souvent sans même s'en rendre compte, en le remplissant de la première distraction venue plutôt que d'un choix réfléchi. Ce n'est pas interdit de se détendre devant un écran : le problème apparaît quand ce temps devient automatique, sans limite, et qu'il remplace le sport, les amis, la lecture, ou le repos réel.</p>
+          <p>Un bon repère simple : demande-toi, après un moment d'écran, si tu te sens plutôt reposé(e) et satisfait(e), ou plutôt vide et fatigué(e) — cette sensation en dit souvent long.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Quels sont les deux bienfaits cités dans le hadith ?</summary><div class="answer"><strong>Réponse :</strong> La santé et le temps libre.</div></details>
+        <details class="exo"><summary>2. Pourquoi beaucoup de gens sont-ils "perdants" avec ces deux bienfaits ?</summary><div class="answer"><strong>Réponse :</strong> Parce qu'ils les gaspillent sans réfléchir, au lieu de les utiliser à bon escient.</div></details>
+        <details class="exo"><summary>3. Comment savoir si un moment d'écran m'a fait du bien ?</summary><div class="answer"><strong>Réponse :</strong> En observant si je me sens reposé(e) et satisfait(e), ou plutôt vide et fatigué(e) après.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Mon temps libre est un cadeau d'Allah — je choisis comment le remplir, au lieu de le laisser filer. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Faragh :</span> le temps libre.</span> <span class="ar">فَرَاغ</span></div>
+          <div><span><span class="term">Maghbûn :</span> celui qui est perdant, dupé.</span> <span class="ar">مَغْبُون</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Cette semaine, choisis un moment précis à l'avance pour tes écrans (au lieu de les allumer par automatisme), et remplace un moment libre par une activité choisie : lecture, jeu dehors, aide à la maison.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S21 · CORAN ============ -->
+  <article id="s21" class="chapter" style="--ch-color:var(--coran); --ch-soft:var(--coran-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 21 · Coran</span>
+      <span class="badge">📗 Le Coran</span>
+      <h2><span>La Preuve évidente</span><span class="ar">الْبَيِّنَة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un livre ouvert stylise pose sur un pupitre simple, lumiere douce, ambiance de clarte et de verite. Pas de texte reel lisible dans l'image." src="images/img22.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir la sourate Al-Bayyina (« La Preuve évidente »), 8 versets — dernière sourate de l'année.</li>
+          <li>Comprendre ce que veut dire adorer Allah « avec sincérité » (hunafâ').</li>
+          <li>Clore le passeport des sourates de cette année.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Sourate Al-Bayyina (98)</div>
+        <div class="verse">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div class="ar">لَمْ يَكُنِ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ وَالْمُشْرِكِينَ مُنفَكِّينَ حَتَّىٰ تَأْتِيَهُمُ الْبَيِّنَةُ<br>رَسُولٌ مِّنَ اللَّهِ يَتْلُو صُحُفًا مُّطَهَّرَةً<br>فِيهَا كُتُبٌ قَيِّمَةٌ<br>وَمَا تَفَرَّقَ الَّذِينَ أُوتُوا الْكِتَابَ إِلَّا مِن بَعْدِ مَا جَاءَتْهُمُ الْبَيِّنَةُ<br>وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ وَيُقِيمُوا الصَّلَاةَ وَيُؤْتُوا الزَّكَاةَ ۚ وَذَٰلِكَ دِينُ الْقَيِّمَةِ<br>إِنَّ الَّذِينَ كَفَرُوا مِنْ أَهْلِ الْكِتَابِ وَالْمُشْرِكِينَ فِي نَارِ جَهَنَّمَ خَالِدِينَ فِيهَا ۚ أُولَٰئِكَ هُمْ شَرُّ الْبَرِيَّةِ<br>إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ أُولَٰئِكَ هُمْ خَيْرُ الْبَرِيَّةِ<br>جَزَاؤُهُمْ عِندَ رَبِّهِمْ جَنَّاتُ عَدْنٍ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ خَالِدِينَ فِيهَا أَبَدًا ۖ رَّضِيَ اللَّهُ عَنْهُمْ وَرَضُوا عَنْهُ ۚ ذَٰلِكَ لِمَنْ خَشِيَ رَبَّهُ</div>
+          <div class="fr">« Les infidèles parmi les gens du Livre, ainsi que les Associateurs, ne cesseront pas de mécroire jusqu'à ce que leur vienne la Preuve évidente : un Messager, de la part d'Allah, qui leur récite des feuilles purifiées, dans lesquelles se trouvent des prescriptions d'une rectitude parfaite. Et ceux à qui le Livre a été donné ne se sont divisés qu'après que la preuve leur fut venue. Il ne leur a été commandé, cependant, que d'adorer Allah, Lui vouant un culte exclusif, d'accomplir la prière (As-Salât) et d'acquitter l'aumône (Az-Zakât). Et voilà la religion de droiture. Les infidèles parmi les gens du Livre, ainsi que les Associateurs iront au feu de l'Enfer, pour y demeurer éternellement. De toute la création, ce sont eux les pires. Quant à ceux qui croient et accomplissent les bonnes œuvres, ce sont les meilleurs de toute la création. Leur récompense auprès d'Allah sera les Jardins de séjour, sous lesquels coulent les ruisseaux, pour y demeurer éternellement. Allah les agrée et ils L'agréent. Telle sera [la récompense] de celui qui craint son Seigneur. »</div>
+          <span class="ref">Sourate Al-Bayyina (98), versets 1 à 8 — trad. M. Hamidullah</span>
+        </div>
+        <a class="listen-link" href="https://www.youtube.com/watch?v=XzVeDEDUfEM" target="_blank" rel="noopener">▶️ Écouter la récitation</a>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>Cette sourate rappelle que le Messager d'Allah ﷺ est venu comme une « Preuve évidente », récitant des versets d'une clarté et d'une rectitude parfaites. Elle résume ensuite en une phrase simple tout ce qu'Allah demande vraiment : L'adorer avec sincérité totale (mukhlisîna lahu ad-dîn), accomplir la prière, et donner l'aumône. C'est « la religion de droiture » (dîn al-qayyima) — rien de compliqué à ajouter.</p>
+          <p>La sourate se termine en distinguant deux issues : ceux qui ont refusé la vérité connaîtront un châtiment éternel, tandis que ceux qui ont cru et bien agi obtiendront la satisfaction mutuelle avec Allah — « Allah les agrée et ils L'agréent » — et des jardins éternels.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Ce qu'Allah demande vraiment tient en une phrase simple : L'adorer sincèrement, prier, et donner l'aumône — pas besoin de compliquer sa religion.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Le mot « hunafâ' » (sincères) rappelle que l'adoration doit venir du cœur, pas seulement des gestes extérieurs.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>« Allah les agrée et ils L'agréent » : le vrai bonheur, c'est une relation à double sens avec Allah, pas seulement une obéissance à sens unique.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Quelles sont les 3 choses qu'Allah demande, d'après le verset 5 ?</summary><div class="answer"><strong>Réponse :</strong> L'adorer sincèrement, accomplir la prière, donner l'aumône.</div></details>
+        <details class="exo"><summary>2. Comment appelle-t-on cette religion dans la sourate ?</summary><div class="answer"><strong>Réponse :</strong> « Dîn al-qayyima », la religion de droiture.</div></details>
+        <details class="exo"><summary>3. Que veut dire « Allah les agrée et ils L'agréent » ?</summary><div class="answer"><strong>Réponse :</strong> Une satisfaction mutuelle entre Allah et Ses serviteurs sincères.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Ma religion, au fond, tient en une phrase : adorer Allah sincèrement, prier, et donner. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Al-Bayyina :</span> la Preuve évidente.</span> <span class="ar">الْبَيِّنَة</span></div>
+          <div><span><span class="term">Hunafâ' :</span> ceux qui sont sincèrement tournés vers Allah.</span> <span class="ar">حُنَفَاء</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Avant ta prochaine prière, prends une seconde pour te rappeler que tu la fais sincèrement pour Allah, pas par habitude mécanique — comme le rappelle cette sourate.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S22 · AQÎDA ============ -->
+  <article id="s22" class="chapter" style="--ch-color:var(--aqida); --ch-soft:var(--aqida-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 22 · Aqîda</span>
+      <span class="badge">🕌 Croyance</span>
+      <h2><span>Le Qadar, sans fatalisme</span><span class="ar">الْقَدَر</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un enfant qui plante une graine dans un pot de terre, ambiance d'esperance et d'action, lumiere douce. Pas de texte dans l'image." src="images/img23.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir le Qadar, dernier des 6 piliers de la foi.</li>
+          <li>Comprendre que croire au Qadar n'empêche jamais d'agir et de se donner les moyens.</li>
+          <li>Éviter le fatalisme (« à quoi bon essayer »).</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>Avant un match important, un camarade dit à Ahmed : « De toute façon, si on doit gagner, on gagnera, pas la peine de s'entraîner plus. » Ahmed n'est pas convaincu et en parle à son professeur d'éducation islamique. Celui-ci lui explique : « C'est une mauvaise compréhension du Qadar, Ahmed. Croire que tout est déjà su et écrit par Allah ne veut pas dire qu'il ne faut rien faire — au contraire, s'entraîner sérieusement fait aussi partie de ce qu'Allah a prévu pour toi. Le Qadar n'annule jamais l'effort : il l'accompagne. »</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">❝</span>Ce que dit le Coran</div>
+        <div class="verse">
+          <div class="ar">إِنَّا كُلَّ شَيْءٍ خَلَقْنَاهُ بِقَدَرٍ</div>
+          <div class="translit">Innâ kulla shay'in khalaqnâhu biqadar.</div>
+          <div class="fr">« Nous avons créé toute chose avec mesure. »</div>
+          <span class="ref">Sourate Al-Qamar (54), verset 49 — trad. M. Hamidullah</span>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Le hadith de Jibrîl (rappel du Cycle 1, sur le Qadar)</div>
+        <div class="fr">Interrogé sur l'Îmân (la foi), le Prophète ﷺ répondit : « C'est croire en Allah, en Ses anges, en Ses livres, en Ses messagers, au Jour Dernier, et croire au Qadar, en son bien comme en son mal. »</div>
+        <span class="ref">'Umar ibn al-Khattâb — Riyad as-Salihin, n°1277 (rapporté par Muslim) — <a href="https://search.hadith-mcp.org/?id=42342" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que cela veut dire ?</div>
+        <div class="lesson-text">
+          <p>D'après le tafsîr d'As-Sa'dî, le verset 54:49 signifie qu'absolument tout ce qui existe a été créé par Allah selon une mesure précise, connue et voulue par Lui de toute éternité — rien n'arrive par pur hasard. Le Qadar, dernier des 6 piliers de la foi cités dans le hadith de Jibrîl, consiste à croire que tout ce qui se produit, en bien comme en mal, s'inscrit dans ce que le savoir d'Allah a prévu.</p>
+          <p>Mais cette croyance ne doit jamais devenir une excuse pour ne rien faire (« à quoi bon réviser, ce qui doit arriver arrivera »). Au contraire : puisqu'on ne connaît jamais à l'avance ce qu'Allah a décrété, on agit sérieusement de son côté, tout en acceptant avec sérénité ce qui finit par se produire, comme on l'a vu avec le hadith du croyant fort en S15 (« dis : Allah l'a décrété, et Il fait ce qu'Il veut »).</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que veut dire croire au Qadar ?</summary><div class="answer"><strong>Réponse :</strong> Croire que tout ce qui existe et se produit, en bien comme en mal, s'inscrit dans ce qu'Allah a prévu et mesuré.</div></details>
+        <details class="exo"><summary>2. Le Qadar dispense-t-il de faire des efforts ?</summary><div class="answer"><strong>Réponse :</strong> Non, au contraire — l'effort personnel fait aussi partie de ce qu'Allah a prévu.</div></details>
+        <details class="exo"><summary>3. Combien de piliers de la foi (Îmân) le hadith de Jibrîl mentionne-t-il ?</summary><div class="answer"><strong>Réponse :</strong> 6 : Allah, Ses anges, Ses livres, Ses messagers, le Jour Dernier, le Qadar.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Le Qadar n'annule jamais mon effort — il l'accompagne. Je fais de mon mieux, et j'accepte sereinement le résultat. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Qadar :</span> la prédestination, la mesure fixée par Allah.</span> <span class="ar">قَدَر</span></div>
+          <div><span><span class="term">Fatalisme :</span> croire qu'il est inutile d'agir puisque « tout est déjà écrit ».</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🚌 Ancrage quotidien — rue &amp; transports</span>
+        <p>Si un trajet ou un projet ne se passe pas comme prévu (retard, imprévu), entraîne-toi à dire calmement « qadara Allah » plutôt que de t'énerver — tout en continuant d'agir au mieux ensuite.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S23 · FIQH ============ -->
+  <article id="s23" class="chapter" style="--ch-color:var(--fiqh); --ch-soft:var(--fiqh-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 23 · Fiqh</span>
+      <span class="badge">💧 La pratique</span>
+      <h2><span>La propreté rituelle, avec tact</span><span class="ar">الطَّهَارَة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un robinet simple avec de l'eau qui coule doucement dans une lumiere claire, ambiance de proprete et de calme. Pas de texte dans l'image." src="images/img24.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Comprendre pourquoi la propreté rituelle (tahâra) est appelée « la moitié de la foi ».</li>
+          <li>Aborder ce sujet avec pudeur et simplicité, adapté à mon âge.</li>
+          <li>Savoir vers qui me tourner pour mes questions précises et personnelles.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">💬</span>Qu'est-ce que la Tahâra ?</div>
+        <div class="lesson-text">
+          <p>La Tahâra (propreté rituelle) est une condition nécessaire avant la prière : elle comprend les petites ablutions (wudû') que tu connais déjà depuis le Cycle 1, mais aussi, à cet âge, un besoin grandissant de propreté personnelle et d'hygiène quotidienne (se laver régulièrement, changer de vêtements). L'Islam attache une grande importance à cette propreté, à la fois physique et intérieure — un cœur sincère et un corps propre vont ensemble.</p>
+          <p>En grandissant, ton corps change et certaines questions plus personnelles peuvent se poser sur la propreté rituelle. C'est tout à fait normal, et il ne faut jamais avoir honte d'en parler avec un parent, un enseignant de confiance, ou une personne de ta famille du même sexe que toi : ce sont des questions de fiqh classiques, pas des sujets gênants.</p>
+        </div>
+      </div>
+
+      <div class="section hadith-box">
+        <div class="stitle"><span class="ico">🤲</span>Ce que dit le Prophète ﷺ</div>
+        <div class="ar">الطُّهُورُ شَطْرُ الْإِيمَانِ</div>
+        <div class="fr">« La purification est la moitié de la foi. »</div>
+        <span class="ref">Abû Mâlik al-Ash'arî — Riyad as-Salihin, n°352 (rapporté par Muslim) — <a href="https://search.hadith-mcp.org/?id=41417" target="_blank" rel="noopener">source</a></span>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Et toi ?</div>
+        <p>Si tu as une question précise sur ton corps ou la propreté rituelle que tu n'oses pas poser à voix haute en classe, garde-la pour un moment en privé avec un adulte de confiance — il n'y a aucune honte à poser ce genre de question.</p>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Que veut dire « la purification est la moitié de la foi » ?</summary><div class="answer"><strong>Réponse :</strong> Que la propreté (physique et intérieure) occupe une place essentielle dans la pratique de la foi.</div></details>
+        <details class="exo"><summary>2. Vers qui se tourner pour une question personnelle sur la propreté rituelle ?</summary><div class="answer"><strong>Réponse :</strong> Un parent, un enseignant de confiance, ou un adulte de la famille du même sexe.</div></details>
+        <details class="exo"><summary>3. Est-ce qu'il faut avoir honte de poser ce type de question ?</summary><div class="answer"><strong>Réponse :</strong> Non, ce sont des questions de fiqh normales.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« La propreté, physique et intérieure, fait partie de ma foi — je peux en parler sans honte à un adulte de confiance. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Tahâra :</span> la propreté rituelle.</span> <span class="ar">طَهَارَة</span></div>
+          <div><span><span class="term">Wudû' :</span> les petites ablutions.</span> <span class="ar">وُضُوء</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏠 Ancrage quotidien — à la maison</span>
+        <p>Prends l'habitude cette semaine de vérifier ta propreté personnelle avant chaque prière sans qu'on ait à te le rappeler (mains, tenue, lieu de prière).</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S24 · SÎRA ============ -->
+  <article id="s24" class="chapter" style="--ch-color:var(--sira); --ch-soft:var(--sira-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 24 · Sîra</span>
+      <span class="badge">🕋 L'histoire du Prophète ﷺ</span>
+      <h2><span>Hudaybiyya — la patience stratégique</span><span class="ar">الْحُدَيْبِيَة</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un traite symbolique pose sur une table simple entre deux mains qui se serrent, ambiance de negociation calme et digne. Pas de texte reel lisible dans l'image." src="images/img25.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Découvrir le traité de Hudaybiyya, en l'an 6 de l'Hégire.</li>
+          <li>Comprendre pourquoi le Prophète ﷺ a accepté des conditions apparemment défavorables.</li>
+          <li>Retenir la leçon de la patience stratégique.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>Le récit</div>
+        <div class="lesson-text dropcap">
+          <p>En l'an 6 de l'Hégire, le Prophète ﷺ part avec environ 1400 compagnons vers La Mecque, non pas pour se battre, mais pour accomplir la 'Umra (le petit pèlerinage). Les Mecquois, méfiants, leur bloquent la route près du lieu appelé Hudaybiyya. Après des négociations, un traité de paix est signé — mais avec des conditions qui semblent, à première vue, très défavorables aux musulmans : ils doivent repartir sans accomplir la 'Umra cette année-là, et toute personne quittant La Mecque pour rejoindre les musulmans sans l'accord de son tuteur devra être renvoyée, sans réciprocité inverse.</p>
+          <p>Plusieurs compagnons, dont 'Umar ibn al-Khattâb, expriment leur incompréhension face à des conditions si dures. Le Prophète ﷺ accepte pourtant calmement le traité, avec confiance et patience. L'histoire donnera raison à ce choix : les deux années de paix qui suivent permettent aux musulmans de se renforcer, de nouer des contacts avec d'autres tribus, et de préparer la conquête pacifique de La Mecque, deux ans plus tard.</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>3 idées essentielles</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p>Accepter un accord qui semble défavorable sur le moment peut, avec patience, ouvrir la voie à un bien bien plus grand.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p>Le Prophète ﷺ a choisi la paix plutôt que l'affrontement, même quand certains compagnons ne comprenaient pas ce choix.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p>La patience stratégique n'est pas de la faiblesse : c'est parfois la décision la plus sage à long terme.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Je m'exerce</div>
+        <details class="exo"><summary>1. Pourquoi le Prophète ﷺ se rendait-il à La Mecque en l'an 6 ?</summary><div class="answer"><strong>Réponse :</strong> Pour accomplir la 'Umra, pas pour se battre.</div></details>
+        <details class="exo"><summary>2. Comment les compagnons ont-ils réagi aux conditions du traité ?</summary><div class="answer"><strong>Réponse :</strong> Certains, comme 'Umar, ont exprimé leur incompréhension face à des conditions qui semblaient défavorables.</div></details>
+        <details class="exo"><summary>3. Qu'a permis ce traité, avec le recul ?</summary><div class="answer"><strong>Réponse :</strong> Deux années de paix qui ont renforcé les musulmans avant la conquête pacifique de La Mecque.</div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir</div>
+        <p>« Un accord qui semble difficile sur le moment peut, avec patience, mener à un bien plus grand. »</p>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✎</span>Vocabulaire</div>
+        <div class="vocab-list">
+          <div><span><span class="term">Hudaybiyya :</span> lieu du traité de paix.</span> <span class="ar">الْحُدَيْبِيَة</span></div>
+          <div><span><span class="term">'Umra :</span> le petit pèlerinage.</span> <span class="ar">عُمْرَة</span></div>
+        </div>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🏫 Ancrage quotidien — avec les enseignants</span>
+        <p>Si une décision d'un enseignant te semble injuste sur le moment (un exercice supplémentaire, une règle stricte), essaie d'abord la patience avant de protester — comme à Hudaybiyya, le résultat final peut être positif.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ============ S25 · ADAB (CLÔTURE) ============ -->
+  <article id="s25" class="chapter" style="--ch-color:var(--akhlaq); --ch-soft:var(--akhlaq-soft);">
+    <div class="ch-hero">
+      <span class="num">Semaine 25 · Adab — Clôture de l'année</span>
+      <span class="badge">🤝 Bienséance</span>
+      <h2><span>Mon carnet des 4 lieux</span><span class="ar">دَفْتَرِي</span></h2>
+    </div>
+    <div class="ch-body">
+
+      <img class="chapter-img" alt="Un enfant qui ferme un carnet avec un sourire satisfait, entoure de petits symboles d'une maison, d'un bus, d'une cour d'ecole et d'un tableau, ambiance de bilan positif. Pas de texte reel lisible dans l'image." src="images/img26.webp">
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">◎</span>Ce que je vais apprendre</div>
+        <ul>
+          <li>Faire le bilan de mon année avec Ahmed : ce que j'ai appris et vécu dans les 4 contextes.</li>
+          <li>Relire les grandes idées de l'année en un seul chapitre de clôture.</li>
+          <li>Me préparer à continuer à grandir l'année prochaine.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✎</span>L'histoire d'Ahmed</div>
+        <div class="lesson-text dropcap">
+          <p>À la fin de l'année, Ahmed relit son carnet des 4 lieux, rempli semaine après semaine : une aide à sa petite sœur, une place cédée dans le bus, un camarade inclus dans un jeu, une question posée sans honte à un enseignant. Il se rend compte qu'aucune de ces actions n'était spectaculaire — mais qu'ensemble, elles ont changé sa façon d'être, un peu plus posée, un peu plus attentive aux autres qu'au début de l'année.</p>
+          <p>« C'est exactement le but, lui dit son enseignant. La foi ne se mesure pas à un seul grand geste, mais à la régularité de petits gestes sincères, répétés dans chaque endroit de ta vie. »</p>
+        </div>
+      </div>
+
+      <div class="section box tinted">
+        <div class="stitle"><span class="ico">✦</span>Ce que j'ai découvert cette année, en résumé</div>
+        <div class="essentiel-list">
+          <div class="essentiel-item"><span class="n">1</span><p><strong>Coran :</strong> 5 nouvelles sourates (Al-Balad, Ash-Shams, Al-Layl, Al-'Alaq, Al-Bayyina), chacune reliée à des idées de foi concrètes.</p></div>
+          <div class="essentiel-item"><span class="n">2</span><p><strong>Aqîda :</strong> Ar-Rabb (Rubûbiyya), l'adoration exclusive d'Allah (Ulûhiyya), le Jour Dernier, et le Qadar sans fatalisme.</p></div>
+          <div class="essentiel-item"><span class="n">3</span><p><strong>Fiqh :</strong> prier en groupe, suivre l'imam, jeûner le Ramadân complet avec sincérité, la propreté rituelle.</p></div>
+          <div class="essentiel-item"><span class="n">4</span><p><strong>Sîra :</strong> Badr (préparation et confiance), Uhud (discipline), le Khandaq (intelligence stratégique), Hudaybiyya (patience stratégique).</p></div>
+          <div class="essentiel-item"><span class="n">5</span><p><strong>Adab :</strong> mon identité, résister à la pression du groupe, une estime de soi saine, mes écrans et mon temps libre — toujours reliés aux 4 lieux de ma vie.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="stitle"><span class="ico">✏</span>Mon bilan personnel</div>
+        <details class="exo"><summary>1. Quelle leçon de l'année t'a le plus marqué(e) ? Pourquoi ?</summary><div class="answer"><strong>Réponse libre :</strong> il n'y a pas de bonne ou de mauvaise réponse — l'important est de réfléchir sincèrement.</div></details>
+        <details class="exo"><summary>2. Dans lequel des 4 lieux (maison, rue/transports, cour d'école, enseignants) as-tu le plus progressé ?</summary><div class="answer"><strong>Réponse libre.</strong></div></details>
+        <details class="exo"><summary>3. Quelle sourate de cette année voudrais-tu réciter à quelqu'un de ta famille ?</summary><div class="answer"><strong>Réponse libre.</strong></div></details>
+      </div>
+
+      <div class="section retenir-box">
+        <div class="stitle center"><span class="ico">★</span>À retenir — pour toute l'année</div>
+        <p>« Ma foi grandit à travers de petits gestes sincères, répétés à la maison, dans la rue, dans la cour, et en classe. »</p>
+      </div>
+
+      <div class="section ancrage-box">
+        <span class="ancrage-tag">🧭 Ancrage quotidien — les 4 lieux, ensemble</span>
+        <p>Cette dernière semaine, choisis un geste dans chacun des 4 lieux (maison, rue/transports, cour d'école, avec un enseignant) et note-les dans ton carnet des 4 lieux — un vrai bilan complet avant de continuer à grandir l'année prochaine.</p>
+      </div>
+
+    </div>
+  </article>
+
+  <section id="quiz" class="quiz-card">
+    <h2>🎓 Grand Quiz de fin d'année</h2>
+    <p class="quiz-sub">Réponds à toutes les questions pour vérifier ce que tu as appris cette année ! À la fin, génère ton récapitulatif pour le montrer à ton enseignant(e).</p>
+
+    <div class="quiz-name">
+      <div class="quiz-field">
+        <label for="quiz-eleve-nom">Prénom et nom :</label>
+        <input type="text" id="quiz-eleve-nom" placeholder="Écris ton prénom et ton nom" autocomplete="off">
+      </div>
+      <div class="quiz-field">
+        <label for="quiz-classe">Classe / groupe :</label>
+        <input type="text" id="quiz-classe" placeholder="Ex : CM2, groupe du samedi..." autocomplete="off">
+      </div>
+      <div class="quiz-field">
+        <label for="quiz-annee">Année scolaire :</label>
+        <input type="text" id="quiz-annee" placeholder="2026-2027" autocomplete="off">
+        <span class="quiz-field-hint">Détectée automatiquement, modifiable</span>
+      </div>
+    </div>
+
+    <div class="quiz-score" id="quiz-score">Score : 0 / 15</div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="vrai">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">1. Les cinq premiers versets révélés au Prophète ﷺ lui ont été apportés par l'ange Jibrîl, dans la grotte de Hirâ'.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="faux">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">2. Si on mange ou boit par pur oubli pendant le jeûne, le jeûne est cassé.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="vf" data-correct="faux">
+      <span class="q-type">Vrai ou faux</span>
+      <p class="q-text">3. Croire au Qadar veut dire qu'il est inutile de faire des efforts, puisque tout est déjà écrit.</p>
+      <div class="vf-grid">
+        <button type="button" class="vf-btn" data-answer="vrai">✅ Vrai</button>
+        <button type="button" class="vf-btn" data-answer="faux">❌ Faux</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">4. Environ combien de musulmans étaient présents face aux Mecquois à la bataille de Badr ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Environ 313</button>
+        <button type="button" class="opt-btn" data-correct="false">Environ 1000</button>
+        <button type="button" class="opt-btn" data-correct="false">Environ 700</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">5. Qui a proposé de creuser une tranchée (khandaq) pour défendre Médine ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Bilâl</button>
+        <button type="button" class="opt-btn" data-correct="true">Salmân al-Fârisî</button>
+        <button type="button" class="opt-btn" data-correct="false">Abû Bakr</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">6. Qu'a permis le traité de Hudaybiyya, avec le recul ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Deux années de paix qui ont renforcé les musulmans avant la conquête pacifique de La Mecque</button>
+        <button type="button" class="opt-btn" data-correct="false">Une défaite immédiate des musulmans</button>
+        <button type="button" class="opt-btn" data-correct="false">La fin définitive des relations avec les Mecquois</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Choix unique</span>
+      <p class="q-text">7. Dans la prière en groupe, qui dirige les mouvements que tout le monde suit ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Le muezzin</button>
+        <button type="button" class="opt-btn" data-correct="true">L'imam</button>
+        <button type="button" class="opt-btn" data-correct="false">Le premier arrivé dans le rang</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcm">
+      <span class="q-type">Choix multiple</span>
+      <p class="q-text">8. Coche tout ce qui NE casse PAS le jeûne :</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Manger ou boire par pur oubli</button>
+        <button type="button" class="opt-btn" data-correct="true">Se rincer la bouche avec précaution</button>
+        <button type="button" class="opt-btn" data-correct="false">Manger volontairement</button>
+        <button type="button" class="opt-btn" data-correct="false">Boire volontairement</button>
+      </div>
+      <button type="button" class="qcm-check-btn">Je vérifie</button>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcm">
+      <span class="q-type">Choix multiple</span>
+      <p class="q-text">9. Coche toutes les sourates apprises cette année (Cycle 3) :</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="true">Al-Balad</button>
+        <button type="button" class="opt-btn" data-correct="true">Ash-Shams</button>
+        <button type="button" class="opt-btn" data-correct="true">Al-Bayyina</button>
+        <button type="button" class="opt-btn" data-correct="false">Al-Qadr</button>
+        <button type="button" class="opt-btn" data-correct="false">Al-Fâtiha</button>
+      </div>
+      <button type="button" class="qcm-check-btn">Je vérifie</button>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Mise en situation</span>
+      <p class="q-situation">Avant un match important, un camarade dit à Ahmed : « De toute façon, si on doit gagner, on gagnera, pas la peine de s'entraîner plus. »</p>
+      <p class="q-text">10. Que peut répondre Ahmed, en pensant au Qadar ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">« Tu as raison, inutile de s'entraîner. »</button>
+        <button type="button" class="opt-btn" data-correct="true">« Le Qadar n'annule jamais l'effort, il l'accompagne. »</button>
+        <button type="button" class="opt-btn" data-correct="false">« Il ne faut jamais parler du Qadar. »</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="qcu">
+      <span class="q-type">Mise en situation</span>
+      <p class="q-situation">Un groupe de camarades pousse Ahmed à se moquer d'un autre élève pour être accepté par le groupe.</p>
+      <p class="q-text">11. Que doit faire Ahmed, face à cette pression du groupe ?</p>
+      <div class="opt-grid">
+        <button type="button" class="opt-btn" data-correct="false">Se moquer aussi, pour ne pas être exclu</button>
+        <button type="button" class="opt-btn" data-correct="true">Refuser poliment et aller parler à l'élève moqué</button>
+        <button type="button" class="opt-btn" data-correct="false">Ne rien faire et regarder ailleurs</button>
+      </div>
+    </div>
+
+    <div class="quiz-q" data-qtype="match">
+      <span class="q-type">Relie les éléments</span>
+      <p class="q-text">12. Relie chaque terme à sa définition :</p>
+      <div class="match-wrap">
+        <div class="match-col">
+          <div class="match-item" data-pair="jamaa">Jamâ'a</div>
+          <div class="match-item" data-pair="khandaq">Khandaq</div>
+          <div class="match-item" data-pair="hira">Hirâ'</div>
+          <div class="match-item" data-pair="qadar">Qadar</div>
+        </div>
+        <div class="match-col">
+          <div class="match-item" data-pair="hira">La grotte de la première Révélation</div>
+          <div class="match-item" data-pair="qadar">La prédestination, la mesure fixée par Allah</div>
+          <div class="match-item" data-pair="jamaa">La prière accomplie en groupe</div>
+          <div class="match-item" data-pair="khandaq">La tranchée</div>
+        </div>
+      </div>
+      <p class="quiz-hint">Touche un mot à gauche, puis son correspondant à droite.</p>
+    </div>
+
+    <div class="quiz-actions">
+      <button type="button" class="btn-print" id="quiz-print-btn"><span>🖨️</span> Générer mon récapitulatif</button>
+      <p class="quiz-hint">Le récapitulatif (nom, score, date) peut être imprimé ou enregistré en PDF pour ton enseignant(e).</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<script>
+  (function(){
+    const KEY = 'passeport-cycle3-annee1-sourates-v1';
+    const grid = document.querySelector('[data-passport="cycle3-sourates"]');
+    if (!grid) return;
+    const countEl = document.querySelector('[data-passport-count]');
+    const buttons = Array.from(grid.querySelectorAll('.sourate-row'));
+    let earned = [];
+    try { earned = JSON.parse(localStorage.getItem(KEY)) || []; } catch(e) { earned = []; }
+
+    function render(){
+      buttons.forEach(btn => {
+        const id = btn.dataset.star;
+        const on = earned.includes(id);
+        btn.classList.toggle('earned', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        const flag = btn.querySelector('.flag');
+        if (flag) flag.textContent = on ? '✅' : '⬜';
+      });
+      if (countEl) countEl.textContent = earned.length + ' / ' + buttons.length + ' sourates';
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.star;
+        earned = earned.includes(id) ? earned.filter(x => x !== id) : earned.concat(id);
+        try { localStorage.setItem(KEY, JSON.stringify(earned)); } catch(e) {}
+        render();
+      });
+    });
+
+    render();
+  })();
+
+  (function(){
+    const quizRoot = document.getElementById('quiz');
+    if (!quizRoot) return;
+
+    let score = 0;
+    const maxScore = 15;
+    const scoreEl = document.getElementById('quiz-score');
+    function addScore(n){
+      score += n;
+      if (scoreEl) scoreEl.textContent = 'Score : ' + score + ' / ' + maxScore;
+    }
+
+    const anneeInput = document.getElementById('quiz-annee');
+
+    (function autoDetect(){
+      const now = new Date();
+      const mois = now.getMonth();
+      const anneeCiv = now.getFullYear();
+      let anneeScolaire;
+      if (mois >= 8) {
+        anneeScolaire = anneeCiv + '-' + (anneeCiv + 1);
+      } else {
+        anneeScolaire = (anneeCiv - 1) + '-' + anneeCiv;
+      }
+      if (anneeInput && !anneeInput.value) anneeInput.value = anneeScolaire;
+    })();
+
+    quizRoot.querySelectorAll('[data-qtype="vf"]').forEach(block => {
+      const correct = block.dataset.correct;
+      const btns = block.querySelectorAll('.vf-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          const isCorrect = btn.dataset.answer === correct;
+          btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+          if (!isCorrect) {
+            const goodBtn = block.querySelector('[data-answer="' + correct + '"]');
+            if (goodBtn) goodBtn.classList.add('correct');
+          }
+          btns.forEach(b => b.disabled = true);
+          if (isCorrect) addScore(1);
+        });
+      });
+    });
+
+    quizRoot.querySelectorAll('[data-qtype="qcu"]').forEach(block => {
+      const opts = block.querySelectorAll('.opt-btn');
+      opts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          const isCorrect = btn.dataset.correct === 'true';
+          btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+          if (!isCorrect) {
+            const goodBtn = block.querySelector('[data-correct="true"]');
+            if (goodBtn) goodBtn.classList.add('correct');
+          }
+          opts.forEach(o => o.disabled = true);
+          if (isCorrect) addScore(1);
+        });
+      });
+    });
+
+    quizRoot.querySelectorAll('[data-qtype="qcm"]').forEach(block => {
+      const opts = block.querySelectorAll('.opt-btn');
+      const checkBtn = block.querySelector('.qcm-check-btn');
+      const feedback = block.querySelector('.q-feedback');
+      opts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          btn.classList.toggle('selected');
+        });
+      });
+      if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+          if (block.dataset.answered) return;
+          block.dataset.answered = '1';
+          let allGood = true;
+          opts.forEach(o => {
+            const shouldBe = o.dataset.correct === 'true';
+            const isSelected = o.classList.contains('selected');
+            if (shouldBe && isSelected) { o.classList.add('correct'); }
+            else if (shouldBe && !isSelected) { o.classList.add('correct'); allGood = false; }
+            else if (!shouldBe && isSelected) { o.classList.add('incorrect'); allGood = false; }
+            o.disabled = true;
+          });
+          checkBtn.disabled = true;
+          if (feedback) {
+            feedback.textContent = allGood ? '✅ Parfait !' : '➡️ Les bonnes réponses sont surlignées en vert.';
+            feedback.classList.add(allGood ? 'ok' : 'ko');
+          }
+          if (allGood) addScore(1);
+        });
+      }
+    });
+
+    quizRoot.querySelectorAll('[data-qtype="match"]').forEach(block => {
+      let selected = null;
+      const items = block.querySelectorAll('.match-item');
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          if (item.classList.contains('matched')) return;
+          if (!selected) {
+            selected = item;
+            item.classList.add('selected');
+            return;
+          }
+          if (selected === item) {
+            selected.classList.remove('selected');
+            selected = null;
+            return;
+          }
+          if (selected.closest('.match-col') === item.closest('.match-col')) {
+            selected.classList.remove('selected');
+            selected = item;
+            item.classList.add('selected');
+            return;
+          }
+          if (selected.dataset.pair === item.dataset.pair) {
+            selected.classList.remove('selected');
+            selected.classList.add('matched');
+            item.classList.add('matched');
+            selected = null;
+            addScore(1);
+          } else {
+            const a = selected, b = item;
+            a.classList.add('wrong'); b.classList.add('wrong');
+            setTimeout(() => { a.classList.remove('wrong', 'selected'); b.classList.remove('wrong'); }, 500);
+            selected = null;
+          }
+        });
+      });
+    });
+
+    const printBtn = document.getElementById('quiz-print-btn');
+    const nomInput = document.getElementById('quiz-eleve-nom');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        const nom = ((nomInput && nomInput.value) || 'Élève').trim();
+        const classe = ((document.getElementById('quiz-classe') || {}).value || '').trim();
+        const anneeScolaire = ((anneeInput || {}).value || '').trim();
+        const date = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+        const w = window.open('', '_blank', 'width=650,height=800');
+        if (!w) { alert("Merci d'autoriser les fenêtres popup pour générer le récapitulatif."); return; }
+        w.document.write(
+          '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">' +
+          '<title>Récapitulatif — ' + nom + '</title>' +
+          '<style>' +
+          'body{ font-family:"Segoe UI",sans-serif; padding:40px; color:#2E2A20; }' +
+          'h1{ font-size:1.5em; margin-bottom:4px; }' +
+          '.meta{ color:#6B6252; margin-bottom:24px; line-height:1.6; }' +
+          '.score-box{ border:2px solid #B3811E; border-radius:16px; padding:24px; text-align:center; margin-bottom:24px; }' +
+          '.score-box .big{ font-size:2.2em; font-weight:800; color:#B3811E; }' +
+          'footer{ margin-top:40px; font-size:0.85em; color:#6B6252; text-align:center; }' +
+          '</style></head><body>' +
+          '<h1>🎓 Récapitulatif — Grand Quiz</h1>' +
+          '<p class="meta">Mon livre d\'éducation islamique — Cycle 3, « La raison qui s\'éveille »<br>' +
+          'Élève : <strong>' + nom + '</strong><br>' +
+          (classe ? 'Classe / groupe : <strong>' + classe + '</strong><br>' : '') +
+          'Année scolaire : <strong>' + (anneeScolaire || '—') + '</strong><br>' +
+          'Date : ' + date + '</p>' +
+          '<div class="score-box"><div class="big">' + score + ' / ' + maxScore + '</div><div>bonnes réponses</div></div>' +
+          '<p>Ce récapitulatif peut être remis à l\'enseignant(e) pour compléter le bulletin scolaire (éducation islamique).</p>' +
+          '<footer>Association de la Fraternité d\'Elne — ' + new Date().getFullYear() + '</footer>' +
+          '</body></html>'
+        );
+        w.document.close();
+        w.focus();
+        setTimeout(() => { w.print(); }, 300);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
