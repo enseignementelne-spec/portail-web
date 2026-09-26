@@ -20,6 +20,7 @@ Les manuels élève étaient initialement livrés en HTML unique avec images enc
 ## Applications liées
 
 - [Hourouffi — niveau 1](https://enseignementelne-spec.github.io/Hourouffi-niveau-1/) — apprentissage de l'arabe en jouant.
+- [Livrets de positionnement — Années 1 à 5](https://enseignementelne-spec.github.io/livrets-positionnement-arabe/) — test de positionnement en arabe pour former les groupes de niveau (dépôt [livrets-positionnement-arabe](https://github.com/enseignementelne-spec/livrets-positionnement-arabe), zip hors connexion inclus).
 
 ## Licence
 
