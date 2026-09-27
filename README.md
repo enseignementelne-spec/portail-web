@@ -13,6 +13,7 @@ manuels/
   cycle3/                            manuel élève (année unique) + référentiel
   cycle4/, cycle5/                   référentiels pédagogiques (manuels à venir)
   ressources_cycle1/                 guide enseignant + livret ressources
+arabe/                               référentiels d'arabe, Années 1 à 5 (referentiel-annee-1.html à -5.html)
 ```
 
 Les manuels élève étaient initialement livrés en HTML unique avec images encodées en base64 (40-55 Mo par fichier). Elles ont été extraites en fichiers image séparés (`extract-images.js`) pour rester compatibles avec GitHub / GitHub Pages.
@@ -21,6 +22,7 @@ Les manuels élève étaient initialement livrés en HTML unique avec images enc
 
 - [Hourouffi — niveau 1](https://enseignementelne-spec.github.io/Hourouffi-niveau-1/) — apprentissage de l'arabe en jouant.
 - [Livrets de positionnement — Années 1 à 5](https://enseignementelne-spec.github.io/livrets-positionnement-arabe/) — test de positionnement en arabe pour former les groupes de niveau (dépôt [livrets-positionnement-arabe](https://github.com/enseignementelne-spec/livrets-positionnement-arabe), zip hors connexion inclus).
+- Référentiels d'arabe — Années 1 à 5 : `arabe/referentiel-annee-N.html`, accessibles depuis la carte « Référentiels d'arabe » de la section langue arabe.
 
 ## Licence
 

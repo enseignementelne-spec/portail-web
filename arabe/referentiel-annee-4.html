@@ -1,0 +1,2658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Référentiel Pédagogique Année 4 - Arabe pour non-arabophones - Cycle Fondation CECRL A1+"
+    />
+    <meta name="keywords" content="arabe, pédagogie, CECRL, A1+, année 4, maghreb, dialogue, vocabulaire" />
+    <meta name="author" content="Expert Pédagogique" />
+    <title>المرجعية السنة الرابعة | Référentiel Année 4 - Cycle Fondation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #6b3fa0;
+        --secondary-color: #9c27b0;
+        --accent-color: #ffa726;
+        --accent-light: #fff3e0;
+        --success-color: #4caf50;
+        --info-color: #00acc1;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --light-bg: #f3e5f5;
+        --white: #ffffff;
+        --text-dark: #212529;
+        --text-muted: #6c757d;
+        --border-color: #e1bee7;
+        --shadow: 0 4px 6px rgba(107, 63, 160, 0.15);
+        --shadow-lg: 0 10px 25px rgba(107, 63, 160, 0.2);
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+        --radius: 12px;
+        --radius-sm: 8px;
+        --transition: all 0.3s ease;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --font-size-sm: 0.85rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.2rem;
+        --font-size-xl: 1.6rem;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Amiri', 'Noto Sans Arabic', serif;
+        background: linear-gradient(135deg, #faf5ff 0%, #f3e5f5 100%);
+        color: var(--text-dark);
+        line-height: 1.8;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      .nav-link:focus-visible {
+        outline: 3px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+
+      /* HEADER */
+      .header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: var(--white);
+        padding: var(--spacing-lg) var(--spacing-sm);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.3;
+      }
+      .header-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .badges-container {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        backdrop-filter: blur(10px);
+      }
+      .badge-cycle {
+        background: rgba(255, 167, 38, 0.9);
+        color: var(--primary-color);
+      }
+      .badge-level {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid var(--accent-color);
+        color: var(--white);
+      }
+      .badge-age {
+        background: rgba(76, 175, 80, 0.8);
+        color: var(--white);
+      }
+
+      .header h1 {
+        font-size: 2.8rem;
+        margin-bottom: var(--spacing-xs);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .header h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        opacity: 0.95;
+        margin-bottom: var(--spacing-sm);
+      }
+      .header-meta {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+      .header-meta span {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+
+      /* NAV STICKY */
+      .nav-sticky {
+        background: var(--white);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: var(--spacing-sm);
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+      }
+      .nav-link {
+        padding: 0.6rem 1.2rem;
+        background: var(--light-bg);
+        border: 2px solid transparent;
+        border-radius: var(--radius-sm);
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: var(--transition);
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        background: var(--accent-light);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+      .nav-link.active {
+        background: var(--accent-color);
+        color: var(--white);
+      }
+
+      /* BACK TO TOP */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 99;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .back-to-top:hover {
+        background: var(--secondary-color);
+        transform: translateY(-3px);
+      }
+
+      /* LAYOUT */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg) var(--spacing-sm);
+      }
+      .section {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: var(--spacing-lg);
+        overflow: hidden;
+        animation: fadeIn 0.5s ease forwards;
+        scroll-margin-top: 80px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .section-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: var(--white);
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .section-number {
+        width: 50px;
+        height: 50px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        flex-shrink: 0;
+      }
+      .section-title {
+        flex: 1;
+      }
+      .section-title h3 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-xs);
+      }
+      .section-title p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+      .section-content {
+        padding: var(--spacing-lg);
+      }
+
+      /* CARDS */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-md);
+      }
+      .card {
+        background: var(--light-bg);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-md);
+        border-right: 4px solid var(--accent-color);
+        transition: var(--transition);
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--accent-color), #ffcc80);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+      }
+      .card h4 {
+        color: var(--primary-color);
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+      }
+      .card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      /* TABLES */
+      .table-responsive {
+        overflow-x: auto;
+        margin: var(--spacing-sm) 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1rem;
+      }
+      thead {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: var(--white);
+      }
+      th,
+      td {
+        padding: var(--spacing-sm);
+        text-align: right;
+        border-bottom: 1px solid var(--border-color);
+      }
+      th {
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      tbody tr:hover {
+        background: var(--accent-light);
+      }
+      tbody tr:nth-child(even) {
+        background: var(--light-bg);
+      }
+      tbody tr:nth-child(even):hover {
+        background: var(--accent-light);
+      }
+
+      /* HIGHLIGHT / RECAP / NOTES */
+      .highlight-box {
+        background: linear-gradient(135deg, var(--accent-light), #fff9e6);
+        border-right: 4px solid var(--accent-color);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-sm);
+        margin: var(--spacing-sm) 0;
+      }
+      .quick-recap {
+        background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+        border-left: 5px solid var(--success-color);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        margin-top: var(--spacing-md);
+      }
+      .quick-recap h4 {
+        color: #2e7d32;
+        margin-bottom: var(--spacing-xs);
+        margin-top: 0;
+      }
+      .quick-recap ul {
+        list-style: none;
+        padding: 0;
+        font-size: var(--font-size-sm);
+      }
+      .quick-recap li {
+        padding: var(--spacing-xs) 0;
+        border-bottom: 1px dashed var(--border-color);
+      }
+      .quick-recap li:last-child {
+        border-bottom: none;
+      }
+      .quick-recap li::before {
+        content: '✓ ';
+        color: var(--success-color);
+        font-weight: bold;
+      }
+
+      .learning-tip {
+        background: linear-gradient(135deg, #fff9e6, #fff3e0);
+        border-left: 4px solid var(--warning-color);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-sm);
+        margin: var(--spacing-md) 0;
+      }
+      .learning-tip h5 {
+        color: var(--warning-color);
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+      .learning-tip h5::before {
+        content: '💡';
+        font-size: 1.3rem;
+      }
+
+      .notes-box {
+        background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+        border-left: 5px solid var(--info-color);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-sm);
+        margin: var(--spacing-md) 0;
+      }
+      .notes-box h4 {
+        color: var(--primary-color);
+        margin-top: 0;
+      }
+      .notes-box ul {
+        list-style: none;
+        padding: 0;
+      }
+      .notes-box li {
+        padding: var(--spacing-xs) 0;
+        border-bottom: 1px dashed var(--border-color);
+      }
+      .notes-box li:last-child {
+        border-bottom: none;
+      }
+
+      /* SUBSECTIONS */
+      .subsection {
+        margin-bottom: var(--spacing-lg);
+        padding: var(--spacing-md);
+        background: var(--white);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+      }
+      .subsection-title {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+      }
+      .subsection-title::before {
+        content: '●';
+        color: var(--accent-color);
+      }
+
+      /* CUSTOM LIST */
+      .custom-list {
+        list-style: none;
+        padding: 0;
+      }
+      .custom-list li {
+        position: relative;
+        padding-right: var(--spacing-md);
+        margin-bottom: 0.75rem;
+        padding-left: var(--spacing-sm);
+      }
+      .custom-list li::before {
+        content: '◆';
+        position: absolute;
+        right: 0;
+        color: var(--accent-color);
+      }
+
+      /* COMPETENCES (v1.1) */
+      .competence-item {
+        margin-bottom: var(--spacing-lg);
+        padding: var(--spacing-md);
+        background: var(--light-bg);
+        border-radius: var(--radius-sm);
+        border-right: 5px solid var(--accent-color);
+      }
+      .competence-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+      }
+      .competence-name {
+        font-weight: 700;
+      }
+      .competence-percent {
+        font-weight: 800;
+        color: var(--primary-color);
+        background: var(--accent-light);
+        border: 1px solid var(--border-color);
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .progress-bar {
+        width: 100%;
+        height: 12px;
+        background: #efe7f6;
+        border-radius: 999px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent-color), #ffcc80);
+      }
+      .progress-co {
+        background: linear-gradient(90deg, var(--info-color), #64b5f6);
+      }
+      .progress-po {
+        background: linear-gradient(90deg, var(--success-color), #8bc34a);
+      }
+      .progress-ce {
+        background: linear-gradient(90deg, var(--secondary-color), #ce93d8);
+      }
+      .progress-pe {
+        background: linear-gradient(90deg, var(--warning-color), #ffb74d);
+      }
+
+      /* VOCABULARY TABS & STYLES */
+      .vocab-tab-container {
+        margin: 2rem 0;
+      }
+      .vocab-tabs-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .vocab-tab-btn {
+        padding: 0.75rem 1.5rem;
+        background: var(--light-bg);
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        color: var(--primary-color);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .vocab-tab-btn:hover {
+        background: var(--accent-light);
+        border-color: var(--accent-color);
+      }
+      .vocab-tab-btn.active {
+        background: var(--accent-color);
+        color: var(--white);
+        border-color: var(--accent-color);
+      }
+      .vocab-tab-content {
+        display: none;
+        padding: var(--spacing-md);
+        background: var(--white);
+        border: 1px solid var(--border-color);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+      }
+      .vocab-tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .vocab-category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .vocab-count {
+        background: var(--accent-color);
+        color: var(--white);
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .vocab-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .vocab-item {
+        background: var(--light-bg);
+        padding: 0.75rem;
+        border-radius: var(--radius-sm);
+        border-right: 3px solid var(--accent-color);
+        transition: var(--transition);
+      }
+      .vocab-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+      .vocab-item-ar {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+      }
+      .vocab-item-fr {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+
+      /* DIALOGUE STYLES */
+      .dialogue-container {
+        margin-bottom: var(--spacing-lg);
+        background: #fafafa;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-md);
+      }
+      .dialogue-header {
+        margin-bottom: var(--spacing-sm);
+        border-bottom: 2px dashed var(--border-color);
+        padding-bottom: var(--spacing-xs);
+      }
+      .dialogue-title {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .dialogue-meta {
+        display: flex;
+        gap: var(--spacing-sm);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
+      }
+      .dialogue-meta span {
+        background: var(--white);
+        padding: 2px 8px;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+      }
+      .speaker-bubble {
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+      .speaker-bubble strong {
+        min-width: 80px;
+        color: var(--secondary-color);
+      }
+      .speech-ar {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 2px;
+      }
+      .speech-fr {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+      .vocabulary-box {
+        background: #fffde7;
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        margin-top: var(--spacing-md);
+        border: 1px solid #fff59d;
+      }
+      .vocab-ar {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      /* EVAL GRID */
+      .eval-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .eval-card {
+        background: var(--light-bg);
+        padding: 1rem;
+        border-radius: var(--radius-sm);
+        border-left: 4px solid var(--success-color);
+        text-align: center;
+      }
+      .eval-acronym {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      /* INFOGRAPHIC */
+      .infographic-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        justify-content: center;
+        margin-top: var(--spacing-md);
+      }
+      .infographic-item {
+        text-align: center;
+        min-width: 100px;
+      }
+      .infographic-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-xs);
+      }
+      .infographic-label {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+      }
+
+      /* PRINT */
+      @media print {
+        .nav-sticky,
+        .back-to-top {
+          display: none;
+        }
+        .section {
+          break-inside: avoid;
+          box-shadow: none;
+          border: 1px solid var(--border-color);
+        }
+        body {
+          background: white;
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2rem;
+        }
+        .header h2 {
+          font-size: 1.2rem;
+        }
+        .nav-container {
+          gap: var(--spacing-xs);
+        }
+        .nav-link {
+          padding: 0.5rem 0.75rem;
+          font-size: var(--font-size-sm);
+        }
+        .section-content {
+          padding: var(--spacing-sm);
+        }
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER PRINCIPAL -->
+    <header class="header">
+      <div class="header-content">
+        <div class="badges-container">
+          <span class="badge badge-cycle">🎓 دَوْرَةُ التَّأْسِيسِ | Cycle Fondation</span>
+          <span class="badge badge-level">📊 المستوى A1+ | Niveau CECRL A1+</span>
+          <span class="badge badge-age">👧 9-10 سَنَوَات | 9-10 ans</span>
+        </div>
+        <h1>اَلْمَرْجَعِيَّةُ — السَّنَةُ الرَّابِعَةُ</h1>
+        <h2>Référentiel Pédagogique — Année 4</h2>
+        <div class="header-meta">
+          <span>📚 ~250 كَلِمَة جَدِيدَة</span>
+          <span>💬 10 حِوَارَات</span>
+          <span>⏱️ 30 أُسْبُوعًا</span>
+          <span>🕐 2س30د/جَلْسَة</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVIGATION STICKY -->
+    <nav class="nav-sticky" role="navigation" aria-label="Navigation principale">
+      <div class="nav-container">
+        <a href="#section1" class="nav-link">1 الأَهْدَاف</a>
+        <a href="#section2" class="nav-link">2 الكَفَايَات</a>
+        <a href="#section3" class="nav-link">3 الصَّوْتِيَّات</a>
+        <a href="#section4" class="nav-link">4 المُفْرَدَات</a>
+        <a href="#section5" class="nav-link">5 القَوَاعِد</a>
+        <a href="#section6" class="nav-link">6 الحِوَارَات</a>
+        <a href="#section7" class="nav-link">7 الثَّقَافَة</a>
+        <a href="#section8" class="nav-link">8 التَّوْزِيع</a>
+        <a href="#section9" class="nav-link">9 مُودِل</a>
+        <a href="#section10" class="nav-link">10 التَّقْيِيم</a>
+      </div>
+    </nav>
+
+    <!-- BOUTON RETOUR EN HAUT -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+    <main class="container" role="main">
+      <!-- SECTION 1 -->
+      <section id="section1" class="section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <div class="section-title">
+            <h3>اَلْأَهْدَافُ الْعَامَّةُ</h3>
+            <p>Objectifs Généraux</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="cards-grid">
+            <div class="card">
+              <div class="card-icon">📖</div>
+              <h4>إِتْقَانُ القِرَاءَةِ المُعَبِّرَةِ</h4>
+              <p>
+                Maîtrise de la lecture expressive — Lire des textes de 100-120 mots avec intonation et compréhension
+                approfondie.
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🗣️</div>
+              <h4>السَّرْدُ المُرَكَّبُ</h4>
+              <p>
+                Production narrative complexe — Raconter des événements passés en 10-12 phrases structurées avec
+                connecteurs logiques.
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">✍️</div>
+              <h4>التَّعْبِيرُ الكِتَابِيُّ المُسْتَقِلُّ</h4>
+              <p>Expression écrite autonome — Rédiger un paragraphe cohérent de 5-7 phrases sur un sujet familier.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🔤</div>
+              <h4>إِدْخَالُ الفِعْلِ المَاضِي</h4>
+              <p>
+                Introduction du passé simple — Conjuguer et utiliser les verbes au temps passé dans des contextes
+                variés.
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🧠</div>
+              <h4>تَوْسِيعٌ لُغَوِيٌّ كَبِيرٌ</h4>
+              <p>Enrichissement lexical majeur — ~250 mots nouveaux pour un cumul de ~700 mots actifs.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🌍</div>
+              <h4>التَّعَمُّقُ الثَّقَافِيُّ</h4>
+              <p>Approfondissement culturel — 5 nouveaux pays arabes et projets créatifs.</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h4>🎯 هَدَفُ نِهَايَةِ السَّنَةِ | Objectif fin d'année</h4>
+            <p>
+              L'élève comprend des textes oraux de 3-4 minutes, lit des textes de 100-120 mots avec fluidité, raconte
+              des événements passés à l'oral et à l'écrit, participe à des dialogues et produit des textes écrits de 5-7
+              phrases.
+              <strong>Niveau CECRL : A1+ consolidé → amorce A2.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="section2" class="section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <div class="section-title">
+            <h3>اَلْكَفَايَاتُ</h3>
+            <p>Compétences</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="competence-item">
+            <div class="competence-header">
+              <span class="competence-name">🎧 الفَهْمُ الشَّفَهِيُّ | Compréhension Orale (CO)</span>
+              <span class="competence-percent">45%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill progress-co" style="width: 45%"></div></div>
+          </div>
+
+          <div class="competence-item">
+            <div class="competence-header">
+              <span class="competence-name">🗣️ التَّعْبِيرُ الشَّفَهِيُّ | Production Orale (PO)</span>
+              <span class="competence-percent">30%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill progress-po" style="width: 30%"></div></div>
+          </div>
+
+          <div class="competence-item">
+            <div class="competence-header">
+              <span class="competence-name">📖 الفَهْمُ الكِتَابِيُّ | Compréhension Écrite (CE)</span>
+              <span class="competence-percent">15%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill progress-ce" style="width: 15%"></div></div>
+          </div>
+
+          <div class="competence-item">
+            <div class="competence-header">
+              <span class="competence-name">✍️ التَّعْبِيرُ الكِتَابِيُّ | Production Écrite (PE)</span>
+              <span class="competence-percent">10%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill progress-pe" style="width: 10%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="section3" class="section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <div class="section-title">
+            <h3>اَلْمُحْتَوَى الصَّوْتِيُّ</h3>
+            <p>Contenu Phonétique</p>
+          </div>
+        </div>
+        <div class="section-content">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>الظَّاهِرَة</th>
+                  <th>الوَصْف</th>
+                  <th>مِثَال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>الإِدْغَامُ</strong></td>
+                  <td>Assimilation lettres solaires</td>
+                  <td>الشَّمْسُ (ach-chams)</td>
+                </tr>
+                <tr>
+                  <td><strong>المَدُّ</strong></td>
+                  <td>Allongement vocalique</td>
+                  <td>قُولُوا (qūlū)</td>
+                </tr>
+                <tr>
+                  <td><strong>الوَقْفُ</strong></td>
+                  <td>Pause en fin de phrase</td>
+                  <td>ذَهَبَ ... (pause)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: VOCABULARY (NEW) -->
+      <section id="section4" class="section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <div class="section-title">
+            <h3>المُفْرَدَات</h3>
+            <p>Vocabulaire Thématique (~250 mots)</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="vocab-tab-container">
+            <div class="vocab-tabs-nav">
+              <button class="vocab-tab-btn" type="button" data-tab="sentiments-tab">😃 Sentiments</button>
+              <button class="vocab-tab-btn" type="button" data-tab="ville-tab">🏙️ Ville</button>
+              <button class="vocab-tab-btn" type="button" data-tab="tech-tab">💻 Technologie</button>
+              <button class="vocab-tab-btn" type="button" data-tab="sports-tab">⚽ Sports</button>
+              <button class="vocab-tab-btn" type="button" data-tab="sante-tab">🏥 Santé</button>
+              <button class="vocab-tab-btn" type="button" data-tab="loisirs-tab">🎨 Loisirs</button>
+              <button class="vocab-tab-btn" type="button" data-tab="environnement-tab">🌳 Environnement</button>
+              <button class="vocab-tab-btn" type="button" data-tab="verbes-tab">🏃 Verbes</button>
+              <button class="vocab-tab-btn" type="button" data-tab="adverbes-tab">📍 Adverbes</button>
+              <button class="vocab-tab-btn" type="button" data-tab="expressions-tab">💬 Expressions</button>
+            </div>
+
+            <!-- 1. Sentiments -->
+            <div id="sentiments-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>المَشَاعِرُ وَالأَحَاسِيسُ | Sentiments</h4>
+                <span class="vocab-count">25 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فَرِحٌ</div>
+                  <div class="vocab-item-fr">Joyeux</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَزِينٌ</div>
+                  <div class="vocab-item-fr">Triste</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">خَائِفٌ</div>
+                  <div class="vocab-item-fr">Effrayé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">غَاضِبٌ</div>
+                  <div class="vocab-item-fr">En colère</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُتَحَمِّسٌ</div>
+                  <div class="vocab-item-fr">Enthousiaste</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">قَلِقٌ</div>
+                  <div class="vocab-item-fr">Inquiet</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُتَفَائِلٌ</div>
+                  <div class="vocab-item-fr">Optimiste</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">يَائِسٌ</div>
+                  <div class="vocab-item-fr">Désespéré</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُرْتَاحٌ</div>
+                  <div class="vocab-item-fr">Détendu</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُتَوَتِّرٌ</div>
+                  <div class="vocab-item-fr">Stressé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سَعِيدٌ</div>
+                  <div class="vocab-item-fr">Heureux</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَكْتَئِبٌ</div>
+                  <div class="vocab-item-fr">Déprimé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُنْدَهِشٌ</div>
+                  <div class="vocab-item-fr">Étonné</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُحْبَطٌ</div>
+                  <div class="vocab-item-fr">Découragé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">رَاضٍ</div>
+                  <div class="vocab-item-fr">Satisfait</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">غَيْرُ رَاضٍ</div>
+                  <div class="vocab-item-fr">Mécontent</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَحْبُوبٌ</div>
+                  <div class="vocab-item-fr">Aimé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَكْرُوهٌ</div>
+                  <div class="vocab-item-fr">Détesté</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">وَاثِقٌ</div>
+                  <div class="vocab-item-fr">Confiant</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُرْتَبِكٌ</div>
+                  <div class="vocab-item-fr">Confus</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">هَادِئٌ</div>
+                  <div class="vocab-item-fr">Calme</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">عَصَبِيٌّ</div>
+                  <div class="vocab-item-fr">Nerveux</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُحْرَجٌ</div>
+                  <div class="vocab-item-fr">Embarrassé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فَخُورٌ</div>
+                  <div class="vocab-item-fr">Fier</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">نَادِمٌ</div>
+                  <div class="vocab-item-fr">Regrettant</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Ville -->
+            <div id="ville-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>المَدِينَةُ وَالأَمَاكِنُ | La Ville</h4>
+                <span class="vocab-count">30 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَدِينَةٌ</div>
+                  <div class="vocab-item-fr">Ville</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">شَارِعٌ</div>
+                  <div class="vocab-item-fr">Rue</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَيٌّ</div>
+                  <div class="vocab-item-fr">Quartier</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَيْدَانٌ</div>
+                  <div class="vocab-item-fr">Place</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">جِسْرٌ</div>
+                  <div class="vocab-item-fr">Pont</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">نَفَقٌ</div>
+                  <div class="vocab-item-fr">Tunnel</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">إِشَارَةُ مُرُورٍ</div>
+                  <div class="vocab-item-fr">Feu de circulation</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">رَصِيفٌ</div>
+                  <div class="vocab-item-fr">Trottoir</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَدِيقَةٌ عَامَّةٌ</div>
+                  <div class="vocab-item-fr">Parc public</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">نَافُورَةٌ</div>
+                  <div class="vocab-item-fr">Fontaine</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَبْنًى</div>
+                  <div class="vocab-item-fr">Bâtiment</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">بُرْجٌ</div>
+                  <div class="vocab-item-fr">Tour</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَسْجِدٌ</div>
+                  <div class="vocab-item-fr">Mosquée</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَنِيسَةٌ</div>
+                  <div class="vocab-item-fr">Église</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَتْحَفٌ</div>
+                  <div class="vocab-item-fr">Musée</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَكْتَبَةٌ عَامَّةٌ</div>
+                  <div class="vocab-item-fr">Bibliothèque</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَطْعَمٌ</div>
+                  <div class="vocab-item-fr">Restaurant</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَقْهًى</div>
+                  <div class="vocab-item-fr">Café</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سُوقٌ</div>
+                  <div class="vocab-item-fr">Marché</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَحَلٌّ</div>
+                  <div class="vocab-item-fr">Magasin</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">صَيْدَلِيَّةٌ</div>
+                  <div class="vocab-item-fr">Pharmacie</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُسْتَشْفًى</div>
+                  <div class="vocab-item-fr">Hôpital</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَدْرَسَةٌ</div>
+                  <div class="vocab-item-fr">École</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">جَامِعَةٌ</div>
+                  <div class="vocab-item-fr">Université</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَلْعَبٌ</div>
+                  <div class="vocab-item-fr">Stade</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سِينِمَا</div>
+                  <div class="vocab-item-fr">Cinéma</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَوْقِفُ سَيَّارَاتٍ</div>
+                  <div class="vocab-item-fr">Parking</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَحَطَّةُ قِطَارٍ</div>
+                  <div class="vocab-item-fr">Gare</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَطَارٌ</div>
+                  <div class="vocab-item-fr">Aéroport</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مِيَناءٌ</div>
+                  <div class="vocab-item-fr">Port</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Technologie -->
+            <div id="tech-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>التِّكْنُولُوجِيَا | Technologie</h4>
+                <span class="vocab-count">20 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَاسُوبٌ</div>
+                  <div class="vocab-item-fr">Ordinateur</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">هَاتِفٌ ذَكِيٌّ</div>
+                  <div class="vocab-item-fr">Smartphone</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">إِنْتَرْنِتْ</div>
+                  <div class="vocab-item-fr">Internet</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">بَرِيدٌ إِلِكْتُرُونِيٌّ</div>
+                  <div class="vocab-item-fr">Email</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَوْقِعٌ إِلِكْتُرُونِيٌّ</div>
+                  <div class="vocab-item-fr">Site web</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَطْبِيقٌ</div>
+                  <div class="vocab-item-fr">Application</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">شَاشَةٌ</div>
+                  <div class="vocab-item-fr">Écran</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">لَوْحَةُ مَفَاتِيحَ</div>
+                  <div class="vocab-item-fr">Clavier</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فَأْرَةٌ</div>
+                  <div class="vocab-item-fr">Souris</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">طَابِعَةٌ</div>
+                  <div class="vocab-item-fr">Imprimante</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَامِيرَا</div>
+                  <div class="vocab-item-fr">Caméra</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سَمَّاعَاتٌ</div>
+                  <div class="vocab-item-fr">Écouteurs</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">شَاحِنٌ</div>
+                  <div class="vocab-item-fr">Chargeur</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">بَطَّارِيَّةٌ</div>
+                  <div class="vocab-item-fr">Batterie</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">وَاي فَاي</div>
+                  <div class="vocab-item-fr">WiFi</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَلِمَةُ مُرُورٍ</div>
+                  <div class="vocab-item-fr">Mot de passe</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَنْزِيلٌ</div>
+                  <div class="vocab-item-fr">Téléchargement</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَحْمِيلٌ</div>
+                  <div class="vocab-item-fr">Upload</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فِيدْيُو</div>
+                  <div class="vocab-item-fr">Vidéo</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">صُورَةٌ</div>
+                  <div class="vocab-item-fr">Photo</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Sports -->
+            <div id="sports-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>الرِّيَاضَةُ | Sports</h4>
+                <span class="vocab-count">25 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كُرَةُ قَدَمٍ</div>
+                  <div class="vocab-item-fr">Football</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كُرَةُ سَلَّةٍ</div>
+                  <div class="vocab-item-fr">Basketball</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تِنِّسٌ</div>
+                  <div class="vocab-item-fr">Tennis</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سِبَاحَةٌ</div>
+                  <div class="vocab-item-fr">Natation</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">جَرْيٌ</div>
+                  <div class="vocab-item-fr">Course</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">قَفْزٌ</div>
+                  <div class="vocab-item-fr">Saut</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">رُكُوبُ الدَّرَّاجَةِ</div>
+                  <div class="vocab-item-fr">Cyclisme</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">يُوغَا</div>
+                  <div class="vocab-item-fr">Yoga</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَارَاتِيهْ</div>
+                  <div class="vocab-item-fr">Karaté</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُلَاكَمَةٌ</div>
+                  <div class="vocab-item-fr">Boxe</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُصَارَعَةٌ</div>
+                  <div class="vocab-item-fr">Lutte</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">جِمْنَاسْتِيك</div>
+                  <div class="vocab-item-fr">Gymnastique</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَزَلُّجٌ</div>
+                  <div class="vocab-item-fr">Ski</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَسَلُّقُ الجِبَالِ</div>
+                  <div class="vocab-item-fr">Escalade</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">غَطْسٌ</div>
+                  <div class="vocab-item-fr">Plongée</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">إِبْحَارٌ</div>
+                  <div class="vocab-item-fr">Voile</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَجْدِيفٌ</div>
+                  <div class="vocab-item-fr">Aviron</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">رَمْيُ السِّهَامِ</div>
+                  <div class="vocab-item-fr">Tir à l'arc</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فَرِيقٌ</div>
+                  <div class="vocab-item-fr">Équipe</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">لَاعِبٌ</div>
+                  <div class="vocab-item-fr">Joueur</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُدَرِّبٌ</div>
+                  <div class="vocab-item-fr">Entraîneur</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَلْعَبٌ</div>
+                  <div class="vocab-item-fr">Terrain</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَأْسٌ</div>
+                  <div class="vocab-item-fr">Coupe</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مِيدَالِيَّةٌ</div>
+                  <div class="vocab-item-fr">Médaille</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">بُطُولَةٌ</div>
+                  <div class="vocab-item-fr">Championnat</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Santé -->
+            <div id="sante-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>الصِّحَّةُ | Santé</h4>
+                <span class="vocab-count">25 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">صِحَّةٌ</div>
+                  <div class="vocab-item-fr">Santé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مَرَضٌ</div>
+                  <div class="vocab-item-fr">Maladie</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">طَبِيبٌ</div>
+                  <div class="vocab-item-fr">Médecin</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُمَرِّضَةٌ</div>
+                  <div class="vocab-item-fr">Infirmière</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">دَوَاءٌ</div>
+                  <div class="vocab-item-fr">Médicament</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَبَّةٌ</div>
+                  <div class="vocab-item-fr">Comprimé</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حُقْنَةٌ</div>
+                  <div class="vocab-item-fr">Injection</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">مُسْتَشْفًى</div>
+                  <div class="vocab-item-fr">Hôpital</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">عِيَادَةٌ</div>
+                  <div class="vocab-item-fr">Clinique</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">صَيْدَلِيَّةٌ</div>
+                  <div class="vocab-item-fr">Pharmacie</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">أَلَمٌ</div>
+                  <div class="vocab-item-fr">Douleur</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حُمَّى</div>
+                  <div class="vocab-item-fr">Fièvre</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">سُعَالٌ</div>
+                  <div class="vocab-item-fr">Toux</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">زُكَامٌ</div>
+                  <div class="vocab-item-fr">Rhume</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">صُدَاعٌ</div>
+                  <div class="vocab-item-fr">Mal de tête</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">وَجَعُ بَطْنٍ</div>
+                  <div class="vocab-item-fr">Mal de ventre</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">حَسَّاسِيَّةٌ</div>
+                  <div class="vocab-item-fr">Allergie</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">جُرْحٌ</div>
+                  <div class="vocab-item-fr">Blessure</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">كَسْرٌ</div>
+                  <div class="vocab-item-fr">Fracture</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">فَحْصٌ</div>
+                  <div class="vocab-item-fr">Examen</div>
+                </div>
+                <div class="vocab-item">
+                  <div class="vocab-item-ar">تَحْلِيلٌ</div>
+                  <div class="vocab-item-fr">Analyse</div>
+                </div>
+              </div>
+            </div>
+            <!-- 6. Loisirs -->
+            <div id="loisirs-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>الهِوَايَاتُ | Loisirs</h4>
+                <span class="vocab-count">25 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item"><div class="vocab-item-ar">هِوَايَةٌ</div><div class="vocab-item-fr">Hobby</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَسْمٌ</div><div class="vocab-item-fr">Dessin</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَقْصٌ</div><div class="vocab-item-fr">Danse</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غِنَاءٌ</div><div class="vocab-item-fr">Chant</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مُوسِيقَى</div><div class="vocab-item-fr">Musique</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">قِرَاءَةٌ</div><div class="vocab-item-fr">Lecture</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">كِتَابَةٌ</div><div class="vocab-item-fr">Écriture</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">طَبْخٌ</div><div class="vocab-item-fr">Cuisine</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">صَيْدُ السَّمَكِ</div><div class="vocab-item-fr">Pêche</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَصْوِيرٌ</div><div class="vocab-item-fr">Photographie</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَحْتٌ</div><div class="vocab-item-fr">Sculpture</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">خِيَاطَةٌ</div><div class="vocab-item-fr">Couture</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">حِيَاكَةٌ</div><div class="vocab-item-fr">Tricot</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بُسْتَنَةٌ</div><div class="vocab-item-fr">Jardinage</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَمْعُ الطَّوَابِعِ</div><div class="vocab-item-fr">Philatélie</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لُعْبَةُ الشَّطْرَنْجِ</div><div class="vocab-item-fr">Échecs</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَلْعَابُ الفِيدْيُو</div><div class="vocab-item-fr">Jeux vidéo</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لُغْزٌ</div><div class="vocab-item-fr">Puzzle</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَخْيِيمٌ</div><div class="vocab-item-fr">Camping</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نُزْهَةٌ</div><div class="vocab-item-fr">Pique-nique</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">سِيَاحَةٌ</div><div class="vocab-item-fr">Tourisme</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مُغَامَرَةٌ</div><div class="vocab-item-fr">Aventure</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">اِسْتِكْشَافٌ</div><div class="vocab-item-fr">Exploration</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مَعْرِضٌ</div><div class="vocab-item-fr">Exposition</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">حَفْلَةٌ مُوسِيقِيَّةٌ</div><div class="vocab-item-fr">Concert</div></div>
+              </div>
+            </div>
+
+            <!-- 7. Environnement -->
+            <div id="environnement-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>البِيئَةُ | Environnement</h4>
+                <span class="vocab-count">20 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item"><div class="vocab-item-ar">بِيئَةٌ</div><div class="vocab-item-fr">Environnement</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">طَبِيعَةٌ</div><div class="vocab-item-fr">Nature</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غَابَةٌ</div><div class="vocab-item-fr">Forêt</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَبَلٌ</div><div class="vocab-item-fr">Montagne</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَهْرٌ</div><div class="vocab-item-fr">Rivière</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بَحْرٌ</div><div class="vocab-item-fr">Mer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مُحِيطٌ</div><div class="vocab-item-fr">Océan</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">صَحْرَاءُ</div><div class="vocab-item-fr">Désert</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">حَيَوَانٌ</div><div class="vocab-item-fr">Animal</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَبَاتٌ</div><div class="vocab-item-fr">Plante</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">شَجَرَةٌ</div><div class="vocab-item-fr">Arbre</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">زَهْرَةٌ</div><div class="vocab-item-fr">Fleur</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَلَوُّثٌ</div><div class="vocab-item-fr">Pollution</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَظَافَةٌ</div><div class="vocab-item-fr">Propreté</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">إِعَادَةُ التَّدْوِيرِ</div><div class="vocab-item-fr">Recyclage</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">طَاقَةٌ شَمْسِيَّةٌ</div><div class="vocab-item-fr">Énergie solaire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مَاءٌ</div><div class="vocab-item-fr">Eau</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">هَوَاءٌ</div><div class="vocab-item-fr">Air</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تُرْبَةٌ</div><div class="vocab-item-fr">Sol</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مُنَاخٌ</div><div class="vocab-item-fr">Climat</div></div>
+              </div>
+            </div>
+
+            <!-- 8. Verbes -->
+            <div id="verbes-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>الأَفْعَالُ | Verbes d'action</h4>
+                <span class="vocab-count">45 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item"><div class="vocab-item-ar">ذَهَبَ</div><div class="vocab-item-fr">Aller</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَاءَ</div><div class="vocab-item-fr">Venir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَكَلَ</div><div class="vocab-item-fr">Manger</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">شَرِبَ</div><div class="vocab-item-fr">Boire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَامَ</div><div class="vocab-item-fr">Dormir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">اِسْتَيْقَظَ</div><div class="vocab-item-fr">Se réveiller</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لَعِبَ</div><div class="vocab-item-fr">Jouer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">دَرَسَ</div><div class="vocab-item-fr">Étudier</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">قَرَأَ</div><div class="vocab-item-fr">Lire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">كَتَبَ</div><div class="vocab-item-fr">Écrire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَكَلَّمَ</div><div class="vocab-item-fr">Parler</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">سَمِعَ</div><div class="vocab-item-fr">Entendre</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَأَى</div><div class="vocab-item-fr">Voir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">فَتَحَ</div><div class="vocab-item-fr">Ouvrir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَغْلَقَ</div><div class="vocab-item-fr">Fermer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">دَخَلَ</div><div class="vocab-item-fr">Entrer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">خَرَجَ</div><div class="vocab-item-fr">Sortir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَلَسَ</div><div class="vocab-item-fr">S'asseoir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">وَقَفَ</div><div class="vocab-item-fr">Se lever</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مَشَى</div><div class="vocab-item-fr">Marcher</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَكَضَ</div><div class="vocab-item-fr">Courir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">قَفَزَ</div><div class="vocab-item-fr">Sauter</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">سَبَحَ</div><div class="vocab-item-fr">Nager</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">طَارَ</div><div class="vocab-item-fr">Voler</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَكِبَ</div><div class="vocab-item-fr">Monter</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَزَلَ</div><div class="vocab-item-fr">Descendre</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَخَذَ</div><div class="vocab-item-fr">Prendre</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَعْطَى</div><div class="vocab-item-fr">Donner</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">اِشْتَرَى</div><div class="vocab-item-fr">Acheter</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بَاعَ</div><div class="vocab-item-fr">Vendre</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">طَبَخَ</div><div class="vocab-item-fr">Cuisiner</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غَسَلَ</div><div class="vocab-item-fr">Laver</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَظَّفَ</div><div class="vocab-item-fr">Nettoyer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَتَّبَ</div><div class="vocab-item-fr">Ranger</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بَنَى</div><div class="vocab-item-fr">Construire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">كَسَرَ</div><div class="vocab-item-fr">Casser</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">قَطَعَ</div><div class="vocab-item-fr">Couper</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لَصَقَ</div><div class="vocab-item-fr">Coller</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَسَمَ</div><div class="vocab-item-fr">Dessiner</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غَنَّى</div><div class="vocab-item-fr">Chanter</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">رَقَصَ</div><div class="vocab-item-fr">Danser</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">ضَحِكَ</div><div class="vocab-item-fr">Rire</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بَكَى</div><div class="vocab-item-fr">Pleurer</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">فَكَّرَ</div><div class="vocab-item-fr">Penser</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَذَكَّرَ</div><div class="vocab-item-fr">Se rappeler</div></div>
+              </div>
+            </div>
+
+            <!-- 9. Adverbes -->
+            <div id="adverbes-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>الظُّرُوفُ | Adverbes et prépositions</h4>
+                <span class="vocab-count">20 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item"><div class="vocab-item-ar">الآنَ</div><div class="vocab-item-fr">Maintenant</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَمْسِ</div><div class="vocab-item-fr">Hier</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">اَلْيَوْمَ</div><div class="vocab-item-fr">Aujourd'hui</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غَدًا</div><div class="vocab-item-fr">Demain</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">دَائِمًا</div><div class="vocab-item-fr">Toujours</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَبَدًا</div><div class="vocab-item-fr">Jamais</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَحْيَانًا</div><div class="vocab-item-fr">Parfois</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">غَالِبًا</div><div class="vocab-item-fr">Souvent</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَادِرًا</div><div class="vocab-item-fr">Rarement</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بِسُرْعَةٍ</div><div class="vocab-item-fr">Rapidement</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بِبُطْءٍ</div><div class="vocab-item-fr">Lentement</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَيِّدًا</div><div class="vocab-item-fr">Bien</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">كَثِيرًا</div><div class="vocab-item-fr">Beaucoup</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">قَلِيلًا</div><div class="vocab-item-fr">Peu</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مَعًا</div><div class="vocab-item-fr">Ensemble</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">وَحْدَهُ</div><div class="vocab-item-fr">Seul</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">هُنَا</div><div class="vocab-item-fr">Ici</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">هُنَاكَ</div><div class="vocab-item-fr">Là-bas</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">فَوْقَ</div><div class="vocab-item-fr">Au-dessus</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَحْتَ</div><div class="vocab-item-fr">En-dessous</div></div>
+              </div>
+            </div>
+
+            <!-- 10. Expressions -->
+            <div id="expressions-tab" class="vocab-tab-content">
+              <div class="vocab-category-header">
+                <h4>التَّعْبِيرَاتُ الشَّائِعَةُ | Expressions courantes</h4>
+                <span class="vocab-count">15 mots</span>
+              </div>
+              <div class="vocab-list">
+                <div class="vocab-item"><div class="vocab-item-ar">مَا شَاءَ اللهُ</div><div class="vocab-item-fr">MashaAllah</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">إِنْ شَاءَ اللهُ</div><div class="vocab-item-fr">InchAllah</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">اَلْحَمْدُ للهِ</div><div class="vocab-item-fr">Alhamdulillah</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بِإِذْنِ اللهِ</div><div class="vocab-item-fr">Bi-idhni-llah</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">جَزَاكَ اللهُ خَيْرًا</div><div class="vocab-item-fr">Qu'Allah te récompense</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بَارَكَ اللهُ فِيكَ</div><div class="vocab-item-fr">Qu'Allah te bénisse</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لَا بَأْسَ</div><div class="vocab-item-fr">Pas de problème</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">لَا مُشْكِلَةَ</div><div class="vocab-item-fr">Aucun souci</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">عَلَى الرَّحْبِ وَالسَّعَةِ</div><div class="vocab-item-fr">Bienvenue</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مَعَ السَّلَامَةِ</div><div class="vocab-item-fr">Au revoir</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">أَهْلًا وَسَهْلًا</div><div class="vocab-item-fr">Bienvenue</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">تَشَرَّفْنَا</div><div class="vocab-item-fr">Enchanté</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">مُبَارَكٌ</div><div class="vocab-item-fr">Félicitations</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">بِالتَّوْفِيقِ</div><div class="vocab-item-fr">Bonne chance</div></div>
+                <div class="vocab-item"><div class="vocab-item-ar">نَعَمْ طَبْعًا</div><div class="vocab-item-fr">Oui bien sûr</div></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="quick-recap">
+            <h4>📊 Récapitulatif Vocabulaire</h4>
+            <ul>
+              <li>Sentiments (25) + Ville (30) + Technologie (20) + Sports (25) + Santé (25) = 125 mots</li>
+              <li>Loisirs (25) + Environnement (20) + Verbes (45) + Adverbes (20) + Expressions (15) = 125 mots</li>
+              <li><strong>TOTAL : 250 mots nouveaux</strong></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: Grammaire -->
+      <section id="section5" class="section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <div class="section-title">
+            <h3>اَلْقَوَاعِدُ</h3>
+            <p>Grammaire - Passé, Futur et Structure</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="highlight-box">
+            <h4>⏮️ الفِعْلُ المَاضِي | Le Passé Simple</h4>
+            <p><strong>Nouvelle acquisition majeure :</strong> Conjugaison complète du passé pour raconter des événements révolus.</p>
+            <p>Le passé simple arabe correspond au passé composé français (j'ai fait, tu as vu, etc.)</p>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr><th colspan="3" style="text-align:center;">كَتَبَ | Écrire (Passé)</th></tr>
+                <tr><th>Pronom</th><th>Forme arabe</th><th>Traduction</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>أَنَا</td><td>كَتَبْتُ</td><td>J'ai écrit</td></tr>
+                <tr><td>أَنْتَ</td><td>كَتَبْتَ</td><td>Tu as écrit (masc.)</td></tr>
+                <tr><td>أَنْتِ</td><td>كَتَبْتِ</td><td>Tu as écrit (fém.)</td></tr>
+                <tr><td>هُوَ</td><td>كَتَبَ</td><td>Il a écrit</td></tr>
+                <tr><td>هِيَ</td><td>كَتَبَتْ</td><td>Elle a écrit</td></tr>
+                <tr><td>نَحْنُ</td><td>كَتَبْنَا</td><td>Nous avons écrit</td></tr>
+                <tr><td>أَنْتُمْ</td><td>كَتَبْتُمْ</td><td>Vous avez écrit</td></tr>
+                <tr><td>هُمْ</td><td>كَتَبُوا</td><td>Ils ont écrit</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="subsection" style="margin-top: var(--spacing-md);">
+            <h4 class="subsection-title">🔄 Autres verbes essentiels au passé</h4>
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-icon">📖</div>
+                <h5 class="card-title">قَرَأَ (qara'a)</h5>
+                <p><strong>Lire</strong><br>
+                قَرَأْتُ (qara'tu) = J'ai lu<br>
+                قَرَأَ الكِتَابَ = Il a lu le livre</p>
+              </div>
+              <div class="card">
+                <div class="card-icon">🚶</div>
+                <h5 class="card-title">ذَهَبَ (dhahaba)</h5>
+                <p><strong>Aller</strong><br>
+                ذَهَبْتُ (dhahabtu) = Je suis allé<br>
+                ذَهَبَتْ إِلَى المَدْرَسَةِ = Elle est allée à l'école</p>
+              </div>
+              <div class="card">
+                <div class="card-icon">🍽️</div>
+                <h5 class="card-title">أَكَلَ (akala)</h5>
+                <p><strong>Manger</strong><br>
+                أَكَلْتُ (akaltu) = J'ai mangé<br>
+                أَكَلْنَا الطَّعَامَ = Nous avons mangé la nourriture</p>
+              </div>
+              <div class="card">
+                <div class="card-icon">🗣️</div>
+                <h5 class="card-title">قَالَ (qāla)</h5>
+                <p><strong>Dire</strong><br>
+                قُلْتُ (qultu) = J'ai dit<br>
+                قَالَ الحَقِيقَةَ = Il a dit la vérité</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box" style="margin-top: var(--spacing-md);">
+            <h4>⏭️ المُسْتَقْبَلُ | Le Futur Proche</h4>
+            <p><strong>Formation :</strong> سَـ (sa-) ou سَوْفَ (sawfa) + verbe présent</p>
+            <p><strong>Différence :</strong> سَـ (sa-) = futur proche | سَوْفَ (sawfa) = futur plus lointain</p>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr><th colspan="3" style="text-align:center;">سَأَذْهَبُ | Aller (Futur)</th></tr>
+                <tr><th>Pronom</th><th>Forme arabe</th><th>Traduction</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>أَنَا</td><td>سَأَذْهَبُ</td><td>Je vais aller</td></tr>
+                <tr><td>أَنْتَ</td><td>سَتَذْهَبُ</td><td>Tu vas aller (masc.)</td></tr>
+                <tr><td>أَنْتِ</td><td>سَتَذْهَبِينَ</td><td>Tu vas aller (fém.)</td></tr>
+                <tr><td>هُوَ</td><td>سَيَذْهَبُ</td><td>Il va aller</td></tr>
+                <tr><td>هِيَ</td><td>سَتَذْهَبُ</td><td>Elle va aller</td></tr>
+                <tr><td>نَحْنُ</td><td>سَنَذْهَبُ</td><td>Nous allons aller</td></tr>
+                <tr><td>أَنْتُمْ</td><td>سَتَذْهَبُونَ</td><td>Vous allez aller</td></tr>
+                <tr><td>هُمْ</td><td>سَيَذْهَبُونَ</td><td>Ils vont aller</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="subsection" style="margin-top: var(--spacing-md);">
+            <h4 class="subsection-title">🚫 النَّفْيُ | La Négation</h4>
+            <div class="highlight-box">
+              <p><strong>Négation au passé :</strong> مَا + verbe passé</p>
+              <p>Exemple : مَا كَتَبْتُ (mā katabtu) = Je n'ai pas écrit</p>
+              <p>Exemple : مَا ذَهَبَ إِلَى المَدْرَسَةِ = Il n'est pas allé à l'école</p>
+            </div>
+            <div class="highlight-box" style="margin-top: 1rem;">
+              <p><strong>Négation au futur :</strong> لَنْ + verbe présent (subjonctif)</p>
+              <p>Exemple : لَنْ أَذْهَبَ (lan adh'haba) = Je n'irai pas</p>
+              <p>Exemple : لَنْ نَنْسَى هَذَا = Nous n'oublierons pas cela</p>
+            </div>
+          </div>
+
+          <div class="subsection" style="margin-top: var(--spacing-md);">
+            <h4 class="subsection-title">📐 Structure de la phrase</h4>
+            
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-icon">1️⃣</div>
+                <h5 class="card-title">الجُمْلَةُ الفِعْلِيَّةُ | Phrase Verbale (VSO)</h5>
+                <p><strong>Ordre :</strong> VERBE + SUJET + OBJET</p>
+                <p><strong>Exemple :</strong><br>
+                كَتَبَ <span style="color: var(--accent-color);">الطَّالِبُ</span> <span style="color: var(--secondary-color);">الدَّرْسَ</span><br>
+                (a écrit <span style="color: var(--accent-color);">l'élève</span> <span style="color: var(--secondary-color);">la leçon</span>)<br>
+                = L'élève a écrit la leçon</p>
+              </div>
+              
+              <div class="card">
+                <div class="card-icon">2️⃣</div>
+                <h5 class="card-title">الجُمْلَةُ الاِسْمِيَّةُ | Phrase Nominale</h5>
+                <p><strong>Ordre :</strong> SUJET (مُبْتَدَأ) + PRÉDICAT (خَبَر)</p>
+                <p><strong>Exemple :</strong><br>
+                <span style="color: var(--accent-color);">البَيْتُ</span> <span style="color: var(--secondary-color);">كَبِيرٌ</span><br>
+                (<span style="color: var(--accent-color);">La maison</span> <span style="color: var(--secondary-color);">grande</span>)<br>
+                = La maison est grande</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subsection" style="margin-top: var(--spacing-md);">
+            <h4 class="subsection-title">💡 Exemples pratiques contextualisés</h4>
+            <div class="example-box" style="padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--border-radius); margin-bottom: 1rem;">
+              <p><strong>Scénario 1 : Raconter ses vacances (Passé)</strong></p>
+              <ul style="list-style: none; padding: 0;">
+                <li>✅ زُرْتُ المَغْرِبَ فِي الصَّيْفِ = J'ai visité le Maroc en été</li>
+                <li>✅ أَكَلْنَا الكُسْكُسَ اللَّذِيذَ = Nous avons mangé le délicieux couscous</li>
+                <li>✅ مَشَيْتُ فِي الأَسْوَاقِ القَدِيمَةِ = J'ai marché dans les vieux marchés</li>
+              </ul>
+            </div>
+
+            <div class="example-box" style="padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--border-radius); margin-bottom: 1rem;">
+              <p><strong>Scénario 2 : Parler de ses projets (Futur)</strong></p>
+              <ul style="list-style: none; padding: 0;">
+                <li>✅ سَأَدْرُسُ العَرَبِيَّةَ غَدًا = Je vais étudier l'arabe demain</li>
+                <li>✅ سَنَزُورُ القَاهِرَةَ فِي الإِجَازَةِ = Nous visiterons Le Caire pendant les vacances</li>
+                <li>✅ سَيَلْعَبُ كُرَةَ القَدَمِ بَعْدَ المَدْرَسَةِ = Il va jouer au football après l'école</li>
+              </ul>
+            </div>
+
+            <div class="example-box" style="padding: var(--spacing-sm); background: var(--bg-light); border-radius: var(--border-radius);">
+              <p><strong>Scénario 3 : Négation</strong></p>
+              <ul style="list-style: none; padding: 0;">
+                <li>❌ مَا فَهِمْتُ الدَّرْسَ = Je n'ai pas compris la leçon</li>
+                <li>❌ لَنْ أَنْسَى هَذَا اليَوْمَ = Je n'oublierai pas ce jour</li>
+                <li>❌ مَا ذَهَبُوا إِلَى المَدْرَسَةِ = Ils ne sont pas allés à l'école</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="quick-recap">
+            <h4>À Retenir</h4>
+            <ul>
+              <li><strong>Passé :</strong> Maîtriser la conjugaison du passé simple (8 formes) avec 10+ verbes essentiels</li>
+              <li><strong>Futur :</strong> Former le futur proche avec سَـ (sa-) ou سَوْفَ (sawfa) + verbe présent</li>
+              <li><strong>Négation :</strong> مَا pour le passé, لَنْ pour le futur</li>
+              <li><strong>Structure :</strong> Phrase verbale VSO vs phrase nominale sujet-prédicat</li>
+              <li><strong>Pratique :</strong> Créer 20+ phrases au passé et 20+ au futur en contexte</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Dialogues -->
+      <section id="section6" class="section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <div class="section-title">
+            <h3>اَلْحِوَارَاتُ الْعَمَلِيَّةُ</h3>
+            <p>Dialogues Pédagogiques (10 dialogues)</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="highlight-box">
+            <h4>📚 Structure des dialogues</h4>
+            <p><strong>Groupe 1 :</strong> 5 pays arabes (Maroc, Algérie, Tunisie, Égypte, Syrie)</p>
+            <p><strong>Groupe 2 :</strong> 5 thèmes quotidiens (École, Famille, Restaurant, Météo, Loisirs)</p>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">1️⃣ رِحْلَةٌ إِلَى الرِّبَاطِ | Voyage à Rabat</div>
+              <div class="dialogue-meta">
+                <span>🇲🇦 Maroc</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">اَلسَّلَامُ عَلَيْكُمْ! هَلْ زُرْتِ الرِّبَاطَ يَا فَاطِمَةُ؟</div><div class="speech-fr">Salam ! As-tu visité Rabat, Fatima ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">وَعَلَيْكُمُ السَّلَامُ! نَعَمْ، زُرْتُهَا العَامَ المَاضِي. إِنَّهَا مَدِينَةٌ جَمِيلَةٌ جِدًّا!</div><div class="speech-fr">Wa alaykoum salam ! Oui, je l'ai visitée l'année dernière. C'est une très belle ville !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">رَائِعٌ! مَاذَا زُرْتِ فِي الرِّبَاطِ؟</div><div class="speech-fr">Fantastique ! Qu'as-tu visité à Rabat ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">زُرْتُ صَوْمَعَةَ حَسَّانَ وَقَصْرَ المَلِكِ. إِنَّهُمَا رَائِعَانِ!</div><div class="speech-fr">J'ai visité la Tour Hassan et le Palais Royal. Ils sont magnifiques !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">وَهَلْ ذَهَبْتِ إِلَى البَحْرِ؟</div><div class="speech-fr">Et es-tu allée à la plage ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">نَعَمْ! مَشَيْتُ عَلَى شَاطِئِ الرِّبَاطِ. المَنْظَرُ جَمِيلٌ جِدًّا!</div><div class="speech-fr">Oui ! J'ai marché sur la plage de Rabat. La vue est très belle !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">وَمَاذَا أَكَلْتِ هُنَاكَ؟</div><div class="speech-fr">Et qu'as-tu mangé là-bas ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">أَكَلْتُ الطَّاجِينَ المَغْرِبِيَّ اللَّذِيذَ وَالحَرِيرَةَ.</div><div class="speech-fr">J'ai mangé le délicieux tajine marocain et la harira.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">رَائِعٌ! كَمْ يَوْمًا بَقِيتِ هُنَاكَ؟</div><div class="speech-fr">Fantastique ! Combien de jours es-tu restée là-bas ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">بَقِيتُ ثَلَاثَةَ أَيَّامٍ. أُرِيدُ أَنْ أَعُودَ قَرِيبًا إِنْ شَاءَ اللهُ!</div><div class="speech-fr">Je suis restée trois jours. Je veux y retourner bientôt, si Dieu le veut !</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">زَارَ</span> (visiter), <span class="vocab-ar">مَدِينَة</span> (ville), <span class="vocab-ar">جَمِيلَة</span> (belle), <span class="vocab-ar">صَوْمَعَة</span> (tour), <span class="vocab-ar">قَصْر</span> (palais), <span class="vocab-ar">شَاطِئ</span> (plage), <span class="vocab-ar">طَاجِين</span> (tajine)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">2️⃣ فِي شَارِعِ الْجَزَائِرِ | Dans une rue d'Alger</div>
+              <div class="dialogue-meta">
+                <span>🇩🇿 Algérie</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">عَفْوًا، أَيْنَ المَتْحَفُ الوَطَنِيُّ؟</div><div class="speech-fr">Excusez-moi, où est le Musée National ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>رجل:</strong>
+              <div><div class="speech-ar">اِمْشِي مُسْتَقِيمًا ثُمَّ اِنْعَطِفْ يَمِينًا عِنْدَ إِشَارَةِ المُرُورِ.</div><div class="speech-fr">Marchez tout droit puis tournez à droite au feu de circulation.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">شُكْرًا جَزِيلًا! هَلْ هُوَ بَعِيدٌ؟</div><div class="speech-fr">Merci beaucoup ! Est-ce loin ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>رجل:</strong>
+              <div><div class="speech-ar">لَا، إِنَّهُ قَرِيبٌ. حَوَالَيْ عَشْرِ دَقَائِقَ مَشْيًا.</div><div class="speech-fr">Non, c'est proche. Environ dix minutes à pied.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">مُمْتَازٌ! هَلْ يُوجَدُ مَقْهًى قَرِيبٌ مِنَ المَتْحَفِ؟</div><div class="speech-fr">Excellent ! Y a-t-il un café près du musée ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>رجل:</strong>
+              <div><div class="speech-ar">نَعَمْ، بِجَانِبِ المَتْحَفِ مُبَاشَرَةً.</div><div class="speech-fr">Oui, juste à côté du musée.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">مُسْتَقِيمًا</span> (tout droit), <span class="vocab-ar">يَمِينًا</span> (à droite), <span class="vocab-ar">قَرِيبٌ</span> (proche), <span class="vocab-ar">بَعِيدٌ</span> (loin), <span class="vocab-ar">مَقْهًى</span> (café)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">3️⃣ فِي قَرْطَاجَ الْعَتِيقَةِ | Dans l'antique Carthage</div>
+              <div class="dialogue-meta">
+                <span>🇹🇳 Tunisie</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سارة:</strong>
+              <div><div class="speech-ar">مَا أَجْمَلَ هَذِهِ الآثَارَ!</div><div class="speech-fr">Comme ces ruines sont belles !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>المُرْشِدُ:</strong>
+              <div><div class="speech-ar">نَعَمْ، قَرْطَاجُ مَدِينَةٌ تَارِيخِيَّةٌ عَظِيمَةٌ. بُنِيَتْ قَبْلَ ثَلَاثَةِ آلَافِ سَنَةٍ.</div><div class="speech-fr">Oui, Carthage est une grande ville historique. Elle a été construite il y a trois mille ans.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سارة:</strong>
+              <div><div class="speech-ar">وَمَاذَا كَانَ هُنَا فِي الْمَاضِي؟</div><div class="speech-fr">Et qu'y avait-il ici dans le passé ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>المُرْشِدُ:</strong>
+              <div><div class="speech-ar">كَانَ هُنَا مِينَاءٌ كَبِيرٌ وَسُوقٌ تِجَارِيَّةٌ مَشْهُورَةٌ.</div><div class="speech-fr">Il y avait un grand port et un marché commercial célèbre.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سارة:</strong>
+              <div><div class="speech-ar">وَهَلْ يُمْكِنُنِي زِيَارَةُ المُتْحَفِ؟</div><div class="speech-fr">Et puis-je visiter le musée ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>المُرْشِدُ:</strong>
+              <div><div class="speech-ar">بِالطَّبْعِ! المُتْحَفُ مَفْتُوحٌ مِنَ التَّاسِعَةِ إِلَى الخَامِسَةِ.</div><div class="speech-fr">Bien sûr ! Le musée est ouvert de neuf heures à cinq heures.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">آثَار</span> (ruines), <span class="vocab-ar">تَارِيخِيَّة</span> (historique), <span class="vocab-ar">بُنِيَتْ</span> (a été construit), <span class="vocab-ar">مِينَاء</span> (port), <span class="vocab-ar">مَفْتُوحٌ</span> (ouvert)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">4️⃣ فِي مُتْحَفِ الْقَاهِرَةِ | Au musée du Caire</div>
+              <div class="dialogue-meta">
+                <span>🇪🇬 Égypte</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>كريم:</strong>
+              <div><div class="speech-ar">وَاوْ! هَذَا تِمْثَالُ تُوت عَنْخ آمُون!</div><div class="speech-fr">Wow ! C'est la statue de Toutânkhamon !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>نُور:</strong>
+              <div><div class="speech-ar">نَعَمْ، إِنَّهُ جَمِيلٌ جِدًّا. كَمْ عُمْرُهُ؟</div><div class="speech-fr">Oui, il est très beau. Quel est son âge ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>كريم:</strong>
+              <div><div class="speech-ar">عُمْرُهُ أَكْثَرُ مِنْ ثَلَاثَةِ آلَافِ سَنَةٍ!</div><div class="speech-fr">Il a plus de trois mille ans !</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>نُور:</strong>
+              <div><div class="speech-ar">رَائِعٌ! وَمَاذَا عَنْ الأَهْرَامَاتِ؟</div><div class="speech-fr">Fantastique ! Et qu'en est-il des pyramides ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>كريم:</strong>
+              <div><div class="speech-ar">سَنَزُورُهَا غَدًا إِنْ شَاءَ اللهُ. إِنَّهَا فِي الجِيزَةِ.</div><div class="speech-fr">Nous les visiterons demain, si Dieu le veut. Elles sont à Gizeh.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>نُور:</strong>
+              <div><div class="speech-ar">مُمْتَازٌ! أَنَا مُتَحَمِّسَةٌ جِدًّا!</div><div class="speech-fr">Excellent ! Je suis très enthousiaste !</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">تِمْثَال</span> (statue), <span class="vocab-ar">عُمْر</span> (âge), <span class="vocab-ar">رَائِع</span> (fantastique), <span class="vocab-ar">الأَهْرَامَات</span> (les pyramides), <span class="vocab-ar">مُتَحَمِّسَة</span> (enthousiaste)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">5️⃣ فِي سُوقِ دِمَشْقَ | Au marché de Damas</div>
+              <div class="dialogue-meta">
+                <span>🇸🇾 Syrie</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ياسمين:</strong>
+              <div><div class="speech-ar">اَلسَّلَامُ عَلَيْكُمْ! كَمْ ثَمَنُ هَذِهِ الحَقِيبَةِ؟</div><div class="speech-fr">Salam ! Combien coûte ce sac ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>البَائِعُ:</strong>
+              <div><div class="speech-ar">وَعَلَيْكُمُ السَّلَامُ. ثَمَنُهَا خَمْسُونَ لِيرَةً سُورِيَّةً.</div><div class="speech-fr">Wa alaykoum salam. Son prix est cinquante livres syriennes.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ياسمين:</strong>
+              <div><div class="speech-ar">هَذَا غَالٍ قَلِيلًا. هَلْ يُمْكِنُكَ تَخْفِيضُ السِّعْرِ؟</div><div class="speech-fr">C'est un peu cher. Pouvez-vous baisser le prix ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>البَائِعُ:</strong>
+              <div><div class="speech-ar">حَسَنًا، أَرْبَعُونَ لِيرَةً. هَذَا آخِرُ سِعْرٍ.</div><div class="speech-fr">D'accord, quarante livres. C'est le dernier prix.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ياسمين:</strong>
+              <div><div class="speech-ar">مُوَافِقَةٌ! سَآخُذُهَا. تَفَضَّلْ.</div><div class="speech-fr">D'accord ! Je la prends. Voilà.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>البَائِعُ:</strong>
+              <div><div class="speech-ar">شُكْرًا جَزِيلًا! بَارَكَ اللهُ فِيكِ.</div><div class="speech-fr">Merci beaucoup ! Qu'Allah te bénisse.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">ثَمَن</span> (prix), <span class="vocab-ar">غَالٍ</span> (cher), <span class="vocab-ar">تَخْفِيض</span> (réduction), <span class="vocab-ar">سِعْر</span> (prix), <span class="vocab-ar">مُوَافِقَة</span> (d'accord)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">6️⃣ يَوْمِيَّاتُ طَالِبٍ | Journal d'un élève</div>
+              <div class="dialogue-meta">
+                <span>🎒 École</span>
+                <span>⏱️ 12 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>عمر:</strong>
+              <div><div class="speech-ar">صَبَاحُ الخَيْرِ يَا خَالِد! هَلْ أَنْتَ جَاهِزٌ لِلْإِمْتِحَانِ؟</div><div class="speech-fr">Bonjour Khaled ! Es-tu prêt pour l'examen ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>خالد:</strong>
+              <div><div class="speech-ar">صَبَاحُ النُّورِ! نَعَمْ، دَرَسْتُ كَثِيرًا أَمْسِ.</div><div class="speech-fr">Bonjour ! Oui, j'ai beaucoup étudié hier.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>عمر:</strong>
+              <div><div class="speech-ar">مُمْتَازٌ! مَا هِيَ مَادَّتُكَ المُفَضَّلَةُ؟</div><div class="speech-fr">Excellent ! Quelle est ta matière préférée ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>خالد:</strong>
+              <div><div class="speech-ar">أُحِبُّ الرِّيَاضِيَّاتِ وَالعُلُومَ. وَأَنْتَ؟</div><div class="speech-fr">J'aime les mathématiques et les sciences. Et toi ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>عمر:</strong>
+              <div><div class="speech-ar">أَنَا أُحِبُّ التَّارِيخَ وَالجُغْرَافِيَا.</div><div class="speech-fr">Moi, j'aime l'histoire et la géographie.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>خالد:</strong>
+              <div><div class="speech-ar">هَلْ سَتَلْعَبُ كُرَةَ القَدَمِ بَعْدَ المَدْرَسَةِ؟</div><div class="speech-fr">Vas-tu jouer au football après l'école ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>عمر:</strong>
+              <div><div class="speech-ar">نَعَمْ، سَأَلْعَبُ فِي المَلْعَبِ مَعَ أَصْدِقَائِي.</div><div class="speech-fr">Oui, je vais jouer au stade avec mes amis.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">إِمْتِحَان</span> (examen), <span class="vocab-ar">جَاهِز</span> (prêt), <span class="vocab-ar">مَادَّة</span> (matière), <span class="vocab-ar">مُفَضَّلَة</span> (préféré), <span class="vocab-ar">الرِّيَاضِيَّات</span> (mathématiques)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">7️⃣ مُسَاعَدَةُ أُمِّي | Aider maman</div>
+              <div class="dialogue-meta">
+                <span>👪 Famille</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>الأم:</strong>
+              <div><div class="speech-ar">هِنْد، هَلْ يُمْكِنُكِ مُسَاعَدَتِي فِي المَطْبَخِ؟</div><div class="speech-fr">Hind, peux-tu m'aider dans la cuisine ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>هند:</strong>
+              <div><div class="speech-ar">نَعَمْ يَا أُمِّي، بِكُلِّ سُرُورٍ! مَاذَا أَفْعَلُ؟</div><div class="speech-fr">Oui maman, avec plaisir ! Que dois-je faire ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>الأم:</strong>
+              <div><div class="speech-ar">اِغْسِلِي الخُضْرَوَاتِ مِنْ فَضْلِكِ.</div><div class="speech-fr">Lave les légumes s'il te plaît.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>هند:</strong>
+              <div><div class="speech-ar">حَاضِرٌ! وَمَاذَا سَنَطْبُخُ اليَوْمَ؟</div><div class="speech-fr">D'accord ! Et que cuisinerons-nous aujourd'hui ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>الأم:</strong>
+              <div><div class="speech-ar">سَنَطْبُخُ الكُسْكُس مَعَ الخُضْرَوَاتِ وَاللَّحْمِ.</div><div class="speech-fr">Nous cuisinerons le couscous avec légumes et viande.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>هند:</strong>
+              <div><div class="speech-ar">رَائِعٌ! إِنَّهُ طَبَقِي المُفَضَّلُ!</div><div class="speech-fr">Fantastique ! C'est mon plat préféré !</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">مُسَاعَدَة</span> (aide), <span class="vocab-ar">مَطْبَخ</span> (cuisine), <span class="vocab-ar">اِغْسِلِي</span> (lave), <span class="vocab-ar">خُضْرَوَات</span> (légumes), <span class="vocab-ar">طَبَق</span> (plat)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">8️⃣ فِي المَطْعَمِ | Au restaurant</div>
+              <div class="dialogue-meta">
+                <span>🍽️ Restaurant</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>النَّادِلُ:</strong>
+              <div><div class="speech-ar">أَهْلًا وَسَهْلًا! مَاذَا تُرِيدُونَ أَنْ تَطْلُبُوا؟</div><div class="speech-fr">Bienvenue ! Que voulez-vous commander ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">أُرِيدُ طَبَقَ كُفْتَةٍ مَعَ الأُرْزِ مِنْ فَضْلِكَ.</div><div class="speech-fr">Je veux un plat de kefta avec du riz s'il vous plaît.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">وَأَنَا أُرِيدُ سَلَطَةً يُونَانِيَّةً وَشُورْبَةَ عَدَسٍ.</div><div class="speech-fr">Et moi je veux une salade grecque et une soupe de lentilles.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>النَّادِلُ:</strong>
+              <div><div class="speech-ar">مُمْتَازٌ! وَمَاذَا تُرِيدُونَ أَنْ تَشْرَبُوا؟</div><div class="speech-fr">Excellent ! Et que voulez-vous boire ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>أحمد:</strong>
+              <div><div class="speech-ar">عَصِيرَ بُرْتُقَالٍ طَازَجٍ مِنْ فَضْلِكَ.</div><div class="speech-fr">Un jus d'orange frais s'il vous plaît.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>فاطمة:</strong>
+              <div><div class="speech-ar">وَأَنَا مَاءً بَارِدًا.</div><div class="speech-fr">Et moi de l'eau froide.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">نَادِل</span> (serveur), <span class="vocab-ar">تَطْلُبُوا</span> (commander), <span class="vocab-ar">كُفْتَة</span> (kefta), <span class="vocab-ar">سَلَطَة</span> (salade), <span class="vocab-ar">عَصِير</span> (jus)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">9️⃣ الفُصُولُ الأَرْبَعَةُ | Les quatre saisons</div>
+              <div class="dialogue-meta">
+                <span>☀️ Météo</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">مَا أَجْمَلَ الطَّقْسَ اليَوْمَ! الشَّمْسُ مُشْرِقَةٌ.</div><div class="speech-fr">Quel beau temps aujourd'hui ! Le soleil brille.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>يُوسُف:</strong>
+              <div><div class="speech-ar">نَعَمْ، الرَّبِيعُ فَصْلٌ جَمِيلٌ. الأَزْهَارُ تَتَفَتَّحُ.</div><div class="speech-fr">Oui, le printemps est une belle saison. Les fleurs s'épanouissent.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">وَمَا هُوَ فَصْلُكَ المُفَضَّلُ؟</div><div class="speech-fr">Et quelle est ta saison préférée ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>يُوسُف:</strong>
+              <div><div class="speech-ar">أُحِبُّ الصَّيْفَ لِأَنَّنِي أَسْبَحُ فِي البَحْرِ.</div><div class="speech-fr">J'aime l'été parce que je nage dans la mer.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>ليلى:</strong>
+              <div><div class="speech-ar">وَأَنَا أُحِبُّ الخَرِيفَ. الأَوْرَاقُ تَسْقُطُ وَالجَوُّ مُعْتَدِلٌ.</div><div class="speech-fr">Et moi j'aime l'automne. Les feuilles tombent et le temps est modéré.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>يُوسُف:</strong>
+              <div><div class="speech-ar">وَمَاذَا عَنِ الشِّتَاءِ؟ أَلَا تُحِبِّينَ الثَّلْجَ؟</div><div class="speech-fr">Et qu'en est-il de l'hiver ? N'aimes-tu pas la neige ?</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">طَقْس</span> (temps), <span class="vocab-ar">رَبِيع</span> (printemps), <span class="vocab-ar">صَيْف</span> (été), <span class="vocab-ar">خَرِيف</span> (automne), <span class="vocab-ar">شِتَاء</span> (hiver)</p>
+            </div>
+          </div>
+
+          <div class="dialogue-container">
+            <div class="dialogue-header">
+              <div class="dialogue-title">🔟 هِوَايَاتُنَا | Nos loisirs</div>
+              <div class="dialogue-meta">
+                <span>🎨 Loisirs</span>
+                <span>⏱️ 10 répliques</span>
+                <span>📖 Niveau A1+</span>
+              </div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سامي:</strong>
+              <div><div class="speech-ar">مَاذَا تَفْعَلُ فِي وَقْتِ الفَرَاغِ يَا مَرْيَمُ؟</div><div class="speech-fr">Que fais-tu pendant ton temps libre, Maryam ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>مريم:</strong>
+              <div><div class="speech-ar">أُحِبُّ القِرَاءَةَ وَالرَّسْمَ. وَأَنْتَ؟</div><div class="speech-fr">J'aime la lecture et le dessin. Et toi ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سامي:</strong>
+              <div><div class="speech-ar">أَنَا أَلْعَبُ كُرَةَ السَّلَّةِ وَأَسْتَمِعُ إِلَى المُوسِيقَى.</div><div class="speech-fr">Moi je joue au basketball et j'écoute de la musique.</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>مريم:</strong>
+              <div><div class="speech-ar">رَائِعٌ! هَلْ تَعْزِفُ عَلَى آلَةٍ مُوسِيقِيَّةٍ؟</div><div class="speech-fr">Fantastique ! Joues-tu d'un instrument de musique ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>سامي:</strong>
+              <div><div class="speech-ar">نَعَمْ، أَعْزِفُ عَلَى الجِيتَارِ. وَهَلْ تُمَارِسِينَ الرِّيَاضَةَ؟</div><div class="speech-fr">Oui, je joue de la guitare. Et pratiques-tu du sport ?</div></div>
+            </div>
+            <div class="speaker-bubble">
+              <strong>مريم:</strong>
+              <div><div class="speech-ar">نَعَمْ، أَسْبَحُ مَرَّتَيْنِ فِي الأُسْبُوعِ.</div><div class="speech-fr">Oui, je nage deux fois par semaine.</div></div>
+            </div>
+            <div class="vocabulary-box">
+              <p><strong>Vocabulaire clé :</strong> <span class="vocab-ar">وَقْتُ الفَرَاغ</span> (temps libre), <span class="vocab-ar">هِوَايَة</span> (hobby), <span class="vocab-ar">يَعْزِف</span> (jouer d'un instrument), <span class="vocab-ar">آلَة مُوسِيقِيَّة</span> (instrument de musique), <span class="vocab-ar">يُمَارِس</span> (pratiquer)</p>
+            </div>
+          </div>
+
+          <div class="notes-box">
+            <h4>💡 Note pédagogique</h4>
+            <ul>
+              <li>Chaque dialogue contient 8-12 répliques</li>
+              <li>Vocabulaire contextualisé avec traduction</li>
+              <li>Enregistrements audio disponibles sur Moodle</li>
+              <li>Activités de compréhension et jeux de rôle associés</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: Culture -->
+      <section id="section7" class="section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <div class="section-title">
+            <h3>اَلثَّقَافَةُ وَالحَضَارَةُ</h3>
+            <p>Culture et Civilisation</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="cards-grid">
+            <div class="card">
+              <div class="card-icon">🇲🇦</div>
+              <h4>المَغْرِبُ | Maroc</h4>
+              <p><strong>Capitale :</strong> الرِّبَاط (Rabat)</p>
+              <p><strong>Monument :</strong> صَوْمَعَةُ حَسَّان (Tour Hassan)</p>
+              <p><strong>Plat :</strong> الكُسْكُس (Couscous)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🇩🇿</div>
+              <h4>الجَزَائِرُ | Algérie</h4>
+              <p><strong>Capitale :</strong> الجَزَائِرُ (Alger)</p>
+              <p><strong>Monument :</strong> قَصَبَةُ الجَزَائِرِ (Casbah)</p>
+              <p><strong>Plat :</strong> الشَّخْشُوخَة (Chakhchoukha)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🇹🇳</div>
+              <h4>تُونِسُ | Tunisie</h4>
+              <p><strong>Capitale :</strong> تُونِس (Tunis)</p>
+              <p><strong>Monument :</strong> قَرْطَاج (Carthage)</p>
+              <p><strong>Plat :</strong> البْرِيك (Brik)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🇪🇬</div>
+              <h4>مِصْرُ | Égypte</h4>
+              <p><strong>Capitale :</strong> القَاهِرَة (Le Caire)</p>
+              <p><strong>Monument :</strong> الأَهْرَامَات (Pyramides)</p>
+              <p><strong>Plat :</strong> الكُشَرِي (Koshari)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🇸🇾</div>
+              <h4>سُورِيَا | Syrie</h4>
+              <p><strong>Capitale :</strong> دِمَشْق (Damas)</p>
+              <p><strong>Monument :</strong> المَسْجِدُ الأُمَوِيُّ (Mosquée des Omeyyades)</p>
+              <p><strong>Plat :</strong> الكِبَّة (Kibbé)</p>
+            </div>
+          </div>
+
+          <div class="subsection" style="margin-top: var(--spacing-lg);">
+            <h4 class="subsection-title">الأَعْيَادُ الإِسْلَامِيَّةُ | Fêtes Islamiques</h4>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Fête</th><th>Nom arabe</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Ramadan</td><td>رَمَضَان</td><td>Mois du jeûne</td></tr>
+                  <tr><td>Aïd al-Fitr</td><td>عِيدُ الفِطْر</td><td>Fête de la rupture du jeûne</td></tr>
+                  <tr><td>Aïd al-Adha</td><td>عِيدُ الأَضْحَى</td><td>Fête du sacrifice</td></tr>
+                  <tr><td>Mawlid</td><td>المَوْلِدُ النَّبَوِيّ</td><td>Anniversaire du Prophète</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Distribution -->
+      <section id="section8" class="section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <div class="section-title">
+            <h3>اَلتَّوْزِيعُ السَّنَوِيُّ</h3>
+            <p>Distribution Annuelle</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="highlight-box">
+            <h4>📅 Planning global</h4>
+            <p><strong>Durée :</strong> 30 semaines réparties sur 3 trimestres</p>
+            <p><strong>Volume horaire :</strong> 2h30 par semaine = 75 heures annuelles</p>
+            <p><strong>Rythme :</strong> 1 séance hebdomadaire de 2h30</p>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr><th>Trimestre</th><th>Semaines</th><th>Contenu principal</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>T1</strong></td>
+                  <td>1-10</td>
+                  <td>Révisions + Passé simple + Dialogues 1-3 + Pays 1-2</td>
+                </tr>
+                <tr>
+                  <td><strong>T2</strong></td>
+                  <td>11-20</td>
+                  <td>Futur proche + Dialogues 4-6 + Pays 3-4</td>
+                </tr>
+                <tr>
+                  <td><strong>T3</strong></td>
+                  <td>21-30</td>
+                  <td>Consolidation + Dialogues 7-10 + Pays 5 + Projet final</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="quick-recap">
+            <h4>À Retenir</h4>
+            <ul>
+              <li>30 semaines = 75 heures d'enseignement</li>
+              <li>3 trimestres équilibrés (10 semaines chacun)</li>
+              <li>Progression spiralaire : révision → acquisition → consolidation</li>
+              <li>Évaluations formatives à chaque fin de trimestre</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: Moodle -->
+      <section id="section9" class="section">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <div class="section-title">
+            <h3>مَوَارِدُ مُودِل</h3>
+            <p>Ressources Numériques Moodle</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="cards-grid">
+            <div class="card">
+              <div class="card-icon">🎧</div>
+              <h4>Audios des dialogues</h4>
+              <p>10 enregistrements professionnels avec voix natives (homme/femme)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">✏️</div>
+              <h4>Quiz interactifs</h4>
+              <p>30 exercices H5P autocorrigés (QCM, glisser-déposer, compléter)</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">📄</div>
+              <h4>Fiches PDF</h4>
+              <p>Fiches vocabulaire, conjugaison et culture imprimables</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🎬</div>
+              <h4>Capsules vidéo</h4>
+              <p>10 vidéos explicatives (phonétique, grammaire, culture)</p>
+            </div>
+          </div>
+
+          <div class="notes-box">
+            <h4>💻 Accès plateforme</h4>
+            <ul>
+              <li>Connexion via identifiants établissement</li>
+              <li>Suivi de progression individuelle</li>
+              <li>Forum de classe pour échanges</li>
+              <li>Devoirs à rendre en ligne</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Évaluation -->
+      <section id="section10" class="section">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <div class="section-title">
+            <h3>اَلتَّقْيِيمُ وَالمُتَابَعَةُ</h3>
+            <p>Évaluation et Suivi</p>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <div class="highlight-box">
+            <h4>🎯 Critères d'évaluation</h4>
+            <p>Évaluation continue basée sur les 4 compétences : CO, PO, CE, PE</p>
+          </div>
+
+          <div class="eval-grid">
+            <div class="eval-card" style="border-left-color: var(--success-color);">
+              <div class="eval-acronym">MTS</div>
+              <p><strong>Maîtrise Très Satisfaisante</strong></p>
+              <p style="font-size:0.85rem;">≥ 90%</p>
+            </div>
+            <div class="eval-card" style="border-left-color: var(--info-color);">
+              <div class="eval-acronym">MS</div>
+              <p><strong>Maîtrise Satisfaisante</strong></p>
+              <p style="font-size:0.85rem;">75-89%</p>
+            </div>
+            <div class="eval-card" style="border-left-color: var(--warning-color);">
+              <div class="eval-acronym">MP</div>
+              <p><strong>Maîtrise Partielle</strong></p>
+              <p style="font-size:0.85rem;">50-74%</p>
+            </div>
+            <div class="eval-card" style="border-left-color: var(--danger-color);">
+              <div class="eval-acronym">MI</div>
+              <p><strong>Maîtrise Insuffisante</strong></p>
+              <p style="font-size:0.85rem;">< 50%</p>
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h4 class="subsection-title">Bilan par compétence</h4>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Compétence</th><th>Évaluations</th><th>Pondération</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>CO</td><td>Écoute dialogues + Quiz</td><td>45%</td></tr>
+                  <tr><td>PO</td><td>Jeux de rôle + Présentations</td><td>30%</td></tr>
+                  <tr><td>CE</td><td>Lecture textes + QCM</td><td>15%</td></tr>
+                  <tr><td>PE</td><td>Rédactions + Projet</td><td>10%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="learning-tip">
+            <h5>Projet de fin d'année</h5>
+            <p><strong>Livret culturel :</strong> Création d'un mini-livre sur un pays arabe (choix libre parmi les 5 étudiés) avec illustrations, vocabulaire et recette typique.</p>
+          </div>
+
+          <div class="quick-recap">
+            <h4>À Retenir</h4>
+            <ul>
+              <li>Évaluation continue sur les 4 compétences</li>
+              <li>4 niveaux de maîtrise (MTS, MS, MP, MI)</li>
+              <li>Projet créatif de fin d'année</li>
+              <li>Suivi personnalisé via Moodle</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); text-align: center; padding: var(--spacing-lg); margin-top: var(--spacing-lg);">
+      <p style="font-size: 1.1rem; margin-bottom: var(--spacing-xs);">© 2025 - Référentiel Pédagogique Année 4</p>
+      <p style="font-size: var(--font-size-sm); opacity: 0.9;">Arabe pour non-arabophones | Niveau CECRL A1+ → A2 | Cycle Fondation</p>
+      <p style="font-size: var(--font-size-sm); opacity: 0.8; margin-top: var(--spacing-sm);">Document à usage pédagogique - 250 mots | 10 dialogues | 30 semaines</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // ========================================
+      // BACK TO TOP BUTTON
+      // ========================================
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ========================================
+      // NAVIGATION ACTIVE STATE
+      // ========================================
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (window.scrollY >= (sectionTop - 100)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+      // ========================================
+      // VOCABULARY TABS (Section 4)
+      // ========================================
+      const vocabTabs = document.querySelectorAll('.vocab-tab-btn');
+      const vocabContents = document.querySelectorAll('.vocab-tab-content');
+
+      vocabTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const targetId = tab.getAttribute('data-tab');
+          
+          // Remove active class from all tabs and contents
+          vocabTabs.forEach(t => t.classList.remove('active'));
+          vocabContents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked tab and corresponding content
+          tab.classList.add('active');
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        });
+      });
+
+      // Activate first tab by default
+      if (vocabTabs.length > 0 && vocabContents.length > 0) {
+        vocabTabs[0].classList.add('active');
+        vocabContents[0].classList.add('active');
+      }
+
+      // ========================================
+      // SMOOTH SCROLL FOR ALL ANCHOR LINKS
+      // ========================================
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // ========================================
+      // CONSOLE LOG - DOCUMENT READY
+      // ========================================
+      console.log('✅ Référentiel Année 4 - Document chargé avec succès');
+      console.log('📊 Sections: 10 | Vocabulaire: 250 mots | Dialogues: 10');
+      console.log('🎯 Niveau CECRL: A1+ → A2');
+    </script>
+  </body>
+</html>
