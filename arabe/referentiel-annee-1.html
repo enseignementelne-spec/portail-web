@@ -1,1290 +1,209 @@
-<!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referentiel Annee 1 — Enseignement de l'Arabe Fusha</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-deep: #1a4d5c; --primary-medium: #2d7d8a; --primary-light: #4fa8b8;
-            --accent-gold: #d4a853; --accent-gold-light: #e8c97a; --accent-coral: #e07a5f;
-            --neutral-dark: #2c3e50; --neutral-medium: #5d6d7e; --neutral-light: #ecf0f1;
-            --white: #ffffff; --bg-cream: #faf8f5;
-            --shadow-soft: 0 4px 20px rgba(26, 77, 92, 0.08);
-            --shadow-medium: 0 8px 30px rgba(26, 77, 92, 0.12);
-            --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-cream); color: var(--neutral-dark); line-height: 1.7; font-size: 16px; }
-        .pattern-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; opacity: 0.4; background-image: radial-gradient(circle at 20% 80%, var(--primary-light) 1px, transparent 1px), radial-gradient(circle at 80% 20%, var(--accent-gold) 1px, transparent 1px); background-size: 60px 60px, 80px 80px; }
-        .hero { background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-medium) 50%, var(--primary-light) 100%); color: var(--white); padding: 60px 40px; position: relative; overflow: hidden; }
-        .hero::after { content: 'السنة الأولى'; position: absolute; top: 50%; right: 60px; transform: translateY(-50%); font-family: 'Amiri', serif; font-size: 5rem; opacity: 0.15; direction: rtl; }
-        .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2); }
-        .hero-badge-dot { width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.2); } }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
-        .hero h1 .arabic-title { font-family: 'Amiri', serif; display: block; font-size: 2rem; opacity: 0.9; margin-top: 10px; direction: rtl; }
-        .hero-subtitle { font-size: 1.3rem; font-weight: 300; opacity: 0.95; max-width: 600px; }
-        .hero-meta { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); }
-        .hero-meta-item { display: flex; flex-direction: column; gap: 5px; }
-        .hero-meta-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
-        .hero-meta-value { font-size: 1.1rem; font-weight: 600; }
-        .nav-sticky { position: sticky; top: 0; background: var(--white); box-shadow: var(--shadow-soft); z-index: 100; padding: 0 40px; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 5px; overflow-x: auto; padding: 15px 0; scrollbar-width: none; }
-        .nav-inner::-webkit-scrollbar { display: none; }
-        .nav-link { padding: 10px 20px; border-radius: 50px; text-decoration: none; color: var(--neutral-medium); font-weight: 500; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease; }
-        .nav-link:hover { background: var(--neutral-light); color: var(--primary-deep); }
-        .nav-link.active { background: var(--primary-deep); color: var(--white); }
-        .main-content { max-width: 1200px; margin: 0 auto; padding: 50px 40px; }
-        .section { margin-bottom: 60px; }
-        .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
-        .section-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-medium), var(--primary-light)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: var(--shadow-medium); }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary-deep); }
-        .section-title-arabic { font-family: 'Amiri', serif; font-size: 1rem; color: var(--neutral-medium); direction: rtl; display: block; margin-top: 5px; }
-        .card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(26, 77, 92, 0.05); transition: all 0.3s ease; }
-        .card:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
-        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--neutral-light); }
-        .card-number { width: 40px; height: 40px; background: var(--accent-gold); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
-        .card-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-deep); }
-        .competency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .competency-box { background: linear-gradient(135deg, var(--bg-cream), var(--white)); border-radius: var(--radius-md); padding: 25px; border-left: 4px solid var(--primary-medium); }
-        .competency-box h4 { color: var(--primary-deep); font-size: 1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .competency-box h4::before { content: '✓'; width: 22px; height: 22px; background: var(--primary-medium); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
-        .competency-box ul { list-style: none; padding-left: 32px; }
-        .competency-box li { position: relative; padding: 8px 0; font-size: 0.95rem; color: var(--neutral-medium); }
-        .competency-box li::before { content: '—'; position: absolute; left: -20px; color: var(--accent-gold); }
-        .arabic-box { background: linear-gradient(135deg, #fefcf9, #fff9f0); border: 2px solid var(--accent-gold-light); border-radius: var(--radius-md); padding: 25px; margin: 20px 0; direction: rtl; text-align: right; }
-        .arabic-box .arabic-text { font-family: 'Amiri', serif; font-size: 1.5rem; line-height: 2.2; color: var(--primary-deep); }
-        .arabic-box .translation { direction: ltr; text-align: left; font-size: 0.9rem; color: var(--neutral-medium); margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--accent-gold-light); font-style: italic; }
-        .vocab-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); }
-        .vocab-table thead { background: linear-gradient(135deg, var(--primary-deep), var(--primary-medium)); color: var(--white); }
-        .vocab-table th { padding: 15px 20px; text-align: left; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .vocab-table th:last-child { text-align: right; direction: rtl; }
-        .vocab-table td { padding: 15px 20px; border-bottom: 1px solid var(--neutral-light); background: var(--white); }
-        .vocab-table tr:last-child td { border-bottom: none; }
-        .vocab-table tr:hover td { background: var(--bg-cream); }
-        .vocab-table .arabic { font-family: 'Amiri', serif; font-size: 1.4rem; text-align: right; direction: rtl; color: var(--primary-deep); }
-        .vocab-table .phonetic { color: var(--neutral-medium); font-size: 0.9rem; font-style: italic; }
-        .dialogue-container { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-medium); margin: 25px 0; }
-        .dialogue-header { background: linear-gradient(135deg, var(--accent-coral), #e8927d); color: var(--white); padding: 20px 25px; display: flex; align-items: center; gap: 15px; }
-        .dialogue-header-icon { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-        .dialogue-header h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
-        .dialogue-header span { font-size: 0.9rem; opacity: 0.9; }
-        .dialogue-content { padding: 25px; }
-        .dialogue-line { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
-        .dialogue-line:last-child { margin-bottom: 0; }
-        .dialogue-speaker { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; flex-shrink: 0; font-family: 'Amiri', serif; }
-        .dialogue-speaker.teacher { background: linear-gradient(135deg, var(--primary-medium), var(--primary-light)); color: var(--white); }
-        .dialogue-speaker.student { background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light)); color: var(--white); }
-        .dialogue-bubble { flex: 1; padding: 15px 20px; border-radius: var(--radius-md); }
-        .dialogue-line.teacher-line .dialogue-bubble { background: var(--neutral-light); }
-        .dialogue-line.student-line .dialogue-bubble { background: linear-gradient(135deg, #fff9f0, #fefcf9); border: 1px solid var(--accent-gold-light); }
-        .dialogue-arabic { font-family: 'Amiri', serif; font-size: 1.4rem; direction: rtl; text-align: right; color: var(--primary-deep); margin-bottom: 8px; }
-        .dialogue-translation { font-size: 0.9rem; color: var(--neutral-medium); font-style: italic; }
-        .info-box { display: flex; gap: 20px; padding: 25px; border-radius: var(--radius-md); margin: 20px 0; }
-        .info-box.tip { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-left: 4px solid #4caf50; }
-        .info-box.warning { background: linear-gradient(135deg, #fff3e0, #fff8e1); border-left: 4px solid var(--accent-gold); }
-        .info-box.note { background: linear-gradient(135deg, #e3f2fd, #e8f5fc); border-left: 4px solid var(--primary-light); }
-        .info-box-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-        .info-box.tip .info-box-icon { background: #4caf50; color: var(--white); }
-        .info-box.warning .info-box-icon { background: var(--accent-gold); color: var(--white); }
-        .info-box.note .info-box-icon { background: var(--primary-light); color: var(--white); }
-        .info-box-content h5 { font-weight: 600; margin-bottom: 8px; color: var(--neutral-dark); }
-        .info-box-content p { font-size: 0.95rem; color: var(--neutral-medium); }
-        .game-card { background: linear-gradient(135deg, var(--white), var(--bg-cream)); border-radius: var(--radius-lg); padding: 25px; margin-bottom: 20px; border: 2px dashed var(--primary-light); position: relative; }
-        .game-card::before { content: '🎮'; position: absolute; top: 15px; right: 15px; font-size: 2rem; opacity: 0.3; }
-        .game-card h4 { font-family: 'Playfair Display', serif; color: var(--primary-deep); margin-bottom: 15px; }
-        .game-card p { color: var(--neutral-medium); margin-bottom: 15px; }
-        .game-card .game-example { background: var(--white); padding: 15px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-gold); }
-        .eval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; }
-        .eval-card { background: var(--white); border-radius: var(--radius-md); padding: 25px; text-align: center; box-shadow: var(--shadow-soft); border-top: 4px solid var(--primary-medium); }
-        .eval-card h5 { color: var(--primary-deep); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-        .eval-card p { font-size: 0.9rem; color: var(--neutral-medium); }
-        .moodle-section { background: linear-gradient(135deg, #7c4dff, #651fff); border-radius: var(--radius-lg); padding: 30px; color: var(--white); margin: 30px 0; }
-        .moodle-section h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 20px; }
-        .moodle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .moodle-item { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: var(--radius-md); padding: 20px; border: 1px solid rgba(255,255,255,0.2); }
-        .moodle-item h5 { font-weight: 600; margin-bottom: 10px; }
-        .moodle-item p { font-size: 0.9rem; opacity: 0.9; }
-        .timeline { position: relative; padding-left: 40px; }
-        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary-medium), var(--accent-gold)); border-radius: 3px; }
-        .timeline-item { position: relative; margin-bottom: 30px; padding: 20px; background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
-        .timeline-item::before { content: ''; position: absolute; left: -33px; top: 25px; width: 15px; height: 15px; background: var(--white); border: 3px solid var(--primary-medium); border-radius: 50%; }
-        .timeline-period { display: inline-block; background: var(--primary-light); color: var(--white); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; }
-        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--primary-deep); margin-bottom: 10px; }
-        .timeline-content { font-size: 0.95rem; color: var(--neutral-medium); }
-        .lexique-summary { background: linear-gradient(135deg, var(--primary-deep), var(--primary-medium)); border-radius: var(--radius-lg); padding: 30px; color: var(--white); margin: 30px 0; }
-        .lexique-summary h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .lexique-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-        .lexique-summary-item { background: rgba(255,255,255,0.15); padding: 15px; border-radius: var(--radius-sm); text-align: center; }
-        .lexique-summary-item .count { font-size: 2rem; font-weight: 700; display: block; }
-        .lexique-summary-item .label { font-size: 0.85rem; opacity: 0.9; }
-        .lexique-total { background: var(--accent-gold); color: var(--primary-deep); padding: 20px; border-radius: var(--radius-md); text-align: center; margin-top: 20px; }
-        .lexique-total .count { font-size: 3rem; font-weight: 700; display: block; }
-        .lexique-total .label { font-size: 1rem; font-weight: 600; }
-        .footer { background: var(--primary-deep); color: var(--white); padding: 40px; text-align: center; margin-top: 60px; }
-        .footer p { opacity: 0.8; font-size: 0.9rem; }
-        .footer .arabic-footer { font-family: 'Amiri', serif; font-size: 1.3rem; margin-bottom: 15px; direction: rtl; }
-        @media print { .nav-sticky { display: none; } .hero { padding: 30px; } .card { box-shadow: none; border: 1px solid #ddd; } }
-        @media (max-width: 768px) { .hero { padding: 40px 20px; } .hero h1 { font-size: 2rem; } .hero::after { display: none; } .main-content { padding: 30px 20px; } .competency-grid, .eval-grid { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Référentiel d&#x27;arabe, année 1</title>
+<link rel="stylesheet" href="polices/polices.css">
+<style>
+/* Charte des référentiels v2, sur le modèle de l'ancien référentiel de l'année 3 (choix de l'équipe, 3 octobre 2026) :
+   bandeau doré, sections ouvertes par un bandeau numéroté, cartes à filet doré, dialogues à en-tête doré.
+   La couleur des bandeaux est celle de l'année : vert (Éveil), bleu (Fondation), grenat (Logique) ;
+   son contraste avec le blanc (au moins 4,5:1, WCAG AA) est vérifié automatiquement.
+   L'or sert aux fonds et aux filets ; le texte posé sur l'or est à l'encre (contraste 5,9:1).
+   À l'impression, tout repasse sur papier blanc : traits, cadres et mots, rien ne dépend de la couleur seule. */
+:root {
+  --c: #2f7356;
+  --c-fonce: color-mix(in srgb, var(--c) 72%, black);
+  --encre: #23313f;
+  --doux: #55606b;
+  --papier: #ffffff;
+  --fond: #eef1f4;
+  --gris: #f8f9fa;
+  --trait: #dee2e6;
+  --or: #c9a227;
+  --or-bandeau: linear-gradient(135deg, #c9a961 0%, #d4b76b 100%);
+  --or-clair: #f4e4ba;
+  --teinte: color-mix(in srgb, var(--c) 9%, white);
+  --formule: #fbefc9;
+  --ombre: 0 4px 6px rgba(0, 0, 0, .08);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 7.5rem; }
+body { margin: 0; background: var(--fond); color: var(--encre);
+       font: 17px/1.65 'Source Sans 3', system-ui, sans-serif; font-variant-numeric: lining-nums; }
+a { color: var(--c); }
+.evitement { position: absolute; left: -9999px; top: .5rem; background: var(--papier);
+             padding: .4rem .8rem; border: 2px solid var(--c); z-index: 200; }
+.evitement:focus { left: 1rem; }
+a:focus-visible { outline: 3px solid var(--or); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { line-height: 1.25; color: var(--encre); }
+h3 { font-size: 1.15rem; margin: 1.4rem 0 .5rem; color: var(--c); }
+p, li { max-width: 75ch; }
+/* L'arabe dans une phrase ne doit pas écarter les lignes ; en bloc (répliques), il a de la place pour les voyelles. */
+.ar { font-family: 'Amiri', 'Noto Naskh Arabic', serif; font-size: 1.3em; line-height: 1.2; }
+p.ar { margin: 0; text-align: right; max-width: none; line-height: 2.1; }
+.ar-cellule { display: block; text-align: right; font-size: 1.25em; line-height: 1.45; }
+main ul { padding-left: 1.3rem; }
+main li { margin: .25rem 0; }
+main li::marker { content: "◆  "; color: var(--or); font-size: .8em; }
+
+/* Frise : les années, groupées par cycle ; c'est aussi la navigation entre les pages. */
+nav.frise { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .8rem 1.6rem;
+            padding: .7rem max(1rem, calc((100% - 1100px) / 2)) .6rem; background: var(--papier); }
+nav.frise ol { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; padding: 0; list-style: none; }
+nav.frise li { display: flex; flex-direction: column; gap: .2rem; }
+.cycle-nom { font-size: .8rem; color: var(--doux); }
+nav.frise .annees { display: flex; gap: .35rem; }
+nav.frise a { text-decoration: none; font-weight: 600; font-size: .92rem; padding: .15rem .75rem;
+              border-radius: 999px; color: var(--c); border: 2px solid var(--c); background: var(--papier); }
+nav.frise a[aria-current="page"] { background: var(--c); color: #fff; }
+nav.frise a.langue { --c: var(--encre); }
+
+/* Bandeau doré : badges, titre arabe en grand, titre français, chiffres clés. */
+header.bandeau { background: var(--or-bandeau); color: var(--encre); text-align: center; padding: 2rem 1rem 1.6rem; }
+.badges { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 0 0 1.2rem; padding: 0; list-style: none; }
+.badges li { padding: .35rem 1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
+             background: rgba(255, 255, 255, .6); border: 2px solid rgba(35, 49, 63, .25); }
+.badges li:first-child { background: var(--c); color: #fff; border-color: var(--c); }
+.titre-ar { margin: 0; font-family: 'Amiri', 'Noto Naskh Arabic', serif; font-size: 2.7rem; line-height: 1.6; font-weight: 700; }
+header.bandeau h1 { font-size: 1.7rem; font-weight: 600; margin: .2rem 0 .1rem; }
+.surtitre { margin: 0 auto; color: var(--encre); }
+.meta { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 1.8rem; margin: .9rem 0 0; padding: 0;
+        list-style: none; font-size: .95rem; }
+
+/* Sommaire : boutons numérotés, collés en haut de l'écran. */
+nav.sommaire { position: sticky; top: 0; z-index: 100; background: var(--papier); box-shadow: var(--ombre); padding: .7rem 1rem; }
+nav.sommaire div { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
+nav.sommaire a { padding: .35rem .85rem; background: var(--gris); border: 2px solid transparent; border-radius: 8px;
+                 color: var(--encre); text-decoration: none; font-weight: 600; font-size: .9rem; }
+nav.sommaire a:hover { background: var(--or-clair); border-color: var(--or); }
+nav.sommaire b { color: var(--c); margin-right: .3rem; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 1rem; }
+main > section { background: var(--papier); border-radius: 12px; box-shadow: var(--ombre); margin-bottom: 2rem; overflow: hidden; }
+/* Bandeau de section : numéro doré, titre français, titre arabe. */
+.tete { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.6rem; color: #fff;
+        background: linear-gradient(135deg, var(--c-fonce) 0%, var(--c) 100%); }
+.num { flex: none; width: 2.8rem; height: 2.8rem; border-radius: 50%; display: grid; place-items: center;
+       background: var(--or); color: var(--encre); font-weight: 700; font-size: 1.3rem; }
+.tete h2 { margin: 0; font-size: 1.5rem; color: #fff; }
+.tete .ar { margin-left: auto; font-size: 1.7rem; line-height: 1.5; text-align: right; }
+.corps { padding: 1.6rem 1.8rem; }
+.corps > :first-child { margin-top: 0; }
+
+/* En bref : des chiffres. */
+.chiffres { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: .9rem; }
+.chiffres div { background: var(--gris); border-top: 4px solid var(--or); border-radius: 8px; padding: .8rem 1rem; text-align: center; }
+.valeur { display: block; font-size: 1.9rem; font-weight: 700; line-height: 1.2; color: var(--c); }
+.libelle { color: var(--doux); font-size: .9rem; }
+
+/* Cartes : fond gris clair, filet doré. */
+.grille-4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.competence, .bloc { background: var(--gris); border-left: 4px solid var(--or); border-radius: 8px; padding: 1rem 1.3rem; margin: 0 0 1.2rem; }
+.grille-4 .competence { margin: 0; }
+.competence h3, .bloc h3 { margin-top: 0; }
+.competence h3 { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.poids { background: var(--or); color: var(--encre); padding: .1rem .7rem; border-radius: 999px; font-size: .9rem; font-weight: 700; }
+.jauge { height: 10px; background: var(--trait); border-radius: 999px; overflow: hidden; margin: -.2rem 0 .6rem; }
+.jauge span { display: block; height: 100%; background: var(--c); border-radius: 999px; }
+.reperes { margin-top: 1.2rem; }
+.exemples .ar { margin-left: .9rem; }
+
+.tableau { overflow-x: auto; margin: .6rem 0 1.4rem; border-radius: 8px; border: 1px solid var(--trait); }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: .5rem .75rem; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--trait); }
+thead { background: linear-gradient(135deg, var(--c-fonce), var(--c)); }
+thead th { color: #fff; font-weight: 600; border-bottom: 0; }
+tbody tr:nth-child(even) { background: var(--gris); }
+tbody tr:last-child td { border-bottom: 0; }
+.eval td:first-child { width: 8.5rem; }
+.eval th:nth-child(n+4), .eval td:nth-child(n+4) { width: 5.6rem; text-align: center; font-size: .9rem; }
+.nouveau { color: var(--c); font-weight: 700; }
+.reemploi { color: var(--doux); font-style: italic; }
+.doublon { color: #a3261f; font-weight: 700; }
+
+/* Dialogues : en-tête doré, répliques en cartes. */
+.dialogue { border: 1px solid var(--trait); border-radius: 8px; overflow: hidden; margin: 0 0 1.8rem; background: var(--gris); }
+.dialogue > h3, .dialogue > .lieu { background: linear-gradient(90deg, #c9a961, var(--or-clair)); color: var(--encre); margin: 0; padding: 0 1.3rem; }
+.dialogue > h3 { font-size: 1.25rem; padding-top: .8rem; }
+.dialogue > .lieu { padding-bottom: .7rem; font-size: .92rem; max-width: none; }
+.dialogue > .note { margin: .2rem 1.3rem .9rem; }
+/* Une réplique = une carte : la traduction à gauche, l'arabe à droite, à la même hauteur. */
+.replique { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 1.5rem; align-items: baseline;
+            background: var(--papier); border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+            margin: .7rem 1rem; padding: .45rem 1rem; }
+.replique:nth-of-type(even) { background: var(--teinte); }
+.replique.produire { border-left: 4px solid var(--c); }
+.replique p.ar { grid-column: 2; grid-row: 1; }
+.replique p.fr { grid-column: 1; grid-row: 1; margin: 0; color: var(--doux); font-style: italic; }
+.replique .qui { font-weight: 700; color: var(--c); font-size: .85em; }
+mark.formule { background: var(--formule); color: inherit; text-decoration: underline dotted var(--or) 2px;
+               text-underline-offset: 7px; }
+.note { font-size: .92rem; color: var(--doux); }
+
+aside.conseil { background: linear-gradient(135deg, var(--or-clair), #fff9e6); border-left: 4px solid var(--or);
+                border-radius: 8px; padding: .9rem 1.3rem; margin: 1.4rem 0 0; }
+aside.conseil p { margin: .3rem 0 0; }
+aside.religieux { border: 1.5px dashed var(--doux); border-radius: 8px; padding: .9rem 1.3rem; margin: 1.4rem 0; }
+.attestation { font-weight: 600; }
+footer { background: linear-gradient(135deg, var(--c-fonce), var(--c)); color: #fff; text-align: center;
+         padding: 1.6rem 1rem; font-size: .92rem; }
+
+@media screen and (max-width: 820px) {
+  html { scroll-padding-top: 0; }
+  nav.sommaire { position: static; }
+  nav.sommaire a { padding: .25rem .6rem; font-size: .85rem; }
+  header.bandeau { padding: 1.4rem 1rem 1.2rem; }
+  .titre-ar { font-size: 2rem; }
+  header.bandeau h1 { font-size: 1.4rem; }
+  main { padding: 1.2rem .6rem .5rem; }
+  .tete { flex-wrap: wrap; padding: 1rem; }
+  .tete .ar { margin-left: 0; width: 100%; }
+  .corps { padding: 1.1rem 1rem; }
+  .replique { grid-template-columns: 1fr; margin: .6rem .6rem; }
+  .replique p.ar, .replique p.fr { grid-column: 1; grid-row: auto; }
+  .grille-4 { grid-template-columns: 1fr; }
+}
+
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font: 9pt 'Source Sans 3', sans-serif; color: #55606b; }
+}
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  nav.frise, nav.sommaire, .jauge { display: none; }
+  header.bandeau { background: none; border-bottom: 3pt solid var(--or); padding: 0 0 .8rem; }
+  .badges li, .badges li:first-child { background: none; color: var(--encre); border: 1pt solid var(--encre); }
+  main { max-width: none; padding: 1rem 0 0; }
+  main > section { box-shadow: none; border-radius: 0; overflow: visible; margin-bottom: 1.2rem; }
+  .tete { background: none; color: var(--encre); border-bottom: 2pt solid var(--c); padding: .4rem 0; break-after: avoid; }
+  .tete h2 { color: var(--encre); }
+  .num { background: none; border: 1.5pt solid var(--encre); width: 2.2rem; height: 2.2rem; font-size: 1.1rem; }
+  .corps { padding: .8rem 0 0; }
+  thead { background: none; }
+  th, td { padding: .3rem .5rem; }
+  thead th { color: var(--encre); border-bottom: 1.5pt solid var(--encre); }
+  tbody tr:nth-child(even), .replique:nth-of-type(even) { background: none; }
+  .dialogue, .replique { box-shadow: none; background: none; }
+  .dialogue > h3, .dialogue > .lieu { background: none; }
+  .dialogue > h3 { border-bottom: 1pt solid var(--or); }
+  .replique { border-bottom: 1px dotted var(--trait); border-radius: 0; margin: 0 .6rem; }
+  .chiffres div, .competence, .bloc, aside.conseil { background: none; }
+  footer { background: none; color: var(--encre); border-top: 1pt solid var(--trait); }
+  .dialogue, .bloc, .competence, aside, tr, .chiffres div, .replique { break-inside: avoid; }
+  .tableau { overflow: visible; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
 </head>
 <body>
-    <div class="pattern-bg"></div>
-
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-badge"><span class="hero-badge-dot"></span>Cycle 1 — Eveil · 6-8 ans</div>
-            <h1>Annee 1 : L'oreille et l'oeil<span class="arabic-title">السَّنَةُ الأُولَى: الأُذُنُ وَالعَيْن</span></h1>
-            <p class="hero-subtitle">Familiariser l'eleve avec le systeme phonologique arabe et le sens de lecture/ecriture, tout en construisant un premier capital lexical oral.</p>
-            <div class="hero-meta">
-                <div class="hero-meta-item"><span class="hero-meta-label">Volume horaire</span><span class="hero-meta-value">75 heures / an</span></div>
-                <div class="hero-meta-item"><span class="hero-meta-label">Repartition</span><span class="hero-meta-value">2h30 × 30 semaines</span></div>
-                <div class="hero-meta-item"><span class="hero-meta-label">Dominante</span><span class="hero-meta-value">Oral 70% / Ecrit 30%</span></div>
-                <div class="hero-meta-item"><span class="hero-meta-label">Niveau vise</span><span class="hero-meta-value">pre-A1</span></div>
-                <div class="hero-meta-item"><span class="hero-meta-label">Lexique actif</span><span class="hero-meta-value">≈ 100 mots</span></div>
-            </div>
-        </div>
-    </header>
-
-    <nav class="nav-sticky">
-        <div class="nav-inner">
-            <a href="#objectifs" class="nav-link active">Objectifs</a>
-            <a href="#competences" class="nav-link">Competences</a>
-            <a href="#contenus" class="nav-link">Contenus linguistiques</a>
-            <a href="#lexique" class="nav-link">Lexique complet</a>
-            <a href="#conversation" class="nav-link">Module conversationnel</a>
-            <a href="#culture" class="nav-link">Culture</a>
-            <a href="#moodle" class="nav-link">Moodle</a>
-            <a href="#evaluation" class="nav-link">Evaluation</a>
-            <a href="#lexique-enseignant" class="nav-link">Lexique enseignant</a>
-        </div>
-    </nav>
-
-    <main class="main-content">
-
-        <!-- Section: Objectifs -->
-        <section id="objectifs" class="section">
-            <div class="section-header">
-                <div class="section-icon">🎯</div>
-                <div>
-                    <h2 class="section-title">Objectif global de l'annee</h2>
-                    <span class="section-title-arabic">الهَدَفُ العَامُّ لِلسَّنَة</span>
-                </div>
-            </div>
-            <div class="card">
-                <p style="font-size: 1.1rem; color: var(--neutral-dark); line-height: 1.9;">
-                    <strong>Apprivoiser l'oreille aux sonorites de l'arabe</strong> et <strong>le corps a l'ecriture de droite a gauche</strong>. 
-                    L'Annee 1 est une annee d'<em>immersion sonore</em> et de <em>decouverte du geste graphique</em>. 
-                    L'eleve apprend a reconnaitre les sons specifiques de l'arabe, a identifier les lettres, et a acquerir 
-                    un premier vocabulaire fonctionnel a travers des rituels et des comptines.
-                </p>
-            </div>
-            <div class="info-box note">
-                <div class="info-box-icon">💡</div>
-                <div class="info-box-content">
-                    <h5>Philosophie pedagogique</h5>
-                    <p>A cet age, l'apprentissage passe par le plaisir, le jeu et la repetition. L'objectif n'est pas la perfection mais la familiarisation. L'eleve doit <strong>aimer venir en cours d'arabe</strong> avant tout.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Competences -->
-        <section id="competences" class="section">
-            <div class="section-header">
-                <div class="section-icon">📋</div>
-                <div>
-                    <h2 class="section-title">Competences visees</h2>
-                    <span class="section-title-arabic">الكَفَاءَاتُ المُسْتَهْدَفَة</span>
-                </div>
-            </div>
-            <p style="margin-bottom: 25px; color: var(--neutral-medium);">En fin d'Annee 1, l'eleve est capable de :</p>
-            <div class="competency-grid">
-                <div class="competency-box">
-                    <h4>Comprehension orale</h4>
-                    <ul>
-                        <li>Reconnaitre les 28 lettres de l'alphabet a l'ecoute</li>
-                        <li>Distinguer les phonemes specifiques : ح/هـ, ع/أ, ص/س, ض/د, ط/ت, ق/ك</li>
-                        <li>Comprendre 5 consignes de classe</li>
-                        <li>Identifier le theme d'une comptine simple</li>
-                    </ul>
-                </div>
-                <div class="competency-box">
-                    <h4>Production orale</h4>
-                    <ul>
-                        <li>Reciter l'alphabet en chanson</li>
-                        <li>Se presenter : nom et age</li>
-                        <li>Saluer correctement</li>
-                        <li>Nommer les couleurs (8) et les chiffres (1-10)</li>
-                        <li>Utiliser 3 formules rituelles</li>
-                    </ul>
-                </div>
-                <div class="competency-box">
-                    <h4>Lecture</h4>
-                    <ul>
-                        <li>Identifier toutes les lettres en position isolee</li>
-                        <li>Associer lettre et son correspondant</li>
-                        <li>Lire des syllabes simples : consonne + voyelle courte (بَ، بِ، بُ)</li>
-                    </ul>
-                </div>
-                <div class="competency-box">
-                    <h4>Ecriture (initiation)</h4>
-                    <ul>
-                        <li>Tenir correctement l'outil scripteur (droite → gauche)</li>
-                        <li>Tracer les 12 lettres sans point</li>
-                        <li>Recopier son prenom en arabe</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card" style="margin-top: 25px;">
-                <div class="card-header">
-                    <div class="card-number">✏️</div>
-                    <h3 class="card-title">Les 12 lettres prioritaires (sans point)</h3>
-                </div>
-                <div class="arabic-box">
-                    <div class="arabic-text" style="font-size: 2rem; letter-spacing: 15px;">ا &nbsp; ح &nbsp; د &nbsp; ر &nbsp; س &nbsp; ص &nbsp; ط &nbsp; ع &nbsp; ل &nbsp; م &nbsp; و &nbsp; ه</div>
-                    <div class="translation">Alif • Haa • Daal • Raa • Siin • Saad • Taa • 'Ayn • Laam • Miim • Waaw • Haa</div>
-                </div>
-                <div class="info-box tip">
-                    <div class="info-box-icon">✓</div>
-                    <div class="info-box-content">
-                        <h5>Pourquoi ces lettres en premier ?</h5>
-                        <p>Ces lettres permettent d'apprendre le geste graphique de base sans la complication des points. L'eleve se concentre sur le trace et le sens d'ecriture avant d'ajouter les points.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Contenus linguistiques -->
-        <section id="contenus" class="section">
-            <div class="section-header">
-                <div class="section-icon">📚</div>
-                <div>
-                    <h2 class="section-title">Contenus linguistiques</h2>
-                    <span class="section-title-arabic">المُحْتَوَيَاتُ اللُّغَوِيَّة</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-number">1</div>
-                    <h3 class="card-title">Phonetique — Sons specifiques</h3>
-                </div>
-                <p style="margin-bottom: 20px;">Les sons de l'arabe qui necessitent une attention particuliere :</p>
-                <table class="vocab-table">
-                    <thead><tr><th>Paire de sons</th><th>Type de son</th><th style="text-align: right;">الحُرُوف</th></tr></thead>
-                    <tbody>
-                        <tr><td>ح (Haa) vs هـ (Ha)</td><td class="phonetic">Pharyngal vs Glottal</td><td class="arabic">حَ / هَـ</td></tr>
-                        <tr><td>ع ('Ayn) vs أ (Alif)</td><td class="phonetic">Pharyngal vs Coup de glotte</td><td class="arabic">عَ / أَ</td></tr>
-                        <tr><td>ص (Saad) vs س (Siin)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">صَ / سَ</td></tr>
-                        <tr><td>ض (Daad) vs د (Daal)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">ضَ / دَ</td></tr>
-                        <tr><td>ط (Taa) vs ت (Ta)</td><td class="phonetic">Emphatique vs Simple</td><td class="arabic">طَ / تَ</td></tr>
-                        <tr><td>ق (Qaaf) vs ك (Kaaf)</td><td class="phonetic">Uvulaire vs Velaire</td><td class="arabic">قَ / كَ</td></tr>
-                    </tbody>
-                </table>
-                <div class="info-box tip">
-                    <div class="info-box-icon">✓</div>
-                    <div class="info-box-content">
-                        <h5>Conseil pedagogique</h5>
-                        <p>Utilisez des paires minimales en jeu : l'enseignant prononce, l'eleve leve la carte correspondante. Repetez regulierement ces exercices de discrimination auditive tout au long de l'annee.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-number">2</div>
-                    <h3 class="card-title">Voyelles courtes (الحَرَكَات)</h3>
-                </div>
-                <div class="arabic-box">
-                    <div class="arabic-text">بَ بِ بُ &nbsp;•&nbsp; تَ تِ تُ &nbsp;•&nbsp; ثَ ثِ ثُ</div>
-                    <div class="translation"><strong>Fatḥa</strong> (a) — <strong>Kasra</strong> (i) — <strong>Ḍamma</strong> (ou)</div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Voyelle</th><th>Nom arabe</th><th>Son</th><th style="text-align: right;">الرَّمْز</th></tr></thead>
-                    <tbody>
-                        <tr><td>Fatḥa</td><td class="phonetic">فَتْحَة</td><td>« a » bref</td><td class="arabic">ـَ</td></tr>
-                        <tr><td>Kasra</td><td class="phonetic">كَسْرَة</td><td>« i » bref</td><td class="arabic">ـِ</td></tr>
-                        <tr><td>Ḍamma</td><td class="phonetic">ضَمَّة</td><td>« ou » bref</td><td class="arabic">ـُ</td></tr>
-                        <tr><td>Sukūn</td><td class="phonetic">سُكُون</td><td>Absence de voyelle</td><td class="arabic">ـْ</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Section: Lexique Complet -->
-        <section id="lexique" class="section">
-            <div class="section-header">
-                <div class="section-icon">📖</div>
-                <div>
-                    <h2 class="section-title">Lexique complet — Annee 1</h2>
-                    <span class="section-title-arabic">المُفْرَدَاتُ الكَامِلَة — السَّنَةُ الأُولَى</span>
-                </div>
-            </div>
-            <div class="lexique-summary">
-                <h3>📊 Recapitulatif du lexique</h3>
-                <div class="lexique-summary-grid">
-                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Couleurs</span></div>
-                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Nombres</span></div>
-                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Salutations</span></div>
-                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Vocabulaire religieux</span></div>
-                    <div class="lexique-summary-item"><span class="count">5</span><span class="label">Consignes</span></div>
-                    <div class="lexique-summary-item"><span class="count">3</span><span class="label">Emotions</span></div>
-                    <div class="lexique-summary-item"><span class="count">5</span><span class="label">Corps humain</span></div>
-                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Animaux</span></div>
-                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Objets classe</span></div>
-                    <div class="lexique-summary-item"><span class="count">8</span><span class="label">Nourriture</span></div>
-                    <div class="lexique-summary-item"><span class="count">6</span><span class="label">Famille</span></div>
-                    <div class="lexique-summary-item"><span class="count">10</span><span class="label">Mots outils</span></div>
-                </div>
-                <div class="lexique-total"><span class="count">≈ 100</span><span class="label">Mots actifs en fin d'Annee 1</span></div>
-            </div>
-
-            <!-- Les couleurs -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🎨</div><h3 class="card-title">Les couleurs (الأَلْوَان) — 8 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Rouge</td><td class="phonetic">Aḥmar</td><td class="arabic">أَحْمَر</td></tr>
-                        <tr><td>Bleu</td><td class="phonetic">Azraq</td><td class="arabic">أَزْرَق</td></tr>
-                        <tr><td>Vert</td><td class="phonetic">Akhḍar</td><td class="arabic">أَخْضَر</td></tr>
-                        <tr><td>Jaune</td><td class="phonetic">Aṣfar</td><td class="arabic">أَصْفَر</td></tr>
-                        <tr><td>Blanc</td><td class="phonetic">Abyaḍ</td><td class="arabic">أَبْيَض</td></tr>
-                        <tr><td>Noir</td><td class="phonetic">Aswad</td><td class="arabic">أَسْوَد</td></tr>
-                        <tr><td>Orange</td><td class="phonetic">Burtuqālī</td><td class="arabic">بُرْتُقَالِي</td></tr>
-                        <tr><td>Rose</td><td class="phonetic">Wardī</td><td class="arabic">وَرْدِي</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Les nombres -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🔢</div><h3 class="card-title">Les nombres 1-10 (الأَرْقَام) — 10 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Chiffre</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>1</td><td class="phonetic">Wāḥid</td><td class="arabic">وَاحِد</td></tr>
-                        <tr><td>2</td><td class="phonetic">Ithnān</td><td class="arabic">اِثْنَان</td></tr>
-                        <tr><td>3</td><td class="phonetic">Thalātha</td><td class="arabic">ثَلَاثَة</td></tr>
-                        <tr><td>4</td><td class="phonetic">Arba'a</td><td class="arabic">أَرْبَعَة</td></tr>
-                        <tr><td>5</td><td class="phonetic">Khamsa</td><td class="arabic">خَمْسَة</td></tr>
-                        <tr><td>6</td><td class="phonetic">Sitta</td><td class="arabic">سِتَّة</td></tr>
-                        <tr><td>7</td><td class="phonetic">Sab'a</td><td class="arabic">سَبْعَة</td></tr>
-                        <tr><td>8</td><td class="phonetic">Thamāniya</td><td class="arabic">ثَمَانِيَة</td></tr>
-                        <tr><td>9</td><td class="phonetic">Tis'a</td><td class="arabic">تِسْعَة</td></tr>
-                        <tr><td>10</td><td class="phonetic">'Ashara</td><td class="arabic">عَشَرَة</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Salutations -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">👋</div><h3 class="card-title">Salutations et formules (التَّحِيَّات) — 8 formules</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Contexte</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Que la paix soit sur vous</td><td class="phonetic">Salutation principale</td><td class="arabic">السَّلَامُ عَلَيْكُمْ</td></tr>
-                        <tr><td>Et sur vous la paix</td><td class="phonetic">Reponse</td><td class="arabic">وَعَلَيْكُمُ السَّلَام</td></tr>
-                        <tr><td>Bonjour (matin)</td><td class="phonetic">Le matin</td><td class="arabic">صَبَاحُ الخَيْر</td></tr>
-                        <tr><td>Bonjour (reponse)</td><td class="phonetic">Reponse matin</td><td class="arabic">صَبَاحُ النُّور</td></tr>
-                        <tr><td>Bonsoir</td><td class="phonetic">L'apres-midi/soir</td><td class="arabic">مَسَاءُ الخَيْر</td></tr>
-                        <tr><td>Au revoir</td><td class="phonetic">Quitter</td><td class="arabic">مَعَ السَّلَامَة</td></tr>
-                        <tr><td>Merci</td><td class="phonetic">Remercier</td><td class="arabic">شُكْرًا</td></tr>
-                        <tr><td>De rien</td><td class="phonetic">Reponse a merci</td><td class="arabic">عَفْوًا</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Vocabulaire religieux -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🕌</div><h3 class="card-title">Vocabulaire religieux — 6 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Usage</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Dieu</td><td class="phonetic">Nom divin</td><td class="arabic">الله</td></tr>
-                        <tr><td>Mosquee</td><td class="phonetic">Lieu de culte</td><td class="arabic">مَسْجِد</td></tr>
-                        <tr><td>Priere</td><td class="phonetic">Acte de culte</td><td class="arabic">صَلَاة</td></tr>
-                        <tr><td>Au nom de Dieu</td><td class="phonetic">Avant de commencer</td><td class="arabic">بِسْمِ الله</td></tr>
-                        <tr><td>Louange a Dieu</td><td class="phonetic">Gratitude</td><td class="arabic">الحَمْدُ لِله</td></tr>
-                        <tr><td>Si Dieu le veut</td><td class="phonetic">Projet futur</td><td class="arabic">إِنْ شَاءَ الله</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Consignes de classe -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">📣</div><h3 class="card-title">Consignes de classe — 5 mots</h3></div>
-                <div class="arabic-box">
-                    <div class="arabic-text">اِجْلِسْ &nbsp;•&nbsp; قِفْ &nbsp;•&nbsp; اُنْظُرْ &nbsp;•&nbsp; اِسْتَمِعْ &nbsp;•&nbsp; أَحْسَنْتَ</div>
-                    <div class="translation">Assieds-toi • Leve-toi • Regarde • Ecoute • Bravo / Tres bien</div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Assieds-toi</td><td class="phonetic">Ijlis</td><td class="arabic">اِجْلِسْ</td></tr>
-                        <tr><td>Leve-toi</td><td class="phonetic">Qif</td><td class="arabic">قِفْ</td></tr>
-                        <tr><td>Regarde</td><td class="phonetic">Unẓur</td><td class="arabic">اُنْظُرْ</td></tr>
-                        <tr><td>Ecoute</td><td class="phonetic">Istami'</td><td class="arabic">اِسْتَمِعْ</td></tr>
-                        <tr><td>Bravo / Tres bien</td><td class="phonetic">Aḥsanta</td><td class="arabic">أَحْسَنْتَ</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Emotions -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">😊</div><h3 class="card-title">Les emotions (المَشَاعِر) — 3 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Content / Ca va</td><td class="phonetic">Sa'īd</td><td class="arabic">سَعِيد</td></tr>
-                        <tr><td>Triste</td><td class="phonetic">Ḥazīn</td><td class="arabic">حَزِين</td></tr>
-                        <tr><td>En colere</td><td class="phonetic">Ghāḍib</td><td class="arabic">غَاضِب</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Corps humain -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🧍</div><h3 class="card-title">Le corps humain (جِسْمُ الإِنْسَان) — 5 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Tete</td><td class="phonetic">Ra's</td><td class="arabic">رَأْس</td></tr>
-                        <tr><td>Main</td><td class="phonetic">Yad</td><td class="arabic">يَد</td></tr>
-                        <tr><td>Pied / Jambe</td><td class="phonetic">Rijl</td><td class="arabic">رِجْل</td></tr>
-                        <tr><td>Oeil</td><td class="phonetic">'Ayn</td><td class="arabic">عَيْن</td></tr>
-                        <tr><td>Bouche</td><td class="phonetic">Fam</td><td class="arabic">فَم</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Animaux domestiques -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🐱</div><h3 class="card-title">Les animaux domestiques (الحَيَوَانَاتُ الأَلِيفَة) — 6 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Chat</td><td class="phonetic">Qiṭṭ</td><td class="arabic">قِطّ</td></tr>
-                        <tr><td>Chien</td><td class="phonetic">Kalb</td><td class="arabic">كَلْب</td></tr>
-                        <tr><td>Oiseau</td><td class="phonetic">Ṭā'ir</td><td class="arabic">طَائِر</td></tr>
-                        <tr><td>Poisson</td><td class="phonetic">Samak</td><td class="arabic">سَمَك</td></tr>
-                        <tr><td>Lapin</td><td class="phonetic">Arnab</td><td class="arabic">أَرْنَب</td></tr>
-                        <tr><td>Poule</td><td class="phonetic">Dajāja</td><td class="arabic">دَجَاجَة</td></tr>
-                    </tbody>
-                </table>
-                <div class="info-box tip">
-                    <div class="info-box-icon">✓</div>
-                    <div class="info-box-content"><h5>Conseil pedagogique</h5><p>Utilisez des images d'animaux ou des peluches pour rendre l'apprentissage concret. Les enfants adorent parler de leurs animaux de compagnie !</p></div>
-                </div>
-            </div>
-
-            <!-- Objets de la classe -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">📚</div><h3 class="card-title">Les objets de la classe (أَدَوَاتُ الفَصْل) — 10 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Livre</td><td class="phonetic">Kitāb</td><td class="arabic">كِتَاب</td></tr>
-                        <tr><td>Cahier</td><td class="phonetic">Daftar</td><td class="arabic">دَفْتَر</td></tr>
-                        <tr><td>Crayon</td><td class="phonetic">Qalam</td><td class="arabic">قَلَم</td></tr>
-                        <tr><td>Table</td><td class="phonetic">Ṭāwila</td><td class="arabic">طَاوِلَة</td></tr>
-                        <tr><td>Chaise</td><td class="phonetic">Kursī</td><td class="arabic">كُرْسِي</td></tr>
-                        <tr><td>Tableau</td><td class="phonetic">Sabbūra</td><td class="arabic">سَبُّورَة</td></tr>
-                        <tr><td>Sac</td><td class="phonetic">Ḥaqība</td><td class="arabic">حَقِيبَة</td></tr>
-                        <tr><td>Gomme</td><td class="phonetic">Mimḥāt</td><td class="arabic">مِمْحَاة</td></tr>
-                        <tr><td>Regle</td><td class="phonetic">Misṭara</td><td class="arabic">مِسْطَرَة</td></tr>
-                        <tr><td>Feuille</td><td class="phonetic">Waraqa</td><td class="arabic">وَرَقَة</td></tr>
-                    </tbody>
-                </table>
-                <div class="info-box note">
-                    <div class="info-box-icon">💡</div>
-                    <div class="info-box-content"><h5>Activite suggeree</h5><p>Etiquetez les objets de la classe en arabe ! Les eleves verront les mots tous les jours et les memoriseront naturellement.</p></div>
-                </div>
-            </div>
-
-            <!-- Nourriture -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🍎</div><h3 class="card-title">La nourriture (الطَّعَام) — 8 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Pain</td><td class="phonetic">Khubz</td><td class="arabic">خُبْز</td></tr>
-                        <tr><td>Eau</td><td class="phonetic">Mā'</td><td class="arabic">مَاء</td></tr>
-                        <tr><td>Lait</td><td class="phonetic">Ḥalīb</td><td class="arabic">حَلِيب</td></tr>
-                        <tr><td>Pomme</td><td class="phonetic">Tuffāḥa</td><td class="arabic">تُفَّاحَة</td></tr>
-                        <tr><td>Banane</td><td class="phonetic">Mawza</td><td class="arabic">مَوْزَة</td></tr>
-                        <tr><td>Jus</td><td class="phonetic">'Aṣīr</td><td class="arabic">عَصِير</td></tr>
-                        <tr><td>Gateau</td><td class="phonetic">Ka'ka</td><td class="arabic">كَعْكَة</td></tr>
-                        <tr><td>Bonbon</td><td class="phonetic">Ḥalwā</td><td class="arabic">حَلْوَى</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Famille -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">👨‍👩‍👧‍👦</div><h3 class="card-title">La famille proche (العَائِلَة) — 6 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Papa</td><td class="phonetic">Bābā / Ab</td><td class="arabic">بَابَا / أَب</td></tr>
-                        <tr><td>Maman</td><td class="phonetic">Māmā / Umm</td><td class="arabic">مَامَا / أُمّ</td></tr>
-                        <tr><td>Frere</td><td class="phonetic">Akh</td><td class="arabic">أَخ</td></tr>
-                        <tr><td>Soeur</td><td class="phonetic">Ukht</td><td class="arabic">أُخْت</td></tr>
-                        <tr><td>Grand-pere</td><td class="phonetic">Jadd</td><td class="arabic">جَدّ</td></tr>
-                        <tr><td>Grand-mere</td><td class="phonetic">Jadda</td><td class="arabic">جَدَّة</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Mots outils -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">🔧</div><h3 class="card-title">Mots outils essentiels (كَلِمَاتٌ أَسَاسِيَّة) — 10 mots</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Francais</th><th>Transcription</th><th style="text-align: right;">العَرَبِيَّة</th></tr></thead>
-                    <tbody>
-                        <tr><td>Oui</td><td class="phonetic">Na'am</td><td class="arabic">نَعَمْ</td></tr>
-                        <tr><td>Non</td><td class="phonetic">Lā</td><td class="arabic">لَا</td></tr>
-                        <tr><td>Et</td><td class="phonetic">Wa</td><td class="arabic">وَ</td></tr>
-                        <tr><td>Moi / Je</td><td class="phonetic">Anā</td><td class="arabic">أَنَا</td></tr>
-                        <tr><td>Toi (masculin)</td><td class="phonetic">Anta</td><td class="arabic">أَنْتَ</td></tr>
-                        <tr><td>Toi (feminin)</td><td class="phonetic">Anti</td><td class="arabic">أَنْتِ</td></tr>
-                        <tr><td>C'est / Voici (masc.)</td><td class="phonetic">Hādhā</td><td class="arabic">هَذَا</td></tr>
-                        <tr><td>C'est / Voici (fem.)</td><td class="phonetic">Hādhihi</td><td class="arabic">هَذِهِ</td></tr>
-                        <tr><td>Ou ?</td><td class="phonetic">Ayna</td><td class="arabic">أَيْنَ</td></tr>
-                        <tr><td>Quoi ?</td><td class="phonetic">Mā / Mādhā</td><td class="arabic">مَا / مَاذَا</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Expressions conversationnelles -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">💬</div><h3 class="card-title">Expressions conversationnelles — Questions/Reponses</h3></div>
-                <table class="vocab-table">
-                    <thead><tr><th>Question</th><th>Reponse type</th><th style="text-align: right;">السُّؤَال / الجَوَاب</th></tr></thead>
-                    <tbody>
-                        <tr><td>Comment t'appelles-tu ?</td><td class="phonetic">Je m'appelle...</td><td class="arabic">مَا اسْمُكَ؟ / اِسْمِي...</td></tr>
-                        <tr><td>Quel age as-tu ?</td><td class="phonetic">J'ai... ans</td><td class="arabic">كَمْ عُمْرُكَ؟ / عُمْرِي... سَنَوَات</td></tr>
-                        <tr><td>Comment vas-tu ?</td><td class="phonetic">Ca va, grace a Dieu</td><td class="arabic">كَيْفَ حَالُكَ؟ / بِخَيْر، الحَمْدُ لِله</td></tr>
-                        <tr><td>Es-tu content ? / Ca va ?</td><td class="phonetic">Oui / Non</td><td class="arabic">هَلْ أَنْتَ بِخَيْر؟ / نَعَمْ / لَا</td></tr>
-                        <tr><td>Qu'est-ce que c'est ?</td><td class="phonetic">C'est un/une...</td><td class="arabic">مَا هَذَا؟ / هَذَا...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Section: Module Conversationnel -->
-        <section id="conversation" class="section">
-            <div class="section-header">
-                <div class="section-icon">💬</div>
-                <div>
-                    <h2 class="section-title">Module conversationnel</h2>
-                    <span class="section-title-arabic">وَحْدَةُ المُحَادَثَة</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-number">🎯</div>
-                    <h3 class="card-title">« Les premiers mots qui parlent »</h3>
-                </div>
-                <p style="font-size: 1.05rem; margin-bottom: 20px;">
-                    <strong>Objectif :</strong> Installer des rituels oraux quotidiens et des reponses reflexes.<br>
-                    <strong>Temps dedie :</strong> 5 minutes par cours (rituels d'accueil et de cloture)
-                </p>
-                <div class="info-box warning">
-                    <div class="info-box-icon">⏱️</div>
-                    <div class="info-box-content">
-                        <h5>Duree des echanges en Annee 1</h5>
-                        <p>Les echanges conversationnels durent <strong>10 a 15 secondes maximum</strong>. L'objectif est la memorisation par la repetition, pas la spontaneite.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Rituels d'accueil -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">1</div><h3 class="card-title">Rituels d'accueil (2-3 min)</h3></div>
-                <h4 style="color: var(--primary-deep); margin: 20px 0 15px;">📅 Semaines 1-10 : Le cercle des salutations</h4>
-                <p style="margin-bottom: 15px; color: var(--neutral-medium);">L'enseignant entre et dit, les eleves repondent <strong>en choeur</strong> puis <strong>individuellement</strong> :</p>
-                <div class="dialogue-container">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">🔄</div>
-                        <div><h4>Rituel quotidien — Salutations</h4><span>A repeter chaque debut de cours</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!السَّلَامُ عَلَيْكُمْ</div>
-                                <div class="dialogue-translation">Que la paix soit sur vous !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!وَعَلَيْكُمُ السَّلَام</div>
-                                <div class="dialogue-translation">Et sur vous la paix !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">صَبَاحُ الخَيْر</div>
-                                <div class="dialogue-translation">Bonjour (le matin)</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">صَبَاحُ النُّور</div>
-                                <div class="dialogue-translation">Bonjour (reponse)</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">كَيْفَ حَالُكُمْ؟</div>
-                                <div class="dialogue-translation">Comment allez-vous ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!بِخَيْر، الحَمْدُ لِله</div>
-                                <div class="dialogue-translation">Ca va, louange a Dieu !</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 style="color: var(--primary-deep); margin: 30px 0 15px;">📅 Semaines 11-20 : La ronde des prenoms</h4>
-                <div class="dialogue-container">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">👋</div>
-                        <div><h4>Se presenter</h4><span>Question-reponse en chaine</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">مَا اسْمُكَ؟</div>
-                                <div class="dialogue-translation">Comment t'appelles-tu ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">اِسْمِي يَاسِين</div>
-                                <div class="dialogue-translation">Je m'appelle Yassine</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">كَيْفَ حَالُكَ؟</div>
-                                <div class="dialogue-translation">Comment vas-tu ? / Ca va ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!بِخَيْر، الحَمْدُ لِله</div>
-                                <div class="dialogue-translation">Ca va, louange a Dieu !</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 style="color: var(--primary-deep); margin: 30px 0 15px;">📅 Semaines 21-30 : L'age et l'humeur</h4>
-                <div class="dialogue-container">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">🎂</div>
-                        <div><h4>Dire son age et son humeur</h4><span>Extension de la presentation</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">كَمْ عُمْرُكَ؟</div>
-                                <div class="dialogue-translation">Quel age as-tu ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">عُمْرِي سِتُّ سَنَوَات</div>
-                                <div class="dialogue-translation">J'ai six ans</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">هَلْ أَنْتَ بِخَيْر؟</div>
-                                <div class="dialogue-translation">Ca va ? / Es-tu bien ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!نَعَمْ، أَنَا بِخَيْر</div>
-                                <div class="dialogue-translation">Oui, ca va !</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Micro-conversations -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">2</div><h3 class="card-title">Micro-conversations en binome (1-2 min)</h3></div>
-                <p style="margin-bottom: 20px; color: var(--neutral-medium);">A partir de la <strong>semaine 15</strong>, deux eleves face a face pratiquent ces dialogues courts :</p>
-                <div class="dialogue-container">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">🅰️</div>
-                        <div><h4>Conversation type A — Se presenter</h4><span>Premier dialogue complet entre eleves</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!السَّلَامُ عَلَيْكُمْ</div>
-                                <div class="dialogue-translation">Que la paix soit sur vous !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!وَعَلَيْكُمُ السَّلَام</div>
-                                <div class="dialogue-translation">Et sur vous la paix !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">مَا اسْمُكَ؟</div>
-                                <div class="dialogue-translation">Comment t'appelles-tu ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">اِسْمِي يَاسِين. وَأَنْتَ؟</div>
-                                <div class="dialogue-translation">Je m'appelle Yassine. Et toi ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">اِسْمِي سَارَة</div>
-                                <div class="dialogue-translation">Je m'appelle Sara</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!مَعَ السَّلَامَة</div>
-                                <div class="dialogue-translation">Au revoir !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!مَعَ السَّلَامَة</div>
-                                <div class="dialogue-translation">Au revoir !</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dialogue-container" style="margin-top: 25px;">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">🅱️</div>
-                        <div><h4>Conversation type B — L'humeur</h4><span>A partir de la semaine 25</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!صَبَاحُ الخَيْر</div>
-                                <div class="dialogue-translation">Bonjour !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!صَبَاحُ النُّور</div>
-                                <div class="dialogue-translation">Bonjour ! (reponse)</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">كَيْفَ حَالُكَ؟</div>
-                                <div class="dialogue-translation">Ca va ? / Comment vas-tu ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student" style="background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));">ب</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">أَنَا بِخَيْر! وَأَنْتَ؟</div>
-                                <div class="dialogue-translation">Ca va ! Et toi ?</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">أ</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">أَنَا بِخَيْر، الحَمْدُ لِله</div>
-                                <div class="dialogue-translation">Ca va, louange a Dieu</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Rituels de cloture -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">3</div><h3 class="card-title">Rituels de cloture (1 min)</h3></div>
-                <div class="dialogue-container">
-                    <div class="dialogue-header">
-                        <div class="dialogue-header-icon">👋</div>
-                        <div><h4>Fin de cours</h4><span>A repeter chaque fin de cours</span></div>
-                    </div>
-                    <div class="dialogue-content">
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!أَحْسَنْتُمْ</div>
-                                <div class="dialogue-translation">Bravo a tous !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!شُكْرًا</div>
-                                <div class="dialogue-translation">Merci !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line teacher-line">
-                            <div class="dialogue-speaker teacher">م</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogue-arabic">!إِلَى اللِّقَاء</div>
-                                <div class="dialogue-translation">A bientot !</div>
-                            </div>
-                        </div>
-                        <div class="dialogue-line student-line">
-                            <div class="dialogue-speaker student">ت</div>
-                            <div class="dialogue-bubble">
-                                <div class="dialogic-arabic">!مَعَ السَّلَامَة</div>
-                                <div class="dialogue-translation">Au revoir !</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Jeux conversationnels -->
-            <div class="card">
-                <div class="card-header"><div class="card-number">4</div><h3 class="card-title">Jeux conversationnels</h3></div>
-                <div class="game-card">
-                    <h4>🎧 Le telephone arabe</h4>
-                    <p>Une phrase simple circule d'eleve en eleve. On verifie en fin de chaine si elle est restee intacte.</p>
-                    <div class="game-example"><strong>Exemple :</strong> « اِسْمِي أَحْمَد » circule → Verification a la fin</div>
-                </div>
-                <div class="game-card">
-                    <h4>🏐 La balle des salutations</h4>
-                    <p>L'enseignant lance une balle molle. Celui qui l'attrape doit saluer et se presenter.</p>
-                    <div class="game-example"><strong>Reponse attendue :</strong><br><span style="font-family: 'Amiri', serif; font-size: 1.2rem; direction: rtl;">!السَّلَامُ عَلَيْكُمْ! اِسْمِي فَاطِمَة</span></div>
-                </div>
-                <div class="game-card">
-                    <h4>🪞 Le miroir</h4>
-                    <p>Deux eleves face a face. L'un parle, l'autre repete exactement (travail phonetique).</p>
-                    <div class="game-example"><strong>Objectif :</strong> Ameliorer la prononciation par l'imitation precise</div>
-                </div>
-                <div class="game-card">
-                    <h4>🎯 Jacques a dit (سَمِيرٌ قَال)</h4>
-                    <p>L'enseignant donne des consignes. Les eleves n'obeissent que si la consigne est precedee de « سَمِيرٌ قَال ».</p>
-                    <div class="game-example"><strong>Exemple :</strong><br><span style="font-family: 'Amiri', serif; font-size: 1.2rem; direction: rtl;">سَمِيرٌ قَال: اِجْلِسْ! ← (les eleves s'assoient)<br>قِفْ! ← (ils ne bougent pas)</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Culture -->
-        <section id="culture" class="section">
-            <div class="section-header">
-                <div class="section-icon">🌍</div>
-                <div>
-                    <h2 class="section-title">Contenus culturels</h2>
-                    <span class="section-title-arabic">المُحْتَوَيَاتُ الثَّقَافِيَّة</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="competency-grid">
-                    <div class="competency-box">
-                        <h4>🎵 Chansons</h4>
-                        <ul>
-                            <li>Chansons de l'alphabet (Al-Habib Al-Ghaffas)</li>
-                            <li>Comptines sur les couleurs</li>
-                            <li>Comptines sur les nombres</li>
-                            <li>Comptines sur les animaux</li>
-                        </ul>
-                    </div>
-                    <div class="competency-box">
-                        <h4>🗺️ Geographie</h4>
-                        <ul>
-                            <li>Decouverte des pays arabes sur une carte</li>
-                            <li>Localisation visuelle simple</li>
-                            <li>Les drapeaux (reconnaissance)</li>
-                            <li>Le Maghreb : Maroc, Algerie, Tunisie</li>
-                        </ul>
-                    </div>
-                    <div class="competency-box">
-                        <h4>🎉 Fetes religieuses</h4>
-                        <ul>
-                            <li>عِيد الفِطْر — Fete de fin de Ramadan</li>
-                            <li>عِيد الأَضْحَى — Fete du sacrifice</li>
-                            <li>رَمَضَان — Le mois du jeune</li>
-                            <li>Vocabulaire associe (de base)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Moodle -->
-        <section id="moodle" class="section">
-            <div class="moodle-section">
-                <h3>💻 Organisation Moodle</h3>
-                <div class="moodle-grid">
-                    <div class="moodle-item">
-                        <h5>📚 En classe (2h30)</h5>
-                        <p>Ecoute collective et repetition chorale • Jeux phonetiques (reconnaissance de sons) • Initiation aux activites Moodle (manipulation guidee) • Trace des lettres au tableau puis sur ardoise</p>
-                    </div>
-                    <div class="moodle-item">
-                        <h5>🏠 A la maison (20-30 min/semaine)</h5>
-                        <p>Capsules audio : ecoute des lettres et comptines (2-3 min) • Jeux de reconnaissance lettre-son (glisser-deposer) • Coloriage interactif de « l'arbre de l'alphabet »</p>
-                    </div>
-                    <div class="moodle-item">
-                        <h5>🎤 Activite conversationnelle</h5>
-                        <p><strong>« Mon premier dialogue »</strong><br>Ecouter un dialogue modele (30 secondes) • S'enregistrer en repetant phrase par phrase • Badge « Premiere conversation » debloque</p>
-                    </div>
-                    <div class="moodle-item">
-                        <h5>🌳 Gamification</h5>
-                        <p><strong>L'arbre de l'alphabet</strong> : Un arbre virtuel qui se colorie au fur et a mesure de la progression. Chaque lettre maitrisee = une feuille coloree.</p>
-                    </div>
-                    <div class="moodle-item">
-                        <h5>📦 Quiz vocabulaire</h5>
-                        <p>Quiz thematiques sur les nouveaux themes : animaux, objets de classe, nourriture, famille. Activites H5P : glisser-deposer, associations image-mot.</p>
-                    </div>
-                    <div class="moodle-item">
-                        <h5>👨‍👩‍👧 Espace parents</h5>
-                        <p>Guide de prononciation pour les parents (meme non-arabophones). Videos explicatives pour accompagner l'enfant a la maison.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Evaluation -->
-        <section id="evaluation" class="section">
-            <div class="section-header">
-                <div class="section-icon">📊</div>
-                <div>
-                    <h2 class="section-title">Evaluation trimestrielle</h2>
-                    <span class="section-title-arabic">التَّقْيِيمُ الفَصْلِي</span>
-                </div>
-            </div>
-            <div class="eval-grid">
-                <div class="eval-card">
-                    <h5>Trimestre 1</h5>
-                    <p><strong>Reconnaissance orale</strong> des lettres أ → ك<br><br><strong>Trace</strong> de 6 lettres sans point<br><br><strong>Vocabulaire</strong> : couleurs, nombres 1-5</p>
-                </div>
-                <div class="eval-card">
-                    <h5>Trimestre 2</h5>
-                    <p><strong>Reconnaissance orale</strong> des lettres ل → ي<br><br><strong>Lecture</strong> de syllabes CV (بَ، بِ، بُ)<br><br><strong>Vocabulaire</strong> : famille, objets classe</p>
-                </div>
-                <div class="eval-card">
-                    <h5>Trimestre 3</h5>
-                    <p><strong>Alphabet complet</strong> oral + ecrit<br><br><strong>Se presenter</strong> oralement (nom, age)<br><br><strong>Vocabulaire</strong> : animaux, nourriture</p>
-                </div>
-            </div>
-            <div class="card" style="margin-top: 30px;">
-                <h4 style="color: var(--primary-deep); margin-bottom: 20px;">Grille d'evaluation conversationnelle</h4>
-                <table class="vocab-table">
-                    <thead><tr><th>Competence</th><th>Non acquis</th><th>En cours</th><th>Acquis</th></tr></thead>
-                    <tbody>
-                        <tr><td>Saluer correctement</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Dire son prenom</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Dire son age</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Utiliser les formules rituelles</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Prendre conge</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Nommer un objet (هَذَا/هَذِهِ)</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Nommer les couleurs (8)</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                        <tr><td>Compter de 1 a 10</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td><td style="text-align: center;">◯</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="timeline" style="margin-top: 40px;">
-                <h4 style="margin-bottom: 25px; color: var(--primary-deep);">Progression annuelle</h4>
-                <div class="timeline-item">
-                    <span class="timeline-period">Semaines 1-10</span>
-                    <h5 class="timeline-title">Phase d'immersion</h5>
-                    <p class="timeline-content">Decouverte de l'alphabet (أ → ك) • Rituels de salutation en choeur • Premiers sons specifiques • Comptines de l'alphabet • <strong>Lexique :</strong> couleurs, nombres 1-5, salutations</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-period">Semaines 11-20</span>
-                    <h5 class="timeline-title">Phase de consolidation</h5>
-                    <p class="timeline-content">Alphabet complet (ل → ي) • Presentation individuelle • Micro-conversations en binome • <strong>Lexique :</strong> nombres 6-10, famille, objets de la classe, consignes</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-period">Semaines 21-30</span>
-                    <h5 class="timeline-title">Phase d'autonomie</h5>
-                    <p class="timeline-content">Lecture de syllabes CV • Dialogues complets • Expression de l'humeur et de l'age • <strong>Lexique :</strong> animaux, nourriture, corps humain, emotions • Preparation annee 2</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- LEXIQUE ENSEIGNANT -->
-        <section id="lexique-enseignant" class="section">
-            <div class="card" style="background: linear-gradient(135deg, #fff9f0, #fefcf9); border: 3px solid var(--accent-gold);">
-                <h2 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 2rem; margin-bottom: 10px; text-align: center;">📖 Lexique de reference pour les enseignants</h2>
-                <p style="text-align: center; color: var(--neutral-medium); margin-bottom: 30px; font-style: italic;">Vocabulaire technique et pedagogique du referentiel — Version definitive</p>
-
-                <!-- Termes pedagogiques -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🎓</div>
-                    <div class="section-title">Termes pedagogiques</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Comprehension orale</td><td class="phonetic">Revisé</td><td class="arabic">فَهْمُ المَسْمُوع</td><td class="phonetic">هل فهمت المسموع؟ — As-tu compris ce que tu as entendu ?</td></tr>
-                        <tr><td>Production orale</td><td class="phonetic">Valide</td><td class="arabic">الإِنْتَاجُ الشَّفَهِي</td><td class="phonetic">نشاط الإنتاج الشفهي — Activite de production orale</td></tr>
-                        <tr><td>Lecture</td><td class="phonetic">Valide</td><td class="arabic">القِرَاءَة</td><td class="phonetic">القراءة الجهرية / القراءة الصامتة</td></tr>
-                        <tr><td>Ecriture</td><td class="phonetic">Valide</td><td class="arabic">الكِتَابَة</td><td class="phonetic">تدريب على الكتابة — Exercice d'ecriture</td></tr>
-                        <tr><td>Lexique actif</td><td class="phonetic">Valide</td><td class="arabic">المُفْرَدَاتُ النَّشِطَة</td><td class="phonetic">يستخدم المفردات النشطة في الحوار — Il utilise le vocabulaire actif dans le dialogue</td></tr>
-                        <tr><td>Immersion sonore</td><td class="phonetic">Valide</td><td class="arabic">الغَمْسُ الصَّوْتِي</td><td class="phonetic">جلسة الغمس الصوتي — Seance d'immersion sonore</td></tr>
-                        <tr><td>Rituel de classe</td><td class="phonetic">Revisé</td><td class="arabic">الأَنْشِطَةُ الاِعْتِيَادِيَّة</td><td class="phonetic">التحية، التاريخ، الأنشودة — Salutation, date, comptine</td></tr>
-                        <tr><td>Comptine</td><td class="phonetic">Revisé</td><td class="arabic">أُنْشُودَةٌ تَعْلِيمِيَّة</td><td class="phonetic">أنشودة الحروف — Comptine de l'alphabet</td></tr>
-                        <tr><td>Geste graphique</td><td class="phonetic">Valide</td><td class="arabic">الحَرَكَةُ الكِتَابِيَّة</td><td class="phonetic">يقلد الحركة الكتابية للحرف — Il imite le geste graphique de la lettre</td></tr>
-                        <tr><td>Discrimination auditive</td><td class="phonetic">Valide</td><td class="arabic">التَّمْيِيزُ السَّمْعِي</td><td class="phonetic">هل تسمع ص أم س ؟ — Entends-tu ص ou س ?</td></tr>
-                        <tr><td>Consigne</td><td class="phonetic">Ajout</td><td class="arabic">تَعْلِيمَة</td><td class="phonetic">اقرأ الكلمة واشر إلى الصورة — Lis le mot et montre l'image</td></tr>
-                        <tr><td>Etayage (scaffolding)</td><td class="phonetic">Ajout</td><td class="arabic">سَقَالَةٌ تَعْلِيمِيَّة</td><td class="phonetic">يقدم المعلم سقالة لمساعدة الطالب — L'enseignant apporte un etayage pour aider l'eleve</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Morphologie arabe -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🔤</div>
-                    <div class="section-title">Morphologie arabe — section indispensable</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Racine</td><td class="phonetic">Ajout</td><td class="arabic">جِذْر</td><td class="phonetic">ك – ت – ب → كَتَبَ، كِتَاب، كَاتِب، مَكْتَبَة</td></tr>
-                        <tr><td>Schema / Patron</td><td class="phonetic">Ajout</td><td class="arabic">وَزْن / قَالَب</td><td class="phonetic">وزن فاعل → كاتب، قارئ، لاعب</td></tr>
-                        <tr><td>Tanwin (Nunation)</td><td class="phonetic">Ajout</td><td class="arabic">تَنْوِين</td><td class="phonetic">كِتَابٌ (un livre) ≠ الكِتَابُ (le livre)</td></tr>
-                        <tr><td>Duel</td><td class="phonetic">Ajout</td><td class="arabic">مُثَنَّى</td><td class="phonetic">كِتَاب → كِتَابَانِ / كِتَابَيْنِ</td></tr>
-                        <tr><td>Pluriel brise</td><td class="phonetic">Ajout</td><td class="arabic">جَمْعُ التَّكْسِير</td><td class="phonetic">كِتَاب → كُتُب | بَيْت → بُيُوت | رَجُل → رِجَال</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Termes grammaticaux -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">📚</div>
-                    <div class="section-title">Termes grammaticaux</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Alphabet</td><td class="phonetic">Valide</td><td class="arabic">الأَبْجَدِيَّة</td><td class="phonetic">أبجدية مكونة من ٢٨ حرفاً</td></tr>
-                        <tr><td>Lettre</td><td class="phonetic">Valide</td><td class="arabic">حَرْف</td><td class="phonetic">حرف الألف، حرف الباء</td></tr>
-                        <tr><td>Voyelle courte</td><td class="phonetic">Valide</td><td class="arabic">حَرَكَة</td><td class="phonetic">فتحة ـَ / ضمة ـُ / كسرة ـِ</td></tr>
-                        <tr><td>Fatḥa</td><td class="phonetic">Valide</td><td class="arabic">فَتْحَة</td><td class="phonetic">كَتَبَ — chaque ـَ est une fatḥa</td></tr>
-                        <tr><td>Kasra</td><td class="phonetic">Valide</td><td class="arabic">كَسْرَة</td><td class="phonetic">بِسْمِ اللهِ — le ـِ sous الباء est une kasra</td></tr>
-                        <tr><td>Ḍamma</td><td class="phonetic">Valide</td><td class="arabic">ضَمَّة</td><td class="phonetic">يَكْتُبُ — le ـُ sur الباء est une ḍamma</td></tr>
-                        <tr><td>Sukūn</td><td class="phonetic">Valide</td><td class="arabic">سُكُون</td><td class="phonetic">كَتْبٌ — le ـْ sur الباء indique l'absence de voyelle</td></tr>
-                        <tr><td>Syllabe</td><td class="phonetic">Valide</td><td class="arabic">مَقْطَع</td><td class="phonetic">كَ-تَ-بَ = 3 maqāṭiʿ ouverts CV</td></tr>
-                        <tr><td>Masculin / Feminin</td><td class="phonetic">Valide</td><td class="arabic">مُذَكَّر / مُؤَنَّث</td><td class="phonetic">كِتَابٌ (m.) — مَدْرَسَةٌ (f.) — شَمْسٌ (f. sans ة)</td></tr>
-                        <tr><td>Pronom</td><td class="phonetic">Valide</td><td class="arabic">ضَمِير</td><td class="phonetic">هُوَ، هِيَ، أَنَا، نَحْنُ — pronoms independants</td></tr>
-                        <tr><td>Question</td><td class="phonetic">Valide</td><td class="arabic">سُؤَال</td><td class="phonetic">مَا هٰذَا؟ / أَيْنَ الكِتَاب؟ / مَنْ أَنْتَ؟</td></tr>
-                        <tr><td>Solaire / Lunaire</td><td class="phonetic">Ajout</td><td class="arabic">شَمْسِي / قَمَرِي</td><td class="phonetic">الشَّمْس (al-shams) — الكِتَاب (al-kitāb)</td></tr>
-                        <tr><td>Geminee / Gemination</td><td class="phonetic">Ajout</td><td class="arabic">تَشْدِيد / شَدَّة</td><td class="phonetic">دَرَّسَ (enseigner) ≠ دَرَسَ (etudier)</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Phonetique -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🔊</div>
-                    <div class="section-title">Phonetique — مخارج الحروف</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>API / IPA</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Son / Phoneme</td><td class="phonetic">Valide</td><td class="arabic">صَوْت / صَوْتِيَّة</td><td class="phonetic">[sˤawt]</td><td class="phonetic">صوت الضاد — le phoneme ض</td></tr>
-                        <tr><td>Point d'articulation</td><td class="phonetic">Ajout</td><td class="arabic">مَخْرَج</td><td class="phonetic">[maχradʒ]</td><td class="phonetic">مخرج الضاد من حافة اللسان</td></tr>
-                        <tr><td>Mode d'articulation</td><td class="phonetic">Ajout</td><td class="arabic">صِفَة</td><td class="phonetic">[sˤifa]</td><td class="phonetic">صفة الجهر (sonore) / الهمس (sourd)</td></tr>
-                        <tr><td>Pharyngal</td><td class="phonetic">Valide</td><td class="arabic">حَلْقِي</td><td class="phonetic">[ħ] [ʕ] [χ] [ʁ]</td><td class="phonetic">حَ / عَ / خَ / غَ — les 4 lettres de الإظهار الحلقي</td></tr>
-                        <tr><td>Glottal</td><td class="phonetic">Valide</td><td class="arabic">حَنْجَرِي</td><td class="phonetic">[ʔ] [h]</td><td class="phonetic">أَكَلَ [ʔakala] / هَلْ [hal]</td></tr>
-                        <tr><td>Emphatique</td><td class="phonetic">Valide</td><td class="arabic">مُفَخَّم</td><td class="phonetic">[sˤ] [dˤ] [tˤ] [ðˤ]</td><td class="phonetic">سَبَّ / صَبَّ | دَلَّ / ضَلَّ | تَلَّ / طَلَّ</td></tr>
-                        <tr><td>Uvulaire</td><td class="phonetic">Revisé</td><td class="arabic">لَهَوِي</td><td class="phonetic">[q] [ʁ]</td><td class="phonetic">قَلْب [ʔalb] / غَيْب [ʁayb]</td></tr>
-                        <tr><td>Velaire</td><td class="phonetic">Valide</td><td class="arabic">حَنَكِي</td><td class="phonetic">[k] [x]</td><td class="phonetic">كَلِمَة [kalima] / خَبَر [xabar]</td></tr>
-                        <tr><td>Interdentale</td><td class="phonetic">Ajout</td><td class="arabic">أَسْنَانِي بَيْنِي</td><td class="phonetic">[θ] [ð] [ðˤ]</td><td class="phonetic">ثَلَاثَة [θalaːθa] / ذَهَب [ðahab] / ظَلَم [ðˤalam]</td></tr>
-                        <tr><td>Paire minimale</td><td class="phonetic">Valide</td><td class="arabic">زَوْجٌ أَدْنَى</td><td class="phonetic">—</td><td class="phonetic">سَبَّ / صَبَّ | قَلْب / كَلْب | حَرَّ / خَرَّ</td></tr>
-                        <tr><td>Position isolee</td><td class="phonetic">Valide</td><td class="arabic">وَضْعٌ مُنْفَصِل</td><td class="phonetic">—</td><td class="phonetic">ع isolé / عَـ initiale / ـعَـ mediane / ـع finale</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Sociolinguistique -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🌐</div>
-                    <div class="section-title">Sociolinguistique arabe — section indispensable</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Diglossie</td><td class="phonetic">Ajout</td><td class="arabic">الاِزْدِوَاجِيَّةُ اللُّغَوِيَّة</td><td class="phonetic">الفُصْحَى في الكِتَابَة ↔ العَامِّيَّة في الكَلَام اليَوْمِي</td></tr>
-                        <tr><td>Arabe standard (Fuṣḥā)</td><td class="phonetic">Ajout</td><td class="arabic">الفُصْحَى العَصْرِيَّة</td><td class="phonetic">لغة القرآن، الصحافة، التعليم</td></tr>
-                        <tr><td>Arabe dialectal (ʿĀmmiyya)</td><td class="phonetic">Ajout</td><td class="arabic">العَامِّيَّة</td><td class="phonetic">المَغْرِبِيَّة / المِصْرِيَّة / الشَّامِيَّة — Maghrebin / Egyptien / Levantin</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Evaluation -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">📊</div>
-                    <div class="section-title">Termes d'evaluation</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Evaluation</td><td class="phonetic">Valide</td><td class="arabic">تَقْيِيم</td><td class="phonetic">ورقة التقييم — Fiche d'evaluation</td></tr>
-                        <tr><td>Competence</td><td class="phonetic">Valide</td><td class="arabic">كَفَاءَة</td><td class="phonetic">كفاءة التواصل الشفهي — Competence de communication orale</td></tr>
-                        <tr><td>Acquis</td><td class="phonetic">Revisé</td><td class="arabic">مُكْتَسَب</td><td class="phonetic">مكتسبات نهاية المرحلة — Acquis de fin de cycle</td></tr>
-                        <tr><td>En cours d'acquisition</td><td class="phonetic">Revisé</td><td class="arabic">قَيْدَ الاِكْتِسَاب</td><td class="phonetic">الكفاءة قيد الاكتساب — La competence est en cours d'acquisition</td></tr>
-                        <tr><td>Non acquis</td><td class="phonetic">Revisé</td><td class="arabic">غَيْرُ مُكْتَسَب</td><td class="phonetic">الهدف غير مكتسب بعد — L'objectif n'est pas encore acquis</td></tr>
-                        <tr><td>Niveau</td><td class="phonetic">Valide</td><td class="arabic">مُسْتَوَى</td><td class="phonetic">مستوى أول / ثان / ثالث</td></tr>
-                        <tr><td>Objectif</td><td class="phonetic">Valide</td><td class="arabic">هَدَف</td><td class="phonetic">الهدف من الدرس: أن ينطق الطالب حرف الضاد صحيحاً</td></tr>
-                        <tr><td>Progression</td><td class="phonetic">Valide</td><td class="arabic">تَطَوُّر</td><td class="phonetic">تطور الطالب خلال الفصل — Progression de l'eleve au cours du trimestre</td></tr>
-                        <tr><td>Evaluation formative</td><td class="phonetic">Ajout</td><td class="arabic">تَقْيِيمٌ تَكْوِينِي</td><td class="phonetic">ملاحظة، سؤال شفهي، بطاقة خروج — Observation, question orale, ticket de sortie</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Numerique -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">💻</div>
-                    <div class="section-title">Termes numeriques</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Capsule audio</td><td class="phonetic">Revisé</td><td class="arabic">مَقْطَعٌ صَوْتِي</td><td class="phonetic">استمع إلى المقطع الصوتي ثم أجب — Ecoute la capsule puis reponds</td></tr>
-                        <tr><td>Quiz</td><td class="phonetic">Valide</td><td class="arabic">اِخْتِبَار</td><td class="phonetic">اختبار قصير من ١٠ أسئلة — Quiz de 10 questions</td></tr>
-                        <tr><td>Badge</td><td class="phonetic">Valide</td><td class="arabic">شَارَة</td><td class="phonetic">نلت شارة القراءة — Tu as obtenu le badge Lecture</td></tr>
-                        <tr><td>Gamification</td><td class="phonetic">Valide</td><td class="arabic">تَلْعِيب</td><td class="phonetic">تلعيب الدرس بنقاط وشارات — Gamification de la lecon avec points et badges</td></tr>
-                        <tr><td>Glisser-deposer</td><td class="phonetic">Valide</td><td class="arabic">سَحْبٌ وَإِفْلاَت</td><td class="phonetic">اسحب الحرف وأفلته في المكان الصحيح — Glisse la lettre et depose-la au bon endroit</td></tr>
-                        <tr><td>Association</td><td class="phonetic">Valide</td><td class="arabic">رَبْط</td><td class="phonetic">اربط الكلمة بصورتها — Associe le mot a son image</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Culturel -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🌍</div>
-                    <div class="section-title">Termes culturels</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Fete religieuse</td><td class="phonetic">Valide</td><td class="arabic">عِيد دِينِي</td><td class="phonetic">عيد الفطر وعيد الأضحى — Les deux grandes fetes de l'islam</td></tr>
-                        <tr><td>Ramadan</td><td class="phonetic">Valide</td><td class="arabic">رَمَضَان</td><td class="phonetic">شهر رمضان — Le mois de ramadan</td></tr>
-                        <tr><td>Aïd al-Fitr</td><td class="phonetic">Valide</td><td class="arabic">عِيدُ الفِطْر</td><td class="phonetic">كل عام وأنتم بخير — Formule de voeux traditionnelle</td></tr>
-                        <tr><td>Aïd al-Adha</td><td class="phonetic">Valide</td><td class="arabic">عِيدُ الأَضْحَى</td><td class="phonetic">عيد الأضحى المبارك — Le beni Aïd al-Adha</td></tr>
-                        <tr><td>Mosquee</td><td class="phonetic">Valide</td><td class="arabic">مَسْجِد</td><td class="phonetic">المسجد الحرام / المسجد النبوي</td></tr>
-                        <tr><td>Priere</td><td class="phonetic">Valide</td><td class="arabic">صَلَاة</td><td class="phonetic">الصلوات الخمس — Les cinq prieres quotidiennes</td></tr>
-                        <tr><td>Pays arabe</td><td class="phonetic">Valide</td><td class="arabic">بَلَدٌ عَرَبِي</td><td class="phonetic">٢٢ بلداً عربياً — 22 pays membres de la Ligue arabe</td></tr>
-                        <tr><td>Drapeau</td><td class="phonetic">Valide</td><td class="arabic">عَلَم</td><td class="phonetic">علم المغرب، علم مصر، علم لبنان</td></tr>
-                        <tr><td>Litterature</td><td class="phonetic">Ajout</td><td class="arabic">أَدَب</td><td class="phonetic">ألف ليلة وليلة / شعر المتنبي</td></tr>
-                        <tr><td>Marche / Souk</td><td class="phonetic">Ajout</td><td class="arabic">سُوق</td><td class="phonetic">سوق المدينة / سوق الخضار — Marche de la medina / marche des legumes</td></tr>
-                        <tr><td>Fete nationale</td><td class="phonetic">Ajout</td><td class="arabic">عِيدٌ وَطَنِي</td><td class="phonetic">عيد الاستقلال / اليوم الوطني</td></tr>
-                        <tr><td>Gastronomie arabe</td><td class="phonetic">Ajout</td><td class="arabic">مَطْبَخٌ عَرَبِي</td><td class="phonetic">كسكس، طاجين، حمص، فلافل، بقلاوة</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Jeux -->
-                <div class="section-header" style="margin-top: 40px;">
-                    <div class="section-icon">🎮</div>
-                    <div class="section-title">Jeux et activites</div>
-                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, var(--neutral-light), transparent);"></div>
-                </div>
-                <table class="vocab-table">
-                    <thead><tr><th>Terme francais</th><th>Statut</th><th>Terme arabe recommande</th><th>Exemples & Commentaires</th></tr></thead>
-                    <tbody>
-                        <tr><td>Jeu de role</td><td class="phonetic">Valide</td><td class="arabic">لُعْبَةُ الأَدْوَار</td><td class="phonetic">دور البائع ودور المشتري — Le role du vendeur et de l'acheteur</td></tr>
-                        <tr><td>Binome</td><td class="phonetic">Valide</td><td class="arabic">زَوْج</td><td class="phonetic">اعمل مع زوجك — Travaille avec ton binome</td></tr>
-                        <tr><td>Choeur (repetition)</td><td class="phonetic">Revisé</td><td class="arabic">تَرْدِيدٌ جَمَاعِي</td><td class="phonetic">رددوا معي جميعاً: بسم الله — Repetez tous ensemble !</td></tr>
-                        <tr><td>En chaine</td><td class="phonetic">Valide</td><td class="arabic">عَلَى التَّسَلْسُل</td><td class="phonetic">كل تلميذ يقول كلمة على التسلسل — Chaque eleve dit un mot a la suite</td></tr>
-                        <tr><td>Miroir</td><td class="phonetic">Valide</td><td class="arabic">مِرْآة</td><td class="phonetic">قلد حركة فمي كالمرآة — Imite le mouvement de ma bouche comme un miroir</td></tr>
-                        <tr><td>Etiqueter</td><td class="phonetic">Valide</td><td class="arabic">تَسْمِيَة</td><td class="phonetic">سم الأشياء في الصورة — Nomme les objets dans l'image</td></tr>
-                    </tbody>
-                </table>
-
-                <div class="info-box note" style="margin-top: 30px;">
-                    <div class="info-box-icon">💡</div>
-                    <div class="info-box-content">
-                        <h5>Note pour les enseignants</h5>
-                        <p>Ce lexique couvre les termes essentiels utilises dans le referentiel. Les transcriptions phonetiques entre parentheses dans le document principal utilisent un systeme simplifie pour faciliter la lecture aux enseignants non-arabophones. La version IPA (International Phonetic Alphabet) est fournie pour les termes phonetiques.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <p class="arabic-footer">أُحِبُّ اللُّغَةَ العَرَبِيَّة</p>
-        <p>Referentiel d'enseignement de l'arabe — Annee 1</p>
-        <p style="margin-top: 10px; opacity: 0.6;">Cycle 1 : Eveil (6-8 ans) • ≈100 mots actifs • Niveau pre-A1</p>
-    </footer>
-
-    <script>
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    const navHeight = document.querySelector('.nav-sticky').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navHeight - 20;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navHeight = document.querySelector('.nav-sticky').offsetHeight;
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - navHeight - 100;
-                if (window.scrollY >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<nav class="frise" aria-label="Les années du programme"><ol><li><span class="cycle-nom">Cycle 1 — Éveil</span><span class="annees"><a href="referentiel-annee-1.html" style="--c:#2f7356" aria-current="page">Année 1</a><a href="referentiel-annee-2.html" style="--c:#1f5240">Année 2</a></span></li><li><span class="cycle-nom">Cycle 2 — Fondation</span><span class="annees"><a href="referentiel-annee-3.html" style="--c:#2a5d9f">Année 3</a><a href="referentiel-annee-4.html" style="--c:#1f3f70">Année 4</a></span></li><li><span class="cycle-nom">Cycle 3 — La logique</span><span class="annees"><a href="referentiel-annee-5.html" style="--c:#8a2b3c">Année 5</a><a href="referentiel-annee-6.html" style="--c:#6b2131">Année 6</a></span></li><li><span class="cycle-nom">Cycle 4 — L&#x27;autonomie</span><span class="annees"><a href="referentiel-annee-7.html" style="--c:#5e3b8c">Année 7</a><a href="referentiel-annee-8.html" style="--c:#4c2e74">Année 8</a><a href="referentiel-annee-9.html" style="--c:#3b225b">Année 9</a></span></li></ol><a class="langue" href="choix-de-langue.html">Choix de langue</a></nav>
+<header class="bandeau"><ul class="badges"><li>Cycle 1 — Éveil</li><li>Niveau visé : pré-A1</li><li>6-8 ans</li></ul><p class="titre-ar" lang="ar" dir="rtl">السَّنَةُ الأُولَى: الأُذُنُ وَالعَيْنُ</p><h1>L&#x27;oreille et l&#x27;œil</h1><p class="surtitre">Référentiel pédagogique d&#x27;arabe standard, année 1</p><ul class="meta"><li>84 entrées nouvelles</li><li>5 dialogues</li><li>30 semaines</li><li>2 h 30 par semaine</li></ul></header>
+<nav class="sommaire" aria-label="Sommaire"><div><a href="#en-bref"><b>1</b>En bref</a><a href="#objectifs"><b>2</b>Objectifs de fin d&#x27;année</a><a href="#competences"><b>3</b>Compétences</a><a href="#sons-ecriture"><b>4</b>Sons et écriture</a><a href="#lexique"><b>5</b>Lexique</a><a href="#grammaire"><b>6</b>Grammaire</a><a href="#dialogues"><b>7</b>Dialogues</a><a href="#lecture"><b>8</b>Lecture</a><a href="#culture"><b>9</b>Culture et découverte du monde</a><a href="#progression"><b>10</b>Progression semaine par semaine</a><a href="#differencier"><b>11</b>Différencier</a><a href="#evaluation"><b>12</b>Évaluation</a><a href="#numerique"><b>13</b>Numérique et familles</a></div></nav>
+<main id="contenu"><section id="en-bref"><div class="tete"><span class="num" aria-hidden="true">1</span><h2>En bref</h2><p class="ar" lang="ar" dir="rtl">بِإِيجَاز</p></div><div class="corps"><div class="chiffres"><div><span class="valeur">75 h</span><span class="libelle">Volume : 30 semaines de 2 h 30</span></div><div><span class="valeur">84</span><span class="libelle">Entrées nouvelles</span></div><div><span class="valeur">84</span><span class="libelle">Entrées cumulées</span></div><div><span class="valeur">5</span><span class="libelle">Dialogues</span></div><div><span class="valeur">44</span><span class="libelle">Répliques</span></div><div><span class="valeur">70 %</span><span class="libelle">Part de l&#x27;oral</span></div></div></div></section><section id="objectifs"><div class="tete"><span class="num" aria-hidden="true">2</span><h2>Objectifs de fin d&#x27;année</h2><p class="ar" lang="ar" dir="rtl">أَهْدَافُ نِهَايَةِ السَّنَة</p></div><div class="corps"><ul><li>Apprivoiser l&#x27;oreille : reconnaître les sons propres à l&#x27;arabe et les 28 lettres à l&#x27;écoute.</li><li>Découvrir le geste graphique : tenir son crayon, écrire de droite à gauche, tracer les lettres isolées.</li><li>Construire un premier vocabulaire oral, utile en classe et à la maison, à travers des rituels, des jeux et des comptines.</li><li>Aimer venir en cours d&#x27;arabe et oser parler devant les autres.</li></ul><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>À 6-8 ans, on apprend par le plaisir, le jeu et la répétition. On ne cherche pas la perfection mais la familiarité avec la langue : l&#x27;élève doit d&#x27;abord aimer venir en cours d&#x27;arabe.</p></aside></div></section><section id="competences"><div class="tete"><span class="num" aria-hidden="true">3</span><h2>Compétences</h2><p class="ar" lang="ar" dir="rtl">الكَفَاءَات</p></div><div class="corps"><div class="grille-4"><div class="competence"><h3>Compréhension orale <span class="poids">40 %</span></h3><div class="jauge" aria-hidden="true"><span style="width:40%"></span></div><ul><li>Dans les activités habituelles, je peux réagir à quatre consignes connues (s&#x27;asseoir, se lever, regarder, écouter), dites lentement, avec un geste si besoin.</li><li>Je peux comprendre une salutation et y répondre.</li><li>Je peux comprendre la question sur mon prénom ou sur mon âge, posée lentement.</li><li>Je peux montrer l&#x27;image qui correspond à un mot connu que j&#x27;entends (couleur, animal, objet).</li></ul></div><div class="competence"><h3>Production orale <span class="poids">30 %</span></h3><div class="jauge" aria-hidden="true"><span style="width:30%"></span></div><ul><li>Je peux saluer et prendre congé avec les formules apprises.</li><li>Dans un échange préparé avec un camarade ou l&#x27;enseignant, je peux donner mon prénom et mon âge à l&#x27;aide de formules mémorisées.</li><li>Je peux nommer des couleurs, des objets et des animaux connus, et compter jusqu&#x27;à 10.</li><li>Je peux dire si je suis content ou triste avec une formule apprise.</li></ul></div><div class="competence"><h3>Compréhension écrite <span class="poids">15 %</span></h3><div class="jauge" aria-hidden="true"><span style="width:15%"></span></div><ul><li>Je peux reconnaître une lettre isolée étudiée, même présentée dans le désordre.</li><li>Je peux lire une syllabe avec fatḥa, kasra ou ḍamma.</li><li>Avec l&#x27;enseignant, je peux décoder un mot court dont les lettres restent isolées (<span class="ar" lang="ar" dir="rtl">أَبْ، أَخْ</span>).</li></ul></div><div class="competence"><h3>Production écrite <span class="poids">15 %</span></h3><div class="jauge" aria-hidden="true"><span style="width:15%"></span></div><ul><li>Je peux tenir mon crayon et tracer de droite à gauche.</li><li>Avec un modèle, je peux reproduire lisiblement les lettres étudiées.</li><li>Avec un modèle préparé par l&#x27;enseignant, je peux recopier mon prénom en arabe.</li></ul></div></div><div class="bloc reperes"><h3>Repères sons et lettres</h3><p class="note">Ils servent la compréhension orale et la lecture ; ils ne sont pas pondérés à part.</p><ul><li>Je peux reconnaître le nom d&#x27;une lettre, puis le son qu&#x27;elle note : « bāʾ » note le son /b/, et <span class="ar" lang="ar" dir="rtl">بَ</span> se lit « ba ».</li><li>Je peux distinguer à l&#x27;écoute <span class="ar" lang="ar" dir="rtl">ح</span> / <span class="ar" lang="ar" dir="rtl">ه</span>, <span class="ar" lang="ar" dir="rtl">ع</span> / <span class="ar" lang="ar" dir="rtl">ء</span>, <span class="ar" lang="ar" dir="rtl">ص</span> / <span class="ar" lang="ar" dir="rtl">س</span>, <span class="ar" lang="ar" dir="rtl">ض</span> / <span class="ar" lang="ar" dir="rtl">د</span>, <span class="ar" lang="ar" dir="rtl">ط</span> / <span class="ar" lang="ar" dir="rtl">ت</span> et <span class="ar" lang="ar" dir="rtl">ق</span> / <span class="ar" lang="ar" dir="rtl">ك</span>, d&#x27;abord dans des syllabes.</li><li>Je peux repérer une voyelle brève : « a », « i » ou « ou ».</li><li>Je peux chanter la comptine de l&#x27;alphabet : c&#x27;est un aide-mémoire, pas la preuve que je reconnais les lettres.</li></ul></div></div></section><section id="sons-ecriture"><div class="tete"><span class="num" aria-hidden="true">4</span><h2>Sons et écriture</h2><p class="ar" lang="ar" dir="rtl">الأَصْوَاتُ وَالكِتَابَة</p></div><div class="corps"><p>Deux fils courent toute l&#x27;année : l&#x27;oreille (reconnaître les sons propres à l&#x27;arabe et les 28 lettres) et la main (le geste d&#x27;écriture, de droite à gauche). On entend et on dit avant de lire et d&#x27;écrire.</p><div class="bloc"><h3>Paires de sons</h3><p>Six paires à faire entendre, répéter et distinguer : <span class="ar" lang="ar" dir="rtl">ح</span> / <span class="ar" lang="ar" dir="rtl">ه</span> (son de la gorge, pharyngal, face au souffle léger, laryngal) ; <span class="ar" lang="ar" dir="rtl">ع</span> / <span class="ar" lang="ar" dir="rtl">ء</span> (ʿayn, pharyngal, face à la hamza, coup de glotte ; en début de mot, la hamza s&#x27;écrit sur un alif, au-dessus (<span class="ar" lang="ar" dir="rtl">أَ، أُ</span>) ou au-dessous (<span class="ar" lang="ar" dir="rtl">إِ</span>) selon la voyelle) ; <span class="ar" lang="ar" dir="rtl">ص</span> / <span class="ar" lang="ar" dir="rtl">س</span>, <span class="ar" lang="ar" dir="rtl">ض</span> / <span class="ar" lang="ar" dir="rtl">د</span> et <span class="ar" lang="ar" dir="rtl">ط</span> / <span class="ar" lang="ar" dir="rtl">ت</span> (emphatique, prononcée avec la langue creusée, face à simple) ; <span class="ar" lang="ar" dir="rtl">ق</span> / <span class="ar" lang="ar" dir="rtl">ك</span> (uvulaire, tout au fond de la bouche, face à vélaire). Chaque paire est travaillée à l&#x27;écoute quand la première de ses lettres est découverte.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">حَ / هَ</span> <span class="ar" lang="ar" dir="rtl">عَ / ءَ</span> <span class="ar" lang="ar" dir="rtl">صَ / سَ</span> <span class="ar" lang="ar" dir="rtl">ضَ / دَ</span> <span class="ar" lang="ar" dir="rtl">طَ / تَ</span> <span class="ar" lang="ar" dir="rtl">قَ / كَ</span> <span class="ar" lang="ar" dir="rtl">عَيْن / أَيْنَ</span> <span class="ar" lang="ar" dir="rtl">قَلْب / كَلْب</span></p></div><div class="bloc"><h3>Voyelles brèves et sukūn</h3><p>Trois voyelles brèves s&#x27;écrivent au-dessus ou au-dessous de la lettre : la fatḥa (« a » bref), la kasra (« i » bref) et la ḍamma (« ou » bref). Le sukūn indique que la lettre n&#x27;a pas de voyelle, comme dans <span class="ar" lang="ar" dir="rtl">قِفْ</span>. On les fait d&#x27;abord entendre et mimer (bouche ouverte, sourire, bouche arrondie), puis reconnaître sur les lettres.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">فَتْحَة ـَ</span> <span class="ar" lang="ar" dir="rtl">كَسْرَة ـِ</span> <span class="ar" lang="ar" dir="rtl">ضَمَّة ـُ</span> <span class="ar" lang="ar" dir="rtl">سُكُون ـْ</span></p></div><div class="bloc"><h3>L&#x27;alphabet : les 28 lettres isolées</h3><p>Trimestre 1 : de <span class="ar" lang="ar" dir="rtl">ا</span> à <span class="ar" lang="ar" dir="rtl">ز</span>, 11 lettres (<span class="ar" lang="ar" dir="rtl">ا ب ت ث ج ح خ د ذ ر ز</span>). Trimestre 2 : de <span class="ar" lang="ar" dir="rtl">س</span> à <span class="ar" lang="ar" dir="rtl">ق</span>, 10 lettres (<span class="ar" lang="ar" dir="rtl">س ش ص ض ط ظ ع غ ف ق</span>). Trimestre 3 : de <span class="ar" lang="ar" dir="rtl">ك</span> à <span class="ar" lang="ar" dir="rtl">ي</span>, 7 lettres (<span class="ar" lang="ar" dir="rtl">ك ل م ن ه و ي</span>), puis révision de tout l&#x27;alphabet. Chaque lettre est découverte par son son, son nom et un mot connu ; la comptine de l&#x27;alphabet se chante toute l&#x27;année.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">أَلِف</span> <span class="ar" lang="ar" dir="rtl">بَاء</span> <span class="ar" lang="ar" dir="rtl">تَاء</span> <span class="ar" lang="ar" dir="rtl">ثَاء</span></p></div><div class="bloc"><h3>Tracé des 12 lettres sans point (trimestres 1 et 2)</h3><p><span class="ar" lang="ar" dir="rtl">ا ح د ر س ص ط ع ل م و ه</span> : ces lettres permettent d&#x27;apprendre le geste de base, de droite à gauche, sans la difficulté des points. Trimestre 1 : <span class="ar" lang="ar" dir="rtl">ا ح د ر و ل</span> ; trimestre 2 : <span class="ar" lang="ar" dir="rtl">س ص ط ع م ه</span>. L&#x27;ordre du tracé suit la difficulté du geste, pas l&#x27;ordre de l&#x27;alphabet : <span class="ar" lang="ar" dir="rtl">و</span>, <span class="ar" lang="ar" dir="rtl">ل</span>, <span class="ar" lang="ar" dir="rtl">م</span> et <span class="ar" lang="ar" dir="rtl">ه</span> sont tracées avant d&#x27;être étudiées dans la suite de l&#x27;alphabet. On trace dans l&#x27;air, au tableau, sur l&#x27;ardoise, puis sur le cahier, en tenant correctement son crayon.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">ا</span> <span class="ar" lang="ar" dir="rtl">ح</span> <span class="ar" lang="ar" dir="rtl">د</span> <span class="ar" lang="ar" dir="rtl">ر</span> <span class="ar" lang="ar" dir="rtl">س</span> <span class="ar" lang="ar" dir="rtl">ص</span> <span class="ar" lang="ar" dir="rtl">ط</span> <span class="ar" lang="ar" dir="rtl">ع</span> <span class="ar" lang="ar" dir="rtl">ل</span> <span class="ar" lang="ar" dir="rtl">م</span> <span class="ar" lang="ar" dir="rtl">و</span> <span class="ar" lang="ar" dir="rtl">ه</span></p></div><div class="bloc"><h3>Tracé des lettres pointées isolées (trimestres 2 et 3)</h3><p>Les 16 autres lettres, en position isolée. Dès le trimestre 2, la famille la plus simple, <span class="ar" lang="ar" dir="rtl">ب ت ث</span>, avec <span class="ar" lang="ar" dir="rtl">ن</span> et <span class="ar" lang="ar" dir="rtl">ي</span>, s&#x27;ajoute aux lettres sans point. Au trimestre 3 : <span class="ar" lang="ar" dir="rtl">ج خ ذ ز ش ض ظ غ ف ق</span>, et <span class="ar" lang="ar" dir="rtl">ك</span>, qui porte un petit signe à l&#x27;intérieur. On trace d&#x27;abord la forme, puis on pose le ou les points ; les familles de forme aident (<span class="ar" lang="ar" dir="rtl">ب ت ث</span>, <span class="ar" lang="ar" dir="rtl">ح ج خ</span>, <span class="ar" lang="ar" dir="rtl">د ذ</span>, <span class="ar" lang="ar" dir="rtl">ر ز</span>, <span class="ar" lang="ar" dir="rtl">س ش</span>, <span class="ar" lang="ar" dir="rtl">ص ض</span>, <span class="ar" lang="ar" dir="rtl">ط ظ</span>, <span class="ar" lang="ar" dir="rtl">ع غ</span>). Le nombre de points n&#x27;est pas le seul critère : taille, mouvement et changements de direction guident l&#x27;ordre. Trois niveaux d&#x27;attente : tous reconnaissent les lettres ; l&#x27;objectif d&#x27;écriture est de reproduire lisiblement, avec modèle, les lettres étudiées ; tracer seul les 28 lettres est un approfondissement.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">ب ت ث</span> <span class="ar" lang="ar" dir="rtl">ن ي</span> <span class="ar" lang="ar" dir="rtl">ج خ</span> <span class="ar" lang="ar" dir="rtl">ذ ز</span> <span class="ar" lang="ar" dir="rtl">ش</span> <span class="ar" lang="ar" dir="rtl">ض ظ</span> <span class="ar" lang="ar" dir="rtl">غ</span> <span class="ar" lang="ar" dir="rtl">ف ق</span> <span class="ar" lang="ar" dir="rtl">ك</span></p></div><div class="bloc"><h3>Syllabes : consonne + voyelle brève</h3><p>On lit d&#x27;abord des syllabes ouvertes (une consonne et une voyelle brève), puis des mots courts dont toutes les lettres gardent leur forme isolée, parce qu&#x27;elles suivent une lettre qui ne se lie pas : <span class="ar" lang="ar" dir="rtl">أَبْ، أَخْ، رَأْسْ، أُذُنْ، دَارْ</span>. L&#x27;enfant les décode vraiment, sans les formes liées de l&#x27;année 2 ; le sukūn final marque la lecture à la pause. Jeu : l&#x27;enseignant dit une syllabe, l&#x27;élève montre la bonne carte.</p><p class="exemples"><span class="ar" lang="ar" dir="rtl">بَ بِ بُ</span> <span class="ar" lang="ar" dir="rtl">تَ تِ تُ</span> <span class="ar" lang="ar" dir="rtl">دَ دِ دُ</span> <span class="ar" lang="ar" dir="rtl">أَبْ</span> <span class="ar" lang="ar" dir="rtl">أَخْ</span> <span class="ar" lang="ar" dir="rtl">رَأْسْ</span> <span class="ar" lang="ar" dir="rtl">أُذُنْ</span> <span class="ar" lang="ar" dir="rtl">دَارْ</span></p></div><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Faites des paires minimales un jeu : vous prononcez une syllabe (<span class="ar" lang="ar" dir="rtl">حَ</span> ou <span class="ar" lang="ar" dir="rtl">هَ</span>), l&#x27;élève lève la carte qui correspond. Reprenez ces exercices d&#x27;écoute quelques minutes à chaque cours, tout au long de l&#x27;année.</p></aside></div></section><section id="lexique"><div class="tete"><span class="num" aria-hidden="true">5</span><h2>Lexique</h2><p class="ar" lang="ar" dir="rtl">المُفْرَدَات</p></div><div class="corps"><h3>Les couleurs <span class="ar" lang="ar" dir="rtl">الأَلْوَان</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَحْمَر</span></td><td>aḥmar</td><td>rouge</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَزْرَق</span></td><td>azraq</td><td>bleu</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَخْضَر</span></td><td>akhḍar</td><td>vert</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَصْفَر</span></td><td>aṣfar</td><td>jaune</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَبْيَض</span></td><td>abyaḍ</td><td>blanc</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَسْوَد</span></td><td>aswad</td><td>noir</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">بُرْتُقَالِيّ</span></td><td>burtuqālī</td><td>orange</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَرْدِيّ</span></td><td>wardī</td><td>rose</td><td>production</td></tr></tbody></table></div><h3>Les nombres de 1 à 10 <span class="ar" lang="ar" dir="rtl">الأَعْدَاد</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَاحِد</span></td><td>wāḥid</td><td>un (1)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اِثْنَان</span></td><td>ithnān</td><td>deux (2)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">ثَلَاثَة</span></td><td>thalātha</td><td>trois (3)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَرْبَعَة</span></td><td>arbaʿa</td><td>quatre (4)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">خَمْسَة</span></td><td>khamsa</td><td>cinq (5)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سِتَّة</span></td><td>sitta</td><td>six (6)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سَبْعَة</span></td><td>sabʿa</td><td>sept (7)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">ثَمَانِيَة</span></td><td>thamāniya</td><td>huit (8)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">تِسْعَة</span></td><td>tisʿa</td><td>neuf (9)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">عَشَرَة</span></td><td>ʿashara</td><td>dix (10)</td><td>production</td></tr></tbody></table></div><h3>Salutations et politesse <span class="ar" lang="ar" dir="rtl">التَّحِيَّات</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ</span></td><td>as-salāmu ʿalaykum</td><td>bonjour (mot à mot : que la paix soit sur vous)</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَعَلَيْكُمُ السَّلَام</span></td><td>wa ʿalaykumu s-salām</td><td>réponse : et sur vous la paix</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">صَبَاحُ الخَيْر</span></td><td>ṣabāḥu l-khayr</td><td>bonjour (le matin)</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">صَبَاحُ النُّور</span></td><td>ṣabāḥu n-nūr</td><td>réponse à « bonjour » le matin</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَسَاءُ الخَيْر</span></td><td>masāʾu l-khayr</td><td>bonjour (l&#x27;après-midi), bonsoir</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَعَ السَّلَامَة</span></td><td>maʿa s-salāma</td><td>au revoir</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">إِلَى اللِّقَاء</span></td><td>ilā l-liqāʾ</td><td>à bientôt</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">شُكْرًا</span></td><td>shukran</td><td>merci</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">عَفْوًا</span></td><td>ʿafwan</td><td>de rien</td><td>formule</td></tr></tbody></table></div><h3>Formules du quotidien <span class="ar" lang="ar" dir="rtl">عِبَارَاتٌ يَوْمِيَّة</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">بِسْمِ اللّٰهِ</span></td><td>bismi llāh</td><td>au nom de Dieu (avant de commencer)</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">الحَمْدُ لِلّٰهِ</span></td><td>al-ḥamdu lillāh</td><td>Dieu merci (réponse courante, comprise par tous ; chacun peut dire aussi « <span class="ar" lang="ar" dir="rtl">بِخَيْرٍ، شُكْرًا</span> »)</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">إِنْ شَاءَ اللّٰهُ</span></td><td>in shāʾa llāh</td><td>si Dieu le veut (pour parler de ce qui va arriver)</td><td>compréhension</td></tr></tbody></table></div><h3>Quatre consignes et un encouragement (garçon / fille) <span class="ar" lang="ar" dir="rtl">تَعْلِيمَاتُ القِسْم</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اِجْلِسْ / اِجْلِسِي</span></td><td>ijlis / ijlisī</td><td>assieds-toi</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">قِفْ / قِفِي</span></td><td>qif / qifī</td><td>lève-toi</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اُنْظُرْ / اُنْظُرِي</span></td><td>unẓur / unẓurī</td><td>regarde</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اِسْمَعْ / اِسْمَعِي</span></td><td>ismaʿ / ismaʿī</td><td>écoute</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَحْسَنْتَ / أَحْسَنْتِ</span></td><td>aḥsanta / aḥsanti</td><td>bravo, très bien (encouragement)</td><td>compréhension</td></tr></tbody></table></div><h3>Les émotions <span class="ar" lang="ar" dir="rtl">المَشَاعِر</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سَعِيد / سَعِيدَة</span></td><td>saʿīd / saʿīda</td><td>content, heureux / contente, heureuse</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">حَزِين / حَزِينَة</span></td><td>ḥazīn / ḥazīna</td><td>triste</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">غَاضِب / غَاضِبَة</span></td><td>ghāḍib / ghāḍiba</td><td>en colère</td><td>production</td></tr></tbody></table></div><h3>Le corps <span class="ar" lang="ar" dir="rtl">الجِسْم</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">رَأْس</span></td><td>raʾs</td><td>tête</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">عَيْن</span></td><td>ʿayn</td><td>œil</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أُذُن</span></td><td>udhun</td><td>oreille</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">فَم</span></td><td>fam</td><td>bouche</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">يَد</span></td><td>yad</td><td>main</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">رِجْل</span></td><td>rijl</td><td>jambe, pied</td><td>production</td></tr></tbody></table></div><h3>Les animaux <span class="ar" lang="ar" dir="rtl">الحَيَوَانَات</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">قِطّ</span></td><td>qiṭṭ</td><td>chat</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كَلْب</span></td><td>kalb</td><td>chien</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">طَائِر</span></td><td>ṭāʾir</td><td>oiseau</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سَمَكَة</span></td><td>samaka</td><td>poisson</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَرْنَب</span></td><td>arnab</td><td>lapin</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">دَجَاجَة</span></td><td>dajāja</td><td>poule</td><td>production</td></tr></tbody></table></div><h3>Les objets de la classe <span class="ar" lang="ar" dir="rtl">فِي القِسْم</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كِتَاب</span></td><td>kitāb</td><td>livre</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">دَفْتَر</span></td><td>daftar</td><td>cahier</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">قَلَم</span></td><td>qalam</td><td>crayon, stylo</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">طَاوِلَة</span></td><td>ṭāwila</td><td>table</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كُرْسِيّ</span></td><td>kursī</td><td>chaise</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سَبُّورَة</span></td><td>sabbūra</td><td>tableau</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">حَقِيبَة</span></td><td>ḥaqība</td><td>sac, cartable</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مِمْحَاة</span></td><td>mimḥāh</td><td>gomme</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مِسْطَرَة</span></td><td>misṭara</td><td>règle</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَرَقَة</span></td><td>waraqa</td><td>feuille</td><td>production</td></tr></tbody></table></div><h3>La nourriture <span class="ar" lang="ar" dir="rtl">الطَّعَام</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">خُبْز</span></td><td>khubz</td><td>pain</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَاء</span></td><td>māʾ</td><td>eau</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">حَلِيب</span></td><td>ḥalīb</td><td>lait</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">تُفَّاحَة</span></td><td>tuffāḥa</td><td>pomme</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَوْزَة</span></td><td>mawza</td><td>banane</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">عَصِير</span></td><td>ʿaṣīr</td><td>jus</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كَعْكَة</span></td><td>kaʿka</td><td>gâteau</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">حَلْوَى</span></td><td>ḥalwā</td><td>bonbon</td><td>compréhension</td></tr></tbody></table></div><h3>La famille <span class="ar" lang="ar" dir="rtl">العَائِلَة</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">بَابَا / أَب</span></td><td>bābā / ab</td><td>papa / père</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَامَا / أُمّ</span></td><td>māmā / umm</td><td>maman / mère</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَخ</span></td><td>akh</td><td>frère</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أُخْت</span></td><td>ukht</td><td>sœur</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">جَدّ</span></td><td>jadd</td><td>grand-père</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">جَدَّة</span></td><td>jadda</td><td>grand-mère</td><td>production</td></tr></tbody></table></div><h3>Mots outils <span class="ar" lang="ar" dir="rtl">كَلِمَاتٌ أَسَاسِيَّة</span></h3><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Transcription</th><th scope="col">Français</th><th scope="col">Usage</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">نَعَمْ</span></td><td>naʿam</td><td>oui</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">لَا</span></td><td>lā</td><td>non</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَ</span></td><td>wa</td><td>et</td><td>formule</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَنَا</span></td><td>anā</td><td>moi, je</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَنْتَ / أَنْتِ</span></td><td>anta / anti</td><td>toi (garçon / fille)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">هَذَا</span></td><td>hādhā</td><td>voici, c&#x27;est (masculin)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">هَذِهِ</span></td><td>hādhihi</td><td>voici, c&#x27;est (féminin)</td><td>production</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَا / مَاذَا</span></td><td>mā / mādhā</td><td>quoi ? qu&#x27;est-ce que ?</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَيْنَ</span></td><td>ayna</td><td>où ?</td><td>compréhension</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">هَلْ</span></td><td>hal</td><td>est-ce que ? (question)</td><td>compréhension</td></tr></tbody></table></div><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Étiquetez les objets de la classe en arabe : les élèves voient les mots tous les jours et les retiennent sans effort. Pour les animaux, des images ou des peluches rendent les mots concrets ; les enfants aiment parler de leurs animaux. La colonne « Usage » dit ce qu&#x27;on attend : « production » (l&#x27;élève dit le mot), « compréhension » (il le reconnaît quand il l&#x27;entend), « formule » (expression apprise d&#x27;un bloc).</p></aside></div></section><section id="grammaire"><div class="tete"><span class="num" aria-hidden="true">6</span><h2>Grammaire</h2><p class="ar" lang="ar" dir="rtl">القَوَاعِد</p></div><div class="corps"><div class="bloc"><h3>Formules utiles</h3><p>En année 1, ces phrases sont apprises par cœur comme des formules, sans explication de grammaire : on les répète en chœur, puis en chaîne, puis en binôme. On s&#x27;adresse à un garçon au masculin (<span class="ar" lang="ar" dir="rtl">حَالُكَ، اسْمُكَ</span>) et à une fille au féminin (<span class="ar" lang="ar" dir="rtl">حَالُكِ، اسْمُكِ</span>). Les règles (pronoms suffixes, démonstratifs, phrase nominale) sont expliquées en année 2. Pour « comment vas-tu ? », la réponse attendue de tous est « <span class="ar" lang="ar" dir="rtl">بِخَيْرٍ، شُكْرًا</span> » ; « <span class="ar" lang="ar" dir="rtl">الحَمْدُ لِلّٰهِ</span> » est une réponse courante que les élèves comprennent et emploient s&#x27;ils le souhaitent.</p><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Français</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَا اسْمُكَ؟ / مَا اسْمُكِ؟</span></td><td>Comment t&#x27;appelles-tu ? (à un garçon / à une fille)</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اِسْمِي آدَمُ. / اِسْمِي سَارَةُ.</span></td><td>Je m&#x27;appelle Adam. / Je m&#x27;appelle Sara.</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كَيْفَ حَالُكَ؟ / كَيْفَ حَالُكِ؟</span></td><td>Comment vas-tu ? (à un garçon / à une fille)</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">أَنَا بِخَيْرٍ، شُكْرًا. وَأَنْتَ؟ / وَأَنْتِ؟</span></td><td>Je vais bien, merci. Et toi ?</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">كَمْ عُمْرُكَ؟ / كَمْ عُمْرُكِ؟</span></td><td>Quel âge as-tu ? (à un garçon / à une fille)</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">عُمْرِي سِتُّ سَنَوَاتٍ. / عُمْرِي سَبْعُ سَنَوَاتٍ. / عُمْرِي ثَمَانِي سَنَوَاتٍ.</span></td><td>J&#x27;ai six ans. / J&#x27;ai sept ans. / J&#x27;ai huit ans.</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">هَلْ أَنْتَ سَعِيدٌ؟ / هَلْ أَنْتِ سَعِيدَةٌ؟</span></td><td>Es-tu content ? / Es-tu contente ?</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">نَعَمْ، أَنَا سَعِيدٌ. / لَا، أَنَا حَزِينَةٌ.</span></td><td>Oui, je suis content. / Non, je suis triste (une fille parle).</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَا هَذَا؟ — هَذَا قَلَمٌ.</span></td><td>Qu&#x27;est-ce que c&#x27;est ? — C&#x27;est un crayon. (objet masculin)</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَا هَذِهِ؟ — هَذِهِ حَقِيبَةٌ.</span></td><td>Qu&#x27;est-ce que c&#x27;est ? — C&#x27;est un sac. (objet féminin)</td></tr></tbody></table></div></div><div class="bloc"><h3>Les nombres de 1 à 10</h3><p>On compte de 1 à 5 au trimestre 1, puis de 6 à 10 au trimestre 2 : sur les doigts, avec les objets de la classe, en comptines. En année 1, les nombres se disent seuls, pour compter ; l&#x27;accord du nombre avec le nom compté n&#x27;est pas enseigné, sauf l&#x27;âge, appris comme une formule (<span class="ar" lang="ar" dir="rtl">عُمْرِي سَبْعُ سَنَوَاتٍ</span>). Les nombres s&#x27;écrivent en chiffres 1, 2, 3, comme au Maghreb et en France ; les pays arabes d&#x27;Orient emploient une autre série de chiffres, dits « orientaux », que les référentiels n&#x27;utilisent pas.</p><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Français</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">وَاحِد، اِثْنَان، ثَلَاثَة، أَرْبَعَة، خَمْسَة</span></td><td>1, 2, 3, 4, 5 (trimestre 1)</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">سِتَّة، سَبْعَة، ثَمَانِيَة، تِسْعَة، عَشَرَة</span></td><td>6, 7, 8, 9, 10 (trimestre 2)</td></tr></tbody></table></div></div><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Faites toujours entendre la forme qui convient : <span class="ar" lang="ar" dir="rtl">كَيْفَ حَالُكَ؟</span> à un garçon, <span class="ar" lang="ar" dir="rtl">كَيْفَ حَالُكِ؟</span> à une fille. Les élèves reprennent ces formes sans explication ; la règle vient en année 2.</p></aside></div></section><section id="dialogues"><div class="tete"><span class="num" aria-hidden="true">7</span><h2>Dialogues</h2><p class="ar" lang="ar" dir="rtl">الحِوَارَات</p></div><div class="corps"><p class="note">Les répliques marquées d'un trait sont à produire par l'élève ; les autres sont à comprendre (l'enseignant ou un camarade les dit).</p><article class="dialogue"><h3>Le rituel d&#x27;accueil</h3><p class="lieu">Elne, France, 11 répliques</p><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> السَّلَامُ عَلَيْكُمْ!</p><p class="fr">Bonjour ! (mot à mot : « que la paix soit sur vous »)</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">التَّلَامِيذ :</span> وَعَلَيْكُمُ السَّلَامُ!</p><p class="fr">Bonjour ! (réponse : « et sur vous la paix »)</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> صَبَاحُ الخَيْرِ!</p><p class="fr">Bonjour ! (le matin ; l&#x27;après-midi, on dit <span class="ar" lang="ar" dir="rtl">مَسَاءُ الخَيْرِ</span>)</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">التَّلَامِيذ :</span> صَبَاحُ النُّورِ!</p><p class="fr">Bonjour ! (réponse du matin)</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes, toutes les personnes, au programme de l&#x27;année 3">كَيْفَ حَالُكُمْ</mark>؟</p><p class="fr">Comment allez-vous ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">التَّلَامِيذ :</span> بِخَيْرٍ، شُكْرًا!</p><p class="fr">Bien, merci !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> وَأَنْتِ يَا لِينَا، <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">كَيْفَ حَالُكِ</mark>؟</p><p class="fr">Et toi, Lina, comment vas-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">لِينَا :</span> <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا بِخَيْرٍ</mark>، شُكْرًا!</p><p class="fr">Je vais bien, merci !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> وَأَنْتَ يَا يَانِيسُ؟</p><p class="fr">Et toi, Yanis ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">يَانِيس :</span> بِخَيْرٍ، شُكْرًا!</p><p class="fr">Bien, merci !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> <mark class="formule" title="Formule à mémoriser : Impératif (masculin et féminin), au programme de l&#x27;année 2">اِجْلِسُوا</mark>!</p><p class="fr">Asseyez-vous !</p></div><p class="note">Formules à mémoriser : Impératif (masculin et féminin) (au programme de l'année 2) ; Phrase nominale (au programme de l'année 2) ; Pronoms suffixes au singulier (au programme de l'année 2) ; Pronoms suffixes, toutes les personnes (au programme de l'année 3).</p></article><article class="dialogue"><h3>Se présenter</h3><p class="lieu">Elne, France, 10 répliques</p><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> السَّلَامُ عَلَيْكُمْ!</p><p class="fr">Bonjour !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">سَارَة :</span> وَعَلَيْكُمُ السَّلَامُ!</p><p class="fr">Bonjour !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">مَا اسْمُكِ</mark>؟</p><p class="fr">Comment t&#x27;appelles-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">سَارَة :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">اِسْمِي</mark> سَارَةُ. وَأَنْتَ، <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">مَا اسْمُكَ</mark>؟</p><p class="fr">Je m&#x27;appelle Sara. Et toi, comment t&#x27;appelles-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">اِسْمِي</mark> آدَمُ. وَ<mark class="formule" title="Formule à mémoriser : Démonstratifs, au programme de l&#x27;année 2">هَذَا</mark> أَمِينٌ.</p><p class="fr">Je m&#x27;appelle Adam. Et voici Amine.</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">أَمِين :</span> صَبَاحُ الخَيْرِ يَا سَارَةُ!</p><p class="fr">Bonjour, Sara !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">سَارَة :</span> صَبَاحُ النُّورِ يَا أَمِينُ! <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">كَيْفَ حَالُكَ</mark>؟</p><p class="fr">Bonjour, Amine ! Comment vas-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">أَمِين :</span> <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا بِخَيْرٍ</mark>، شُكْرًا. وَأَنْتِ؟</p><p class="fr">Je vais bien, merci. Et toi ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">سَارَة :</span> <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا بِخَيْرٍ</mark>. مَعَ السَّلَامَةِ!</p><p class="fr">Je vais bien. Au revoir !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم وَأَمِين :</span> مَعَ السَّلَامَةِ يَا سَارَةُ!</p><p class="fr">Au revoir, Sara !</p></div><p class="note">Formules à mémoriser : Démonstratifs (au programme de l'année 2) ; Phrase nominale (au programme de l'année 2) ; Pronoms suffixes au singulier (au programme de l'année 2).</p></article><article class="dialogue"><h3>Mon âge et mon humeur</h3><p class="lieu">Elne, France, 10 répliques</p><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> صَبَاحُ الخَيْرِ يَا إِينَاسُ! <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">كَمْ عُمْرُكِ</mark>؟</p><p class="fr">Bonjour, Inès ! Quel âge as-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">إِينَاس :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">عُمْرِي</mark> <mark class="formule" title="Formule à mémoriser : Pluriels (sain et brisé), au programme de l&#x27;année 3">سَبْعُ سَنَوَاتٍ</mark>.</p><p class="fr">J&#x27;ai sept ans.</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> وَأَنْتَ يَا يَانِيسُ، <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">كَمْ عُمْرُكَ</mark>؟</p><p class="fr">Et toi, Yanis, quel âge as-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">يَانِيس :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">عُمْرِي</mark> <mark class="formule" title="Formule à mémoriser : Pluriels (sain et brisé), au programme de l&#x27;année 3">ثَمَانِي سَنَوَاتٍ</mark>.</p><p class="fr">J&#x27;ai huit ans.</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> هَلْ <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنْتَ سَعِيدٌ</mark>؟</p><p class="fr">Es-tu content ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">يَانِيس :</span> نَعَمْ، <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا سَعِيدٌ</mark>!</p><p class="fr">Oui, je suis content !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> وَأَنْتِ يَا إِينَاسُ، هَلْ <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنْتِ سَعِيدَةٌ</mark>؟</p><p class="fr">Et toi, Inès, es-tu contente ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">إِينَاس :</span> لَا، <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا حَزِينَةٌ</mark>.</p><p class="fr">Non, je suis triste.</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> <mark class="formule" title="Formule à mémoriser : Impératif (masculin et féminin), au programme de l&#x27;année 2">اُنْظُرِي</mark> يَا إِينَاسُ: <mark class="formule" title="Formule à mémoriser : Démonstratifs, au programme de l&#x27;année 2">هَذَا قِطٌّ</mark>!</p><p class="fr">Regarde, Inès : voici un chat ! (elle montre une peluche)</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">إِينَاس :</span> <mark class="formule" title="Formule à mémoriser : Genre et accord, au programme de l&#x27;année 2">قِطٌّ بُرْتُقَالِيٌّ</mark>! <mark class="formule" title="Formule à mémoriser : Phrase nominale, au programme de l&#x27;année 2">أَنَا سَعِيدَةٌ</mark>!</p><p class="fr">Un chat orange ! Je suis contente !</p></div><p class="note">Formules à mémoriser : Démonstratifs (au programme de l'année 2) ; Genre et accord (au programme de l'année 2) ; Impératif (masculin et féminin) (au programme de l'année 2) ; Phrase nominale (au programme de l'année 2) ; Pluriels (sain et brisé) (au programme de l'année 3) ; Pronoms suffixes au singulier (au programme de l'année 2).</p></article><article class="dialogue"><h3>Le rituel de clôture</h3><p class="lieu">Elne, France, 9 répliques</p><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> <mark class="formule" title="Formule à mémoriser : Passé (accompli), au programme de l&#x27;année 4">أَحْسَنْتُمْ</mark>!</p><p class="fr">Bravo à tous !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">التَّلَامِيذ :</span> شُكْرًا!</p><p class="fr">Merci !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> يَا آدَمُ، أَيْنَ <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">حَقِيبَتُكَ</mark>؟</p><p class="fr">Adam, où est ton sac ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> <mark class="formule" title="Formule à mémoriser : Démonstratifs, au programme de l&#x27;année 2">هَذِهِ</mark> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">حَقِيبَتِي</mark>!</p><p class="fr">Voici mon sac !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">لِينَا :</span> وَ<mark class="formule" title="Formule à mémoriser : Démonstratifs, au programme de l&#x27;année 2">هَذَا</mark> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">قَلَمُكَ</mark> يَا آدَمُ!</p><p class="fr">Et voici ton crayon, Adam !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> شُكْرًا يَا لِينَا!</p><p class="fr">Merci, Lina !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">لِينَا :</span> عَفْوًا!</p><p class="fr">De rien !</p></div><div class="replique"><p class="ar" lang="ar" dir="rtl"><span class="qui">المُعَلِّمَة :</span> <mark class="formule" title="Formule à mémoriser : Passé (accompli), au programme de l&#x27;année 4">أَحْسَنْتِ</mark> يَا لِينَا! إِلَى اللِّقَاءِ!</p><p class="fr">Bravo, Lina ! À bientôt !</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">التَّلَامِيذ :</span> مَعَ السَّلَامَةِ!</p><p class="fr">Au revoir !</p></div><p class="note">Formules à mémoriser : Démonstratifs (au programme de l'année 2) ; Passé (accompli) (au programme de l'année 4) ; Pronoms suffixes au singulier (au programme de l'année 2).</p></article><article class="dialogue"><h3>La ronde des prénoms (microdialogue à faire varier)</h3><p class="lieu">Elne, France, 4 répliques</p><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">مَا اسْمُكِ</mark>؟</p><p class="fr">Comment t&#x27;appelles-tu ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">لِينَا :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">اِسْمِي</mark> لِينَا. وَأَنْتَ؟</p><p class="fr">Je m&#x27;appelle Lina. Et toi ?</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">آدَم :</span> <mark class="formule" title="Formule à mémoriser : Pronoms suffixes au singulier, au programme de l&#x27;année 2">اِسْمِي</mark> آدَمُ.</p><p class="fr">Je m&#x27;appelle Adam.</p></div><div class="replique produire"><p class="ar" lang="ar" dir="rtl"><span class="qui">لِينَا :</span> مَعَ السَّلَامَةِ يَا آدَمُ!</p><p class="fr">Au revoir, Adam !</p></div><p class="note">Formules à mémoriser : Pronoms suffixes au singulier (au programme de l'année 2).</p></article><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Les premiers échanges sont très courts et fortement guidés. La mémorisation sécurise la prise de parole ; de petites variations permettent ensuite à l&#x27;élève de choisir une réponse. Pour chaque dialogue : écouter et comprendre, répéter avec gestes ou images, remplacer un prénom, un objet ou une réponse, puis réutiliser dans une situation un peu différente. Jeu de « Jacques a dit », en arabe <span class="ar" lang="ar" dir="rtl">سَمِيرٌ قَالَ</span> : on n&#x27;obéit à la consigne que si elle commence par <span class="ar" lang="ar" dir="rtl">سَمِيرٌ قَالَ</span> (« <span class="ar" lang="ar" dir="rtl">سَمِيرٌ قَالَ</span>: <span class="ar" lang="ar" dir="rtl">اِجْلِسُوا</span>! » : on s&#x27;assoit ; « <span class="ar" lang="ar" dir="rtl">قِفُوا</span>! » : on ne bouge pas).</p></aside></div></section><section id="lecture"><div class="tete"><span class="num" aria-hidden="true">8</span><h2>Lecture</h2><p class="ar" lang="ar" dir="rtl">القِرَاءَة</p></div><div class="corps"><p><strong>Longueur :</strong> lettres isolées, syllabes et mots de 2 à 4 lettres sans forme liée</p><ul><li>Lettres isolées : cartes-lettres, affiche de l&#x27;alphabet, lettres présentées dans le désordre</li><li>Syllabes consonne + voyelle brève : <span class="ar" lang="ar" dir="rtl">بَ بِ بُ</span></li><li>Mots courts aux lettres isolées, décodés avec l&#x27;enseignant : <span class="ar" lang="ar" dir="rtl">أَبْ، أَخْ، رَأْسْ، أُذُنْ، دَارْ</span></li><li>Étiquettes de la classe, reconnues globalement comme des images, sans exigence de décodage</li></ul><p>En année 1, on ne lit pas encore de phrases. On décode des syllabes et des mots courts dont les lettres restent isolées, avec un sukūn final (lecture à la pause) ; les autres mots écrits sont reconnus globalement. Les formes liées viennent en année 2.</p></div></section><section id="culture"><div class="tete"><span class="num" aria-hidden="true">9</span><h2>Culture et découverte du monde</h2><p class="ar" lang="ar" dir="rtl">الثَّقَافَةُ وَاكْتِشَافُ العَالَم</p></div><div class="corps"><div class="bloc"><h3>Comptines et chansons</h3><ul><li>La comptine de l&#x27;alphabet, chantée tout au long de l&#x27;année</li><li>Comptines des couleurs</li><li>Comptines des nombres de 1 à 10</li><li>Comptines des animaux</li><li>Jeux et albums : contes illustrés, comptines filmées, jeux de cour d&#x27;enfants du Maghreb et d&#x27;ailleurs</li></ul></div><div class="bloc"><h3>Géographie</h3><ul><li>Le Maroc, l&#x27;Algérie et la France sur la carte : où se trouve Elne, d&#x27;où viennent certaines familles de la classe</li><li>Les drapeaux du Maroc, de l&#x27;Algérie et de la France (reconnaissance, coloriage)</li><li>Découverte du monde arabe sur une carte simple : la Tunisie voisine et les autres pays où l&#x27;on parle arabe</li></ul></div><aside class="religieux"><h3>Culture religieuse (projet de l&#x27;association)</h3><p>Cet encadré relève du projet de l&#x27;association et n&#x27;entre pas dans l&#x27;évaluation de la langue. Les fêtes sont présentées comme des moments de la vie des familles, sans supposer de pratique religieuse chez les élèves.</p><ul><li>L&#x27;Aïd el-Fitr (<span class="ar" lang="ar" dir="rtl">عِيدُ الفِطْرِ</span>), la fête de la fin du ramadan</li><li>L&#x27;Aïd el-Adha (<span class="ar" lang="ar" dir="rtl">عِيدُ الأَضْحَى</span>), la fête du sacrifice</li><li>Le ramadan (<span class="ar" lang="ar" dir="rtl">رَمَضَان</span>), le mois du jeûne</li></ul><div class="tableau"><table><thead><tr><th scope="col">Arabe</th><th scope="col">Français</th></tr></thead><tbody><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">اللّٰه</span></td><td>Dieu</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">مَسْجِد</span></td><td>mosquée</td></tr><tr><td><span class="ar ar-cellule" lang="ar" dir="rtl">صَلَاة</span></td><td>prière</td></tr></tbody></table></div></aside></div></section><section id="progression"><div class="tete"><span class="num" aria-hidden="true">10</span><h2>Progression semaine par semaine</h2><p class="ar" lang="ar" dir="rtl">التَّوْزِيعُ الأُسْبُوعِيّ</p></div><div class="corps"><div class="tableau"><table><thead><tr><th scope="col">Semaines</th><th scope="col">Thème</th><th scope="col">Lexique</th><th scope="col">Grammaire</th><th scope="col">Sons et écriture</th><th scope="col">Dialogue</th></tr></thead><tbody><tr><td>1-2</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ا ب ت</span></td><td>Salutations : <span class="ar" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ، صَبَاحُ الخَيْرِ، مَعَ السَّلَامَةِ</span>…</td><td>—</td><td>Tenue du crayon, sens de droite à gauche (lignes, boucles) ; écoute des sons de l&#x27;arabe</td><td>Accueil (d1, répliques 1 à 4) ; clôture : <span class="ar" lang="ar" dir="rtl">إِلَى اللِّقَاءِ</span> / <span class="ar" lang="ar" dir="rtl">مَعَ السَّلَامَةِ</span> (d4)</td></tr><tr><td>3-4</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ث ج ح</span></td><td>Couleurs : <span class="ar" lang="ar" dir="rtl">أَحْمَر، أَزْرَق، أَخْضَر، أَصْفَر</span></td><td>Formule : <span class="ar" lang="ar" dir="rtl">كَيْفَ حَالُكُمْ؟</span></td><td>Tracé de <span class="ar" lang="ar" dir="rtl">ا</span> et <span class="ar" lang="ar" dir="rtl">ح</span> ; paire <span class="ar" lang="ar" dir="rtl">ح</span> / <span class="ar" lang="ar" dir="rtl">ه</span> à l&#x27;écoute</td><td>d1, répliques 5 à 8 ; clôture : <span class="ar" lang="ar" dir="rtl">أَحْسَنْتُمْ</span> / <span class="ar" lang="ar" dir="rtl">شُكْرًا</span> (d4)</td></tr><tr><td>5-6</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">خ د ذ</span></td><td>Nombres de 1 à 5 ; quatre consignes (compréhension)</td><td>Formules : <span class="ar" lang="ar" dir="rtl">كَيْفَ حَالُكَ؟</span> / <span class="ar" lang="ar" dir="rtl">كَيْفَ حَالُكِ؟</span> — <span class="ar" lang="ar" dir="rtl">أَنَا بِخَيْرٍ</span></td><td>Tracé de <span class="ar" lang="ar" dir="rtl">د</span> et <span class="ar" lang="ar" dir="rtl">ر</span> ; paire <span class="ar" lang="ar" dir="rtl">د</span> / <span class="ar" lang="ar" dir="rtl">ض</span> à l&#x27;écoute</td><td>d1 complet : réponses individuelles d&#x27;une fille et d&#x27;un garçon</td></tr><tr><td>7-8</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ر ز</span></td><td>Couleurs : <span class="ar" lang="ar" dir="rtl">أَبْيَض، أَسْوَد، بُرْتُقَالِيّ، وَرْدِيّ</span> ; <span class="ar" lang="ar" dir="rtl">أَنَا، أَنْتَ</span> / <span class="ar" lang="ar" dir="rtl">أَنْتِ</span></td><td>Consignes au masculin et au féminin (formules)</td><td>Tracé de <span class="ar" lang="ar" dir="rtl">و</span> et <span class="ar" lang="ar" dir="rtl">ل</span> ; paire <span class="ar" lang="ar" dir="rtl">ت</span> / <span class="ar" lang="ar" dir="rtl">ط</span> à l&#x27;écoute</td><td>d1 en chaîne ; jeu <span class="ar" lang="ar" dir="rtl">سَمِيرٌ قَالَ</span> avec les consignes</td></tr><tr><td>9-10</td><td>Consolidation de <span class="ar" lang="ar" dir="rtl">ا</span> à <span class="ar" lang="ar" dir="rtl">ز</span> (aucune lettre nouvelle) ; bilan du trimestre 1</td><td>Réactivation : salutations, couleurs, nombres de 1 à 5, consignes</td><td>Réactivation des formules</td><td>Révision des 6 lettres tracées ; syllabes avec la fatḥa</td><td>Balle des salutations ; observations du bilan</td></tr><tr><td>11-12</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">س ش ص</span></td><td>Nombres de 6 à 10 ; <span class="ar" lang="ar" dir="rtl">مَا، وَ</span></td><td>Formules : <span class="ar" lang="ar" dir="rtl">مَا اسْمُكَ؟</span> / <span class="ar" lang="ar" dir="rtl">مَا اسْمُكِ؟</span> — <span class="ar" lang="ar" dir="rtl">اِسْمِي</span>…</td><td>Tracé de <span class="ar" lang="ar" dir="rtl">س</span> et <span class="ar" lang="ar" dir="rtl">ص</span> ; paire <span class="ar" lang="ar" dir="rtl">س</span> / <span class="ar" lang="ar" dir="rtl">ص</span> ; la kasra</td><td>d5 La ronde des prénoms, avec variations ; d2, répliques 1 à 5</td></tr><tr><td>13-14</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ض ط ظ</span></td><td>La famille ; <span class="ar" lang="ar" dir="rtl">هَذَا، هَذِهِ</span></td><td>Formules : <span class="ar" lang="ar" dir="rtl">هَذَا</span>… / <span class="ar" lang="ar" dir="rtl">هَذِهِ</span>… (présenter quelqu&#x27;un : <span class="ar" lang="ar" dir="rtl">هَذَا بَابَا، هَذِهِ مَامَا</span>)</td><td>Tracé de <span class="ar" lang="ar" dir="rtl">ط</span> et <span class="ar" lang="ar" dir="rtl">ع</span> ; la ḍamma ; famille pointée <span class="ar" lang="ar" dir="rtl">ب ت ث</span></td><td>d2 complet : présenter un camarade</td></tr><tr><td>15-16</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ع غ ف</span></td><td>Objets de la classe : <span class="ar" lang="ar" dir="rtl">كِتَاب، دَفْتَر، قَلَم، طَاوِلَة، كُرْسِيّ</span></td><td>Formules : <span class="ar" lang="ar" dir="rtl">مَا هَذَا؟</span> — <span class="ar" lang="ar" dir="rtl">هَذَا قَلَمٌ</span></td><td>Tracé de <span class="ar" lang="ar" dir="rtl">م</span> et <span class="ar" lang="ar" dir="rtl">ه</span>, puis <span class="ar" lang="ar" dir="rtl">ن</span> et <span class="ar" lang="ar" dir="rtl">ي</span> ; paire <span class="ar" lang="ar" dir="rtl">ع</span> / <span class="ar" lang="ar" dir="rtl">ء</span> (hamza) ; le sukūn</td><td>d2 en binôme, en changeant les prénoms</td></tr><tr><td>17-18</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ق</span></td><td>Objets de la classe : <span class="ar" lang="ar" dir="rtl">سَبُّورَة، حَقِيبَة، مِمْحَاة، مِسْطَرَة، وَرَقَة</span> ; <span class="ar" lang="ar" dir="rtl">أَيْنَ</span></td><td>Formules : <span class="ar" lang="ar" dir="rtl">مَا هَذِهِ؟</span> — <span class="ar" lang="ar" dir="rtl">هَذِهِ حَقِيبَةٌ</span> ; <span class="ar" lang="ar" dir="rtl">أَيْنَ</span>…<span class="ar" lang="ar" dir="rtl">؟</span></td><td>Paire <span class="ar" lang="ar" dir="rtl">ق</span> / <span class="ar" lang="ar" dir="rtl">ك</span> ; premiers mots aux lettres isolées : <span class="ar" lang="ar" dir="rtl">أَبْ، أَخْ</span></td><td>d4 complet : <span class="ar" lang="ar" dir="rtl">أَيْنَ حَقِيبَتُكَ؟</span> — <span class="ar" lang="ar" dir="rtl">هَذِهِ حَقِيبَتِي</span></td></tr><tr><td>19-20</td><td>Consolidation de <span class="ar" lang="ar" dir="rtl">س</span> à <span class="ar" lang="ar" dir="rtl">ق</span> (aucune lettre nouvelle) ; bilan du trimestre 2</td><td>Réactivation : famille, objets de la classe ; <span class="ar" lang="ar" dir="rtl">نَعَمْ، لَا، هَلْ</span></td><td>Réactivation des nombres de 1 à 10 et des formules</td><td>Révision des 12 lettres sans point et de <span class="ar" lang="ar" dir="rtl">ب ت ث ن ي</span> ; syllabes avec fatḥa, kasra, ḍamma</td><td>d2, d4 et d5 en binôme ; téléphone arabe</td></tr><tr><td>21-22</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ك ل</span></td><td>Les émotions</td><td>Formules : <span class="ar" lang="ar" dir="rtl">كَمْ عُمْرُكَ؟</span> / <span class="ar" lang="ar" dir="rtl">كَمْ عُمْرُكِ؟</span> — <span class="ar" lang="ar" dir="rtl">عُمْرِي سَبْعُ سَنَوَاتٍ</span></td><td>Lettres pointées : <span class="ar" lang="ar" dir="rtl">ج خ ذ ز ش</span></td><td>d3, répliques 1 à 4 : dire son âge</td></tr><tr><td>23-24</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">م ن</span></td><td>Le corps</td><td>Formules : <span class="ar" lang="ar" dir="rtl">هَلْ أَنْتَ سَعِيدٌ؟</span> / <span class="ar" lang="ar" dir="rtl">هَلْ أَنْتِ سَعِيدَةٌ؟</span></td><td>Lettres pointées : <span class="ar" lang="ar" dir="rtl">ض ظ غ ف ق</span>, et <span class="ar" lang="ar" dir="rtl">ك</span> ; mots <span class="ar" lang="ar" dir="rtl">رَأْسْ، أُذُنْ</span></td><td>d3, répliques 5 à 8 : dire son humeur</td></tr><tr><td>25-26</td><td>Alphabet : <span class="ar" lang="ar" dir="rtl">ه و ي</span></td><td>Les animaux</td><td>Formules : <span class="ar" lang="ar" dir="rtl">هَذَا قِطٌّ</span> ; <span class="ar" lang="ar" dir="rtl">أَنَا سَعِيدٌ</span> / <span class="ar" lang="ar" dir="rtl">أَنَا سَعِيدَةٌ</span></td><td>Révision des familles de forme ; mot <span class="ar" lang="ar" dir="rtl">دَارْ</span></td><td>d3 complet, avec des peluches</td></tr><tr><td>27-28</td><td>Les 28 lettres, présentées dans le désordre</td><td>La nourriture (compréhension)</td><td>Compter jusqu&#x27;à 10 (objets, fruits)</td><td>Recopier son prénom avec un modèle</td><td>d1 à d5 enchaînés en binôme ; jeu du miroir</td></tr><tr><td>29-30</td><td>Bilan du trimestre 3 ; fête de fin d&#x27;année</td><td>Réactivation générale du lexique</td><td>Réactivation de toutes les formules</td><td>Les lettres isolées étudiées, avec ou sans modèle selon le niveau</td><td>Révision des dialogues ; observations du bilan</td></tr></tbody></table></div><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Les 2 h 30 forment une seule séance : alternez des blocs de 15 à 20 minutes (rituel, écoute, jeu, écriture, chant) et prévoyez une vraie pause. Avant chaque bilan, deux semaines sans lettre nouvelle servent à consolider. La balle des salutations : l&#x27;élève qui attrape la balle salue et se présente (« <span class="ar" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ</span>! <span class="ar" lang="ar" dir="rtl">اِسْمِي لِينَا</span> »). Le miroir : deux élèves face à face, l&#x27;un parle, l&#x27;autre répète exactement.</p></aside></div></section><section id="differencier"><div class="tete"><span class="num" aria-hidden="true">11</span><h2>Différencier</h2><p class="ar" lang="ar" dir="rtl">مُرَاعَاةُ الفُرُوقِ الفَرْدِيَّة</p></div><div class="corps"><div class="tableau"><table><thead><tr><th scope="col">Besoin</th><th scope="col">Adaptation</th></tr></thead><tbody><tr><td>Diagnostic de rentrée</td><td>Livret de positionnement 1 et entretien : expressions comprises, sons, graphies reconnues, aisance à l&#x27;oral, reproduction de formes simples ; rien n&#x27;est noté.</td></tr><tr><td>Débutant sans exposition à l&#x27;arabe</td><td>Gestes, images, choix entre deux réponses, répétitions supplémentaires.</td></tr><tr><td>Enfant qui entend l&#x27;arabe à la maison</td><td>Comparaisons valorisantes avec le parler familial, travail sur les formes de l&#x27;arabe standard, échanges enrichis.</td></tr><tr><td>Difficulté d&#x27;écriture (motricité)</td><td>Grand format, lettres mobiles, copie réduite ; l&#x27;attente reste « reproduire avec modèle ».</td></tr><tr><td>Élève plus avancé</td><td>Variantes de dialogues, mots décodables supplémentaires, tracé sans modèle (approfondissement).</td></tr></tbody></table></div></div></section><section id="evaluation"><div class="tete"><span class="num" aria-hidden="true">12</span><h2>Évaluation</h2><p class="ar" lang="ar" dir="rtl">التَّقْيِيم</p></div><div class="corps"><ul><li>Chaque critère s&#x27;observe dans une situation précise, avec l&#x27;aide indiquée ; une maîtrise se constate sur au moins deux observations, à des moments différents.</li><li>On observe séparément comprendre, se faire comprendre, interagir, reconnaître les lettres et tracer : un enfant peut réussir l&#x27;un sans l&#x27;autre.</li><li>Les pourcentages pondèrent le bilan de fin d&#x27;année : l&#x27;oral pèse davantage dans les premières années (70 % en année 1), puis les quatre compétences s&#x27;équilibrent (25 % chacune à partir de l&#x27;année 5) ; l&#x27;oral reste prioritaire dans le temps de classe. Pour les familles, on présente un profil de compétences plutôt qu&#x27;une note.</li><li>L&#x27;attestation de fin d&#x27;année est une attestation interne de l&#x27;association : elle ne vaut pas diplôme officiel de niveau CECRL ; les niveaux indiqués (de pré-A1 à B1) sont des objectifs internes du parcours.</li></ul><p>Échelle commune à toutes les années : Maîtrise insuffisante, Maîtrise fragile, Maîtrise satisfaisante, Très bonne maîtrise.</p><div class="tableau"><table><thead><tr><th scope="col">Compétence</th><th scope="col">Poids dans le bilan</th></tr></thead><tbody><tr><td>Compréhension orale</td><td>40 %</td></tr><tr><td>Production orale</td><td>30 %</td></tr><tr><td>Compréhension écrite</td><td>15 %</td></tr><tr><td>Production écrite</td><td>15 %</td></tr></tbody></table></div><h3>Trimestre 1</h3><div class="tableau eval"><table><thead><tr><th scope="col">Compétence</th><th scope="col">Ce que l&#x27;élève fait</th><th scope="col">Situation et aide</th><th scope="col">Insuffisante</th><th scope="col">Fragile</th><th scope="col">Satisfaisante</th><th scope="col">Très bonne</th></tr></thead><tbody><tr><td>Compréhension orale</td><td>Réagit aux quatre consignes connues.</td><td>Jeu <span class="ar" lang="ar" dir="rtl">سَمِيرٌ قَالَ</span>, consignes dites lentement et dans le désordre ; geste permis au début.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension orale</td><td>Distingue <span class="ar" lang="ar" dir="rtl">ت</span> / <span class="ar" lang="ar" dir="rtl">ط</span>, <span class="ar" lang="ar" dir="rtl">ح</span> / <span class="ar" lang="ar" dir="rtl">ه</span> et <span class="ar" lang="ar" dir="rtl">د</span> / <span class="ar" lang="ar" dir="rtl">ض</span> à l&#x27;écoute.</td><td>Syllabes dites par l&#x27;enseignant ; l&#x27;élève lève la bonne carte.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production orale</td><td>Salue et prend congé.</td><td>Rituels d&#x27;accueil et de clôture, observés sur deux séances.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production orale</td><td>Nomme des couleurs et compte jusqu&#x27;à 5.</td><td>Jeu de cartes : l&#x27;élève tire une carte et la nomme.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension écrite</td><td>Reconnaît les lettres isolées de <span class="ar" lang="ar" dir="rtl">ا</span> à <span class="ar" lang="ar" dir="rtl">ز</span>, présentées dans le désordre.</td><td>Cartes-lettres tirées au hasard ; l&#x27;enseignant dit le nom ou le son.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production écrite</td><td>Reproduit avec modèle les lettres sans point étudiées (<span class="ar" lang="ar" dir="rtl">ا ح د ر و ل</span>).</td><td>Ardoise puis cahier, modèle visible ; quantité adaptée à la motricité.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr></tbody></table></div><h3>Trimestre 2</h3><div class="tableau eval"><table><thead><tr><th scope="col">Compétence</th><th scope="col">Ce que l&#x27;élève fait</th><th scope="col">Situation et aide</th><th scope="col">Insuffisante</th><th scope="col">Fragile</th><th scope="col">Satisfaisante</th><th scope="col">Très bonne</th></tr></thead><tbody><tr><td>Compréhension orale</td><td>Comprend la question sur le prénom.</td><td>Microdialogue d5 avec un camarade ; prénoms changés.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension orale</td><td>Distingue <span class="ar" lang="ar" dir="rtl">س</span> / <span class="ar" lang="ar" dir="rtl">ص</span>, <span class="ar" lang="ar" dir="rtl">ع</span> / <span class="ar" lang="ar" dir="rtl">ء</span> (hamza) et <span class="ar" lang="ar" dir="rtl">ق</span> / <span class="ar" lang="ar" dir="rtl">ك</span> à l&#x27;écoute.</td><td>Syllabes dites par l&#x27;enseignant ; cartes à lever.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production orale</td><td>Demande et donne son prénom (<span class="ar" lang="ar" dir="rtl">اِسْمِي</span>…<span class="ar" lang="ar" dir="rtl">، مَا اسْمُكَ؟</span>).</td><td>Ronde des prénoms, observée deux fois.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production orale</td><td>Compte jusqu&#x27;à 10 ; nomme un objet avec <span class="ar" lang="ar" dir="rtl">هَذَا</span> / <span class="ar" lang="ar" dir="rtl">هَذِهِ</span>.</td><td>Objets de la classe montrés un à un.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension écrite</td><td>Lit une syllabe avec fatḥa, kasra ou ḍamma.</td><td>Cartes-syllabes présentées une à une.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension écrite</td><td>Décode avec aide un mot aux lettres isolées (<span class="ar" lang="ar" dir="rtl">أَبْ، أَخْ</span>).</td><td>Lecture avec l&#x27;enseignant ; mot déjà connu à l&#x27;oral.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production écrite</td><td>Reproduit avec modèle les 12 lettres sans point et <span class="ar" lang="ar" dir="rtl">ب ت ث ن ي</span>.</td><td>Modèle visible ; lettres mobiles possibles en cas de difficulté graphique.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr></tbody></table></div><h3>Trimestre 3</h3><div class="tableau eval"><table><thead><tr><th scope="col">Compétence</th><th scope="col">Ce que l&#x27;élève fait</th><th scope="col">Situation et aide</th><th scope="col">Insuffisante</th><th scope="col">Fragile</th><th scope="col">Satisfaisante</th><th scope="col">Très bonne</th></tr></thead><tbody><tr><td>Compréhension orale</td><td>Montre l&#x27;image d&#x27;un mot connu entendu (couleur, animal, objet).</td><td>Planche d&#x27;images ; mot dit deux fois.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension orale</td><td>Reconnaît le thème d&#x27;une comptine.</td><td>Comptine écoutée ; choix entre trois images.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production orale</td><td>Dit son âge et son humeur.</td><td>Dialogue d3 avec l&#x27;enseignant, à l&#x27;aide des formules mémorisées.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Compréhension écrite</td><td>Reconnaît les lettres isolées étudiées présentées dans le désordre et les associe à leur son.</td><td>Loto des lettres ; réciter l&#x27;alphabet ne suffit pas.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production écrite</td><td>Reproduit lisiblement les lettres étudiées.</td><td>Cahier de tracé : avec modèle (objectif principal), sans modèle (approfondissement).</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr><tr><td>Production écrite</td><td>Recopie son prénom en arabe.</td><td>Modèle préparé par l&#x27;enseignant ; aide adaptée à la difficulté du prénom.</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr></tbody></table></div><p class="attestation">Attestation interne de compétences de fin d&#x27;année 1, établie avec l&#x27;échelle commune ; elle ne vaut pas diplôme officiel.</p><aside class="conseil"><strong>Conseil pour l'enseignant</strong><p>Évaluez l&#x27;oral pendant les rituels et les jeux, quelques élèves à chaque cours, plutôt qu&#x27;en interrogation. Pour l&#x27;écrit, l&#x27;ardoise et le cahier de tracé suffisent.</p></aside></div></section><section id="numerique"><div class="tete"><span class="num" aria-hidden="true">13</span><h2>Numérique et familles</h2><p class="ar" lang="ar" dir="rtl">الأَدَوَاتُ الرَّقْمِيَّةُ وَالأُسَر</p></div><div class="corps"><h3>En classe</h3><ul><li>Écoute collective et répétition en chœur</li><li>Jeux de sons : reconnaître une lettre, distinguer une paire de sons</li><li>Première prise en main des activités Moodle, guidée par l&#x27;enseignant</li><li>Tracé des lettres au tableau, puis sur l&#x27;ardoise</li></ul><h3>À la maison</h3><ul><li>20 à 30 minutes par semaine</li><li>Capsules audio de 2 à 3 minutes : les lettres et les comptines</li><li>Jeux lettre-son (glisser-déposer) et quiz de vocabulaire par thème : animaux, objets de la classe, nourriture, famille</li><li>« Mon premier dialogue » : écouter un dialogue modèle de 30 secondes, puis s&#x27;enregistrer en répétant phrase par phrase (badge « Première conversation »)</li><li>L&#x27;arbre de l&#x27;alphabet : une feuille se colorie pour chaque lettre reconnue</li><li>Une version sans écran : fiches et cartes à imprimer ; un parent peut accompagner l&#x27;enfant sans parler arabe</li></ul><h3>Pour les parents</h3><ul><li>Guide de prononciation pour les parents, même s&#x27;ils ne parlent pas arabe</li><li>Courtes vidéos pour accompagner l&#x27;enfant à la maison</li><li>Les parents qui parlent marocain ou algérien peuvent jouer avec l&#x27;enfant à « à la maison, on peut dire… ; en arabe standard, on dit et on écrit… »</li></ul></div></section></main>
+<footer>Association de la Fraternité d&#x27;Elne. Référentiels d&#x27;arabe standard (fuṣḥā), années 1 à 9, version 2 (2026-2027).</footer>
 </body>
 </html>
